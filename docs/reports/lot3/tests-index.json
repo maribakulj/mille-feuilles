@@ -1,0 +1,49 @@
+{
+  "format": "mille-feuilles-lot3-test-evidence",
+  "schema_version": "0.3.0",
+  "tests_passed": 652,
+  "test_seconds": 349.57,
+  "scope": "Frozen source working tree before integration commit. Claude scratchpad review and scripts copied without its generated lots. CLI and visual acceptance recorded separately.",
+  "files": [
+    {
+      "path": "tests.txt",
+      "sha256": "327a5addd40b5a11e01131d39da2729cafadd57eea6dedb0f5d6ff969fb97245",
+      "bytes": 832
+    },
+    {
+      "path": "ruff.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    {
+      "path": "claude/NOTE-REVUE-LOT3.md",
+      "sha256": "f5dfe603c5f910f92b27ad62b02dcf08d4c94160af66e71740dd6e4fc11565c4",
+      "bytes": 5495
+    },
+    {
+      "path": "claude/a_c_e.py",
+      "sha256": "f389a0504a8aeed2132255a76c80924836b3ce99a078e2823cdb4728c7a1727b",
+      "bytes": 2197
+    },
+    {
+      "path": "claude/jobs.py",
+      "sha256": "9eb8107daac502bf23dcc40f8504da9fb36e0c991ad72ce077e182603bc0955f",
+      "bytes": 667
+    },
+    {
+      "path": "claude/forge.py",
+      "sha256": "fb9a4144a433815307b03200327fc454e1bfc8c9838a44c475d4a1af68cd59b8",
+      "bytes": 1695
+    },
+    {
+      "path": "claude/legacy.py",
+      "sha256": "b86e30d4ace92370f6b25c19edd7e8c05434437b1ea776d13760b5463cae5289",
+      "bytes": 756
+    },
+    {
+      "path": "claude/overlap.py",
+      "sha256": "a260a16d806a60b8593889eaa6ecfdc240d537bcf378cf786e774c29381088c8",
+      "bytes": 1244
+    }
+  ]
+}

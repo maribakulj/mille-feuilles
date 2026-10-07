@@ -18,6 +18,12 @@ Aucun modèle OCR n'est nécessaire. Un lot de démonstration en langue françai
 originale permet de vérifier le système ; il ne prouve pas le réalisme lexical
 ou historique d'un corpus de presse.
 
+Le lot 3 ajoute le profil distinct **`fr_press_19c_columns_4_6_measured`**, en
+schéma **0.3.0** également. Il conserve la vérité de composition et mesure les
+effets d'un profil de dégradation déclaré. Sa campagne finale d'acceptation est
+en cours ; les 483 tests et les trois pages d'acceptation CLI du lot 2 restent
+des preuves historiques du lot 2, sans valoir acceptation du profil mesuré.
+
 Le JSON canonique est la source des projections PAGE XML, ALTO et COCO.
 Aucun import du logiciel Axel dans le générateur. Les adaptations de métriques,
 les expériences et les tests réels gelés d'Axel restent dans son dépôt.
@@ -57,7 +63,7 @@ Les paramètres résolus et les métadonnées d'actifs sont des objets JSON ouve
 |---|---|
 | `schema_version` | `"0.3.0"` ; `"0.2.0"` accepté en lecture historique |
 | `dataset_id` | Identifiant stable du lot |
-| `profile` | `"fr_press_19c_columns_4_6"` |
+| `profile` | `"fr_press_19c_columns_4_6"` ou `"fr_press_19c_columns_4_6_measured"` ; ce dernier exige 0.3.0 |
 | `generator` | `{commit, dirty, environment_path, environment_sha256}` ; commit Git complet |
 | `config` | `{path, sha256}` de la configuration résolue |
 | `rng` | `{algorithm, version, seed}` ; seed entier entre 0 et 2^53−1 |
@@ -279,10 +285,94 @@ Un mot ne contient aucun espace. Les références parent/enfant sont réciproque
 
 `legibility` vaut `readable`, `uncertain` ou `illegible`. Une ligne porte le pire
 état de ses mots. Ce champ est une décision de génération/QA, pas une confiance
-OCR. Le pilote n'accepte comme supervision OCR que le texte visible `readable` ;
-il limite les dégradations et vérifie les pages et des échantillons de mots.
-Les autres états restent représentables pour des expériences ultérieures mais
-n'autorisent pas la supervision silencieuse d'un contenu masqué.
+OCR. Le profil historique `fr_press_19c_columns_4_6` exige que tous les mots
+soient `readable` et conserve ses contrôles de pages et d'échantillons.
+Le profil mesuré autorise les trois états, selon la règle `heuristic-v1`
+décrite ci-dessous. La présence du texte de composition d'un mot masqué dans
+le canonique n'autorise pas son utilisation silencieuse comme supervision OCR.
+
+### 4.1. Profil mesuré et diagnostics
+
+La CLI sélectionne un profil avec **`--degradation-profile identity`**,
+**`--degradation-profile controlled-v1`** ou le chemin d'un fichier JSON.
+Le facteur `oversampling`, **1 ou 2**, appartient au même JSON ; aucun second
+drapeau CLI ne le sélectionne. Un profil contient
+`{format, version, name, description, calibrated, oversampling, families}`,
+avec `format: "mille-feuilles-degradation-profile"`, `version: "1"` et
+`calibrated: false`. Le schéma exécutable est
+`schemas/degradation-profile.schema.json` ; les familles, distributions et
+bornes figurent dans [DEGRADATIONS.md](DEGRADATIONS.md).
+
+`identity` conserve la rotation : son identité concerne seulement la
+photométrie. Un profil mesuré remplace les anciens réglages photométriques pour
+la page. Sans ce profil, les modes `clean`, `aged`, `faint` et `mixed` conservent
+leurs PNG et annotations canoniques à l'identique dans l'environnement
+verrouillé, sans nouvelle clé dans leurs pages. Les empreintes de code et le
+commit du manifeste continuent de décrire la version réellement exécutée.
+
+Le profil complet est enregistré dans `config.render.degradation_profile` et
+copié dans `provenance/degradation-profile.json`. Le manifeste le référence par
+`extensions['mf:degradation_profile'] = {path, sha256}` et l'inventorie.
+Le validateur exige l'égalité du profil copié et du profil de configuration.
+Les paramètres tirés pour chaque page sont dans
+`page.provenance.parameters.degradation_profile` : nom, `profile_sha256`, graine
+propre à la dégradation et valeurs résolues par famille. `profile_sha256`
+empreinte la sérialisation JSON canonique du profil, triée et compacte ; la
+référence du manifeste empreinte les **octets du fichier** copié. Ces deux
+empreintes ont donc des fonctions distinctes.
+
+Les flux aléatoires de dégradation sont séparés de la composition. À sources,
+paramètres de composition, graine et facteur de suréchantillonnage identiques,
+deux profils mesurés produisent les mêmes sources sélectionnées, positions,
+retours de ligne, géométries et masque idéal. La garantie de géométrie et de
+masque identiques vaut **entre profils mesurés de même facteur** ; les métriques
+des glyphes dessinés à taille double peuvent ajuster leurs enveloppes. Elle ne
+constitue pas une garantie d'identité avec une page du profil historique.
+
+La couverture idéale est dessinée avant toute altération photométrique :
+texte à 1, fond à 0, filets à 200/255. Elle reçoit la rotation et, au facteur 2,
+la réduction par moyenne des blocs de couverture **grise**. Le masque est
+ensuite obtenu par le seuil `couverture >= 0.5` ; un masque binaire n'est pas
+réduit. Il inclut les filets et est conservé même lorsque l'image perd de
+l'encre. Les effets photométriques s'appliquent après cette réduction ; leurs
+unités en pixels correspondent à l'image finale.
+
+Chaque page mesurée possède :
+
+| Fichier ou champ | Contenu |
+|---|---|
+| `qa/masks/<id>.png` | PNG de mode `1`, dimensions finales ; blanc = encre idéale |
+| `qa/diagnostics/<id>.json` | Résultat exact de `diagnostics.document(image, mask, page, ...)` |
+| `page.extensions['mf:diagnostics']` | `{version: "1", path, sha256, mask_path, mask_sha256}` |
+| `diagnostics.inputs` | Références `image` et `mask`, chacune `{path, sha256}` |
+| `provenance.parameters.legibility_method` | `"heuristic-v1"` |
+| `provenance.parameters.oversampling` | 1 ou 2 |
+| `provenance.parameters.raster_width`, `raster_height` | Dimensions finales multipliées par le facteur |
+
+Le masque, les diagnostics et le profil copié figurent dans l'inventaire des
+artefacts. `validate_dataset` contrôle leurs chemins, empreintes et références,
+rééchantillonne les paramètres depuis le profil et la graine du lot, puis
+recalcule le document de diagnostics. Les mesures arrondies à six décimales,
+seuils versionnés, étiquettes des mots et pire état des lignes doivent
+correspondre. Une simple réempreinte d'une mesure ou étiquette altérée ne suffit
+pas à la rendre valide. Ces étiquettes sont appliquées avant les exports.
+
+**Portée de `heuristic-v1`.** Les seuils utilisent le contraste, la quantité
+de pixels d'encre idéale et leur rétention. Ils ne certifient ni lecture humaine
+ni supervision OCR : une lettre amputée peut laisser le mot `readable`.
+Le profil mesuré conserve explicitement les mots `uncertain` et `illegible` ;
+leur texte reste la vérité de composition, pas une transcription garantie
+lisible de l'image finale. Les seuils et contre-exemples sont documentés dans
+[DEGRADATIONS.md](DEGRADATIONS.md).
+
+**Portée de la vérification du masque.** Son occupation est contrôlée dans
+l'union rasterisée des blocs, filets inclus, avec une marge de 3 pixels.
+Cette vérification n'établit pas que chaque pixel correspond au glyphe source.
+Le validateur ne reconstruit pas les glyphes pour authentifier le masque idéal :
+un masque falsifié, puis réempreinté et accompagné de diagnostics cohérents,
+peut rester conforme à l'occupation des blocs. Les empreintes, le recalcul des
+mesures et ce contrôle spatial prouvent une cohérence dans leur périmètre ;
+la reproduction et la revue visuelle apportent des vérifications complémentaires.
 
 ## 5. Géométrie
 
@@ -307,13 +397,24 @@ Pas de rognage textuel, courbure ou déplacement non affine dans ce pilote.
 La transparence et les versos sont différés ; leur future provenance devra
 identifier le contenu arrière et les sources partagées.
 
+Dans le profil mesuré, le facteur 2 est décrit par
+`mf:oversampling` (matrice d'échelle 2), la rotation dans le repère raster
+double, puis `mf:downsample` (matrice d'échelle 1/2, `resampling: "box-mean"`).
+Le produit de ces matrices ramène les coordonnées dans l'image finale ; les
+métadonnées de taille de fonte restent en pixels finaux de composition.
+Les transformations `mf:degrade:<famille>` viennent ensuite, toutes de
+géométrie identité. Les enveloppes décrivent la composition idéale, même
+quand l'image est floutée ou une partie de son encre effacée.
+
 ## 6. Texte, césure et ordre
 
 Transcription diplomatique NFC : pas de NFKC, correction, modernisation ou
 suppression d'accents. Conserver `ſ` et les ligatures Unicode du texte composé.
 Une ligature typographique de shaping `fi` reste deux caractères si la source
 était `fi`. Les espaces de composition sont U+0020 ; aucun espace de bord,
-tabulation ou saut de ligne dans une ligne. Pas de texte invisible supervisé.
+tabulation ou saut de ligne dans une ligne. Un contenu devenu invisible dans
+un profil mesuré reste explicitement étiqueté ; sa présence dans le canonique
+ne suffit pas à autoriser son emploi comme supervision.
 Une fonte doit couvrir chaque caractère rendu ; aucun remplacement silencieux.
 Les lettrines et symboles de texte substitués par une illustration sont exclus
 du pilote jusqu'à définition d'une annotation mixte explicite.
@@ -391,7 +492,9 @@ Le validateur lit 0.2.0 et 0.3.0, avec version de page égale à celle du manife
 Il ne complète pas les liens de provenance manquants d'un lot historique et
 ne lui ajoute pas une partition déduite après coup. Les preuves du pilote
 0.2, dont les 100 pages et la campagne complémentaire de 227 tests, restent
-historiques ; l'état d'acceptation 0.3 figure dans [VALIDATION.md](VALIDATION.md).
+historiques. L'acceptation du lot 2 en 0.3, avec 483 tests et trois pages CLI,
+est également distincte de la campagne mesurée du lot 3 encore en cours.
+L'état d'acceptation figure dans [VALIDATION.md](VALIDATION.md).
 
 Reproduire les octets du pilote 0.2 exige son commit de production
 `0d1e2b701e9f6ba4d571a5f4894bd40071792225` et son environnement verrouillé.

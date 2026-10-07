@@ -11,6 +11,7 @@ import math
 import random
 import re
 import unicodedata
+from copy import deepcopy
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
@@ -19,9 +20,10 @@ from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 from .catalog import text_assets_by_role, text_units
-from .io import sha256
+from .io import sha256, write_json
 
 PROFILE = "fr_press_19c_columns_4_6"
+PROFILE_MEASURED = "fr_press_19c_columns_4_6_measured"
 SCHEMA_VERSION = "0.3.0"
 # An explicit portable Latin/NFC profile, not an environment-dependent fallback.
 # BASIC renders the same precomposed glyphs used for measurement; discretionary
@@ -38,6 +40,7 @@ class Config:
     degradation: str = "mixed"
     seed: int = 20261007
     partition: str | None = None
+    degradation_profile: dict | None = None
 
     def validate(self) -> None:
         if not (800 <= self.width <= 6000 and 1100 <= self.height <= 8500):
@@ -57,9 +60,16 @@ class Config:
             or re.fullmatch(r"[a-z][a-z0-9_-]{0,31}", self.partition) is None
         ):
             raise ValueError("Nom de partition invalide")
+        if self.degradation_profile is not None:
+            from .degrade import check_profile
+
+            check_profile(self.degradation_profile)
 
     def as_dict(self) -> dict:
-        return asdict(self)
+        value = asdict(self)
+        if self.degradation_profile is None:
+            del value["degradation_profile"]
+        return value
 
 
 def page_seed(seed: int, index: int) -> int:
@@ -92,6 +102,10 @@ class Composer:
     def __init__(self, config: Config, index: int, assets: list[dict], asset_root: Path):
         config.validate()
         self.config = config
+        self.index = index
+        self.profile = deepcopy(config.degradation_profile)
+        self.oversampling = self.profile["oversampling"] if self.profile is not None else 1
+        self._raster_fonts = {}
         self.seed = page_seed(config.seed, index)
         self.rng = random.Random(self.seed)
         self.page_id = f"mf_{index:04d}"
@@ -135,11 +149,17 @@ class Composer:
         self.hyphen_number = 0
         self.used_spans: list[dict] = []
         self.template_article_ids: list[str] = []
-        mode = config.degradation
-        self.mode = self.rng.choice(["clean", "aged", "aged", "faint"]) if mode == "mixed" else mode
-        self.paper = 255 if self.mode == "clean" else self.rng.randint(240, 251)
-        self.ink = self.rng.randint(18, 38) if self.mode != "faint" else self.rng.randint(65, 85)
-        self.canvas = Image.new("L", (config.width, config.height), self.paper)
+        if self.profile is None:
+            mode = config.degradation
+            self.mode = self.rng.choice(["clean", "aged", "aged", "faint"]) if mode == "mixed" else mode
+            self.paper = 255 if self.mode == "clean" else self.rng.randint(240, 251)
+            self.ink = self.rng.randint(18, 38) if self.mode != "faint" else self.rng.randint(65, 85)
+        else:
+            # Profile choices must never consume the composition random stream.
+            self.mode, self.paper, self.ink = "measured", 0, 255
+        self.canvas = Image.new(
+            "L", (config.width * self.oversampling, config.height * self.oversampling), self.paper
+        )
         self.draw = ImageDraw.Draw(self.canvas)
         self._check_coverage()
 
@@ -204,6 +224,18 @@ class Composer:
             word_text = token["text"]
             advance = font.getlength(word_text, **SHAPING)
             left, top, right, bottom = font.getbbox(word_text, anchor="ls", **SHAPING)
+            raster_font = font
+            if self.oversampling > 1:
+                key = font.path, font.size
+                if key not in self._raster_fonts:
+                    self._raster_fonts[key] = font.font_variant(size=font.size * self.oversampling)
+                raster_font = self._raster_fonts[key]
+                actual = raster_font.getbbox(word_text, anchor="ls", **SHAPING)
+                # Layout and pen advances stay native. Hinting at twice the
+                # size can change glyph support; include that support in the
+                # annotation instead of changing line wraps or clipping glyphs.
+                left, top = min(left, actual[0] / self.oversampling), min(top, actual[1] / self.oversampling)
+                right, bottom = max(right, actual[2] / self.oversampling), max(bottom, actual[3] / self.oversampling)
             polygon = box(
                 pen + min(0, left),
                 baseline + min(-ascent, top),
@@ -220,7 +252,8 @@ class Composer:
                 "hyphenation": token.get("hyphenation"),
             }
             self.draw.text(
-                (pen, baseline), word_text, fill=self.ink, font=font, anchor="ls", **SHAPING
+                (pen * self.oversampling, baseline * self.oversampling),
+                word_text, fill=self.ink, font=raster_font, anchor="ls", **SHAPING
             )
             self.words.append(word)
             line_words.append(word)
@@ -319,7 +352,8 @@ class Composer:
         y1 = max(y1, y0 + 2)
         block = self.block("separateur", None)
         block["polygon"] = box(x0, y0, x1, y1)
-        self.draw.rectangle((x0, y0, x1, y1), fill=min(150, self.ink + 35))
+        self.draw.rectangle(tuple(value * self.oversampling for value in (x0, y0, x1, y1)),
+                            fill=200 if self.profile is not None else min(150, self.ink + 35))
 
     def content(self) -> None:
         header = self.article()
@@ -443,6 +477,8 @@ class Composer:
             self.y += self.spacing * 0.65
 
     def finish(self, out_root: Path) -> dict:
+        if self.profile is not None:
+            return self._finish_measured(out_root)
         self.content()
         transforms = []
         angle = 0.0 if self.mode == "clean" else self.rng.uniform(-0.35, 0.35)
@@ -504,6 +540,9 @@ class Composer:
         image_path = out_root / "images" / f"{self.page_id}.png"
         image_path.parent.mkdir(parents=True, exist_ok=True)
         self.canvas.save(image_path, compress_level=6, dpi=(self.config.dpi, self.config.dpi))
+        return self._page(image_path, transforms, angle, blur)
+
+    def _page(self, image_path: Path, transforms: list[dict], angle: float, blur: float) -> dict:
         text_blocks = [b for b in self.blocks if b["line_ids"]]
         page = {
             "schema_version": SCHEMA_VERSION,
@@ -556,6 +595,96 @@ class Composer:
                 "line_ids": [lid for b in text_blocks for lid in b["line_ids"]],
             },
         }
+        return page
+
+    def _finish_measured(self, out_root: Path) -> dict:
+        from . import degrade, diagnostics
+
+        self.content()
+        angle = self.rng.uniform(-0.35, 0.35)
+        theta = math.radians(angle)
+        c, s = math.cos(theta), math.sin(theta)
+        cx, cy = self.config.width / 2, self.config.height / 2
+        matrix = [[c, s, cx - c * cx - s * cy], [-s, c, cy + s * cx - c * cy], [0, 0, 1]]
+
+        def transform(points):
+            return [[round(matrix[0][0] * x + matrix[0][1] * y + matrix[0][2], 6),
+                     round(matrix[1][0] * x + matrix[1][1] * y + matrix[1][2], 6)]
+                    for x, y in points]
+
+        self.canvas = self.canvas.rotate(
+            angle, resample=Image.Resampling.BICUBIC, expand=False, fillcolor=0
+        )
+        for obj in self.blocks + self.lines + self.words:
+            obj["polygon"] = transform(obj["polygon"])
+        for line in self.lines:
+            line["baseline"] = transform(line["baseline"])
+        factor = self.oversampling
+        native_size = [self.config.width, self.config.height]
+        raster_size = [size * factor for size in native_size]
+        transforms = []
+        if factor > 1:
+            transforms.append({
+                "kind": "mf:oversampling",
+                "geometry": {"matrix": [[factor, 0, 0], [0, factor, 0], [0, 0, 1]]},
+                "parameters": {"factor": factor, "source_size": native_size, "target_size": raster_size},
+            })
+        raster_matrix = [
+            [c, s, matrix[0][2] * factor], [-s, c, matrix[1][2] * factor], [0, 0, 1]
+        ]
+        transforms.append({
+            "kind": "rotation", "geometry": {"matrix": raster_matrix},
+            "parameters": {"degrees": angle, "resampling": "bicubic",
+                           "center": [cx * factor, cy * factor], "fill": 0},
+        })
+        coverage = np.asarray(self.canvas, dtype=np.float32) / np.float32(255)
+        if factor > 1:
+            coverage = degrade.downsample_coverage(coverage, factor)
+            transforms.append({
+                "kind": "mf:downsample",
+                "geometry": {"matrix": [[1 / factor, 0, 0], [0, 1 / factor, 0], [0, 0, 1]]},
+                "parameters": {"factor": factor, "resampling": "box-mean",
+                               "source_size": raster_size, "target_size": native_size},
+            })
+        mask = diagnostics.ideal_mask(coverage)
+        resolved = degrade.sample_parameters(
+            self.profile, degrade.degradation_seed(self.config.seed, self.index)
+        )
+        pixels, alterations = degrade.apply(coverage, resolved)
+        transforms.extend(alterations)
+        self.canvas = Image.fromarray(pixels)
+        image_path = out_root / "images" / f"{self.page_id}.png"
+        image_path.parent.mkdir(parents=True, exist_ok=True)
+        self.canvas.save(image_path, compress_level=6, dpi=(self.config.dpi, self.config.dpi))
+        page = self._page(image_path, transforms, angle, resolved.get("blur", {}).get("sigma_px", 0.0))
+        page["profile"] = PROFILE_MEASURED
+        paper, ink = degrade.reference_levels(resolved)
+        page["provenance"]["parameters"].update({
+            "degradation_profile": resolved,
+            "oversampling": self.profile["oversampling"],
+            "raster_width": raster_size[0], "raster_height": raster_size[1],
+            "paper_level": paper, "ink_level": ink,
+            "legibility_method": diagnostics.LEGIBILITY_METHOD,
+        })
+        mask_relative = diagnostics.mask_path(self.page_id)
+        mask_hash = diagnostics.save_mask(mask, out_root / mask_relative)
+        report = diagnostics.document(
+            pixels, mask, page, image_sha256=page["image"]["sha256"], mask_sha256=mask_hash
+        )
+        ranks = {"readable": 0, "uncertain": 1, "illegible": 2}
+        by_id = {word["id"]: word for word in self.words}
+        for word in self.words:
+            word["legibility"] = report["words"][word["id"]]["legibility"]
+        for line in self.lines:
+            line["legibility"] = max(
+                (by_id[wid]["legibility"] for wid in line["word_ids"]), key=ranks.get
+            )
+        relative = diagnostics.diagnostics_path(self.page_id)
+        write_json(out_root / relative, report)
+        page["extensions"] = {"mf:diagnostics": {
+            "version": "1", "path": relative, "sha256": sha256(out_root / relative),
+            "mask_path": mask_relative, "mask_sha256": mask_hash,
+        }}
         return page
 
 

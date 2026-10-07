@@ -23,11 +23,16 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("--height", type=int, default=3698)
     generate.add_argument("--dpi", type=int, default=150)
     generate.add_argument("--columns", type=int, choices=[4, 5, 6])
-    generate.add_argument(
+    degradation_options = generate.add_mutually_exclusive_group()
+    degradation_options.add_argument(
         "--degradation", choices=["clean", "aged", "faint", "mixed"], default="mixed"
     )
     generate.add_argument("--jobs", type=int, default=1)
     generate.add_argument("--partition", help="Partition à utiliser depuis le bundle vérifié")
+    degradation_options.add_argument(
+        "--degradation-profile",
+        help="Profil JSON ou nom livré (identity, controlled-v1) de dégradations mesurées",
+    )
     generate.add_argument(
         "--assets-root",
         type=Path,
@@ -51,6 +56,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         if args.command == "generate":
+            profile = None
+            if args.degradation_profile is not None:
+                from .degrade import load_profile
+
+                profile = load_profile(args.degradation_profile)
             config = Config(
                 width=args.width,
                 height=args.height,
@@ -59,6 +69,7 @@ def main(argv: list[str] | None = None) -> int:
                 degradation=args.degradation,
                 seed=args.seed,
                 partition=args.partition,
+                degradation_profile=profile,
             )
             result = build_dataset(
                 args.output,

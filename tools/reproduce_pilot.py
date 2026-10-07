@@ -60,7 +60,8 @@ def strict_config(value: dict) -> tuple[Config, int]:
         raise ValueError("Nombre de pages invalide dans la configuration")
     parameters = value["render"]
     expected = {field.name for field in fields(Config)}
-    if not isinstance(parameters, dict) or set(parameters) != expected:
+    optional = {"degradation_profile"}
+    if not isinstance(parameters, dict) or set(parameters) not in (expected, expected - optional):
         raise ValueError("Paramètres de rendu incomplets ou inconnus")
     for name in ("width", "height", "dpi", "seed"):
         if type(parameters[name]) is not int:
@@ -168,6 +169,14 @@ def reproduce(
         selection_errors = validate_partition_receipt(source, manifest, load_json(registry_path))
         if selection_errors:
             raise ValueError("Reçu de sélection invalide : " + "; ".join(selection_errors[:5]))
+        if config.degradation_profile is not None:
+            from mille_feuilles.validation import validate_dataset
+
+            measured_source = validate_dataset(source)
+            if measured_source["status"] != "pass":
+                raise ValueError(
+                    "Lot mesuré source invalide : " + "; ".join(measured_source["errors"][:5])
+                )
         catalog_refs = [
             record for record in manifest["artifacts"] if record["path"] == "assets/catalog.json"
         ]

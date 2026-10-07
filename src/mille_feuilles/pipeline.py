@@ -18,7 +18,7 @@ from PIL import Image, ImageDraw, features
 
 from . import __version__
 from .io import ROOT, sha256, write_json
-from .render import Config, PROFILE, SCHEMA_VERSION, render_page
+from .render import Config, PROFILE, PROFILE_MEASURED, SCHEMA_VERSION, render_page
 
 
 def environment() -> dict:
@@ -257,7 +257,7 @@ def overlay(page: dict, root: Path) -> None:
     canvas.save(path, compress_level=6)
 
 
-def contact_sheets(pages: list[dict], root: Path) -> None:
+def contact_sheets(pages: list[dict], root: Path, prefix: str = "contact") -> None:
     for offset in range(0, len(pages), 10):
         chunk = pages[offset : offset + 10]
         sheet = Image.new(
@@ -276,7 +276,7 @@ def contact_sheets(pages: list[dict], root: Path) -> None:
                 f"{page['page_id']} / {params['columns']} col. / {params['degradation']}",
                 fill="black",
             )
-        sheet.save(root / "qa" / f"contact_{offset // 10:02d}.jpg", quality=88)
+        sheet.save(root / "qa" / f"{prefix}_{offset // 10:02d}.jpg", quality=88)
 
 
 def build_dataset(
@@ -289,8 +289,9 @@ def build_dataset(
 ) -> dict:
     """Build, validate and leave a self-contained lot; never overwrite user files."""
     from .exports import export_coco, export_page
-    from .validation import validate_dataset, validate_page
+    from .validation import load_json, validate_dataset, validate_page
 
+    config = deepcopy(config)
     config.validate()
     if not 1 <= count <= 1000 or not 1 <= jobs <= 4:
         raise ValueError("Nombre de pages attendu : 1–1000 ; jobs : 1–4")
@@ -331,6 +332,13 @@ def build_dataset(
             shutil.copyfile(safe_path(source, relative), target)
             import_ref = {"path": "provenance/import-report.json", "sha256": sha256(target)}
             break
+    degradation_ref = None
+    if config.degradation_profile is not None:
+        profile_path = root / "provenance/degradation-profile.json"
+        write_json(profile_path, config.degradation_profile)
+        degradation_ref = {
+            "path": "provenance/degradation-profile.json", "sha256": sha256(profile_path)
+        }
     write_json(
         root / "config.json",
         {"schema_version": SCHEMA_VERSION, "render": config.as_dict(), "pages": count,
@@ -397,6 +405,26 @@ def build_dataset(
         ),
         "scope": "synthetic demonstration / geometry QA; no evidence of OCR training gain",
     }
+    if degradation_ref:
+        diagnostics = [load_json(root / p["extensions"]["mf:diagnostics"]["path"]) for p in pages]
+        counts = Counter(w["legibility"] for p in pages for w in p["words"])
+        statistics["measured_degradations"] = {
+            "profile": config.degradation_profile["name"],
+            "calibrated": False,
+            "legibility_method": "heuristic-v1",
+            "legibility": {label: counts[label] for label in ("readable", "uncertain", "illegible")},
+            "pages": [{"page_id": d["page_id"], **d["page"]} for d in diagnostics],
+        }
+        statistics["scope"] = (
+            "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain"
+        )
+        by_id = {d["page_id"]: d["page"] for d in diagnostics}
+        severe_first = sorted(pages, key=lambda p: (
+            -by_id[p["page_id"]]["legibility"]["illegible"],
+            -by_id[p["page_id"]]["legibility"]["uncertain"],
+            by_id[p["page_id"]]["contrast"], p["page_id"],
+        ))
+        contact_sheets(severe_first, root, prefix="severity")
     write_json(root / "qa/statistics.json", statistics)
     artifacts = [
         {
@@ -409,12 +437,16 @@ def build_dataset(
     ]
     by_asset_id = {a["id"]: a for a in assets}
     dataset_id = f"mf_demo_{config.seed}_{count}"
+    if degradation_ref:
+        from .degrade import profile_sha256
+
+        dataset_id += f"_measured_{profile_sha256(config.degradation_profile)[:12]}"
     if receipt:
         dataset_id += f"_{config.partition}_{receipt['sha256'][:12]}"
     manifest = {
         "schema_version": SCHEMA_VERSION,
         "dataset_id": dataset_id,
-        "profile": PROFILE,
+        "profile": PROFILE_MEASURED if degradation_ref else PROFILE,
         "generator": {
             "commit": commit,
             "dirty": dirty,
@@ -455,6 +487,8 @@ def build_dataset(
         manifest["extensions"] = {"mf:partition": receipt}
     if import_ref:
         manifest.setdefault("extensions", {})["mf:import_report"] = import_ref
+    if degradation_ref:
+        manifest.setdefault("extensions", {})["mf:degradation_profile"] = degradation_ref
     write_json(root / "manifest.json", manifest)
     if progress:
         progress("Vérification du lot et des exports…")

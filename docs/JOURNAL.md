@@ -154,3 +154,36 @@ dans `runs/accept-partitioned-v03` ; ses preuves légères sont dans
 `reports/lot2/acceptance/`. Aucun corpus réel n'a été ouvert, déplacé ou supprimé.
 Le lot 2 est éprouvé ; le binôme poursuit avec l'intégration du lot 3 déjà préparé
 par Claude, en commençant à résolution native.
+
+## Lot 3 — dégradations mesurées
+
+Claude intègre profils déclarés, transformations photométriques, diagnostics et
+tests indépendants. Codex raccorde la couverture idéale, le suréchantillonnage,
+les diagnostics dans le lot, la validation, le CLI et la reproduction. Les fichiers
+sont attribués avant écriture. Le chemin historique conserve ses PNG et JSON,
+vérifiés par empreintes prises avant modification et par comparaison de Claude
+contre le commit `4153d99`.
+
+Les profils mesurés ont leur propre hasard photométrique. À paramètres de
+composition identiques, identity et controlled partagent texte, coordonnées et
+masque idéal ; les effets interviennent après toutes les géométries. Le facteur
+×2 redessine les mêmes positions avec les fontes au double, ajuste les enveloppes
+au support réel des glyphes, puis réduit la couverture grise avant seuillage.
+Les diagnostics par mot utilisent le polygone exact et des seuils heuristiques
+déclarés, sans prétendre certifier la lecture humaine ou l'usage comme cible OCR.
+
+La revue des API Python directes corrige des valeurs non finies, entiers énormes,
+graines invalides et familles inconnues. Le CLI refuse les deux sélections de
+dégradation simultanées, même si l'ancien mode explicite vaut `mixed`.
+Claude confirme le rejeu de deux pages avec workers 1 puis 2, et reproduit une
+limite : un masque fabriqué avec diagnostics et empreintes recalculés ne prouve
+pas les glyphes. Le contrôle d'occupation ajouté ne remplace pas le rendu de référence.
+Les preuves finales du lot 3 sont distinctes de celles du lot 2 accepté.
+
+La suite intégrée du lot 3 passe **652 tests en 349,57 s**, Ruff passe. La
+revue croisée confirme le confinement et la cohérence des paramètres et des
+matrices ; le faussaire tout-encre est rejeté après remise à jour complète des
+empreintes, diagnostics et exports. Claude reproduit six cas historiques au
+commit `4153d99` et un lot de deux pages avec workers 1 puis 2 (45 fichiers
+identiques). Les preuves et ses scripts sont archivés dans `reports/lot3/`.
+La campagne CLI, les coûts à taille pilote et la revue visuelle suivent.

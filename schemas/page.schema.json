@@ -15,7 +15,10 @@
       "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
     },
     "profile": {
-      "const": "fr_press_19c_columns_4_6"
+      "enum": [
+        "fr_press_19c_columns_4_6",
+        "fr_press_19c_columns_4_6_measured"
+      ]
     },
     "image": {
       "type": "object",
@@ -578,6 +581,42 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+      },
+      "properties": {
+        "mf:diagnostics": {
+          "type": "object",
+          "required": [
+            "version",
+            "path",
+            "sha256",
+            "mask_path",
+            "mask_sha256"
+          ],
+          "properties": {
+            "version": {
+              "const": "1"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*(?:^|/)\\.(?:/|$))[^\\x00]+(?![\\s\\S])"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+            },
+            "mask_path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*(?:^|/)\\.(?:/|$))[^\\x00]+(?![\\s\\S])"
+            },
+            "mask_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+            }
+          },
+          "additionalProperties": false
+        }
       }
     }
   },
@@ -643,6 +682,82 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "profile": {
+            "const": "fr_press_19c_columns_4_6_measured"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "schema_version": {
+            "const": "0.3.0"
+          },
+          "image": {
+            "properties": {
+              "color_mode": {
+                "const": "L"
+              }
+            }
+          },
+          "provenance": {
+            "properties": {
+              "parameters": {
+                "required": [
+                  "degradation_profile"
+                ],
+                "properties": {
+                  "degradation_profile": {
+                    "type": "object",
+                    "required": [
+                      "profile",
+                      "profile_sha256",
+                      "seed"
+                    ],
+                    "properties": {
+                      "profile": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "profile_sha256": {
+                        "type": "string",
+                        "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                      },
+                      "seed": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "extensions": {
+            "required": [
+              "mf:diagnostics"
+            ]
+          }
+        },
+        "required": [
+          "extensions"
+        ]
+      },
+      "else": {
+        "properties": {
+          "extensions": {
+            "not": {
+              "required": [
+                "mf:diagnostics"
+              ]
             }
           }
         }

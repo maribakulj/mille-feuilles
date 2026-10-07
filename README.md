@@ -16,8 +16,12 @@ Codex / Claude ; ses exports
 sont validés et les 100 images/annotations ont été reproduites à l'identique.
 Les [preuves et limites](docs/VALIDATION.md) distinguent cette validation
 technique d'une évaluation sur des documents historiques réels.
-La suite intégrée 0.3 passe **483 tests**. Son acceptation CLI importe 18 documents,
-en exclut deux, produit trois partitions et reproduit le lot train à l'identique.
+L'acceptation du **lot 2**, en 0.3.0, a passé **483 tests**. Son essai CLI a importé
+18 documents, en a exclu deux et a produit **trois pages**, une par partition,
+avec reproduction du lot train à l'identique. Ces résultats restent les preuves
+du lot 2. Le **lot 3 est en cours** : il ajoute des dégradations déclarées, un
+masque d'encre idéale et une lisibilité mesurée par heuristique. Sa campagne
+finale d'acceptation et ses résultats restent à consigner.
 
 ## Démarrer
 
@@ -62,6 +66,67 @@ la rotation sont consignées ; les coordonnées désignent l'image finale.
 Une page pleine résolution représente environ 19 Mo avec ses annotations,
 exports et planche QA ; prévoir de l'ordre de 2 Go pour 100 pages et de la marge.
 Le générateur vérifie l'espace libre avant de démarrer. Les lots sont hors Git.
+
+## Profils mesurés du lot 3
+
+Le choix se fait avec **`--degradation-profile`** : `identity`, `controlled-v1`
+ou le chemin d'un profil JSON. Cette option remplace les anciens modes
+photométriques pour ce rendu. Les profils livrés portent `calibrated: false` :
+leurs paramètres ne sont pas calibrés sur des pages historiques réelles.
+
+```sh
+uv run --locked mille-feuilles generate --output runs/mesure \
+  --pages 1 --width 800 --height 1100 --columns 4 --seed 127 \
+  --degradation-profile controlled-v1
+```
+
+`identity` est une **identité photométrique** : la rotation géométrique commune
+à l'image et aux annotations reste appliquée. Pour choisir le suréchantillonnage,
+renseigner `oversampling: 1` ou `2` dans le même fichier JSON ; il n'existe pas
+de second drapeau CLI pour ce facteur. Exemple à enregistrer dans
+`profils/identity-x2.json` :
+
+```json
+{
+  "format": "mille-feuilles-degradation-profile",
+  "version": "1",
+  "name": "identity-x2",
+  "description": "Identité photométrique avec rendu suréchantillonné.",
+  "calibrated": false,
+  "oversampling": 2,
+  "families": {}
+}
+```
+
+Passer ensuite `--degradation-profile profils/identity-x2.json` à la commande de
+génération. Le ×2 dessine sur une grille double, puis réduit la couverture grise
+avant le masque et les effets photométriques. L'image, les annotations et les
+paramètres d'effets en pixels désignent la résolution finale. Ce mode augmente
+le coût mémoire ; son coût à taille pilote reste à établir avant production.
+
+Ces pages utilisent **`fr_press_19c_columns_4_6_measured`**, toujours en schéma
+**0.3.0**. À paramètres de composition, sources, graine et facteur identiques,
+deux profils mesurés conservent la même composition, la même géométrie et le même
+masque idéal. Cette comparaison ne s'étend pas aux facteurs ×1/×2 différents.
+Sans profil mesuré, les PNG et annotations des modes existants gardent leurs
+octets dans l'environnement verrouillé ; l'environnement et le manifeste
+continuent de décrire le code effectivement utilisé.
+
+Le profil est copié dans `provenance/degradation-profile.json`, inventorié et
+conservé dans la configuration. Chaque page ajoute un masque idéal **PNG 1 bit**
+dans `qa/masks/` et des diagnostics dans `qa/diagnostics/`, avec références et
+empreintes. Le validateur recalcule les mesures à partir de l'image finale, du
+masque et des polygones. Le [contrat](docs/CONTRAT_DONNEES.md#41-profil-mesuré-et-diagnostics)
+décrit ces références ; les [effets et seuils](docs/DEGRADATIONS.md) sont versionnés.
+
+Les étiquettes **`heuristic-v1`** autorisent `readable`, `uncertain` et
+`illegible` dans ce profil. Le profil historique continue d'exiger `readable`.
+Une étiquette heuristique `readable` **ne certifie pas une supervision OCR
+valable** : des lettres partiellement effacées peuvent conserver assez d'encre
+pour passer les seuils. Le contrôle d'occupation du masque dans les blocs ne
+reconstruit pas les glyphes ; un masque falsifié puis réempreinté peut rester
+compatible avec ces zones. La relecture visuelle et la reproduction conservent
+donc leur rôle dans l'acceptation.
 
 ## Lire et vérifier le résultat
 
@@ -167,7 +232,9 @@ Les textes embarqués sont des démonstrations originales sous CC0, **pas un cor
 historique**. Le profil couvre texte, titres, annonces et filets, césures et
 articles entre colonnes. Les schémas/exporteurs savent représenter d'autres
 catégories, mais ce moteur ne génère pas encore tableaux, illustrations, lettrines,
-courbures ou textes complexes non latins. Les dégradations restent légères.
+courbures ou textes complexes non latins. Les modes historiques restent légers ;
+les profils mesurés peuvent produire des mots dégradés, signalés par les
+étiquettes et diagnostics avec les limites décrites ci-dessus.
 Les césures sont choisies selon la largeur disponible, sans dictionnaire de
 syllabification ; leur reconstruction textuelle est contrôlée.
 
@@ -194,7 +261,7 @@ uv run --locked python assets/verify_assets.py
 - [Revue critique de Claude](docs/REVUE_CLAUDE.md).
 - [Cadrage reçu de Claude](docs/CADRAGE.md), fondé sur 1 253 pages train/dev.
 - [Actifs et licences](docs/ACTIFS.md), [exports](docs/EXPORTS.md),
-  [revue indépendante du rendu](docs/REVUE_RENDU.md).
+  [dégradations mesurées](docs/DEGRADATIONS.md), [revue indépendante du rendu](docs/REVUE_RENDU.md).
 - [Coordination et passation](docs/COORDINATION.md),
   [passation Codex Axel](docs/PASSATION_CODEX.md), [journal](docs/JOURNAL.md).
 

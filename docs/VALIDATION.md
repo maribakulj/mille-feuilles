@@ -89,6 +89,51 @@ détecteur général de quasi-doublons. La génération tire uniformément les u
 d'un rôle : les documents contenant plus d'unités ont davantage de poids. Le
 nombre de pages ne mesure donc ni la diversité des documents ni leur équilibre.
 
+## Lot 3 — dégradations mesurées, acceptation en cours
+
+Le profil `fr_press_19c_columns_4_6_measured` étend le contrat 0.3 sans changer
+les pages du profil historique. Le fichier de dégradation est embarqué et haché ;
+son objet canonique et les paramètres tirés pour chaque page sont aussi contrôlés.
+Le masque idéal est produit depuis la couverture grise après rotation et réduction,
+avant perte d'encre, contraste, éclairage, flou ou bruit. Les effets sont définis en
+pixels de l'image finale. Les diagnostics incluent les empreintes de cette image
+et du masque ; le validateur recalcule les mesures et les étiquettes.
+
+Les comparaisons de sévérité utilisent la même composition entre profils mesurés,
+à graine, dimensions et facteur identiques. Le profil `identity` est une identité
+photométrique : une rotation dans ±0,35° reste appliquée. Les anciens modes gardent
+leur propre séquence aléatoire et ne composent donc pas la même page que le chemin
+mesuré. L'extension d'inclinaison à ±1,5° et la simulation de numérisation avec JPEG
+restent hors de ce lot.
+
+Les seuils de `heuristic-v1` et la rétention de 25 % sont fixés avant l'acceptation
+de ce lot, après examen de fixtures synthétiques documentées dans
+[DEGRADATIONS.md](DEGRADATIONS.md). Un mot classé `readable` peut encore contenir
+une lettre amputée : cette étiquette ne certifie pas une supervision OCR valable.
+Le profil historique continue de refuser les mots `uncertain` et `illegible` ;
+le profil mesuré conserve ces mots avec leurs étiquettes et leur propagation aux lignes.
+
+Un reçu, un masque et des diagnostics tous falsifiés ensemble ne prouvent pas
+les glyphes idéaux. Les contrôles d'occupation et le recalcul des mesures ne
+remplacent pas la reproduction du rendu. La revue Claude a explicitement construit
+un masque tout-encre et recalculé les mesures, exports et empreintes : ce cas
+a motivé un contrôle supplémentaire de confinement aux blocs. Un masque faux mais
+contenu dans les blocs reste une limite du validateur sans reproduction.
+
+Preuves attendues avant acceptation : suite complète et revue croisée ; paires
+identity/controlled aux facteurs ×1 et ×2, masques et composition identiques dans
+chaque paire ; exports et diagnostics recalculés ; rejeu et reproduction complets ;
+mesure du coût à taille pilote avec un worker ; inspection des images et mots
+par sévérité. Aucun gain sur un corpus réel ni calibration historique n'est annoncé.
+Les résultats finaux de cette campagne restent à renseigner.
+
+La suite intégrée passe **652 tests en 349,57 s**, Ruff sans erreur. Les
+[sorties et la revue indépendante de Claude](reports/lot3/tests-index.json)
+sont figées avant l'acceptation CLI. Claude compare aussi un lot de deux pages
+avec workers 1 puis 2 : 45 fichiers identiques, ce qui complète le futur rejeu
+CLI d'une seule page. Six cas historiques clean/mixed/faint conservent leurs
+PNG et JSON identiques au commit `4153d99`.
+
 ## Historique 0.2 — protocole fixé avant production
 
 Le pilote comprend 100 pages de démonstration, 2680 × 3698 pixels à 150 dpi,

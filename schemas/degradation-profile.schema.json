@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mille-feuilles.invalid/schemas/degradation-profile.schema.json",
+  "title": "Mille Feuilles degradation profile 1",
+  "type": "object",
+  "$defs": {
+    "distribution": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "const": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "const"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "uniform": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "uniform"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "choice": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 1,
+              "maxItems": 64
+            }
+          },
+          "required": [
+            "choice"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "properties": {
+    "format": {
+      "const": "mille-feuilles-degradation-profile"
+    },
+    "version": {
+      "const": "1"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{0,63}(?![\\s\\S])"
+    },
+    "calibrated": {
+      "const": false,
+      "description": "Profil 1 : aucune calibration sur pages réelles n'est revendiquée."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oversampling": {
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "families": {
+      "type": "object",
+      "properties": {
+        "ink_loss": {
+          "type": "object",
+          "properties": {
+            "break_density": {
+              "$ref": "#/$defs/distribution"
+            },
+            "break_scale_px": {
+              "$ref": "#/$defs/distribution"
+            },
+            "erosion": {
+              "$ref": "#/$defs/distribution"
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1
+        },
+        "contrast": {
+          "type": "object",
+          "properties": {
+            "paper_level": {
+              "$ref": "#/$defs/distribution"
+            },
+            "ink_level": {
+              "$ref": "#/$defs/distribution"
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1
+        },
+        "illumination": {
+          "type": "object",
+          "properties": {
+            "amplitude": {
+              "$ref": "#/$defs/distribution"
+            },
+            "direction_degrees": {
+              "$ref": "#/$defs/distribution"
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1
+        },
+        "blur": {
+          "type": "object",
+          "properties": {
+            "sigma_px": {
+              "$ref": "#/$defs/distribution"
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1
+        },
+        "noise": {
+          "type": "object",
+          "properties": {
+            "sigma": {
+              "$ref": "#/$defs/distribution"
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "name",
+    "calibrated",
+    "description",
+    "oversampling",
+    "families"
+  ],
+  "additionalProperties": false
+}

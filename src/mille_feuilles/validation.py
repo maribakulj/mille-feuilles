@@ -16,10 +16,11 @@ import unicodedata
 from urllib.parse import urlsplit
 
 from jsonschema import Draft202012Validator
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFilter
 from shapely.geometry import LineString, Polygon
 
 SCHEMA_VERSION = "0.2.0"
+MEASURED_PROFILE = "fr_press_19c_columns_4_6_measured"
 TOLERANCE = 0.5
 _NON_TEXT = {"illustration", "separateur"}
 _LEGIBILITY = {"readable": 0, "uncertain": 1, "illegible": 2}
@@ -765,6 +766,192 @@ def _partition_character_errors(root: Path, manifest: dict, registry: dict, text
     return errors
 
 
+def _load_degradation_profile(root: Path, manifest: dict, artifacts: set[str]):
+    """Load the embedded, bounded profile without resolving a name outside the lot."""
+    errors = []
+    measured = manifest["profile"] == MEASURED_PROFILE
+    try:
+        config = load_json(safe_path(root, manifest["config"]["path"]))
+        render = config.get("render", {}) if isinstance(config, dict) else None
+        if not isinstance(render, dict):
+            return None, ["degradation profile config.render must be an object"]
+        declared = render.get("degradation_profile")
+        if not measured:
+            if declared is not None:
+                errors.append("degradation profile requires the measured dataset profile")
+            return None, errors
+        from .degrade import load_profile
+        from .diagnostics import compare
+
+        reference = manifest["extensions"]["mf:degradation_profile"]
+        if reference["path"] not in artifacts:
+            errors.append("degradation profile missing from artifact inventory")
+        path = safe_path(root, reference["path"])
+        if hashlib.sha256(path.read_bytes()).hexdigest() != reference["sha256"]:
+            errors.append("degradation profile file SHA-256 mismatch")
+        profile = load_profile(path)
+        if profile.get("calibrated") is not False:
+            errors.append("invalid degradation profile: measured profile requires calibrated:false")
+        if compare(declared, profile):
+            errors.append("embedded degradation profile differs from config.render.degradation_profile")
+        if type(render.get("seed")) is not int or render["seed"] != manifest["rng"]["seed"]:
+            errors.append("degradation profile config seed differs from manifest RNG seed")
+        return profile, errors
+    except (OSError, ValueError, TypeError, KeyError) as exc:
+        return None, [f"invalid degradation profile: {exc}"]
+
+
+def _measured_page_errors(root: Path, page: dict, profile: dict, seed: int,
+                          index: int, artifacts: set[str]) -> list[str]:
+    """Recompute diagnostics against the declared ideal mask, not ideal glyphs.
+
+    Glyph-to-mask fidelity belongs to renderer tests and reproduction; a mask
+    and diagnostics that were jointly replaced cannot establish that fidelity.
+    """
+    from .degrade import FAMILIES, degradation_seed, reference_levels, sample_parameters
+    from .diagnostics import LEGIBILITY_METHOD, compare, diagnostics_path, document, load_mask, mask_path
+    import numpy as np
+
+    errors = []
+    parameters = page["provenance"]["parameters"]
+    resolved = parameters["degradation_profile"]
+    expected = sample_parameters(profile, degradation_seed(seed, index))
+    parameter_errors = compare(resolved, expected)
+    if parameter_errors:
+        return [f"degradation resolved parameters differ from seeded profile: {error}"
+                for error in parameter_errors]
+    factor = profile["oversampling"]
+    width, height = page["image"]["width"], page["image"]["height"]
+    for key, wanted in (("oversampling", factor), ("raster_width", width * factor),
+                        ("raster_height", height * factor), ("legibility_method", LEGIBILITY_METHOD)):
+        if compare(parameters.get(key), wanted):
+            errors.append(f"measured parameter {key} differs from profile/final image")
+    paper, ink = reference_levels(expected)
+    for key, wanted in (("paper_level", paper), ("ink_level", ink),
+                        ("blur_radius", expected.get("blur", {}).get("sigma_px", 0.0))):
+        if compare(parameters.get(key), wanted):
+            errors.append(f"measured parameter {key} differs from resolved degradation profile")
+    angle = parameters.get("angle_degrees")
+    if type(angle) not in (int, float) or not math.isfinite(angle) or not -0.35 <= angle <= 0.35:
+        return errors + ["measured angle_degrees must be finite and within [-0.35, 0.35]"]
+    theta = math.radians(angle)
+    cosine, sine = math.cos(theta), math.sin(theta)
+    cx, cy = width / 2, height / 2
+    rotation = {
+        "kind": "rotation",
+        "geometry": {"matrix": [
+            [cosine, sine, (cx - cosine * cx - sine * cy) * factor],
+            [-sine, cosine, (cy + sine * cx - cosine * cy) * factor],
+            [0, 0, 1],
+        ]},
+        "parameters": {"degrees": angle, "resampling": "bicubic",
+                       "center": [cx * factor, cy * factor], "fill": 0},
+    }
+    scales = [transform for transform in page["transforms"]
+              if transform["kind"] in ("mf:oversampling", "mf:downsample")]
+    expected_scales = []
+    if factor == 2:
+        for kind, scale, source_size, target_size, extra in (
+            ("mf:oversampling", 2, [width, height], [2 * width, 2 * height], {}),
+            ("mf:downsample", 0.5, [2 * width, 2 * height], [width, height],
+             {"resampling": "box-mean"}),
+        ):
+            expected_scales.append({
+                "kind": kind, "geometry": {"matrix": [[scale, 0, 0], [0, scale, 0], [0, 0, 1]]},
+                "parameters": {"factor": 2, "source_size": source_size, "target_size": target_size, **extra},
+            })
+    if compare(scales, expected_scales):
+        errors.append("measured oversampling/downsample transforms disagree with profile")
+    geometries = [transform for transform in page["transforms"]
+                  if transform["geometry"] != "identity"]
+    expected_geometry = [rotation] if factor == 1 else [expected_scales[0], rotation, expected_scales[1]]
+    if compare(geometries, expected_geometry):
+        errors.append("measured geometry sequence/matrix differs from declared rotation and raster")
+    reference = page["extensions"]["mf:diagnostics"]
+    if reference["path"] != diagnostics_path(page["page_id"]):
+        errors.append("diagnostics path does not match page identity")
+    if reference["mask_path"] != mask_path(page["page_id"]):
+        errors.append("diagnostics mask path does not match page identity")
+    if errors:
+        return errors
+    for relative, expected_sha in ((reference["path"], reference["sha256"]),
+                                   (reference["mask_path"], reference["mask_sha256"])):
+        if relative not in artifacts:
+            errors.append(f"measured artifact missing from inventory: {relative}")
+        try:
+            path = safe_path(root, relative)
+            if hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha:
+                errors.append(f"measured artifact SHA-256 mismatch: {relative}")
+        except (OSError, ValueError) as exc:
+            errors.append(f"invalid measured artifact {relative}: {exc}")
+    expected_families = [family for family in FAMILIES if family in expected]
+    photometric = [transform for transform in page["transforms"]
+                   if transform["kind"].startswith("mf:degrade:")]
+    if [transform["kind"] for transform in photometric] != [
+        f"mf:degrade:{family}" for family in expected_families
+    ]:
+        errors.append("degradation transforms do not match profile family order")
+    else:
+        max_pixels = width * height
+        for family, transform in zip(expected_families, photometric):
+            recorded = transform["parameters"]
+            wanted = {**expected[family], "seed": expected["seed"],
+                      "rng": "numpy.PCG64[seed, family]"}
+            if family == "ink_loss":
+                broken = recorded.get("broken_pixels")
+                if type(broken) is not int or not 0 <= broken <= max_pixels or (
+                    expected[family].get("break_density", 0) == 0 and broken != 0
+                ):
+                    errors.append("degradation ink_loss broken_pixels is invalid")
+                wanted["broken_pixels"] = broken
+            elif family == "blur":
+                wanted["implementation"] = "Pillow GaussianBlur on 8-bit image"
+            if transform["geometry"] != "identity" or compare(recorded, wanted):
+                errors.append(f"degradation transform parameters disagree with resolved {family}")
+    seen_photometry = False
+    for transform in page["transforms"]:
+        if transform["kind"].startswith("mf:degrade:"):
+            seen_photometry = True
+        elif transform["geometry"] == "identity":
+            errors.append("undeclared photometric transform in measured profile")
+        elif seen_photometry:
+            errors.append("geometric transform follows measured photometric transforms")
+    if errors:
+        return errors
+    try:
+        image_ref = page["image"]
+        image_path = safe_path(root, image_ref["path"])
+        actual_sha = hashlib.sha256(image_path.read_bytes()).hexdigest()
+        if actual_sha != image_ref["sha256"]:
+            return ["diagnostics input image SHA-256 mismatch"]
+        with Image.open(image_path) as image:
+            if image.format != "PNG" or image.mode != "L" or image.size != (
+                image_ref["width"], image_ref["height"]
+            ):
+                return ["measured diagnostics require an L PNG at final page dimensions"]
+            pixels = np.asarray(image, dtype=np.uint8).copy()
+        mask = load_mask(safe_path(root, reference["mask_path"]), pixels.shape)
+        support = Image.new("L", (image_ref["width"], image_ref["height"]), 0)
+        drawing = ImageDraw.Draw(support)
+        for block in page["blocks"]:
+            drawing.polygon([tuple(point) for point in block["polygon"]], fill=255)
+        allowed = np.asarray(support.filter(ImageFilter.MaxFilter(7)), dtype=bool)
+        if np.any(mask & ~allowed):
+            return ["ideal mask has ink outside all block polygons (3 px tolerance)"]
+        stored = load_json(safe_path(root, reference["path"]))
+        recomputed = document(pixels, mask, page, image_sha256=actual_sha,
+                              mask_sha256=reference["mask_sha256"])
+        errors.extend(f"recomputed diagnostics: {error}" for error in compare(stored, recomputed))
+        if set(recomputed["words"]) != {word["id"] for word in page["words"]}:
+            errors.append("recomputed diagnostics word ids differ from canonical words")
+        for word in page["words"]:
+            if word["legibility"] != recomputed["words"][word["id"]]["legibility"]:
+                errors.append(f"{word['id']}: legibility differs from recomputed diagnostics")
+    except (OSError, ValueError, TypeError, KeyError, SyntaxError, Image.DecompressionBombError) as exc:
+        errors.append(f"invalid measured diagnostics: {exc}")
+    return errors
+
+
 def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
     """Audit hashes, assets, canonical annotations, images and optional exports."""
     try:
@@ -935,8 +1122,11 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
     check("assets", asset_issues)
     if not partition_issues and "mf:partition" in manifest.get("extensions", {}):
         check("partition_characters", _partition_character_errors(root, manifest, registry, text_assets))
+    degradation_profile, degradation_issues = _load_degradation_profile(root, manifest, artifact_paths)
+    if degradation_issues or manifest["profile"] == MEASURED_PROFILE:
+        check("degradation_profile", degradation_issues)
     pages = []
-    for record in manifest["pages"]:
+    for index, record in enumerate(manifest["pages"]):
         try:
             page = read(record["path"])
             issues = validate_page(page)
@@ -944,13 +1134,24 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
             if issues:
                 continue
             page_issues = []
-            if any(word["legibility"] != "readable" for word in page["words"]):
+            if page["profile"] != MEASURED_PROFILE and any(
+                word["legibility"] != "readable" for word in page["words"]
+            ):
                 page_issues.append("pilot profile excludes uncertain/illegible word supervision")
             if page["page_id"] != record["id"] or page["profile"] != manifest["profile"]:
                 page_issues.append("page identity/profile differs from manifest")
             if page["schema_version"] != manifest["schema_version"]:
                 page_issues.append("page schema_version differs from manifest")
             provenance = page["provenance"]
+            if page["profile"] == MEASURED_PROFILE:
+                if degradation_profile is None or degradation_issues:
+                    page_issues.append("measured page requires a valid embedded degradation profile")
+                else:
+                    page_issues += _measured_page_errors(
+                        root, page, degradation_profile, manifest["rng"]["seed"], index, artifact_paths
+                    )
+            elif provenance["parameters"].get("degradation_profile") is not None:
+                page_issues.append("degradation parameters require the measured page profile")
             receipt = manifest.get("extensions", {}).get("mf:partition")
             expected_partition = receipt.get("name") if isinstance(receipt, dict) else None
             if provenance["parameters"].get("partition") != expected_partition:

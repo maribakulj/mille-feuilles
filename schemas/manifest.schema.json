@@ -15,7 +15,10 @@
       "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
     },
     "profile": {
-      "const": "fr_press_19c_columns_4_6"
+      "enum": [
+        "fr_press_19c_columns_4_6",
+        "fr_press_19c_columns_4_6_measured"
+      ]
     },
     "generator": {
       "type": "object",
@@ -276,6 +279,25 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+      },
+      "properties": {
+        "mf:degradation_profile": {
+          "type": "object",
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "const": "provenance/degradation-profile.json"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+            }
+          },
+          "additionalProperties": false
+        }
       }
     }
   },
@@ -291,5 +313,42 @@
     "pages",
     "artifacts"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "profile": {
+            "const": "fr_press_19c_columns_4_6_measured"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "schema_version": {
+            "const": "0.3.0"
+          },
+          "extensions": {
+            "required": [
+              "mf:degradation_profile"
+            ]
+          }
+        },
+        "required": [
+          "extensions"
+        ]
+      },
+      "else": {
+        "properties": {
+          "extensions": {
+            "not": {
+              "required": [
+                "mf:degradation_profile"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
 }

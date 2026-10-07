@@ -167,3 +167,17 @@ avant toute création du lot. Les métadonnées dev/test transportées sont docu
 L'acceptation finale est compacte et utilise des textes originaux. Claude prépare
 ensuite avec Codex le lot de dégradations mesurées ; aucun corpus réel n'est
 ouvert, et la fin du lot 2 ne met pas fin aux échanges ni au mandat d'autonomie.
+
+Le lot 2 est accepté et synchronisé (`4153d99`, puis preuves `7fa4b2e`) :
+483 tests, import de 18 documents originaux, deux exclusions voulues, trois
+partitions et rejeu identique. Le lot 3 est effectivement engagé ensuite :
+
+- Claude : `degrade.py`, `diagnostics.py`, schéma de profil, `profiles/`, leurs
+  tests et `DEGRADATIONS.md` ; revue de l'intégration et contre-exemples.
+- Codex : pipeline, CLI, reproduction, campagnes et preuves ; agents dédiés
+  sur le rendu et ses tests, validation/schémas, puis intégration et acceptation.
+
+Les interfaces sont stabilisées autour de `check_profile`, `check_parameters`
+et `diagnostics.document`. Le masque d'encre idéale précède les altérations
+photométriques. Chaque étape comporte une revue réciproque ; le profil mesuré
+reste expérimental et n'utilise aucun corpus réel.
