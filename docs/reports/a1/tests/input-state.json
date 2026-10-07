@@ -1,0 +1,10 @@
+{
+  "src/mille_feuilles/realism.py": "8037a41ebc3fff3211b969363150c3b8aeca3d631022020c34bfbceb1741e9c3",
+  "src/mille_feuilles/structure_report.py": "68bee9aed118f4df99c373ad69bcfb12b84240f984feb779f71b4b35ddecf7bf",
+  "src/mille_feuilles/cli.py": "7bc45519d54c36dcab9efdca8fe67ef3d7d2c5d4b3156825b2fb29ff7e1a5bbd",
+  "schemas/structure-report.schema.json": "3172d4d4917c34f4bb0a11d393e3bc528bcb34873ecc4f0f446d4cadcb4bdda7",
+  "tests/test_realism.py": "4fee05e99a35a76b124b253a24f6b62eb84bca7ac3c769e0c6ff50828d5bf7da",
+  "tests/test_structure_report.py": "39527d2cf4065b88db68319b1d4f578aeabb5d0afb08d8da90eeae3409102174",
+  "tests/test_structure_cli.py": "e36e6375ffd14c0a6e6c8614a2acb67ebcaa7f58c59571fbf88f86513552f34e",
+  "tools/accept_structure.py": "f836bd2dba68fbc7166c63946647f244df795806f2d3428cfa775434711fb92a"
+}

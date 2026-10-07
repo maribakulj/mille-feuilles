@@ -1,0 +1,853 @@
+{
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "mille-feuilles-structural-report"
+    },
+    "version": {
+      "const": "1"
+    },
+    "method": {
+      "const": "cadrage-calibrer-a1-v1"
+    },
+    "scope": {
+      "const": {
+        "canonical_only": true,
+        "source_dataset_validation": "not_performed",
+        "source_images_assets_exports_rights": "not_checked",
+        "source_text_provenance": "not_revalidated",
+        "real_corpus_access": "not_performed",
+        "reference_exclusions": "not_revalidated",
+        "physical_units": "not_measured_dpi_none",
+        "realism_verdict": "not_evaluated",
+        "recalculation_from_canonical": "requires selected source files with recorded hashes",
+        "limits": {
+          "max_pages": 100,
+          "max_canonical_bytes": 200000000,
+          "max_output_bytes": 20000000,
+          "reserve_bytes": 500000000
+        }
+      }
+    },
+    "generator": {
+      "type": "object",
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}(?![\\s\\S])"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "environment": {
+          "type": "object",
+          "properties": {
+            "python": {
+              "type": "string",
+              "minLength": 1
+            },
+            "packages": {
+              "type": "object",
+              "properties": {
+                "Pillow": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "numpy": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "fonttools": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "lxml": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "jsonschema": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "shapely": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "Pillow",
+                "numpy",
+                "fonttools",
+                "lxml",
+                "jsonschema",
+                "shapely"
+              ],
+              "additionalProperties": false
+            },
+            "modules": {
+              "type": "object",
+              "properties": {
+                "realism.py": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                },
+                "structure_report.py": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                },
+                "validation.py": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                },
+                "io.py": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "realism.py",
+                "structure_report.py",
+                "validation.py",
+                "io.py"
+              ],
+              "additionalProperties": false
+            },
+            "schemas": {
+              "type": "object",
+              "properties": {
+                "manifest.schema.json": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                },
+                "page.schema.json": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                },
+                "structure-report.schema.json": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "manifest.schema.json",
+                "page.schema.json",
+                "structure-report.schema.json"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "python",
+            "packages",
+            "modules",
+            "schemas"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "commit",
+        "dirty",
+        "environment"
+      ],
+      "additionalProperties": false
+    },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "object",
+          "properties": {
+            "dataset_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "schema_version": {
+              "enum": [
+                "0.2.0",
+                "0.3.0"
+              ]
+            },
+            "profile": {
+              "enum": [
+                "fr_press_19c_columns_4_6",
+                "fr_press_19c_columns_4_6_measured",
+                "fr_press_19c_layout_v2"
+              ]
+            },
+            "manifest": {
+              "$ref": "#/$defs/file"
+            },
+            "total_pages": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "dataset_id",
+            "schema_version",
+            "profile",
+            "manifest",
+            "total_pages"
+          ],
+          "additionalProperties": false
+        },
+        "calibrer": {
+          "$ref": "#/$defs/file"
+        },
+        "calibration": {
+          "$ref": "#/$defs/file"
+        }
+      },
+      "required": [
+        "source",
+        "calibrer",
+        "calibration"
+      ],
+      "additionalProperties": false
+    },
+    "reference": {
+      "type": "object",
+      "properties": {
+        "cohort": {
+          "enum": [
+            "as",
+            "as:XIXe",
+            "as:XXe",
+            "bnf",
+            "bnf:XIXe",
+            "bnf:XXe",
+            "kb",
+            "read"
+          ]
+        },
+        "calibration_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+        },
+        "stats": {
+          "$ref": "#/$defs/stats"
+        },
+        "pages": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pages_by_split": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "columns_by_split": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "cohort",
+        "calibration_sha256",
+        "stats",
+        "pages",
+        "pages_by_split",
+        "columns_by_split",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "selection": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "enum": [
+            "explicit",
+            "all"
+          ]
+        },
+        "page_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "minItems": 1,
+          "maxItems": 100,
+          "uniqueItems": true
+        },
+        "pages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+              },
+              "source_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "canonical": {
+                "$ref": "#/$defs/file"
+              },
+              "schema_version": {
+                "enum": [
+                  "0.2.0",
+                  "0.3.0"
+                ]
+              },
+              "profile": {
+                "enum": [
+                  "fr_press_19c_columns_4_6",
+                  "fr_press_19c_columns_4_6_measured",
+                  "fr_press_19c_layout_v2"
+                ]
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "declared_dpi": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "columns_declared": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "layout_columns_declared": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "oversampling": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "angle_degrees": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "partition": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "template_article_ids": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+                    },
+                    "uniqueItems": true
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "source_index",
+              "canonical",
+              "schema_version",
+              "profile",
+              "width",
+              "height",
+              "declared_dpi",
+              "columns_declared",
+              "layout_columns_declared",
+              "oversampling",
+              "angle_degrees",
+              "partition",
+              "template_article_ids"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "mode",
+        "page_ids",
+        "pages"
+      ],
+      "additionalProperties": false
+    },
+    "variants": {
+      "type": "object",
+      "properties": {
+        "avec_gabarit": {
+          "$ref": "#/$defs/variant"
+        },
+        "sans_gabarit": {
+          "$ref": "#/$defs/variant"
+        }
+      },
+      "required": [
+        "avec_gabarit",
+        "sans_gabarit"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "method",
+    "scope",
+    "generator",
+    "inputs",
+    "reference",
+    "selection",
+    "variants"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mille-feuilles.invalid/schemas/structure-report.schema.json",
+  "title": "Mille Feuilles descriptive structural report A1 v1",
+  "$defs": {
+    "file": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*//)(?!.*\\\\)(?!.*:)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\x00-\\x1f\\x7f]+(?<!/)(?![\\s\\S])"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ],
+      "additionalProperties": false
+    },
+    "distribution": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "moy": {
+          "type": "number"
+        },
+        "p10": {
+          "type": "number"
+        },
+        "p25": {
+          "type": "number"
+        },
+        "p50": {
+          "type": "number"
+        },
+        "p75": {
+          "type": "number"
+        },
+        "p90": {
+          "type": "number"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "n"
+      ],
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "valeur": {
+            "type": "number"
+          },
+          "part": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "valeur",
+          "part"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/distribution"
+          },
+          {
+            "$ref": "#/$defs/counts"
+          }
+        ]
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "properties": {
+        "definition_status": {
+          "enum": [
+            "C",
+            "A",
+            "NC",
+            "ND"
+          ]
+        },
+        "status": {
+          "enum": [
+            "C",
+            "A",
+            "NC",
+            "ND"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "comparison_allowed": {
+          "type": "boolean"
+        },
+        "sample_unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "distribution",
+            "counts"
+          ]
+        },
+        "mf": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/distribution"
+                },
+                {
+                  "$ref": "#/$defs/counts"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "real": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/distribution"
+                },
+                {
+                  "$ref": "#/$defs/counts"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "position": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "definition_status",
+        "status",
+        "reason",
+        "comparison_allowed",
+        "sample_unit",
+        "kind",
+        "mf",
+        "real",
+        "position"
+      ],
+      "additionalProperties": false
+    },
+    "variant": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "enum": [
+            "primary",
+            "sensitivity"
+          ]
+        },
+        "cohort_status": {
+          "enum": [
+            "complete",
+            "ND"
+          ]
+        },
+        "cohort_reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "per_page": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "page_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+              },
+              "values": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "counts": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number"
+                  }
+                }
+              },
+              "has_autre": {
+                "type": "boolean"
+              },
+              "removed_article_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+                },
+                "uniqueItems": true
+              },
+              "removed_block_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "page_id",
+              "values",
+              "counts",
+              "has_autre",
+              "removed_article_ids",
+              "removed_block_ids"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100
+        },
+        "excluded": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "page_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "page_id",
+              "reason"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100
+        },
+        "stats": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/stats"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "partial_stats": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/stats"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparison": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/$defs/comparison"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "role",
+        "cohort_status",
+        "cohort_reason",
+        "per_page",
+        "excluded",
+        "stats",
+        "partial_stats",
+        "comparison"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "cohort_status": {
+                "const": "complete"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cohort_reason": {
+                "const": null
+              },
+              "excluded": {
+                "maxItems": 0
+              },
+              "stats": {
+                "$ref": "#/$defs/stats"
+              },
+              "partial_stats": {
+                "const": null
+              },
+              "comparison": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/$defs/comparison"
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "cohort_reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "excluded": {
+                "minItems": 1
+              },
+              "stats": {
+                "const": null
+              },
+              "partial_stats": {
+                "$ref": "#/$defs/stats"
+              },
+              "comparison": {
+                "const": null
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

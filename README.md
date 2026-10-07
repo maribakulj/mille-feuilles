@@ -231,6 +231,36 @@ Choisir des sorties neuves. Les copies sont conservées. La mesure de contraste
 ne remplace pas la lecture visuelle ; les seuils, échantillons et limites sont
 définis dans le [protocole d'acceptation](docs/VALIDATION.md).
 
+## Comparer la structure de pages existantes
+
+Le rapport A1 applique les définitions du cadrage aux JSON canoniques sélectionnés,
+puis les compare aux relevés agrégés déjà archivés. Il lit le manifeste et ces
+annotations ; les images, actifs, textes sources et exports ne sont pas revérifiés.
+Il ne rouvre aucun corpus historique.
+
+```sh
+uv run --locked mille-feuilles report-structure --from runs/mise-en-page-v2 \
+  --output runs/structure-v2 --page mf_0000 --page mf_0001 \
+  --reference as:XIXe
+```
+
+Choisir explicitement les pages avec `--page`, ou toutes avec `--all-pages`.
+La destination neuve contient `report.json` et `report.sha256`. Le rapport
+conserve les observations par page, leurs agrégats, les empreintes des entrées
+et les limites de comparaison. La cohorte `as:XIXe` regroupe 53 pages train et
+12 dev ; ses quantiles ne permettent pas de reconstruire des sous-cohortes.
+La commande est bornée à 100 pages, 200 Mo de JSON canoniques et 20 Mo de
+sortie, avec une réserve de disque de 500 Mo.
+
+La variante principale conserve le bandeau. L'analyse de sensibilité le retire
+seulement lorsque toutes les pages sélectionnées l'identifient ; sinon cette
+variante est déclarée indisponible pour la cohorte, avec observations partielles.
+Les statuts C/A/NC/ND distinguent équivalence, approximation, non-comparabilité
+et absence de mesure. Les pixels ne sont pas comparés entre résolutions et les
+unités physiques ne sont pas mesurées. Un calcul réussi ne constitue ni un
+verdict de réalisme ni une preuve de gain OCR. Les
+[définitions et limites](docs/REALISME_STRUCTUREL.md) précisent cette portée.
+
 ## Utiliser d'autres textes
 
 Un manifeste JSONL décrit un document par ligne, ses droits, sa preuve locale,

@@ -1,0 +1,43 @@
+{
+  "format": "mille-feuilles-a1-tests",
+  "version": "1",
+  "status": "pass",
+  "pytest": {
+    "passed": 108,
+    "seconds": 6.34,
+    "command": "uv run --locked --offline pytest -q -p no:cacheprovider --basetemp /private/tmp/mf-pytest-a1-final tests/test_realism.py tests/test_structure_report.py tests/test_structure_cli.py tests/test_newseye_cli.py"
+  },
+  "scope": "101 A1 tests and 7 pre-existing NewsEye CLI tests. No rendering; full legacy suite result remains the separately archived lot5 run.",
+  "files": [
+    {
+      "path": "tests/input-state.json",
+      "sha256": "5e49020e7ec9901c54bbe91eea7837a003faa8796330a62bbcb6d8ebd7c91ef3",
+      "size_bytes": 826
+    },
+    {
+      "path": "tests/pytest.log",
+      "sha256": "c908db383fb8f77590998ec068cbf1d54f80466a078d107763586b19bd3f866f",
+      "size_bytes": 180
+    },
+    {
+      "path": "tests/ruff.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "size_bytes": 19
+    },
+    {
+      "path": "review/review-a1-calibration.json",
+      "sha256": "1d41950dc1bc6322da4fe3969cdbfdb0bec01105d378e23c04c5e8f1407f0c05",
+      "size_bytes": 17383
+    },
+    {
+      "path": "review/realism-fix-proof.json",
+      "sha256": "c4e40dac5a6d2e6daad08dd4fb92d098b2da78cd0e1fb5e7adae4f17bceed944",
+      "size_bytes": 827
+    },
+    {
+      "path": "review/category-retyping-23-pages.json",
+      "sha256": "3918b3475dd064a77e8849a05c8dd1090fed5b10352f8c7f52a278072ecf3968",
+      "size_bytes": 34167
+    }
+  ]
+}

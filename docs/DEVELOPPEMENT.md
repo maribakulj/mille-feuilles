@@ -92,3 +92,10 @@ AS regroupent train et dev ; les différences d'annotation et les mesures
 indisponibles sont explicites. Aucun score global de réalisme ni gain de modèle
 n'est revendiqué. Un éventuel ajustement de rendu attend ces résultats et leur
 revue ; aucune nouvelle extension d'export n'est prioritaire.
+
+A1 est intégré sous `report-structure` : mesures pures, orchestration bornée,
+rapport autonome et deux variantes de gabarit. La suite dédiée et le contrôle
+de non-régression CLI passent 108 tests ; l'acceptation sur quatre annotations
+existantes, la répétition déterministe et les refus CLI suivent sur un commit
+propre. Les résultats serviront à cadrer la suite, sans déduire une utilité
+d'entraînement de ces seuls écarts structurels.

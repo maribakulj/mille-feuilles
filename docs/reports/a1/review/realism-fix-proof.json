@@ -1,0 +1,19 @@
+{
+  "files": {
+    "src/mille_feuilles/realism.py": "8037a41ebc3fff3211b969363150c3b8aeca3d631022020c34bfbceb1741e9c3",
+    "tests/test_realism.py": "4fee05e99a35a76b124b253a24f6b62eb84bca7ac3c769e0c6ff50828d5bf7da",
+    "docs/REALISME_STRUCTUREL.md": "9fbaf93a461d3a3c80dfc9dd2f74580c0cadc9ba1871d4fd55144b7ac76e82ca"
+  },
+  "tests": {
+    "command": "uv run --locked pytest -q tests/test_realism.py",
+    "result": "37 passed in 0.90s",
+    "status": "pass"
+  },
+  "lint": {
+    "command": "uv run --locked ruff check src/mille_feuilles/realism.py tests/test_realism.py",
+    "status": "pass"
+  },
+  "page_evidence": "/private/tmp/mf-a1-calibration-review/category-retyping-23-pages.json",
+  "page_evidence_sha256": "3918b3475dd064a77e8849a05c8dd1090fed5b10352f8c7f52a278072ecf3968",
+  "manual_expectations_changed": false
+}

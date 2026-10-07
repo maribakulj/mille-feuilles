@@ -1,0 +1,21 @@
+{
+  "origin": "Claude scratch a1-code",
+  "context": "Copied after has_autre fix; category_retyping and cohort-note fixes reassigned to Codex during Claude session limit. No scratch file changed.",
+  "files": [
+    {
+      "path": "src/mille_feuilles/realism.py",
+      "sha256_before_review_fixes": "3b6b9ab3c7d2a37c8ff74eba989345cd559dda672337605c55388cea11e93c4d",
+      "size_bytes": 17132
+    },
+    {
+      "path": "tests/test_realism.py",
+      "sha256_before_review_fixes": "bf864e2f73dce04fa53cf9bd73b5c017265e38a28ff304acfd6bc23c1369ef05",
+      "size_bytes": 16773
+    },
+    {
+      "path": "docs/REALISME_STRUCTUREL.md",
+      "sha256_before_review_fixes": "87ea460bb907cc15d83d04528399d04f64a07605995817d6239c2d8fad1da834",
+      "size_bytes": 6866
+    }
+  ]
+}

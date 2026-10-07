@@ -548,3 +548,37 @@ compatibilité avec le lecteur réel d'Axel. Voir la
 Le fonctionnement validé est celui d'un checkout du dépôt avec l'environnement
 verrouillé. La reproduction bit à bit sur un autre système ou avec une autre
 version de FreeType/Pillow n'est pas revendiquée.
+
+## Rapport structurel A1
+
+`report-structure` est un diagnostic des annotations sélectionnées. Il vérifie
+leur SHA, leur validité canonique et leur rattachement au manifeste natif ;
+il ne lance pas `validate_dataset` et n'ouvre ni images, ni actifs, ni exports,
+ni textes sources. Les relevés de calibration sont ceux déjà archivés, sans
+relecture des corpus ni réévaluation de leurs exclusions.
+
+Les [attendus manuels figés](reports/a1/spec/index.json) sont confrontés aux
+fonctions historiques épinglées. La suite vérifie notamment l'absence
+d'entrée-sortie pendant la mesure, les limites de comparabilité, le retrait
+du gabarit, les refus de reclassement, la sélection, les budgets et la
+stabilité des entrées. Les [preuves de tests](reports/a1/tests-index.json)
+consignent 108 tests passants, dont 101 A1 et sept CLI NewsEye existants,
+ainsi que Ruff. La suite complète du lot 5 reste une preuve séparée.
+
+L'acceptation CLI se reproduit sur les lots synthétiques historiques locaux :
+
+```sh
+uv run --locked --offline python tools/accept_structure.py \
+  --output runs/accept-structure-a1 \
+  --legacy-source runs/pilot-v0.2-r2 \
+  --layout-source runs/accept-layout-v2/lots/compact-identity-x2
+```
+
+Elle exige un commit propre et ancre les deux manifestes sur leurs archives
+Git. Quatre annotations sont sélectionnées : deux compactes v2 et deux du
+pilote ancien. Elle reconstruit indépendamment les agrégats depuis les
+observations du rapport, contrôle les exclusions et les métadonnées, répète
+le rapport compact à l'identique et exerce quatre refus sans destination.
+Cette réagrégation ne constitue pas un second moteur de mesure. La surveillance
+des sources porte seulement sur les deux manifestes et les quatre annotations.
+Un succès technique ne juge ni le réalisme ni l'utilité pour l'apprentissage.

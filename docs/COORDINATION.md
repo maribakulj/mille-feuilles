@@ -237,3 +237,18 @@ scratchpad ; Codex fait auditer les définitions et prépare l'orchestration.
 Aucun corpus n'est rouvert et aucun rendu v3 n'est engagé. Les fonctions de
 mesure historiques pourront être réutilisées en mémoire après contrôle de leur
 empreinte, sans appeler le programme de calibration ni ses accès aux corpus.
+
+Les attendus manuels A1 sont archivés en `2001a60`, avec leurs empreintes
+figées avant le code scratch. Claude fournit le module de mesures, les tests
+et sa documentation ; Codex prépare le CLI, le contrat de rapport et
+l'orchestration page par page. La revue corrige le comptage de `autre` après
+retrait du gabarit et impose un refus explicite des reclassements inattendus
+de D-231. Les cohortes entièrement ou partiellement privées d'identification
+du bandeau ne produisent aucune comparaison de sensibilité complète.
+
+Une limite de session interrompt temporairement Claude, annoncée jusqu'à
+23 h 10. Codex reprend les corrections restantes dans le dépôt, conserve
+son scratchpad intact et lui réserve la reprise de la revue en lecture seule.
+Les fichiers sont attribués explicitement pour éviter une double écriture à
+son retour. La campagne A1 reste limitée aux annotations synthétiques déjà
+produites et aux relevés agrégés ; aucune image ni corpus n'est nécessaire.

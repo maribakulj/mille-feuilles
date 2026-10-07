@@ -279,3 +279,28 @@ historiques agrégées. La revue impose les mêmes définitions, les unités
 d'observation explicites, les cohortes train/dev regroupées déclarées et les
 indicateurs non comparables signalés. Spécification et attendus manuels sont
 figés avant le code, qui reste en scratchpad pendant l'archivage du lot 5.
+
+## A1 — rapport structurel autonome
+
+Les attendus manuels figés sont archivés en `2001a60`. Le module de Claude
+réutilise les fonctions pures du calibrateur depuis ses octets épinglés,
+sans relecture lors de l'exécution ni entrée-sortie pendant la mesure.
+Les observations par page sont conservées pour réagréger les distributions
+et comptes ; les catégories de comparabilité et unités sont explicites.
+Le CLI exige une sélection, contrôle les annotations seules et écrit deux
+fichiers dans une destination neuve.
+
+La revue corrige `has_autre` après retrait du bandeau et un cas de D-231 où
+des rectangles englobants reclassent un texte en annonce malgré des polygones
+disjoints. Ces reclassements inattendus sont refusés avant mesure ; le moteur
+historique reste inchangé. La note de population distingue train seul de
+train/dev regroupés. Pendant une limite de session Claude, les deux dernières
+corrections sont reprises par Codex, avec attribution explicite et scratch
+conservé. Les attendus manuels ne changent pas.
+
+Les 101 tests A1 et sept tests CLI NewsEye existants passent ensemble
+(108 tests, 6,34 s), ainsi que Ruff. Les empreintes de code restent identiques
+pendant la suite. Les sondes de 23 annotations existantes donnent 23 mesures
+avec gabarit ; sans gabarit, trois mesures et 20 exclusions documentées, aucun
+refus inattendu. Les preuves sont dans `reports/a1/tests-index.json`. La
+campagne CLI ancrée sur commit propre suit, sans génération d'images.

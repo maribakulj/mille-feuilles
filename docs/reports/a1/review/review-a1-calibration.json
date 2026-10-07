@@ -1,0 +1,188 @@
+{
+  "scope": "Lecture des deux seuls fichiers autorisés. Aucun import ni exécution du calibrateur, aucun accès aux corpus, aucune modification du dépôt.",
+  "input_sha256": {
+    "tools/cadrage/calibrer.py": "8b72e367424b6f8825539c46e349e2d948b942ff5412fd61a884fd4804ef820d",
+    "tools/cadrage/sortie/calibration.json": "6349af2f15c39f0203ffdf873b07d07454a8a3671bab9ee28b5b637ecf731c08"
+  },
+  "recommendation": "Rapport descriptif structurel autonome depuis le canonique final ; aucune note globale de réalisme ni seuil de succès appris des quantiles historiques.",
+  "reference_populations": {
+    "all_pages": 1253,
+    "sources": {
+      "as": 143,
+      "bnf": 49,
+      "kb": 1017,
+      "read": 44
+    },
+    "as_XIXe": {
+      "pages": 65,
+      "train": 53,
+      "dev": 12
+    },
+    "as_XXe": {
+      "pages": 78,
+      "train": 70,
+      "dev": 8
+    },
+    "bnf_XIXe": {
+      "pages": 16,
+      "train": 16,
+      "actual_line_height_observations": 2,
+      "estimated_spacing_observations": 14
+    },
+    "physical_units": {
+      "as": 35,
+      "read": 44,
+      "bnf": 0,
+      "kb": 0
+    },
+    "limitations": [
+      "Les huit cohortes stats sont as, as:XIXe, as:XXe, bnf, bnf:XIXe, bnf:XXe, kb et read. Pas de cohorte globale ni de stats par split.",
+      "AS mélange train et dev ; les autres sources ne retiennent que train. Employer cette référence pour calibrer consomme donc ce dev, qui ne peut servir de test indépendant.",
+      "Le tableau pages ne conserve que source/page/split/epoch/title/date/dpi/colonnes. Seules les colonnes peuvent être refiltrées par split/époque/pages sans rouvrir les données.",
+      "Impossible de recréer les autres distributions train-only, limitées à 4–6 colonnes, regroupées par titre ou pondérées par numéro depuis ces résumés.",
+      "Les cohortes source et source:époque se recouvrent : ne pas les additionner. Ne pas mélanger KB (1017 pages, p50 colonnes=1) à AS XIXe (65 pages, p50=6) comme cible interchangeable.",
+      "Les métriques articles et titres associés ne sont présentes que pour AS. Leur absence chez BnF/READ/KB signifie absence de mesure, pas zéro article/titre.",
+      "La lecture de ces deux fichiers montre la politique train/dev déclarée et les métadonnées de sortie ; elle ne constitue pas un nouvel audit des fichiers réellement lus ni des exclusions externes."
+    ]
+  },
+  "metric_families": [
+    {
+      "family": "blocs_nombre, blocs_surface",
+      "canonical_inputs": "blocks.category, blocks.polygon, image.width/height",
+      "definition": "Nombre cumulé par catégorie ; aire shoelace de chaque bloc divisée par W×H puis somme. part = valeur / somme des valeurs de toutes catégories dans la cohorte.",
+      "cautions": [
+        "Aucune union géométrique : les recouvrements sont comptés plusieurs fois.",
+        "blocs_surface.part n’est ni une fraction de pixels d’encre ni la moyenne des parts par page.",
+        "Granularité des annotations et catégories inférées du PAGE historique peuvent différer des labels canoniques MF."
+      ]
+    },
+    {
+      "family": "marges, zone_imprimee_largeur_rel_W, page_rapport_H_sur_W",
+      "canonical_inputs": "tous les polygones des blocs finaux, dimensions finales",
+      "definition": "AABB englobante de tous les blocs typés, filets/illustrations/bandeau inclus ; marges divisées par W ou H. H/W.",
+      "cautions": [
+        "Ne pas utiliser Config.margin ni le rectangle réservé du plan.",
+        "PrintSpace est une annotation séparée, absente du canonique ; ne pas lui substituer cette enveloppe."
+      ]
+    },
+    {
+      "family": "filets et gouttieres_avec_filet_part",
+      "canonical_inputs": "blocs separateur, leurs AABB ; colonnes estimées",
+      "definition": "Vertical si hauteur > 3×largeur, horizontal si largeur > 3×hauteur. Longueurs verticales H-normalisées. Gouttière garnie si un filet a hauteur >0,1H et centre x à distance <=max(gap,0,004W) du milieu du gap.",
+      "cautions": [
+        "Le test de gouttière ne filtre pas explicitement l’orientation et ne vérifie pas un recouvrement y.",
+        "Un cadre MF émet quatre filets ; un annotateur historique peut segmenter les cadres autrement."
+      ]
+    },
+    {
+      "family": "colonnes, largeurs, gouttieres",
+      "canonical_inputs": "lignes des seuls blocs categorie texte ; AABB finales",
+      "definition": "Reprendre columns() exactement : largeur ligne <=0,45×largeur enveloppe texte ; poids=hauteur AABB ; regroupement de x0 adjacents <=0,015W ; groupes poids >=4% total ; fusion si premier x0 du groupe moins premier x0 du groupe fusionné précédent <0,06W ; gauche=médiane non pondérée, largeur=valeur triée à index floor(0,75(n−1)). Si aucun groupe et texte présent : une colonne pleine enveloppe.",
+      "cautions": [
+        "Ce n’est pas Config.columns, le nombre de colonnes du plan, ni un quartile interpolé.",
+        "Les gouttières estimées peuvent être négatives ; les tronquer à zéro changerait la mesure.",
+        "Les zones main/RDC à colonnes différentes sont mêlées dans cette heuristique globale."
+      ]
+    },
+    {
+      "family": "hauteurs de lignes, interlignes, caracteres, cesures",
+      "canonical_inputs": "lignes ordonnées par block.line_ids dans les seuls blocs texte, polygones/baselines/text",
+      "definition": "Hauteur=AABB y1−y0. Baseline y=moyenne des y de tous ses points (sinon bas AABB). Écarts successifs dans chaque bloc seulement : positifs et |x0−prev_x0| <0,3×(largeur courante+1). Pas médian après retrait des écarts >=4×médiane initiale. Caractères=len(text.strip()) des lignes non vides ; césure si suffixe dans (¬,-,⸗,‐,=), fraction par page.",
+      "cautions": [
+        "Ne pas employer font.size, paramètres line_spacing, distance orthogonale entre baselines ou groupes word.hyphenation.",
+        "Ne pas créer de pas entre deux blocs ou à un changement de colonne.",
+        "interligne_estime_rel_H_med_page appartient au chemin sans lignes : hauteur du bloc / nombre de lignes de texte >=3. MF avec lignes n’emprunte pas ce chemin.",
+        "Médiane de médianes par page et moyenne des fractions par page : ne pas agréger toutes les lignes comme une seule population."
+      ]
+    },
+    {
+      "family": "titres",
+      "canonical_inputs": "blocs categorie titre et leurs lignes, hauteurs texte, colonnes estimées",
+      "definition": "Ratios hauteur médiane titres / hauteur médiane texte par page ; une observation par ligne de titre pour titre_ligne_sur_corps_texte. Largeur titre en colonnes calculée seulement sur les titres rattachés à un article inféré, avec largeur colonne médiane (fallback W/4 sans colonne) ; multi-colonnes si ratio >1,5.",
+      "cautions": [
+        "Le bandeau de gabarit MF participe si ses catégories et rattachements le rendent éligible ; le supprimer seulement côté MF modifie la population.",
+        "Le rectangle de réservation du titre et headline span ne remplacent pas le polygone d’encre final.",
+        "Le seuil historique >1,5 colonne est distinct de la condition de rendu MF >1 colonne+gouttière."
+      ]
+    },
+    {
+      "family": "articles_par_page, article_*, annonce_*",
+      "canonical_inputs": "blocs textuels dans reading_order.block_ids, block.article_id et lignes associées",
+      "definition": "Articles inférés depuis les blocs ordonnés portant un identifiant article majoritaire parmi leurs lignes. annonces si nombre de blocs annonce >=max(1,nblocs/2), sinon article. Somme des nombres de lignes et len(line.text) sans ajouter de séparateur. Nombre de colonnes occupées par centres des blocs de largeur <1,5×largeur médiane, affectés à la colonne la plus proche. Contiguïté sur positions de blocs ordonnés.",
+      "cautions": [
+        "Ne pas utiliser simplement len(page.articles) : articles vides/non textuels ou sans blocs ordonnés ne sont pas observés.",
+        "articles_par_page inclut annonces et bandeau ; si aucun article annoté la mesure est absente, pas zéro.",
+        "annonce_avec_titre cherche categorie titre dans un article majoritairement annonce. MF impose toutes les catégories annonce : le résultat0 est structurel, même avec un titre visuel.",
+        "Le calibrateur peut garder des illustrations dans l’ordre servant à la contiguïté ; l’ordre canonique MF ne contient que les blocs textuels."
+      ]
+    },
+    {
+      "family": "ordre_transitions",
+      "canonical_inputs": "blocs dans reading_order.block_ids et leurs AABB finales",
+      "definition": "Même arbre de décisions que mesurer() ; seuils recouvrement x >=0,5, tolérances 0,01W/H, branches dans le même ordre. Comptes cumulés de paires de blocs, puis part par cohorte.",
+      "cautions": [
+        "Pas une moyenne des proportions par page : les pages à nombreux blocs dominent.",
+        "Ne pas remplacer par transitions du plan ni par relations géométriques exactes de polygones."
+      ]
+    },
+    {
+      "family": "unités physiques cm/mm/pt",
+      "canonical_inputs": "dimensions/géométrie finales et image.dpi",
+      "definition": "dpi utilisé seulement si >=200. cm=px/dpi×2,54 ; mm=px/dpi×25,4 ; pt=px/dpi×72.",
+      "cautions": [
+        "Référence AS physique : 35 pages seulement, toutes XIXe ; les 108 AS à 96 dpi sont écartées de ces mesures. READ 44 pages, 31 à 300 dpi et 13 à 400 dpi.",
+        "Une miniature MF avec dpi déclaré ne représente pas nécessairement le même format physique qu’une page de journal. Prioriser les métriques relatives, garder unités physiques avec leurs effectifs."
+      ]
+    }
+  ],
+  "geometry_policy": [
+    "Utiliser les polygones/baselines du JSON final pour une mesure native. Ne pas appliquer une nouvelle rotation, ne pas substituer le plan avant rotation et ne pas arrondir implicitement via un export XML.",
+    "Les mêmes formules sont applicables aux floats canoniques ; le PAGE historique peut être quantifié. Une variante arrondie éventuelle doit être distincte et déclarée, jamais mélangée au mode natif.",
+    "L’aire shoelace résiste à une rotation rigide ; les AABB, leurs hauteurs/largeurs, les marges, groupes de colonnes et décisions par seuil ne sont pas invariants.",
+    "Exemple : une ligne 300×18px tournée de 0,35° a une AABB haute d’environ19,83px, sans aucune variation du corps. Une hauteur AABB ne mesure pas directement font.size.",
+    "Les enveloppes de composition MF et les annotations PAGE historiques peuvent suivre des conventions différentes ; une égalité de formule ne prouve pas une égalité de segmentation ou de marges typographiques."
+  ],
+  "quantiles_and_missingness": [
+    "q(): tri, filtre NaN par x==x ; n=0 -> {n:0}, n=1 -> {n:1,p50:round(x,4)}. n>=2: statistics.quantiles(n=20,method=inclusive), p10=qs[1],p25=qs[4],p50=qs[9],p75=qs[14],p90=qs[17], moyenne/min/max ; arrondi final4 décimales.",
+    "Ne jamais calculer des quantiles de quantiles ni fusionner des cohortes à partir des seuls résumés. L’histogramme des colonnes et les colonnes par page constituent l’exception disponible.",
+    "Les unités d’échantillonnage diffèrent : page, colonne, gouttière, ligne de titre, article/annonce, filet vertical, transition. Toujours exposer unité, n eligible et exclusions.",
+    "Une clé absente de stats ne vaut pas zéro. Un petit n, par exemple 2 hauteurs réelles de lignes pour bnf:XIXe, ne doit pas être présenté comme une cible robuste.",
+    "Les intervalles p10–p90 sont descriptifs, pas des seuils d’acceptation et pas des intervalles de confiance. Les données résumées ne permettent pas de reconstruire un test KS, une covariance ou un bootstrap fidèle."
+  ],
+  "manual_fixture_suggestions": [
+    "q() sur [], [7], [0,10] ; p10=1,p25=2,5,p50=5,p75=7,5,p90=9 pour le dernier.",
+    "Largeurs de groupe[1,2,3,100] : quartile de columns()=3, distinct du quantile interpolé27,25.",
+    "Groupes en chaîne aux seuils0,015W/0,06W ; poids exactement 4 % ; largeur exactement0,45×pw.",
+    "Même rectangle natif et tourné : aire stable, AABB différente ; points de baseline non uniformément distribués pour vérifier la moyenne de tous les y.",
+    "Deux blocs adjacents : aucun interligne calculé entre eux ; écart exactement4×médiane exclu.",
+    "Titre à 1,5 colonne ->non multi-colonnes ; juste au-dessus ->multi-colonnes ; titre visuel annonce avec catégorie annonce ->annonce_avec_titre = 0.",
+    "Bandeau lié à un article, article vide, absence de groupes article ; texte avec espaces/césure visible pour distinguer len(text), somme des mots et reconstruction.",
+    "Deux pages de densités différentes pour distinguer comptes cumulés, fractions moyennes par page et médianes par page ; colonne/gouttière négative conservée."
+  ],
+  "spec_review": {
+    "path": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/realism-a1/SPEC-A1.md",
+    "sha256": "7bdfc7ab0b558abee533aa1b1b8477b4352635489c57828dcbb957cf5eb0ddd6",
+    "accepted_direction": "Réutiliser en mémoire les aides pures et mesurer/q épinglés, avec chargement autorisé explicite avant le calcul. Aucun calibrage du rendu.",
+    "required_clarifications": [
+      "INDICATOR_STATUS doit inclure NC. Séparer le statut méthodologique C/A/NC/ND du droit à une comparaison descriptive ; A en pixels, NC et ND ne sont pas comparés. La variante sans gabarit est une sensibilité, sans référence historique filtrée équivalente.",
+      "Disponibilité dynamique : une métrique absente côté MF ou référence devient non disponible pour cette comparaison ; n=1 ne possède pas p10/p90. Ne pas fabriquer des quantiles ou un zéro.",
+      "Les comptes blocs_nombre/blocs_surface/ordre_transitions ont une structure par catégorie {valeur,part}, sans quantiles. Ils nécessitent une branche de comparaison propre, avec unité, effectif de pages et dénominateur explicites.",
+      "DPI fixé à None pour le diagnostic structurel v1 ; dpi déclaré seulement en métadonnées. Grandeurs physiques ND par politique explicite, pas à cause d’un prétendu dpi MF toujours inférieur à 200.",
+      "Déclarer une API de chargement autorisé, puis passer le moteur chargé à measure_pages et aggregate. Aucune résolution de chemin, lecture de schéma ou import différé pendant les fonctions de mesure testées sans I/O. Les pages sont vérifiées avant cet appel.",
+      "Le chargeur doit exécuter les octets effectivement hachés : lecture unique, contrôle SHA, chargement depuis ces octets. Un chargement importlib standard qui relit le chemin après le SHA doit éviter une divergence entre octets contrôlés et exécutés, ainsi que l’emploi d’un cache pyc non lié à cette empreinte.",
+      "L’adaptateur doit décider explicitement pour tableau : TableRegion miroir avec fixture et règles historiques, ou refus contrôlé de ce type dans A1. TextRegion struct=None seul le transformerait silencieusement en texte.",
+      "Autre→texte est annoncé, mais affecte aussi les mesures portant sur les seuls blocs texte : colonnes, hauteurs, pas, caractères, césures et ratios titres/corps. Une entrée équivalente ne peut être affirmée sans condition lorsque des autres sont présents. Exposer ce changement et restreindre le sens de C à la convention de comparaison retenue.",
+      "L’absence de mf:template_article_ids, notamment en 0.2, n’est pas une preuve d’absence de gabarit. La variante sans_gabarit doit déclarer identification indisponible plutôt que prétendre retirer des blocs. Une liste explicitement vide peut signifier aucun gabarit identifié selon une convention figée.",
+      "Corriger la formule toutes les mesures sur AABB : blocs_surface utilise l’aire du polygone ; baseline_y utilise la moyenne de tous les y. columns emploie un quartile discret, distinct de q inclusif ; le filtre de pas utilise largeur+1 et retire les pas >=4×médiane.",
+      "Le texte de la spec ne doit pas dire jamais exécuté pour tout le calibrateur : les fonctions pures sont exécutées, mais ni main ni les fonctions I/O. La phrase seul main exécuterait des lectures est trop large, car Journal.ouvrir et image_dpi_path peuvent aussi lire si appelés directement ; ils restent interdits."
+    ],
+    "minimal_report_trace": [
+      "Empreintes du code de mesure et de la calibration ; version du protocole, version Python/statistics ou environnement utilisé pour q.",
+      "Liste de pages sélectionnées et SHA canoniques, profil, largeur/hauteur, dpi déclaré, angle final déclaré, oversampling, colonnage déclaré et colonnage estimé nettement distincts.",
+      "Géométrie finale native sans nouvel arrondi ni désinclinaison ; politique dpi=None ; politique de catégories et changements de typage.",
+      "Cohorte de référence exacte, effectif, mélange train/dev, unité et n pour chaque métrique ; aucune sous-cohorte historique inventée.",
+      "Avec/sans gabarit, IDs effectivement retirés ou motif d’indisponibilité ; valeurs brutes des petites sélections MF et agrégats pour audit.",
+      "Statut méthodologique et autorisation/motif de comparaison distincts ; contrôle descriptif sans verdict de gain ou réalisme global."
+    ]
+  }
+}

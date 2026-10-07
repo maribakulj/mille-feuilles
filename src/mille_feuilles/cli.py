@@ -56,6 +56,15 @@ def main(argv: list[str] | None = None) -> int:
         "--page", action="append", dest="page_ids",
         help="Identifiant de page à copier (répétable) ; toutes les pages par défaut",
     )
+    structural = commands.add_parser(
+        "report-structure", help="Décrire les écarts structurels aux relevés agrégés du cadrage"
+    )
+    structural.add_argument("--from", dest="source", required=True, type=Path)
+    structural.add_argument("--output", required=True, type=Path, help="Dossier de rapport neuf et séparé")
+    selection = structural.add_mutually_exclusive_group(required=True)
+    selection.add_argument("--page", action="append", dest="page_ids", help="Page à mesurer (répétable)")
+    selection.add_argument("--all-pages", action="store_true", help="Mesurer toutes les pages du manifeste")
+    structural.add_argument("--reference", default="as:XIXe", help="Cohorte agrégée du cadrage")
     importer = commands.add_parser("import-texts", help="Importer des documents locaux vérifiés")
     importer.add_argument("--manifest", required=True, type=Path, help="Manifeste JSONL des documents")
     importer.add_argument("--into", required=True, type=Path, help="Bundle de destination neuf ou vide")
@@ -113,6 +122,13 @@ def main(argv: list[str] | None = None) -> int:
             from .newseye_bundle import export_bundle
 
             result = export_bundle(args.source, args.output, page_ids=args.page_ids)
+        elif args.command == "report-structure":
+            from .structure_report import build_report
+
+            result = build_report(
+                args.source, args.output, page_ids=args.page_ids,
+                all_pages=args.all_pages, reference=args.reference,
+            )
         elif args.command == "import-texts":
             from .catalog import import_texts
 
