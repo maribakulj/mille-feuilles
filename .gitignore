@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+.venv/
+.pytest_cache/
+.ruff_cache/
+data/
+runs/
+dist/
+*.pyc
