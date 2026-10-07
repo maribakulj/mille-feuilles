@@ -1,9 +1,11 @@
 # Cadrage — heritage-synth (Mille Feuilles)
 
 Rédigé par Claude le 7 octobre 2026, contre le contrat de données **v0.1.0**
-(`docs/CONTRAT_DONNEES.md`, commit `f829bd0`). Ce fichier appartient à Claude ;
-le contrat, le schéma, le validateur et le rendu appartiennent à Codex. Mes
-objections au contrat sont rassemblées au §7 ; je n'ai pas modifié le contrat.
+(`docs/CONTRAT_DONNEES.md`, commit `f829bd0`). Livré par Claude au coordinateur
+dédié Mille Feuilles dans le commit `3a943b5` ; voir
+[la passation et les responsabilités actuelles](COORDINATION.md).
+Les objections au contrat sont rassemblées au §7 et restent à traiter.
+Le contrat n'a pas été modifié lors de cette livraison.
 
 Règles de l'accord, rappelées parce qu'elles commandent tout le reste :
 
@@ -23,7 +25,7 @@ Outils (bibliothèque standard Python seulement, aucun import d'axel) :
 | `tools/cadrage/exemples.py` | vignettes d'exemples réels pour les conventions (§6), hors dépôt |
 | `tools/cadrage/sortie/calibration.json` | toutes les distributions, par source et par époque, et chaque page |
 | `tools/cadrage/sortie/fichiers_lus.tsv` | **chaque fichier ouvert** par la calibration, avec son SHA-256 |
-| `tools/cadrage/sortie/fontes.json` | inventaire des 64 fichiers de fontes examinés |
+| `tools/cadrage/sortie/fontes.json` | 64 fichiers Google Fonts et la copie BBVLM d'UnifrakturCook : 65 entrées, 64 empreintes distinctes |
 
 Reproduire (≈ 25 s sur le Mac, CPU, aucun calcul lourd) :
 
