@@ -17,7 +17,8 @@
     "profile": {
       "enum": [
         "fr_press_19c_columns_4_6",
-        "fr_press_19c_columns_4_6_measured"
+        "fr_press_19c_columns_4_6_measured",
+        "fr_press_19c_layout_v2"
       ]
     },
     "image": {
@@ -271,6 +272,126 @@
             "type": "object",
             "propertyNames": {
               "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+            },
+            "properties": {
+              "mf:layout": {
+                "type": "object",
+                "properties": {
+                  "zone_id": {
+                    "enum": [
+                      "main",
+                      "rez_de_chaussee"
+                    ]
+                  },
+                  "body_font_size": {
+                    "type": "integer",
+                    "minimum": 10
+                  },
+                  "small_body": {
+                    "type": "boolean"
+                  },
+                  "headline": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "block_id": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+                          },
+                          "reservation_bbox": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 4,
+                            "maxItems": 4
+                          },
+                          "body_column_indices": {
+                            "type": "array",
+                            "items": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 5
+                            },
+                            "minItems": 1,
+                            "maxItems": 5,
+                            "uniqueItems": true
+                          },
+                          "attempts": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 32
+                          }
+                        },
+                        "required": [
+                          "block_id",
+                          "reservation_bbox",
+                          "body_column_indices",
+                          "attempts"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "box": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "padding": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 20
+                          },
+                          "rule_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+                            },
+                            "minItems": 4,
+                            "maxItems": 4,
+                            "uniqueItems": true
+                          },
+                          "bbox": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 4,
+                            "maxItems": 4
+                          }
+                        },
+                        "required": [
+                          "padding",
+                          "rule_ids",
+                          "bbox"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "small_body_requested": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "zone_id",
+                  "body_font_size",
+                  "small_body",
+                  "headline",
+                  "box",
+                  "small_body_requested"
+                ],
+                "additionalProperties": false
+              }
             }
           }
         },
@@ -691,7 +812,10 @@
       "if": {
         "properties": {
           "profile": {
-            "const": "fr_press_19c_columns_4_6_measured"
+            "enum": [
+              "fr_press_19c_columns_4_6_measured",
+              "fr_press_19c_layout_v2"
+            ]
           }
         }
       },
@@ -758,6 +882,371 @@
               "required": [
                 "mf:diagnostics"
               ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "profile": {
+            "const": "fr_press_19c_layout_v2"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "schema_version": {
+            "const": "0.3.0"
+          },
+          "provenance": {
+            "properties": {
+              "template_id": {
+                "const": "template_press_v2"
+              },
+              "parameters": {
+                "required": [
+                  "layout_profile",
+                  "layout",
+                  "layout_body_ratio",
+                  "layout_typography",
+                  "layout_rejected_candidates",
+                  "layout_termination_rejections"
+                ],
+                "properties": {
+                  "layout_profile": {
+                    "const": "fr_press_19c_layout_v2"
+                  },
+                  "layout": {
+                    "type": "object",
+                    "properties": {
+                      "version": {
+                        "const": "1"
+                      },
+                      "width": {
+                        "type": "integer",
+                        "minimum": 100,
+                        "maximum": 20000
+                      },
+                      "height": {
+                        "type": "integer",
+                        "minimum": 100,
+                        "maximum": 20000
+                      },
+                      "margin": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "gutter": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "zones": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "enum": [
+                                "main",
+                                "rez_de_chaussee"
+                              ]
+                            },
+                            "bbox": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              },
+                              "minItems": 4,
+                              "maxItems": 4
+                            },
+                            "columns": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "number"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                              },
+                              "minItems": 2,
+                              "maxItems": 6
+                            },
+                            "headline_span": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "integer",
+                                  "minimum": 2,
+                                  "maximum": 5
+                                }
+                              ]
+                            },
+                            "headline_reserved": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "number"
+                                  },
+                                  "minItems": 4,
+                                  "maxItems": 4
+                                }
+                              ]
+                            },
+                            "headline_body_band": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "number"
+                                  },
+                                  "minItems": 4,
+                                  "maxItems": 4
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "bbox",
+                            "columns",
+                            "headline_span",
+                            "headline_reserved",
+                            "headline_body_band"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "minItems": 1,
+                        "maxItems": 2
+                      },
+                      "zone_rules": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          },
+                          "minItems": 4,
+                          "maxItems": 4
+                        },
+                        "minItems": 0,
+                        "maxItems": 1
+                      },
+                      "rez_de_chaussee_share": {
+                        "oneOf": [
+                          {
+                            "type": "null"
+                          },
+                          {
+                            "type": "number",
+                            "exclusiveMinimum": 0,
+                            "exclusiveMaximum": 1
+                          }
+                        ]
+                      },
+                      "min_zone_height": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      }
+                    },
+                    "required": [
+                      "version",
+                      "width",
+                      "height",
+                      "margin",
+                      "gutter",
+                      "zones",
+                      "zone_rules",
+                      "rez_de_chaussee_share",
+                      "min_zone_height"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "layout_body_ratio": {
+                    "type": "number",
+                    "minimum": 19.5,
+                    "maximum": 21.5
+                  },
+                  "layout_typography": {
+                    "type": "object",
+                    "properties": {
+                      "main": {
+                        "type": "object",
+                        "properties": {
+                          "normal_body_size": {
+                            "type": "integer",
+                            "minimum": 10
+                          },
+                          "small_body_size": {
+                            "type": "integer",
+                            "minimum": 10
+                          },
+                          "line_spacing_normal": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          },
+                          "line_spacing_small": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          }
+                        },
+                        "required": [
+                          "normal_body_size",
+                          "small_body_size",
+                          "line_spacing_normal",
+                          "line_spacing_small"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "rez_de_chaussee": {
+                        "type": "object",
+                        "properties": {
+                          "normal_body_size": {
+                            "type": "integer",
+                            "minimum": 10
+                          },
+                          "small_body_size": {
+                            "type": "integer",
+                            "minimum": 10
+                          },
+                          "line_spacing_normal": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          },
+                          "line_spacing_small": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          }
+                        },
+                        "required": [
+                          "normal_body_size",
+                          "small_body_size",
+                          "line_spacing_normal",
+                          "line_spacing_small"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "main"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "layout_rejected_candidates": {
+                    "type": "object",
+                    "properties": {
+                      "headline": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "boxed_ad": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "ordinary": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "headline",
+                      "boxed_ad",
+                      "ordinary"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "layout_termination_rejections": {
+                    "type": "object",
+                    "properties": {
+                      "main": {
+                        "type": "integer",
+                        "const": 32
+                      },
+                      "rez_de_chaussee": {
+                        "type": "integer",
+                        "const": 32
+                      }
+                    },
+                    "required": [
+                      "main"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "parameters": {
+                "properties": {
+                  "layout_profile": {
+                    "type": "null"
+                  }
+                },
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "layout"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "layout_body_ratio"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "layout_typography"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "layout_rejected_candidates"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "layout_termination_rejections"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "template_id": {
+                "not": {
+                  "const": "template_press_v2"
+                }
+              }
+            }
+          },
+          "articles": {
+            "items": {
+              "properties": {
+                "extensions": {
+                  "not": {
+                    "required": [
+                      "mf:layout"
+                    ]
+                  }
+                }
+              }
             }
           }
         }

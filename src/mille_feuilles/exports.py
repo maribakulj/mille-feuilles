@@ -201,7 +201,8 @@ def _build_alto(page):
     for legibility in ("readable", "uncertain", "illegible"):
         _node(tags, "OtherTag", ID=f"legibility_{legibility}", TYPE="mille-feuilles:legibility", LABEL=legibility)
     for article in page["articles"]:
-        _node(tags, "StructureTag", ID=f"a_{article['id']}", TYPE="mille-feuilles:article", LABEL=article["id"], DESCRIPTION=_json({"block_ids": article["block_ids"]}))
+        article_data = {key: article[key] for key in ("block_ids", "extensions") if key in article}
+        _node(tags, "StructureTag", ID=f"a_{article['id']}", TYPE="mille-feuilles:article", LABEL=article["id"], DESCRIPTION=_json(article_data))
     hyphenation_groups = {}
     for word in page["words"]:
         hyp = word["hyphenation"]

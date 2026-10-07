@@ -20,9 +20,14 @@ ou historique d'un corpus de presse.
 
 Le lot 3 ajoute le profil distinct **`fr_press_19c_columns_4_6_measured`**, en
 schéma **0.3.0** également. Il conserve la vérité de composition et mesure les
-effets d'un profil de dégradation déclaré. Sa campagne finale d'acceptation est
-en cours ; les 483 tests et les trois pages d'acceptation CLI du lot 2 restent
-des preuves historiques du lot 2, sans valoir acceptation du profil mesuré.
+effets d'un profil de dégradation déclaré. Son acceptation passe 652 tests et
+224 contrôles CLI, sur six pages de référence ; les preuves et les limites des
+étiquettes heuristiques sont dans [VALIDATION](VALIDATION.md).
+
+Le lot 4 en développement ajoute **`fr_press_19c_layout_v2`**, également en 0.3.0,
+avec `template_press_v2`. Il combine une mise en page par zones et les mêmes
+diagnostics mesurés ; les garanties des lots précédents ne valent pas à elles
+seules acceptation de ce nouveau profil.
 
 Le JSON canonique est la source des projections PAGE XML, ALTO et COCO.
 Aucun import du logiciel Axel dans le générateur. Les adaptations de métriques,
@@ -63,7 +68,7 @@ Les paramètres résolus et les métadonnées d'actifs sont des objets JSON ouve
 |---|---|
 | `schema_version` | `"0.3.0"` ; `"0.2.0"` accepté en lecture historique |
 | `dataset_id` | Identifiant stable du lot |
-| `profile` | `"fr_press_19c_columns_4_6"` ou `"fr_press_19c_columns_4_6_measured"` ; ce dernier exige 0.3.0 |
+| `profile` | `"fr_press_19c_columns_4_6"`, `"fr_press_19c_columns_4_6_measured"` ou `"fr_press_19c_layout_v2"` ; les deux derniers exigent 0.3.0 |
 | `generator` | `{commit, dirty, environment_path, environment_sha256}` ; commit Git complet |
 | `config` | `{path, sha256}` de la configuration résolue |
 | `rng` | `{algorithm, version, seed}` ; seed entier entre 0 et 2^53−1 |
@@ -373,6 +378,51 @@ un masque falsifié, puis réempreinté et accompagné de diagnostics cohérents
 peut rester conforme à l'occupation des blocs. Les empreintes, le recalcul des
 mesures et ce contrôle spatial prouvent une cohérence dans leur périmètre ;
 la reproduction et la revue visuelle apportent des vérifications complémentaires.
+
+### 4.2. Mise en page par zones
+
+`fr_press_19c_layout_v2` exige `config.render.layout_profile` de même valeur,
+un profil de dégradation explicite et l'actif `template_press_v2`. Il conserve
+les diagnostics du §4.1. Les options de mise en page du gabarit sont celles du
+preset version 1, déclarées `calibrated: false`. `--columns` contraint seulement
+la zone principale ; la validation confronte cette contrainte au plan.
+
+Le plan dans `provenance.parameters.layout` est strict et exprimé en coordonnées
+de composition, **avant rotation**, à la résolution finale. Il contient les
+dimensions, marges, gouttière, une zone `main` puis éventuellement une zone
+`rez_de_chaussee`, leurs rectangles, colonnes et filets de séparation. Les deux
+zones ont des nombres de colonnes distincts. Les polygones des blocs, lignes et
+mots restent dans le repère final et sont ramenés au plan par l'inverse affine
+pour les contrôles de mise en page.
+
+Un titre large conserve son enveloppe réelle, avec une réservation séparée
+`headline_reserved`. Son article possède un bloc de corps par colonne couverte,
+au moins deux lignes par bloc et un écart de compte de lignes d'au plus un. La
+bande `headline_body_band` réserve tout ce corps, puis un espacement de fin
+d'article ; les articles ordinaires commencent sous cette bande dans chacune
+des colonnes couvertes. Les colonnes restantes commencent au haut de la zone.
+Le segment source est conservé entier, y compris les césures entre colonnes.
+
+Les paramètres `layout_body_ratio` et `layout_typography` décrivent le corps
+normal commun aux zones, calculé depuis la largeur de colonne de `main`, et le
+petit corps borné à 10 px. Chaque article hors bandeau porte
+`extensions['mf:layout']` : zone, corps effectif, demande de petit corps,
+réduction effective, titre large éventuel et cadre éventuel. Une annonce
+encadrée reste dans une colonne ; quatre filets hors article forment son cadre
+avec le padding déclaré. L'ordre est bandeau, articles de `main`, puis articles
+du rez-de-chaussée ; tous les filets restent hors ordre textuel.
+
+Les contrôles vérifient les rectangles disponibles, le non-chevauchement des
+blocs textuels, les bandes, l'ordre et les quatre côtés des cadres. L'intersection
+filet/texte est calculée sur les polygones exacts avec une tolérance d'aire de
+0,5 px², distincte de la tolérance linéaire de 0,5 px. La fidélité aux glyphes
+reste du ressort des contrôles de rendu et de reproduction du §4.1.
+
+Les rejets précédant un succès sont séparés des 32 essais terminaux qui ferment
+une zone. Un texte trop long ou un titre impossible peut provoquer un refus
+contrôlé ; le moteur ne supprime pas silencieusement une structure tirée pour
+faire passer la page. Les [règles détaillées](MISE_EN_PAGE.md) précisent le
+filtrage des colonnes, les deux réservations et les limites non calibrées.
 
 ## 5. Géométrie
 

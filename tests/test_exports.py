@@ -89,6 +89,24 @@ def test_exports_are_byte_reproducible(page, tmp_path):
     assert first == second
 
 
+def test_article_extensions_survive_alto_and_page_roundtrip(page, tmp_path):
+    page["articles"][0]["extensions"] = {
+        "mf:layout": {"zone_id": "main", "body_font_size": 12,
+                      "headline": {"block_id": "head", "reservation_bbox": [5, 0, 205, 38]}}
+    }
+    paths = export_all(page, tmp_path)
+    assert validate_exports(tmp_path, [page]) == []
+    path = tmp_path / paths["alto"]
+    xml = ET.parse(str(path))
+    tag = xml.find(".//a:StructureTag[@ID='a_news']", {"a": ALTO_NS})
+    metadata = json.loads(tag.get("DESCRIPTION"))
+    assert metadata["extensions"] == page["articles"][0]["extensions"]
+    metadata["extensions"]["mf:layout"]["zone_id"] = "rez_de_chaussee"
+    tag.set("DESCRIPTION", json.dumps(metadata))
+    xml.write(str(path), encoding="UTF-8", xml_declaration=True)
+    assert any("alto articles differs" in error for error in validate_exports(tmp_path, [page]))
+
+
 @pytest.mark.parametrize("kind,xpath,attribute,new_value", [
     ("page", ".//p:TextLine[@id='l_title1']/p:TextEquiv/p:Unicode", None, "Echos de societe"),
     ("page", ".//p:RegionRefIndexed[@index='0']", "regionRef", "b_bottom"),

@@ -89,6 +89,44 @@ détecteur général de quasi-doublons. La génération tire uniformément les u
 d'un rôle : les documents contenant plus d'unités ont davantage de poids. Le
 nombre de pages ne mesure donc ni la diversité des documents ni leur équilibre.
 
+## Lot 4 — mise en page par zones, protocole d'acceptation
+
+Le profil `fr_press_19c_layout_v2` exige un profil photométrique explicite et
+ajoute un plan géométrique vérifié : zones à colonnages distincts, titre large
+avec corps équilibré dans une bande réservée, petits corps et annonces encadrées.
+Les contrôles portent aussi sur les fontes, l'ordre par zone, les intersections
+filet/texte et les options du gabarit. Un simple changement du nom de profil
+ne doit pas permettre de soustraire ces métadonnées aux contrôles v2.
+
+La vérification intégrée couvre **941 tests distincts réussis** : 931 dans
+le passage complet, puis huit cas affectés par une saturation disque transitoire
+et deux nouvelles régressions dans un passage ciblé de dix succès. Ruff et la
+vérification des actifs passent. Les [sorties conservées](reports/lot4/tests-index.json)
+distinguent cette reprise de la campagne CLI ; aucun garde-fou n'a été désactivé.
+
+Le protocole `tools/accept_layout.py` exige un commit propre, des entrées
+originales inchangées, une réserve de disque et une destination neuve. Il produit
+sept pages v2 de référence (six compactes, une à taille pilote avec colonnes
+automatiques), compare ×1/×2 et identity/controlled, puis rejoue deux pages avec
+deux workers et les reproduit séquentiellement. Il exige les contrôles nommés
+du validateur et vérifie indépendamment les bandes : un bloc par colonne,
+au moins deux lignes, écart d'au plus une ligne, confinement vertical et reprise
+des autres articles sous la bande.
+
+La comparaison ×1/×2 exige les mêmes textes, identifiants, ordre, fontes et
+ordonnées de baseline avant rotation (tolérance de 1e-5 px). Les écarts des
+polygones et des extrémités de baseline sont rapportés sans seuil. Le bas de
+préparation est dérivé du bas de bande en supposant l'espacement contractuel
+de 0,6 interligne ; ce calcul n'est pas une mesure directe du compositeur.
+
+La référence `--legacy-reference` est ancrée sur le manifeste archivé du lot 3,
+validée avant toute écriture, puis ses PNG, JSON, masques et diagnostics sont
+comparés octet pour octet au rejeu. Cette preuve couvre le chemin **mesuré
+non-v2** ; le chemin historique sans profil fait l'objet d'une comparaison
+distincte par Claude après le commit source. Les manifestes et environnements
+continuent de désigner le code exécuté et ne sont pas promis identiques entre
+deux révisions. La revue visuelle et ses limites sont consignées séparément.
+
 ## Lot 3 — dégradations mesurées, acceptation technique réussie
 
 Le profil `fr_press_19c_columns_4_6_measured` étend le contrat 0.3 sans changer

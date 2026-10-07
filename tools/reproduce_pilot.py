@@ -60,8 +60,8 @@ def strict_config(value: dict) -> tuple[Config, int]:
         raise ValueError("Nombre de pages invalide dans la configuration")
     parameters = value["render"]
     expected = {field.name for field in fields(Config)}
-    optional = {"degradation_profile"}
-    if not isinstance(parameters, dict) or set(parameters) not in (expected, expected - optional):
+    optional = {"degradation_profile", "layout_profile"}
+    if not isinstance(parameters, dict) or not expected - optional <= set(parameters) <= expected:
         raise ValueError("Paramètres de rendu incomplets ou inconnus")
     for name in ("width", "height", "dpi", "seed"):
         if type(parameters[name]) is not int:
@@ -228,7 +228,7 @@ def reproduce(
             raise ValueError(f"Espace libre insuffisant : {free} octets, {required} requis")
 
         target.mkdir(parents=True, exist_ok=True)
-        assets = prepare_assets(target, source)
+        assets = prepare_assets(target, source, layout_profile=config.layout_profile)
         if not same_bytes(registry_path, target / "assets.json"):
             raise ValueError("Le catalogue source ne reproduit pas le registre d'actifs du lot")
         for index, (reference, image_ref, page_path, image_path) in enumerate(originals):

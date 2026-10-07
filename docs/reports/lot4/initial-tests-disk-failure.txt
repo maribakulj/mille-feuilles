@@ -1,0 +1,455 @@
+........................................................................ [  7%]
+........................................................................ [ 15%]
+........................................................................ [ 23%]
+........................................................................ [ 30%]
+........................................................................ [ 38%]
+........................................................................ [ 46%]
+........................................................................ [ 53%]
+........................................................................ [ 61%]
+........................................................................ [ 69%]
+........................................................................ [ 76%]
+...........................................FFEE.E.........FFE........... [ 84%]
+........................................................................ [ 92%]
+........................................................................ [ 99%]
+...                                                                      [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_two_page_serial_and_parallel_builds_are_bit_identical _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007'), _trace=<plu...PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def repeated_lots(tmp_path_factory):
+>       first = tmp_path_factory.mktemp("pipeline_serial")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_pipeline.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/_pytest/tmpdir.py:141: in mktemp
+    p = make_numbered_dir(root=self.getbasetemp(), prefix=basename, mode=0o700)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007')
+prefix = 'pipeline_serial', mode = 448
+
+    def make_numbered_dir(root: Path, prefix: str, mode: int = 0o700) -> Path:
+        """Create a directory with an increased number as suffix for the given prefix."""
+        for i in range(10):
+            # try up to 10 times to create the directory
+            max_existing = max(map(parse_num, find_suffixes(root, prefix)), default=-1)
+            new_number = max_existing + 1
+            new_path = root.joinpath(f"{prefix}{new_number}")
+            try:
+                new_path.mkdir(mode=mode)
+            except Exception:
+                pass
+            else:
+                _force_symlink(root, prefix + "current", new_path)
+                return new_path
+        else:
+>           raise OSError(
+                "could not create numbered dir with prefix "
+                f"{prefix} in {root} after 10 tries"
+            )
+E           OSError: could not create numbered dir with prefix pipeline_serial in /Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007 after 10 tries
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:239: OSError
+________ ERROR at setup of test_real_exports_assets_and_qa_are_complete ________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007'), _trace=<plu...PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def repeated_lots(tmp_path_factory):
+>       first = tmp_path_factory.mktemp("pipeline_serial")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_pipeline.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/_pytest/tmpdir.py:141: in mktemp
+    p = make_numbered_dir(root=self.getbasetemp(), prefix=basename, mode=0o700)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007')
+prefix = 'pipeline_serial', mode = 448
+
+    def make_numbered_dir(root: Path, prefix: str, mode: int = 0o700) -> Path:
+        """Create a directory with an increased number as suffix for the given prefix."""
+        for i in range(10):
+            # try up to 10 times to create the directory
+            max_existing = max(map(parse_num, find_suffixes(root, prefix)), default=-1)
+            new_number = max_existing + 1
+            new_path = root.joinpath(f"{prefix}{new_number}")
+            try:
+                new_path.mkdir(mode=mode)
+            except Exception:
+                pass
+            else:
+                _force_symlink(root, prefix + "current", new_path)
+                return new_path
+        else:
+>           raise OSError(
+                "could not create numbered dir with prefix "
+                f"{prefix} in {root} after 10 tries"
+            )
+E           OSError: could not create numbered dir with prefix pipeline_serial in /Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007 after 10 tries
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:239: OSError
+_ ERROR at setup of test_nonempty_destination_is_refused_without_touching_user_files[True] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x10bf16660>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+.venv/lib/python3.12/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/pluggy/_hooks.py:512: in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/pluggy/_manager.py:120: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/_pytest/logging.py:858: in pytest_runtest_setup
+    yield
+.venv/lib/python3.12/site-packages/_pytest/capture.py:895: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+.venv/lib/python3.12/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+.venv/lib/python3.12/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+.venv/lib/python3.12/site-packages/_pytest/python.py:1710: in setup
+    self._request._fillfixtures()
+.venv/lib/python3.12/site-packages/_pytest/fixtures.py:806: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/_pytest/fixtures.py:630: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/_pytest/fixtures.py:726: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+.venv/lib/python3.12/site-packages/_pytest/fixtures.py:1232: in execute
+    result: FixtureValue = ihook.pytest_fixture_setup(
+.venv/lib/python3.12/site-packages/pluggy/_hooks.py:512: in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/pluggy/_manager.py:120: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/_pytest/setuponly.py:36: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+.venv/lib/python3.12/site-packages/_pytest/fixtures.py:1328: in pytest_fixture_setup
+    result = call_fixture_func(fixturefunc, request, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/_pytest/fixtures.py:998: in call_fixture_func
+    fixture_result = next(generator)
+                     ^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/_pytest/tmpdir.py:300: in tmp_path
+    path = _mk_tmp(request, tmp_path_factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/_pytest/tmpdir.py:287: in _mk_tmp
+    return factory.mktemp(name, numbered=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/_pytest/tmpdir.py:141: in mktemp
+    p = make_numbered_dir(root=self.getbasetemp(), prefix=basename, mode=0o700)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007')
+prefix = 'test_nonempty_destination_is_r', mode = 448
+
+    def make_numbered_dir(root: Path, prefix: str, mode: int = 0o700) -> Path:
+        """Create a directory with an increased number as suffix for the given prefix."""
+        for i in range(10):
+            # try up to 10 times to create the directory
+            max_existing = max(map(parse_num, find_suffixes(root, prefix)), default=-1)
+            new_number = max_existing + 1
+            new_path = root.joinpath(f"{prefix}{new_number}")
+            try:
+                new_path.mkdir(mode=mode)
+            except Exception:
+                pass
+            else:
+                _force_symlink(root, prefix + "current", new_path)
+                return new_path
+        else:
+>           raise OSError(
+                "could not create numbered dir with prefix "
+                f"{prefix} in {root} after 10 tries"
+            )
+E           OSError: could not create numbered dir with prefix test_nonempty_destination_is_r in /Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007 after 10 tries
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:239: OSError
+_____________ ERROR at setup of test_compare_detects_removed_image _____________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007'), _trace=<plu...PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def repeated_lots(tmp_path_factory):
+>       first = tmp_path_factory.mktemp("pipeline_serial")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_pipeline.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/_pytest/tmpdir.py:141: in mktemp
+    p = make_numbered_dir(root=self.getbasetemp(), prefix=basename, mode=0o700)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007')
+prefix = 'pipeline_serial', mode = 448
+
+    def make_numbered_dir(root: Path, prefix: str, mode: int = 0o700) -> Path:
+        """Create a directory with an increased number as suffix for the given prefix."""
+        for i in range(10):
+            # try up to 10 times to create the directory
+            max_existing = max(map(parse_num, find_suffixes(root, prefix)), default=-1)
+            new_number = max_existing + 1
+            new_path = root.joinpath(f"{prefix}{new_number}")
+            try:
+                new_path.mkdir(mode=mode)
+            except Exception:
+                pass
+            else:
+                _force_symlink(root, prefix + "current", new_path)
+                return new_path
+        else:
+>           raise OSError(
+                "could not create numbered dir with prefix "
+                f"{prefix} in {root} after 10 tries"
+            )
+E           OSError: could not create numbered dir with prefix pipeline_serial in /Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007 after 10 tries
+
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:239: OSError
+=================================== FAILURES ===================================
+_________ test_rehashed_partition_mismatch_cannot_be_accepted_as_train _________
+
+train_lot = {'root': PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/partitioned_pipeline1'), 'source': Po... 'bundle': PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/partitioned_pipeline1/bundle'), ...}
+
+    def test_rehashed_partition_mismatch_cannot_be_accepted_as_train(train_lot):
+        fixture = train_lot
+        broken = fixture["root"] / "tampered_selection"
+>       shutil.copytree(fixture["output"], broken)
+
+tests/test_partitioned_pipeline.py:358: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/shutil.py:600: in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+../.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/shutil.py:498: in _copytree
+    os.makedirs(dst, exist_ok=dirs_exist_ok)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/partitioned_pipeline1/tampered_selection')
+mode = 511, exist_ok = False
+
+>   ???
+E   OSError: [Errno 28] No space left on device: '/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/partitioned_pipeline1/tampered_selection'
+
+<frozen os>:225: OSError
+_________ test_rehashed_train_character_counts_must_match_copied_text __________
+
+train_lot = {'root': PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/partitioned_pipeline1'), 'source': Po... 'bundle': PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/partitioned_pipeline1/bundle'), ...}
+
+    def test_rehashed_train_character_counts_must_match_copied_text(train_lot):
+        fixture = train_lot
+        broken = fixture["root"] / "tampered_train_characters"
+>       shutil.copytree(fixture["output"], broken)
+
+tests/test_partitioned_pipeline.py:389: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/shutil.py:600: in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+../.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/shutil.py:498: in _copytree
+    os.makedirs(dst, exist_ok=dirs_exist_ok)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/partitioned_pipeline1/tampered_train_characters')
+mode = 511, exist_ok = False
+
+>   ???
+E   OSError: [Errno 28] No space left on device: '/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/partitioned_pipeline1/tampered_train_characters'
+
+<frozen os>:225: OSError
+____________ test_failed_export_leaves_no_accepted_partial_dataset _____________
+
+tmp_path = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/test_failed_export_leaves_no_a0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b4f3bc0>
+
+    def test_failed_export_leaves_no_accepted_partial_dataset(tmp_path, monkeypatch):
+        from mille_feuilles import exports
+    
+        def storage_failure(page, root):
+            raise OSError("simulated export storage failure")
+    
+        monkeypatch.setattr(exports, "export_page", storage_failure)
+        output = tmp_path / "interrupted"
+        with pytest.raises(OSError, match="storage failure"):
+>           pipeline.build_dataset(output, Config(width=800, height=1100, columns=4), count=1)
+
+tests/test_pipeline.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+output = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/test_failed_export_leaves_no_a0/interrupted')
+config = Config(width=800, height=1100, dpi=150, columns=4, degradation='mixed', seed=20261007, partition=None, degradation_profile=None, layout_profile=None)
+count = 1, jobs = 1, progress = None, asset_source = None
+
+    def build_dataset(
+        output: Path,
+        config: Config,
+        count: int = 1,
+        jobs: int = 1,
+        progress: Callable[[str], None] | None = None,
+        asset_source: Path | None = None,
+    ) -> dict:
+        """Build, validate and leave a self-contained lot; never overwrite user files."""
+        from .exports import export_coco, export_page
+        from .validation import load_json, validate_dataset, validate_page
+    
+        config = deepcopy(config)
+        config.validate()
+        if not 1 <= count <= 1000 or not 1 <= jobs <= 4:
+            raise ValueError("Nombre de pages attendu : 1–1000 ; jobs : 1–4")
+        source = Path(asset_source or ROOT).resolve()
+        selected, plan_path, source_catalog_path = _select_partition(source, config.partition)
+        root = Path(output).absolute()
+        if root.exists() and (not root.is_dir() or any(root.iterdir())):
+            raise ValueError(f"Destination non vide, aucune écriture : {root}")
+        root.mkdir(parents=True, exist_ok=True)
+        # Estimate PNG, annotation/XML, and QA space before writing any large image.
+        estimated = count * config.width * config.height * 2.5 + 80_000_000
+        if shutil.disk_usage(root).free < estimated + 500_000_000:
+>           raise ValueError(
+                "Espace disque insuffisant pour ce lot ; réduire dimensions/nombre de pages"
+            )
+E           ValueError: Espace disque insuffisant pour ce lot ; réduire dimensions/nombre de pages
+
+src/mille_feuilles/pipeline.py:385: ValueError
+_ test_failed_page_cancels_queued_work_waits_for_active_pages_and_preserves_error _
+
+tmp_path = PosixPath('/Users/marcel/heritage-synth/runs/pytest-lot4-final-20261007/test_failed_page_cancels_queue0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b409f40>
+
+    def test_failed_page_cancels_queued_work_waits_for_active_pages_and_preserves_error(
+        tmp_path, monkeypatch
+    ):
+        from mille_feuilles import exports, validation
+    
+        task_count = 12
+        submitted = []
+        submitted_lock = Lock()
+        all_submitted = Event()
+        queue_cancelled = Event()
+        active_started = Event()
+        release_active = Event()
+        build_finished = Event()
+        entered = [Event() for _ in range(task_count)]
+        started, finished = set(), set()
+        work_lock = Lock()
+        primary = OSError("first page export failed")
+        secondary = RuntimeError("an active page also failed while draining")
+        outcome = {}
+    
+        def observe_completion(_future):
+            with submitted_lock:
+                if (
+                    len(submitted) == task_count
+                    and any(future.cancelled() for future in submitted)
+                    and all(future.running() or future.done() for future in submitted)
+                ):
+                    queue_cancelled.set()
+    
+        class ObservedExecutor(ThreadPoolExecutor):
+            # Observe public Future states; execution and cancellation use the real
+            # executor, so shutdown(cancel_futures=True) would satisfy this too.
+            def submit(self, fn, /, *args, **kwargs):
+                future = super().submit(fn, *args, **kwargs)
+                with submitted_lock:
+                    submitted.append(future)
+                    if len(submitted) == task_count:
+                        all_submitted.set()
+                future.add_done_callback(observe_completion)
+                return future
+    
+        def controlled_render(_config, index, _assets, _root):
+            entered[index].set()
+            if index == 0:
+                assert active_started.wait(5), "A second page must already be active"
+                assert all_submitted.wait(5), "There must be queued work to cancel"
+                raise primary
+            with work_lock:
+                started.add(index)
+            active_started.set()
+            assert release_active.wait(10), "The test did not release active work"
+            with work_lock:
+                finished.add(index)
+            if index == 1:
+                raise secondary
+            return {"page_id": f"mf_{index:04d}", "words": []}
+    
+        def run_build():
+            try:
+                outcome["result"] = pipeline.build_dataset(
+                    tmp_path / "cancelled_campaign",
+                    Config(width=800, height=1100, columns=4),
+                    count=task_count,
+                    jobs=2,
+                )
+            except BaseException as exc:
+                outcome["error"] = exc
+            finally:
+                build_finished.set()
+    
+        monkeypatch.setattr(pipeline, "ThreadPoolExecutor", ObservedExecutor)
+        monkeypatch.setattr(pipeline, "render_page", controlled_render)
+        monkeypatch.setattr(validation, "validate_page", lambda _page: [])
+        monkeypatch.setattr(exports, "export_page", lambda _page, _root: None)
+        monkeypatch.setattr(pipeline, "overlay", lambda _page, _root: None)
+        worker = Thread(target=run_build, daemon=True)
+        worker.start()
+        try:
+>           assert queue_cancelled.wait(5), "Queued pages should be cancelled after the first error"
+E           AssertionError: Queued pages should be cancelled after the first error
+E           assert False
+E            +  where False = wait(5)
+E            +    where wait = <threading.Event at 0x10b409a30: unset>.wait
+
+tests/test_pipeline.py:218: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_partitioned_pipeline.py::test_rehashed_partition_mismatch_cannot_be_accepted_as_train
+FAILED tests/test_partitioned_pipeline.py::test_rehashed_train_character_counts_must_match_copied_text
+FAILED tests/test_pipeline.py::test_failed_export_leaves_no_accepted_partial_dataset
+FAILED tests/test_pipeline.py::test_failed_page_cancels_queued_work_waits_for_active_pages_and_preserves_error
+ERROR tests/test_pipeline.py::test_two_page_serial_and_parallel_builds_are_bit_identical
+ERROR tests/test_pipeline.py::test_real_exports_assets_and_qa_are_complete - ...
+ERROR tests/test_pipeline.py::test_nonempty_destination_is_refused_without_touching_user_files[True]
+ERROR tests/test_pipeline.py::test_compare_detects_removed_image - OSError: c...
+4 failed, 931 passed, 4 errors in 315.54s (0:05:15)

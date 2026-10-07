@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 from .pipeline import build_dataset, compare_lots
-from .render import Config
+from .render import Config, PROFILE_LAYOUT
 from .validation import validate_dataset
 
 
@@ -23,6 +23,10 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("--height", type=int, default=3698)
     generate.add_argument("--dpi", type=int, default=150)
     generate.add_argument("--columns", type=int, choices=[4, 5, 6])
+    generate.add_argument(
+        "--layout-profile", choices=[PROFILE_LAYOUT],
+        help="Mise en page par zones ; exige --degradation-profile (identity accepté)",
+    )
     degradation_options = generate.add_mutually_exclusive_group()
     degradation_options.add_argument(
         "--degradation", choices=["clean", "aged", "faint", "mixed"], default="mixed"
@@ -70,7 +74,9 @@ def main(argv: list[str] | None = None) -> int:
                 seed=args.seed,
                 partition=args.partition,
                 degradation_profile=profile,
+                layout_profile=args.layout_profile,
             )
+            config.validate()
             result = build_dataset(
                 args.output,
                 config,

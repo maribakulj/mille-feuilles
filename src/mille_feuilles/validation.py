@@ -17,10 +17,13 @@ from urllib.parse import urlsplit
 
 from jsonschema import Draft202012Validator
 from PIL import Image, ImageDraw, ImageFilter
-from shapely.geometry import LineString, Polygon
+from shapely.geometry import LineString, Polygon, box
+from shapely.affinity import affine_transform
 
 SCHEMA_VERSION = "0.2.0"
 MEASURED_PROFILE = "fr_press_19c_columns_4_6_measured"
+LAYOUT_PROFILE = "fr_press_19c_layout_v2"
+MEASURED_PROFILES = {MEASURED_PROFILE, LAYOUT_PROFILE}
 TOLERANCE = 0.5
 _NON_TEXT = {"illustration", "separateur"}
 _LEGIBILITY = {"readable": 0, "uncertain": 1, "illegible": 2}
@@ -295,6 +298,8 @@ def validate_page(page: dict) -> list[str]:
             determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
             if matrix[2] != [0, 0, 1] or not math.isfinite(determinant) or abs(determinant) < 1e-12:
                 errors.append("transforms: geometry must be a non-singular affine matrix")
+    if page["profile"] == LAYOUT_PROFILE and not errors:
+        errors.extend(_layout_page_errors(page))
     return errors
 
 
@@ -769,13 +774,16 @@ def _partition_character_errors(root: Path, manifest: dict, registry: dict, text
 def _load_degradation_profile(root: Path, manifest: dict, artifacts: set[str]):
     """Load the embedded, bounded profile without resolving a name outside the lot."""
     errors = []
-    measured = manifest["profile"] == MEASURED_PROFILE
+    measured = manifest["profile"] in MEASURED_PROFILES
     try:
         config = load_json(safe_path(root, manifest["config"]["path"]))
         render = config.get("render", {}) if isinstance(config, dict) else None
         if not isinstance(render, dict):
             return None, ["degradation profile config.render must be an object"]
         declared = render.get("degradation_profile")
+        expected_layout = LAYOUT_PROFILE if manifest["profile"] == LAYOUT_PROFILE else None
+        if render.get("layout_profile") != expected_layout:
+            errors.append("config.render.layout_profile differs from dataset profile")
         if not measured:
             if declared is not None:
                 errors.append("degradation profile requires the measured dataset profile")
@@ -1123,8 +1131,11 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
     if not partition_issues and "mf:partition" in manifest.get("extensions", {}):
         check("partition_characters", _partition_character_errors(root, manifest, registry, text_assets))
     degradation_profile, degradation_issues = _load_degradation_profile(root, manifest, artifact_paths)
-    if degradation_issues or manifest["profile"] == MEASURED_PROFILE:
+    if degradation_issues or manifest["profile"] in MEASURED_PROFILES:
         check("degradation_profile", degradation_issues)
+    layout_context, layout_issues = _load_layout_context(root, manifest, assets)
+    if layout_issues or manifest["profile"] == LAYOUT_PROFILE:
+        check("layout_profile", layout_issues)
     pages = []
     for index, record in enumerate(manifest["pages"]):
         try:
@@ -1134,7 +1145,7 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
             if issues:
                 continue
             page_issues = []
-            if page["profile"] != MEASURED_PROFILE and any(
+            if page["profile"] not in MEASURED_PROFILES and any(
                 word["legibility"] != "readable" for word in page["words"]
             ):
                 page_issues.append("pilot profile excludes uncertain/illegible word supervision")
@@ -1143,7 +1154,7 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
             if page["schema_version"] != manifest["schema_version"]:
                 page_issues.append("page schema_version differs from manifest")
             provenance = page["provenance"]
-            if page["profile"] == MEASURED_PROFILE:
+            if page["profile"] in MEASURED_PROFILES:
                 if degradation_profile is None or degradation_issues:
                     page_issues.append("measured page requires a valid embedded degradation profile")
                 else:
@@ -1168,6 +1179,11 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
                 page_issues.append("template_id must reference a declared template asset")
             elif page["schema_version"] == "0.3.0":
                 page_issues += _validate_template_text(page, template)
+                if page["profile"] == LAYOUT_PROFILE:
+                    if layout_context is None or layout_issues:
+                        page_issues.append("layout: page requires valid copied template/config")
+                    else:
+                        page_issues += _layout_template_errors(root, page, template, layout_context)
             source_documents = set()
             source_groups = set()
             for span in provenance["text_spans"]:
@@ -1281,3 +1297,496 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
             }
         )
     return result()
+
+
+_LAYOUT_EPSILON = 1e-5  # Six-decimal planner rounding, not the 0.5 px final polygon tolerance.
+_LAYOUT_PLAN_KEYS = {
+    "version", "width", "height", "margin", "gutter", "zones", "zone_rules",
+    "rez_de_chaussee_share", "min_zone_height",
+}
+_LAYOUT_ZONE_KEYS = {"id", "bbox", "columns", "headline_span", "headline_reserved",
+                     "headline_body_band"}
+
+
+def _layout_finite(value):
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return False
+    try:
+        return math.isfinite(value)
+    except (OverflowError, TypeError, ValueError):
+        return False
+
+
+def _layout_numbers(value, length):
+    return isinstance(value, list) and len(value) == length and all(_layout_finite(v) for v in value)
+
+
+def _layout_close(first, second):
+    return abs(first - second) <= _LAYOUT_EPSILON
+
+
+def _check_layout_plan(plan, *, width, height):
+    """Return errors, including malformed JSON-like values, without throwing.
+
+    This intentionally checks the actual declared planner's output: full-width,
+    evenly spaced columns; 2 px centered zone rule; share and placement agree.
+    It does not prove RNG replay, fit of a source word, or historical realism.
+    """
+    errors = []
+    if type(width) is not int or type(height) is not int or not _layout_finite(width) or not _layout_finite(height) \
+            or width <= 0 or height <= 0:
+        return ["layout: invalid page dimensions"]
+    if not isinstance(plan, dict) or set(plan) != _LAYOUT_PLAN_KEYS:
+        return ["layout: exact plan keys required"]
+    if plan["version"] != "1":
+        errors.append("layout: unsupported version")
+    if type(plan["height"]) is not int or plan["height"] != height:
+        errors.append("layout: height must equal image.height")
+    margin, gutter, minimum = (plan[k] for k in ("margin", "gutter", "min_zone_height"))
+    if type(plan["width"]) is not int or plan["width"] != width:
+        errors.append("layout: width must equal image.width")
+    if type(margin) is not int or not _layout_finite(margin) or not 0 <= margin < width / 2:
+        return errors + ["layout: invalid margin"]
+    if not _layout_finite(gutter) or gutter < 0:
+        return errors + ["layout: invalid gutter"]
+    if not _layout_finite(minimum) or minimum <= 0:
+        return errors + ["layout: min_zone_height must be positive and finite"]
+    zones, rules = plan["zones"], plan["zone_rules"]
+    if not isinstance(zones, list) or len(zones) not in (1, 2):
+        return errors + ["layout: one or two zones required"]
+    if not isinstance(rules, list) or len(rules) != len(zones) - 1 \
+            or not all(_layout_numbers(r, 4) for r in rules):
+        return errors + ["layout: exact four-coordinate zone rule per boundary required"]
+    for index, zone in enumerate(zones):
+        if not isinstance(zone, dict) or set(zone) != _LAYOUT_ZONE_KEYS:
+            return errors + ["layout: exact zone keys required"]
+        label = ("main", "rez_de_chaussee")[index]
+        if zone["id"] != label:
+            errors.append("layout: zones must be main then rez_de_chaussee")
+        bbox, columns, span = (zone[k] for k in ("bbox", "columns", "headline_span"))
+        if not _layout_numbers(bbox, 4):
+            return errors + [f"layout {label}: finite four-coordinate bbox required"]
+        x0, y0, x1, y1 = bbox
+        if not (_layout_close(x0, margin) and _layout_close(x1, width - margin) and margin <= y0 < y1 <= height - margin):
+            errors.append(f"layout {label}: full-width bbox must be inside image")
+        if y1 - y0 + _LAYOUT_EPSILON < minimum:
+            errors.append(f"layout {label}: zone below declared minimum height")
+        if not isinstance(columns, list) or not 2 <= len(columns) <= 6 \
+                or not all(_layout_numbers(c, 2) for c in columns):
+            return errors + [f"layout {label}: two to six finite column intervals required"]
+        column_width = (width - 2 * margin - (len(columns) - 1) * gutter) / len(columns)
+        if not _layout_finite(column_width) or column_width <= 0:
+            return errors + [f"layout {label}: non-positive column width"]
+        for ordinal, (left, right) in enumerate(columns):
+            expected = margin + ordinal * (column_width + gutter)
+            if not (left < right and _layout_close(left, expected) and _layout_close(right, expected + column_width)):
+                errors.append(f"layout {label}: columns differ from uniform planned geometry")
+        if span is not None and (label != "main" or type(span) is not int
+                                 or not 2 <= span < len(columns)):
+            errors.append(f"layout {label}: invalid headline span")
+        reserved = zone["headline_reserved"]
+        if reserved is not None:
+            if not _layout_numbers(reserved, 4) or type(span) is not int or not 2 <= span < len(columns):
+                errors.append(f"layout {label}: invalid headline reservation")
+            elif not (_layout_close(reserved[0], columns[0][0]) and _layout_close(reserved[1], y0)
+                      and _layout_close(reserved[2], columns[span - 1][1]) and y0 < reserved[3] < y1):
+                errors.append(f"layout {label}: headline reservation outside planned columns")
+        band = zone["headline_body_band"]
+        if band is not None:
+            if not _layout_numbers(band, 4) or not _layout_numbers(reserved, 4) or type(span) is not int \
+                    or not 2 <= span < len(columns):
+                errors.append(f"layout {label}: invalid headline body band")
+            elif not (all(_layout_close(actual, wanted) for actual, wanted in
+                          zip(band[:3], [reserved[0], reserved[3], reserved[2]]))
+                      and band[1] < band[3] < y1):
+                errors.append(f"layout {label}: body band outside headline columns/reservation/zone")
+    share = plan["rez_de_chaussee_share"]
+    if len(zones) == 1:
+        if share is not None:
+            errors.append("layout: share must be null without rez_de_chaussee")
+        return errors
+    if not _layout_finite(share) or not 0.05 <= share <= 0.6:
+        return errors + ["layout: invalid rez_de_chaussee share"]
+    if len(zones[0]["columns"]) == len(zones[1]["columns"]):
+        errors.append("layout: lower zone must have a different column count")
+    main, lower = [z["bbox"] for z in zones]
+    gap = lower[1] - main[3]
+    if not 4 <= gap <= 64 or not _layout_close(gap, round(gap)):
+        errors.append("layout: zone gap must be an integer in 4..64")
+    split = round(lower[3] - share * (lower[3] - main[1]), 6)
+    if not (_layout_close(main[3], split - gap / 2) and _layout_close(lower[1], split + gap / 2)):
+        errors.append("layout: declared share disagrees with zone placement")
+    expected_rule = [margin, split - 1, width - margin, split + 1]
+    if not all(_layout_close(actual, expected) for actual, expected in zip(rules[0], expected_rule)):
+        errors.append("layout: zone rule must be full-width, centered and exactly 2 px")
+    return errors
+
+
+# Area is in square pixels, distinct from TOLERANCE (a linear buffer in pixels).
+_LAYOUT_RULE_TEXT_AREA_TOLERANCE = 0.5
+
+
+def _layout_page_errors(page: dict) -> list[str]:
+    """Check v2 plan bindings in composition coordinates, before affine rotation.
+
+    Called only after structural validation. These checks establish declared
+    geometry and ownership, not glyph fidelity or replay of random choices.
+    """
+    import numpy as np
+
+    parameters = page["provenance"]["parameters"]
+    plan = parameters["layout"]
+    errors = _check_layout_plan(plan, width=page["image"]["width"], height=page["image"]["height"])
+    if errors:
+        return errors
+    zones = {zone["id"]: zone for zone in plan["zones"]}
+    typography = parameters["layout_typography"]
+    if parameters["layout_termination_rejections"] != {name: 32 for name in zones}:
+        errors.append("layout: terminal rejection counts must be 32 for exactly the planned zones")
+    if set(typography) != set(zones):
+        return ["layout: typography zone ids differ from plan"]
+    for key, wanted in (("columns", len(zones["main"]["columns"])), ("margin", plan["margin"]),
+                        ("gutter", plan["gutter"]),
+                        ("body_font_size", typography["main"]["normal_body_size"]),
+                        ("line_spacing", typography["main"]["line_spacing_normal"])):
+        if parameters.get(key) != wanted:
+            errors.append(f"layout: {key} differs from plan/main typography")
+    ratio = parameters["layout_body_ratio"]
+    main_width = zones["main"]["columns"][0][1] - zones["main"]["columns"][0][0]
+    expected_normal = max(10, round(main_width / ratio))
+    for name, zone in zones.items():
+        if typography[name]["normal_body_size"] != expected_normal:
+            errors.append(f"layout {name}: normal body differs from main width/ratio")
+        if typography[name]["small_body_size"] > expected_normal:
+            errors.append(f"layout {name}: small body exceeds normal body")
+        if typography[name] != typography["main"]:
+            errors.append(f"layout {name}: all zones must share main typography")
+        band = zone["headline_body_band"]
+        if band is not None and zone["bbox"][3] - band[3] + _LAYOUT_EPSILON < typography[name]["line_spacing_normal"]:
+            errors.append(f"layout {name}: headline band leaves less than one normal interline")
+    minimum = 6 * max(item["line_spacing_normal"] for item in typography.values())
+    if not _layout_close(plan["min_zone_height"], minimum):
+        errors.append("layout: minimum zone height differs from six normal interlines")
+    matrix = np.eye(3)
+    try:
+        for transform in page["transforms"]:
+            if transform["geometry"] != "identity":
+                matrix = np.asarray(transform["geometry"]["matrix"], dtype=float) @ matrix
+        inverse = np.linalg.inv(matrix)
+        if not np.isfinite(inverse).all() or not np.allclose(inverse[2], [0, 0, 1], rtol=0, atol=1e-10):
+            return errors + ["layout: cannot invert declared affine geometry"]
+    except (ValueError, OverflowError, np.linalg.LinAlgError):
+        return errors + ["layout: cannot invert declared affine geometry"]
+    coefficients = [inverse[0, 0], inverse[0, 1], inverse[1, 0], inverse[1, 1],
+                    inverse[0, 2], inverse[1, 2]]
+    blocks = {block["id"]: block for block in page["blocks"]}
+    lines = {line["id"]: line for line in page["lines"]}
+    polygons = {bid: affine_transform(Polygon(block["polygon"]), coefficients)
+                for bid, block in blocks.items()}
+    articles = {article["id"]: article for article in page["articles"]}
+    template_ids = page["provenance"].get("extensions", {}).get("mf:template_article_ids", [])
+    order = list(dict.fromkeys(blocks[bid]["article_id"] for bid in page["reading_order"]["block_ids"]
+                               if bid in blocks))
+    zone_articles = {name: [] for name in zones}
+    ranks, saw_article, boxed_rules = [], False, set()
+    for aid in order:
+        article = articles.get(aid)
+        if article is None:
+            continue  # Generic ownership validation already reports this.
+        if aid in template_ids:
+            if saw_article:
+                errors.append("layout: template articles must precede content zones")
+            for bid in article["block_ids"]:
+                if bid in polygons and polygons[bid].bounds[3] > zones["main"]["bbox"][1] + TOLERANCE:
+                    errors.append(f"layout {bid}: template content overlaps planned content zone")
+            continue
+        saw_article = True
+        meta = article.get("extensions", {}).get("mf:layout")
+        if not isinstance(meta, dict) or meta.get("zone_id") not in zones:
+            errors.append(f"layout {aid}: article requires a known zone binding")
+            continue
+        name = meta["zone_id"]
+        zone_articles[name].append(aid)
+        ranks.append(list(zones).index(name))
+        zone = zones[name]
+        normal, small = (typography[name][k] for k in ("normal_body_size", "small_body_size"))
+        requested = meta["small_body_requested"]
+        expected_size = small if requested else normal
+        if meta["body_font_size"] != expected_size or meta["small_body"] != (requested and small < normal):
+            errors.append(f"layout {aid}: requested/effective small body or body size inconsistent")
+        owned = [bid for bid in article["block_ids"] if bid in blocks]
+        headline = meta["headline"]
+        hid = headline["block_id"] if headline else None
+        if headline:
+            if name != "main" or zone["headline_span"] is None or not owned or hid != owned[0] \
+                    or hid not in blocks or blocks[hid]["category"] != "titre":
+                errors.append(f"layout {aid}: wide headline must be first title block in main")
+            elif (headline["reservation_bbox"] != zone["headline_reserved"]
+                  or headline["body_column_indices"] != list(range(zone["headline_span"]))):
+                errors.append(f"layout {aid}: headline reservation/columns differ from plan")
+            else:
+                reserve = box(*headline["reservation_bbox"])
+                if not reserve.buffer(TOLERANCE).covers(polygons[hid]):
+                    errors.append(f"layout {hid}: real title polygon outside reservation")
+                title_width = polygons[hid].bounds[2] - polygons[hid].bounds[0]
+                column_width = zone["columns"][0][1] - zone["columns"][0][0]
+                if title_width <= column_width + plan["gutter"] - _LAYOUT_EPSILON:
+                    errors.append(f"layout {hid}: wide title must exceed one column plus gutter")
+                title_lines = [affine_transform(Polygon(lines[lid]["polygon"]), coefficients)
+                               for lid in blocks[hid]["line_ids"] if lid in lines]
+                if title_lines:
+                    bounds = (min(p.bounds[0] for p in title_lines), min(p.bounds[1] for p in title_lines),
+                              max(p.bounds[2] for p in title_lines), max(p.bounds[3] for p in title_lines))
+                    if polygons[hid].hausdorff_distance(box(*bounds)) > TOLERANCE:
+                        errors.append(f"layout {hid}: title polygon inflated beyond its line envelope")
+        used_columns = []
+        for bid in owned:
+            polygon, block = polygons[bid], blocks[bid]
+            if not box(*zone["bbox"]).buffer(TOLERANCE).covers(polygon):
+                errors.append(f"layout {bid}: block outside its article zone")
+            if bid != hid:
+                candidates = []
+                for column, (left, right) in enumerate(zone["columns"]):
+                    top, bottom = zone["bbox"][1], zone["bbox"][3]
+                    if zone["headline_span"] and column < zone["headline_span"]:
+                        band = zone["headline_body_band"]
+                        if zone["headline_reserved"] is None or band is None:
+                            errors.append(f"layout {name}: final headline reservation/body band missing")
+                            continue
+                        if headline:
+                            top = zone["headline_reserved"][3]
+                            spacing = typography[name]["line_spacing_small" if requested else "line_spacing_normal"]
+                            # Preparation envelopes are shared between raster factors;
+                            # final ink may end earlier. Only containment is asserted.
+                            bottom = band[3] - 0.6 * spacing
+                        else:
+                            top = band[3]
+                    if box(left, top, right, bottom).buffer(TOLERANCE).covers(polygon):
+                        candidates.append(column)
+                if len(candidates) != 1:
+                    errors.append(f"layout {bid}: block does not fit exactly one available column")
+                else:
+                    used_columns.append(candidates[0])
+                    if headline and candidates[0] not in headline["body_column_indices"]:
+                        errors.append(f"layout {bid}: body left the headline's reserved columns")
+            if block["category"] in {"texte", "annonce"}:
+                for lid in block["line_ids"]:
+                    font = lines.get(lid, {}).get("extensions", {}).get("mf:font", {})
+                    allowed_sizes = {expected_size}
+                    if block["category"] == "annonce":
+                        # Announcement headings retain category annonce. Dataset
+                        # validation disambiguates title/body via source roles.
+                        allowed_sizes.add(max(12, round(expected_size * 1.25)))
+                    if font.get("size") not in allowed_sizes:
+                        errors.append(f"layout {lid}: body line size differs from article")
+        if used_columns != sorted(used_columns):
+            errors.append(f"layout {aid}: article flows backwards through columns")
+        if headline:
+            body = [bid for bid in owned if bid != hid]
+            counts = [len(blocks[bid]["line_ids"]) for bid in body]
+            wanted_columns = list(range(zone["headline_span"] or 0))
+            if (used_columns != wanted_columns or len(body) != len(wanted_columns)
+                    or any(blocks[bid]["category"] != "texte" for bid in body)):
+                errors.append(f"layout {aid}: headline body requires one block in every spanned column")
+            if not counts or min(counts) < 2 or max(counts) - min(counts) > 1 or counts != sorted(counts, reverse=True):
+                errors.append(f"layout {aid}: headline body needs balanced columns with at least two lines each")
+        framing = meta["box"]
+        if framing:
+            if not owned or any(blocks[bid]["category"] != "annonce" for bid in owned):
+                errors.append(f"layout {aid}: frame only permitted for advertisement article")
+            if len(set(used_columns)) != 1:
+                errors.append(f"layout {aid}: boxed advertisement must remain in one column")
+            x0, y0, x1, y1 = framing["bbox"]
+            if owned:
+                bounds = [min(polygons[bid].bounds[0] for bid in owned),
+                          min(polygons[bid].bounds[1] for bid in owned),
+                          max(polygons[bid].bounds[2] for bid in owned),
+                          max(polygons[bid].bounds[3] for bid in owned)]
+                pad = framing["padding"] + 2
+                expected = [bounds[0] - pad, bounds[1] - pad, bounds[2] + pad, bounds[3] + pad]
+                if any(abs(actual - wanted) > TOLERANCE for actual, wanted in zip(framing["bbox"], expected)):
+                    errors.append(f"layout {aid}: frame bbox differs from real text envelope plus padding")
+            edges = [(x0, y0, x1, y0 + 2), (x1 - 2, y0, x1, y1),
+                     (x0, y1 - 2, x1, y1), (x0, y0, x0 + 2, y1)]
+            for rid, edge in zip(framing["rule_ids"], edges):
+                if rid in boxed_rules:
+                    errors.append(f"layout {rid}: frame rule reused by multiple advertisements")
+                boxed_rules.add(rid)
+                if rid not in blocks or blocks[rid]["category"] != "separateur" \
+                        or blocks[rid]["article_id"] is not None or polygons[rid].hausdorff_distance(box(*edge)) > TOLERANCE:
+                    errors.append(f"layout {rid}: frame rule missing, owned or geometrically incorrect")
+            if used_columns:
+                column = used_columns[0]
+                left, right = zone["columns"][column]
+                top = zone["bbox"][1]
+                if zone["headline_body_band"] and column < zone["headline_span"]:
+                    top = zone["headline_body_band"][3]
+                if not box(left, top, right, zone["bbox"][3]).buffer(TOLERANCE).covers(box(*framing["bbox"])):
+                    errors.append(f"layout {aid}: frame leaves its column")
+    if ranks != sorted(ranks):
+        errors.append("layout: reading order must finish main before rez_de_chaussee")
+    for name, zone in zones.items():
+        ids = zone_articles[name]
+        if not ids:
+            errors.append(f"layout {name}: zone contains no article")
+        headlines = [aid for aid in ids if articles[aid]["extensions"]["mf:layout"]["headline"]]
+        expected = ids[:1] if zone["headline_span"] is not None else []
+        if headlines != expected or (zone["headline_span"] is not None and
+                                     (zone["headline_reserved"] is None or zone["headline_body_band"] is None)):
+            errors.append(f"layout {name}: wide headline must belong to first zone article")
+    rules = {bid: poly for bid, poly in polygons.items() if blocks[bid]["category"] == "separateur"}
+    text = {bid: poly for bid, poly in polygons.items() if blocks[bid]["category"] not in _NON_TEXT}
+    attempts = [article["extensions"]["mf:layout"]["headline"]["attempts"]
+                for article in articles.values() if article.get("extensions", {}).get("mf:layout", {}).get("headline")]
+    if parameters["layout_rejected_candidates"]["headline"] != sum(attempt - 1 for attempt in attempts):
+        errors.append("layout: headline rejection count differs from successful attempt")
+    planned_rules = list(plan["zone_rules"])
+    for zone in zones.values():
+        for index in range(1, len(zone["columns"])):
+            center = (zone["columns"][index - 1][1] + zone["columns"][index][0]) / 2
+            top = zone["bbox"][1]
+            if zone["headline_reserved"] and index < zone["headline_span"]:
+                top = zone["headline_reserved"][3]
+            planned_rules.append([center - 1, top, center + 1, zone["bbox"][3]])
+    for rect in planned_rules:
+        matches = [rid for rid, polygon in rules.items() if polygon.hausdorff_distance(box(*rect)) <= TOLERANCE]
+        if len(matches) != 1 or any(rid in boxed_rules for rid in matches):
+            errors.append("layout: planned zone/column rule requires one distinct actual separator")
+    for rid, polygon in rules.items():
+        for bid, content in text.items():
+            if polygon.intersection(content).area > _LAYOUT_RULE_TEXT_AREA_TOLERANCE:
+                errors.append(f"layout {rid}/{bid}: rule intersects textual polygon (>0.5 px²)")
+    return errors
+
+
+def _load_layout_context(root: Path, manifest: dict, assets: dict):
+    """Read only the declared template/config of a v2 lot, never excluded texts."""
+    if manifest["profile"] != LAYOUT_PROFILE:
+        issues = ["layout: template_press_v2 is reserved for the v2 dataset profile"] if "template_press_v2" in assets else []
+        return None, issues
+    try:
+        from .layout import DEFAULT_OPTIONS, check_options
+
+        config = load_json(safe_path(root, manifest["config"]["path"]))["render"]
+        if config.get("layout_profile") != LAYOUT_PROFILE or config.get("degradation_profile") is None:
+            return None, ["layout: explicit layout and degradation profiles required in config"]
+        template = assets["template_press_v2"]
+        if template["kind"] != "template":
+            return None, ["layout: template_press_v2 must be a template asset"]
+        content = load_json(safe_path(root, template["path"]))
+        if (content.get("id") != "template_press_v2" or content.get("profile") != LAYOUT_PROFILE
+                or content.get("version") != "0.3.0" or content.get("calibrated") is not False):
+            return None, ["layout: wrong template identity/profile/version or calibrated claim"]
+        if [content.get("heading"), content.get("subtitle")] != template["metadata"].get("literal_text"):
+            return None, ["layout: template literal text differs from its registry metadata"]
+        options = check_options(content["layout_options"])
+        if options != DEFAULT_OPTIONS:
+            return None, ["layout: named v2 preset version 1 requires exact DEFAULT_OPTIONS"]
+        regular = [asset for asset in assets.values() if asset["kind"] == "font"
+                   and Path(asset["path"]).name == "OldStandard-Regular.ttf"]
+        if len(regular) != 1:
+            return None, ["layout: one declared OldStandard-Regular.ttf required for typography"]
+        return {"config": config, "options": options, "font": regular[0], "assets": assets}, []
+    except (OSError, ValueError, TypeError, KeyError, OverflowError) as exc:
+        return None, [f"layout: invalid template/config context: {exc}"]
+
+
+def _layout_template_errors(root: Path, page: dict, template: dict, context: dict) -> list[str]:
+    """Bind declared plan/font choices to the copied template and exact font metrics."""
+    from PIL import ImageFont
+    from .layout import small_body_size
+
+    errors = []
+    if template["id"] != "template_press_v2":
+        return ["layout: page must reference template_press_v2"]
+    parameters = page["provenance"]["parameters"]
+    plan, options, config = parameters["layout"], context["options"], context["config"]
+    for key in ("width", "height"):
+        if config.get(key) != plan[key]:
+            errors.append(f"layout: plan {key} differs from config")
+    main_count = len(plan["zones"][0]["columns"])
+    if config.get("columns") is not None and config["columns"] != main_count:
+        errors.append("layout: main column count differs from explicit config.columns")
+    for zone in plan["zones"]:
+        name, count = zone["id"], len(zone["columns"])
+        choices = options["main_columns" if name == "main" else "rez_de_chaussee_columns"]["choice"]
+        if count not in choices:
+            errors.append(f"layout {name}: column count absent from template options")
+        span = zone["headline_span"]
+        if span is not None and span not in {min(value, count - 1) for value in options["headline_span"]["choice"]}:
+            errors.append(f"layout {name}: headline span absent from template choices")
+        metrics = parameters["layout_typography"][name]
+        normal, small = metrics["normal_body_size"], metrics["small_body_size"]
+        if small != small_body_size(normal, options["small_body_ratio"]):
+            errors.append(f"layout {name}: small body differs from template ratio")
+        try:
+            for suffix, size in (("normal", normal), ("small", small)):
+                font = ImageFont.truetype(str(safe_path(root, context["font"]["path"])),
+                                         size=size, layout_engine=ImageFont.Layout.BASIC)
+                ascent, descent = font.getmetrics()
+                expected = max(size * 1.14, (ascent + descent) * 0.92)
+                band = zone["headline_body_band"]
+                if suffix == "normal" and band is not None and zone["bbox"][3] - band[3] + _LAYOUT_EPSILON < max(expected, ascent + descent):
+                    errors.append(f"layout {name}: body band leaves less than one normal font line")
+                if not _layout_close(metrics[f"line_spacing_{suffix}"], expected):
+                    errors.append(f"layout {name}: {suffix} interline differs from font metrics")
+        except (OSError, ValueError, TypeError) as exc:
+            errors.append(f"layout {name}: cannot verify font metrics: {exc}")
+    has_lower = len(plan["zones"]) == 2
+    probability = options["rez_de_chaussee_probability"]
+    if (probability == 0 and has_lower) or (probability == 1 and not has_lower):
+        errors.append("layout: lower zone contradicts template probability endpoint")
+    if has_lower:
+        share = plan["rez_de_chaussee_share"]
+        lo, hi = options["rez_de_chaussee_share"]
+        if not lo <= share <= hi:
+            errors.append("layout: lower zone share outside template interval")
+        gap = plan["zones"][1]["bbox"][1] - plan["zones"][0]["bbox"][3]
+        if not _layout_close(gap, options["zone_gap_px"]):
+            errors.append("layout: zone gap differs from template")
+    has_headline = plan["zones"][0]["headline_span"] is not None
+    probability = options["headline_probability"]
+    if (probability == 0 and has_headline) or (probability == 1 and main_count >= 3 and not has_headline):
+        errors.append("layout: headline contradicts template probability endpoint")
+    blocks = {block["id"]: block for block in page["blocks"]}
+    lines = {line["id"]: line for line in page["lines"]}
+    articles = {article["id"]: article for article in page["articles"]}
+    for span in page["provenance"]["text_spans"]:
+        asset = context["assets"].get(span["asset_id"], {})
+        role = asset.get("metadata", {}).get("role")
+        article = articles[span["article_id"]]
+        meta = article.get("extensions", {}).get("mf:layout")
+        if meta is None:
+            continue
+        for bid in span["block_ids"]:
+            size = meta["body_font_size"]
+            if role == "title":
+                multiplier = 2 if meta["headline"] and bid == meta["headline"]["block_id"] else 1.25
+                size = max(12, round(size * multiplier))
+            elif role not in {"body", "advertisement"}:
+                errors.append(f"layout {bid}: source role must identify title/body/advertisement")
+                continue
+            for lid in blocks[bid]["line_ids"]:
+                font = lines[lid].get("extensions", {}).get("mf:font", {})
+                actual_asset = context["assets"].get(font.get("asset_id"), {})
+                expected_name = "OldStandard-Bold.ttf" if role == "title" else "OldStandard-Regular.ttf"
+                if (font.get("size") != size or actual_asset.get("kind") != "font"
+                        or Path(actual_asset.get("path", "")).name != expected_name):
+                    errors.append(f"layout {lid}: font/size disagrees with source role and article typography")
+    for article in page["articles"]:
+        meta = article.get("extensions", {}).get("mf:layout")
+        if meta is None:
+            continue
+        role = "advertisement" if all(blocks[bid]["category"] == "annonce" for bid in article["block_ids"]) else "body"
+        probability = options["small_body_probability"][role]
+        if (probability == 0 and meta["small_body_requested"]) or (probability == 1 and not meta["small_body_requested"]):
+            errors.append(f"layout {article['id']}: small-body request contradicts template endpoint")
+        if role == "advertisement":
+            probability = options["boxed_ad_probability"]
+            if (probability == 0 and meta["box"] is not None) or (probability == 1 and meta["box"] is None):
+                errors.append(f"layout {article['id']}: box contradicts template probability endpoint")
+        if meta["box"]:
+            lo, hi = options["box_padding_px"]
+            if not lo <= meta["box"]["padding"] <= hi:
+                errors.append(f"layout {article['id']}: box padding outside template interval")
+    return errors

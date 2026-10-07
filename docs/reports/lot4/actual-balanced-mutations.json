@@ -1,0 +1,173 @@
+{
+  "status": "pass",
+  "source_root": "/private/tmp/mf-layout-pipeline-portable-integration-20261007-r1/layout_pipeline0/source",
+  "source_manifest_sha256": "1f22e8be2e65e7ef766b1281f46e0f61afda28f89b47e1910dae144e8a7b0ce7",
+  "source_generator": {
+    "commit": "5dd86f21d5e72cbf11d27d1efd75a17cb57843f0",
+    "dirty": true,
+    "environment_path": "environment.json",
+    "environment_sha256": "38078e294faef02fc0bfaf5e7eb58d1d1355f5a854a7651317a4d4849ea035b9"
+  },
+  "words": 1530,
+  "baseline": {
+    "page": "pass",
+    "template_typography": "pass"
+  },
+  "measured_geometry": {
+    "columns": [
+      0,
+      1
+    ],
+    "lines_per_body_block": [
+      3,
+      2
+    ],
+    "body_bounds_before_rotation": [
+      [
+        27.99999979135732,
+        136.99000017168942,
+        207.00000021743693,
+        172.79000048349562
+      ],
+      [
+        215.74999963754118,
+        136.99000000326245,
+        395.7500000234758,
+        159.39000017279412
+      ]
+    ],
+    "body_band": [
+      28.0,
+      136.99,
+      396.5,
+      179.63
+    ],
+    "band_bottom_minus_actual_ink": 6.839999516504378,
+    "declared_preparation_gap": 6.839999999999999
+  },
+  "mutations": [
+    {
+      "name": "relabel_as_older_measured_profile",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "page.articles.1.extensions: {'mf:layout': {'body_font_size': 10, 'box': None, 'headline': {'attempts': 1, 'block_id': 'mf_0000_b0003', 'body_column_indices': [0, 1], 'reservation_bbox': [28.0, 112, 396.5, 136.99]}, 'small_body': False, 'small_body_requested': False, 'zone_id': 'main'}} should not be valid under {'required': ['mf:layout']}",
+        "page.articles.10.extensions: {'mf:layout': {'body_font_size': 10, 'box': None, 'headline': None, 'small_body': False, 'small_body_requested': True, 'zone_id': 'main'}} should not be valid under {'required': ['mf:layout']}",
+        "page.articles.11.extensions: {'mf:layout': {'body_font_size': 10, 'box': {'bbox': [28.0, 723.5899999999996, 207.75, 801.7899999999995], 'padding': 6, 'rule_ids': ['mf_0000_b0022', 'mf_0000_b0023', 'mf_0000_b0024', 'mf_0000_b0025']}, 'headline': None, 'small_body': False, 'small_body_requested': True, 'zone_id': 'main'}} should not be valid under {'required': ['mf:layout']}",
+        "page.articles.12.extensions: {'mf:layout': {'body_font_size': 10, 'box': None, 'headline': None, 'small_body': False, 'small_body_requested': False, 'zone_id': 'main'}} should not be valid under {'required': ['mf:layout']}",
+        "page.articles.13.extensions: {'mf:layout': {'body_font_size': 10, 'box': None, 'headline': None, 'small_body': False, 'small_body_requested': False, 'zone_id': 'main'}} should not be valid under {'required': ['mf:layout']}",
+        "page.articles.14.extensions: {'mf:layout': {'body_font_size': 10, 'box': None, 'headline': None, 'small_body': False, 'small_body_requested': False, 'zone_id': 'main'}} should not be valid under {'required': ['mf:layout']}",
+        "page.articles.15.extensions: {'mf:layout': {'body_font_size': 10, 'box': None, 'headline': None, 'small_body': False, 'small_body_requested': True, 'zone_id': 'main'}} should not be valid under {'required': ['mf:layout']}",
+        "page.articles.16.extensions: {'mf:layout': {'body_font_size': 10, 'box': None, 'headline': None, 'small_body': False, 'small_body_requested': False, 'zone_id': 'main'}} should not be valid under {'required': ['mf:layout']}"
+      ]
+    },
+    {
+      "name": "remove_diagnostics",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "page.extensions: 'mf:diagnostics' is a required property"
+      ]
+    },
+    {
+      "name": "remove_body_band",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "layout main: final headline reservation/body band missing",
+        "layout main: final headline reservation/body band missing",
+        "layout mf_0000_b0004: block does not fit exactly one available column",
+        "layout main: final headline reservation/body band missing",
+        "layout main: final headline reservation/body band missing",
+        "layout mf_0000_b0005: block does not fit exactly one available column",
+        "layout mf_0000_a0001: headline body requires one block in every spanned column",
+        "layout main: final headline reservation/body band missing"
+      ]
+    },
+    {
+      "name": "expand_band_over_existing_ordinary_articles",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "layout mf_0000_b0006: block does not fit exactly one available column",
+        "layout mf_0000_b0007: block does not fit exactly one available column",
+        "layout mf_0000_b0027: block does not fit exactly one available column",
+        "layout mf_0000_b0028: block does not fit exactly one available column"
+      ]
+    },
+    {
+      "name": "claim_only_one_headline_column",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "layout mf_0000_a0001: headline reservation/columns differ from plan",
+        "layout mf_0000_b0005: body left the headline's reserved columns"
+      ]
+    },
+    {
+      "name": "claim_larger_lower_normal_body",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "layout rez_de_chaussee: normal body differs from main width/ratio",
+        "layout rez_de_chaussee: all zones must share main typography",
+        "layout mf_0000_a0048: requested/effective small body or body size inconsistent",
+        "layout mf_0000_l00208: body line size differs from article",
+        "layout mf_0000_l00209: body line size differs from article",
+        "layout mf_0000_l00210: body line size differs from article",
+        "layout mf_0000_l00211: body line size differs from article",
+        "layout mf_0000_l00212: body line size differs from article"
+      ]
+    },
+    {
+      "name": "claim_small_body_effective_despite_10px_clamp",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "layout mf_0000_a0001: requested/effective small body or body size inconsistent"
+      ]
+    },
+    {
+      "name": "omit_last_spanned_body_block",
+      "validator": "_layout_page_errors",
+      "status": "rejected",
+      "errors": [
+        "layout mf_0000_a0001: headline body requires one block in every spanned column"
+      ]
+    },
+    {
+      "name": "reduce_last_body_column_to_one_line",
+      "validator": "_layout_page_errors",
+      "status": "rejected",
+      "errors": [
+        "layout mf_0000_a0001: headline body needs balanced columns with at least two lines each"
+      ]
+    },
+    {
+      "name": "reverse_zone_order",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "layout: reading order must finish main before rez_de_chaussee"
+      ]
+    },
+    {
+      "name": "falsify_real_ad_frame_padding",
+      "validator": "validate_page",
+      "status": "rejected",
+      "errors": [
+        "layout mf_0000_a0011: frame bbox differs from real text envelope plus padding"
+      ]
+    },
+    {
+      "name": "falsify_template_options",
+      "validator": "_load_layout_context",
+      "status": "rejected",
+      "errors": [
+        "layout: named v2 preset version 1 requires exact DEFAULT_OPTIONS"
+      ]
+    }
+  ],
+  "source_lot_unchanged": true,
+  "limit": "Development evidence (dirty source). No complete acceptance or exact glyph-support proof; mutations are in-memory page/helper probes."
+}

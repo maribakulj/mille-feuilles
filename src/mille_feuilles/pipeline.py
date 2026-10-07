@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.metadata
+import math
 import platform
 import shutil
 import subprocess
@@ -18,7 +19,7 @@ from PIL import Image, ImageDraw, features
 
 from . import __version__
 from .io import ROOT, sha256, write_json
-from .render import Config, PROFILE, PROFILE_MEASURED, SCHEMA_VERSION, render_page
+from .render import Config, PROFILE, PROFILE_LAYOUT, PROFILE_MEASURED, SCHEMA_VERSION, render_page
 
 
 def environment() -> dict:
@@ -55,12 +56,16 @@ def git_state() -> tuple[str, bool]:
 
 
 def prepare_assets(
-    root: Path, source: Path = ROOT, allowed_text_ids: set[str] | None = None
+    root: Path, source: Path = ROOT, allowed_text_ids: set[str] | None = None,
+    layout_profile: str | None = None,
 ) -> list[dict]:
     """Copy assets and their evidence, preserving the verified source catalog."""
     from .catalog import load_catalog, text_group, validate_catalog
     from .validation import safe_path
 
+    if layout_profile not in (None, PROFILE_LAYOUT):
+        raise ValueError("Profil de mise en page inconnu")
+    template_id = "template_press_v2" if layout_profile else "template_press_v1"
     source = Path(source).resolve()
     catalog_path = safe_path(source, "assets/catalog.json")
     catalog = load_catalog(source)
@@ -68,7 +73,7 @@ def prepare_assets(
     if errors:
         raise ValueError("Catalogue d'actifs invalide : " + "; ".join(errors[:5]))
     ids = [a["id"] for a in catalog["assets"]]
-    if len(ids) != len(set(ids)) or "template_press_v1" in ids:
+    if len(ids) != len(set(ids)) or {"template_press_v1", "template_press_v2"}.intersection(ids):
         raise ValueError("Identifiants d'actifs dupliqués ou identifiant de template réservé")
     for asset in catalog["assets"]:
         if asset["rights"]["status"] != "verified" or not asset["rights"]["redistribution_allowed"]:
@@ -132,18 +137,24 @@ def prepare_assets(
         "https://creativecommons.org/publicdomain/zero/1.0/\n",
         encoding="utf-8",
     )
-    write_json(
-        template_path,
-        {
-            "id": "template_press_v1",
-            "version": SCHEMA_VERSION,
-            "profile": PROFILE,
-            "heading": "MILLE FEUILLES",
-            "subtitle": "Journal de démonstration — Édition synthétique",
-            "layout": "masthead; article-by-article column flow; unordered rules",
-            "source": "original demonstration template, not a historical facsimile",
-        },
-    )
+    template = {
+        "id": template_id,
+        "version": SCHEMA_VERSION,
+        "profile": layout_profile or PROFILE,
+        "heading": "MILLE FEUILLES",
+        "subtitle": "Journal de démonstration — Édition synthétique",
+        "layout": "masthead; article-by-article column flow; unordered rules",
+        "source": "original demonstration template, not a historical facsimile",
+    }
+    if layout_profile:
+        from .layout import DEFAULT_OPTIONS
+
+        template.update({
+            "layout": "masthead; main and optional lower column zones; wide headline; boxed ads",
+            "layout_options": deepcopy(DEFAULT_OPTIONS),
+            "calibrated": False,
+        })
+    write_json(template_path, template)
     assets = deepcopy(catalog["assets"])
     # New registries use explicit groups, including when the input was 0.2.0.
     for asset in assets:
@@ -152,11 +163,14 @@ def prepare_assets(
             asset["metadata"].setdefault("language", "fr")
     assets += [
         {
-            "id": "template_press_v1",
+            "id": template_id,
             "kind": "template",
             "path": "assets/template.json",
             "sha256": sha256(template_path),
-            "source_uri": f"urn:mille-feuilles:original-template:v{SCHEMA_VERSION}",
+            "source_uri": (
+                f"urn:mille-feuilles:original-template:v{SCHEMA_VERSION}:{template_id}"
+                if layout_profile else f"urn:mille-feuilles:original-template:v{SCHEMA_VERSION}"
+            ),
             "rights": {
                 "status": "verified",
                 "license": "CC0-1.0",
@@ -279,6 +293,70 @@ def contact_sheets(pages: list[dict], root: Path, prefix: str = "contact") -> No
         sheet.save(root / "qa" / f"{prefix}_{offset // 10:02d}.jpg", quality=88)
 
 
+def layout_statistics(pages: list[dict], layout_options: dict) -> dict:
+    """Summarize observed layouts; line heights use rotated edge lengths in pixels."""
+    layout_articles = [
+        article["extensions"]["mf:layout"]
+        for page in pages for article in page["articles"]
+        if "mf:layout" in article.get("extensions", {})
+    ]
+    line_heights = {}
+    for page in pages:
+        block_zones = {
+            block_id: article["extensions"]["mf:layout"]["zone_id"]
+            for article in page["articles"]
+            if "mf:layout" in article.get("extensions", {})
+            for block_id in article["block_ids"]
+        }
+        for line in page["lines"]:
+            zone_id = block_zones.get(line["block_id"])
+            if zone_id is None:
+                continue
+            # Rotation preserves this edge length; an axis-aligned envelope
+            # would spuriously grow with line width and page inclination.
+            polygon = line["polygon"]
+            height = math.hypot(
+                polygon[3][0] - polygon[0][0], polygon[3][1] - polygon[0][1]
+            )
+            line_heights.setdefault(zone_id, Counter())[str(round(height))] += 1
+    clamped_requests = sum(
+        article["extensions"]["mf:layout"]["small_body_requested"]
+        and round(page["provenance"]["parameters"]["layout_typography"][
+            article["extensions"]["mf:layout"]["zone_id"]
+        ]["normal_body_size"] * layout_options["small_body_ratio"]) < 10
+        for page in pages for article in page["articles"]
+        if "mf:layout" in article.get("extensions", {})
+    )
+    return {
+        "profile": PROFILE_LAYOUT,
+        "calibrated": False,
+        "zones": dict(sorted(Counter(
+            zone["id"] for page in pages
+            for zone in page["provenance"]["parameters"]["layout"]["zones"]
+        ).items())),
+        "zone_columns": dict(sorted(Counter(
+            f"{zone['id']}:{len(zone['columns'])}" for page in pages
+            for zone in page["provenance"]["parameters"]["layout"]["zones"]
+        ).items())),
+        "wide_headlines": sum(item["headline"] is not None for item in layout_articles),
+        "boxed_ads": sum(item["box"] is not None for item in layout_articles),
+        "small_body_articles": sum(item["small_body"] for item in layout_articles),
+        "small_body_requests": sum(item["small_body_requested"] for item in layout_articles),
+        "small_body_clamped": clamped_requests,
+        "small_body_inactive": sum(
+            item["small_body_requested"] and not item["small_body"] for item in layout_articles
+        ),
+        "line_heights_px": {
+            zone_id: dict(sorted(counts.items(), key=lambda item: int(item[0])))
+            for zone_id, counts in sorted(line_heights.items())
+        },
+        "line_height_bin_px": 1,
+        "body_sizes": dict(sorted(Counter(
+            str(item["body_font_size"]) for item in layout_articles
+        ).items())),
+    }
+
+
 def build_dataset(
     output: Path,
     config: Config,
@@ -307,7 +385,7 @@ def build_dataset(
         raise ValueError(
             "Espace disque insuffisant pour ce lot ; réduire dimensions/nombre de pages"
         )
-    assets = prepare_assets(root, source, selected)
+    assets = prepare_assets(root, source, selected, layout_profile=config.layout_profile)
     receipt = None
     if plan_path is not None:
         (root / "provenance").mkdir()
@@ -425,6 +503,10 @@ def build_dataset(
             by_id[p["page_id"]]["contrast"], p["page_id"],
         ))
         contact_sheets(severe_first, root, prefix="severity")
+    if config.layout_profile:
+        statistics["layout"] = layout_statistics(
+            pages, load_json(root / "assets/template.json")["layout_options"]
+        )
     write_json(root / "qa/statistics.json", statistics)
     artifacts = [
         {
@@ -441,12 +523,14 @@ def build_dataset(
         from .degrade import profile_sha256
 
         dataset_id += f"_measured_{profile_sha256(config.degradation_profile)[:12]}"
+    if config.layout_profile:
+        dataset_id += "_layout_v2"
     if receipt:
         dataset_id += f"_{config.partition}_{receipt['sha256'][:12]}"
     manifest = {
         "schema_version": SCHEMA_VERSION,
         "dataset_id": dataset_id,
-        "profile": PROFILE_MEASURED if degradation_ref else PROFILE,
+        "profile": config.layout_profile or (PROFILE_MEASURED if degradation_ref else PROFILE),
         "generator": {
             "commit": commit,
             "dirty": dirty,

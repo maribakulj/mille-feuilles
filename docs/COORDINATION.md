@@ -194,3 +194,16 @@ schémas, la validation, le pipeline et le CLI. Les relectures ont déjà corrig
 les entrées mal formées du planificateur, le coût du filtrage des colonnes et la
 confusion entre rejets de candidats et essais de clôture d'une zone. Ces tests
 purs restent distincts de l'acceptation à venir sur des pages v2 rendues.
+
+Le lot 4 est ensuite intégré dans le dépôt. La première génération réelle
+révèle une perte des extensions d'article dans ALTO, corrigée et couverte par
+un test de relecture et de mutation. La revue visuelle du binôme conduit à
+amender le contrat : le corps du titre large occupe toutes les colonnes
+annoncées dans une bande équilibrée, et les zones partagent le corps normal
+de la zone principale. Les prototypes antérieurs sont conservés comme essais
+de l'ancien contrat, sans être réétiquetés comme preuves du nouveau.
+
+Claude adapte le planificateur et relit les pages ainsi que le protocole CLI.
+Les agents Codex se répartissent rendu, validation et intégration partitionnée,
+avec fichiers exclusifs ; Codex coordonne exports, pipeline, campagnes et
+preuves. Le gel précède la suite complète puis le commit source et l'acceptation.

@@ -7,6 +7,7 @@ is independent of glyph shaping; no OCR is used to recover annotations.
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 import random
 import re
@@ -24,6 +25,7 @@ from .io import sha256, write_json
 
 PROFILE = "fr_press_19c_columns_4_6"
 PROFILE_MEASURED = "fr_press_19c_columns_4_6_measured"
+PROFILE_LAYOUT = "fr_press_19c_layout_v2"
 SCHEMA_VERSION = "0.3.0"
 # An explicit portable Latin/NFC profile, not an environment-dependent fallback.
 # BASIC renders the same precomposed glyphs used for measurement; discretionary
@@ -41,6 +43,7 @@ class Config:
     seed: int = 20261007
     partition: str | None = None
     degradation_profile: dict | None = None
+    layout_profile: str | None = None
 
     def validate(self) -> None:
         if not (800 <= self.width <= 6000 and 1100 <= self.height <= 8500):
@@ -64,11 +67,17 @@ class Config:
             from .degrade import check_profile
 
             check_profile(self.degradation_profile)
+        if self.layout_profile not in (None, PROFILE_LAYOUT):
+            raise ValueError("Profil de mise en page inconnu")
+        if self.layout_profile is not None and self.degradation_profile is None:
+            raise ValueError("Le profil de mise en page exige un degradation_profile explicite")
 
     def as_dict(self) -> dict:
         value = asdict(self)
         if self.degradation_profile is None:
             del value["degradation_profile"]
+        if self.layout_profile is None:
+            del value["layout_profile"]
         return value
 
 
@@ -127,11 +136,14 @@ class Composer:
             if not units:
                 raise ValueError(f"Au moins une unité de texte requise pour le rôle {role}")
             self.role_units[role] = units
-        self.cols = config.columns or self.rng.choices([4, 5, 6], [1, 3, 6])[0]
-        self.margin = round(config.width * 0.035)
-        self.gutter = round(config.width * self.rng.uniform(0.007, 0.010))
-        self.col_w = (config.width - 2 * self.margin - (self.cols - 1) * self.gutter) / self.cols
-        self.font_size = max(10, round(self.col_w / self.rng.uniform(19.5, 21.5)))
+        if config.layout_profile is not None:
+            self._init_layout_v2()
+        else:
+            self.cols = config.columns or self.rng.choices([4, 5, 6], [1, 3, 6])[0]
+            self.margin = round(config.width * 0.035)
+            self.gutter = round(config.width * self.rng.uniform(0.007, 0.010))
+            self.col_w = (config.width - 2 * self.margin - (self.cols - 1) * self.gutter) / self.cols
+            self.font_size = max(10, round(self.col_w / self.rng.uniform(19.5, 21.5)))
         self.regular = self.font("OldStandard-Regular.ttf", self.font_size)
         self.bold = self.font("OldStandard-Bold.ttf", max(12, round(self.font_size * 1.25)))
         self.masthead = self.font("OldStandard-Bold.ttf", round(config.width * 0.040))
@@ -166,6 +178,441 @@ class Composer:
     def font(self, name: str, size: int) -> ImageFont.FreeTypeFont:
         path = self.asset_root / self.by_name[name]["path"]
         return ImageFont.truetype(path, size=size, layout_engine=ImageFont.Layout.BASIC)
+
+    def _init_layout_v2(self) -> None:
+        from . import layout
+
+        templates = [a for a in self.assets if a["id"] == "template_press_v2"]
+        if len(templates) != 1 or templates[0]["kind"] != "template":
+            raise layout.LayoutError("Un actif template_press_v2 unique est requis")
+        template_path = self.asset_root / templates[0]["path"]
+        if sha256(template_path) != templates[0]["sha256"]:
+            raise layout.LayoutError("Empreinte du gabarit de mise en page incohérente")
+        template = json.loads(template_path.read_text(encoding="utf-8"))
+        if not isinstance(template, dict) or template.get("id") != "template_press_v2":
+            raise layout.LayoutError("Gabarit de mise en page v2 invalide")
+        self.layout_options = deepcopy(layout.check_options(template.get("layout_options")))
+        if self.config.columns is not None:
+            self.layout_options["main_columns"] = {
+                "choice": [self.config.columns], "weights": [1],
+            }
+        self.margin = round(self.config.width * 0.035)
+        # This order belongs to the v2 composition stream. Photometry and
+        # oversampling never consume it or affect the chosen horizontal layout.
+        self.gutter = round(self.config.width * self.rng.uniform(0.007, 0.010))
+        self.layout_body_ratio = self.rng.uniform(19.5, 21.5)
+        self._layout_fonts = {}
+        self._layout_word_bounds = {}
+        # Measure each distinct non-hyphenatable token, not every paragraph for
+        # every column option. Oversized splittable units are rejected later as
+        # individual composition candidates, without removing all column choices.
+        self._layout_unbreakable = {
+            role: sorted({word for _, text, _, _ in units for word in text.split()
+                          if role == "title" or not word.isalpha() or len(word) < 8})
+            for role, units in self.role_units.items()
+        }
+        self.font_size, self.hyphen_number = 10, 0
+        self.layout_draws = layout.draw_layout(
+            self.rng, self.layout_options,
+            width=self.config.width, height=self.config.height,
+            margin=self.margin, gutter=self.gutter, column_ok=self._v2_column_ok,
+            rdc_column_ok=self._v2_column_ok,
+        )
+        self.layout_typography = {}
+        main = self.layout_draws["zones"][0]
+        main_width = main["columns"][0][1] - main["columns"][0][0]
+        normal = max(10, round(main_width / self.layout_body_ratio))
+        small = layout.small_body_size(normal, self.layout_options["small_body_ratio"])
+        for zone in self.layout_draws["zones"]:
+            self.layout_typography[zone["id"]] = {
+                "normal_body_size": normal, "small_body_size": small,
+                "line_spacing_normal": self._v2_spacing(normal),
+                "line_spacing_small": self._v2_spacing(small),
+            }
+        self.cols = len(self.layout_draws["zones"][0]["columns"])
+        self.col_w = (self.config.width - 2 * self.margin - (self.cols - 1) * self.gutter) / self.cols
+        self.font_size = self.layout_typography["main"]["normal_body_size"]
+        self.layout_rejected_candidates = {"headline": 0, "boxed_ad": 0, "ordinary": 0}
+        self.layout_termination_rejections = {}
+
+    def _v2_font(self, name: str, size: int) -> ImageFont.FreeTypeFont:
+        key = name, size
+        if key not in self._layout_fonts:
+            self._layout_fonts[key] = self.font(name, size)
+        return self._layout_fonts[key]
+
+    def _v2_spacing(self, size: int) -> float:
+        return max(size * 1.14, sum(self._v2_font("OldStandard-Regular.ttf", size).getmetrics()) * 0.92)
+
+    def _v2_word_bounds(self, text: str, font: ImageFont.FreeTypeFont) -> tuple:
+        """The same native annotation bounds as add_line, without drawing.
+
+        Both raster factors are included for v2 fitting. This deliberately makes
+        the composition independent of the chosen coverage sampling factor;
+        final annotations still use only the support of the actual raster.
+        """
+        key = font.path, font.size, text
+        if key not in self._layout_word_bounds:
+            ascent, descent = font.getmetrics()
+            advance = font.getlength(text, **SHAPING)
+            native = font.getbbox(text, anchor="ls", **SHAPING)
+            font_key = font.path, font.size
+            if font_key not in self._raster_fonts:
+                self._raster_fonts[font_key] = font.font_variant(size=font.size * 2)
+            doubled = self._raster_fonts[font_key].getbbox(text, anchor="ls", **SHAPING)
+            left = min(0, native[0], doubled[0] / 2)
+            top = min(-ascent, native[1], doubled[1] / 2)
+            right = max(advance, native[2], doubled[2] / 2)
+            bottom = max(descent, native[3], doubled[3] / 2)
+            self._layout_word_bounds[key] = advance, (left, top, right, bottom)
+        return self._layout_word_bounds[key]
+
+    def _v2_row_bounds(self, tokens: list[dict], font: ImageFont.FreeTypeFont,
+                       width: float, justify: bool) -> list[float]:
+        measured = [self._v2_word_bounds(t["text"], font) for t in tokens]
+        space = font.getlength(" ", **SHAPING)
+        if justify and len(tokens) > 3:
+            space = min(space * 2.7, max(space, (width - sum(a for a, _ in measured)) / (len(tokens) - 1)))
+        bounds, pen = [], 0.0
+        for advance, (left, top, right, bottom) in measured:
+            bounds.append([pen + left, top, pen + right, bottom])
+            pen += advance + space
+        return [min(b[0] for b in bounds), min(b[1] for b in bounds),
+                max(b[2] for b in bounds), max(b[3] for b in bounds)]
+
+    def _v2_rows(self, text: str, font: ImageFont.FreeTypeFont, width: float,
+                 *, hyphenate: bool, justify: bool) -> tuple[list[dict], int]:
+        """Plan complete rows; rejected trials never consume hyphen IDs."""
+        from .layout import LayoutError
+
+        original_size, original_hyphen = self.font_size, self.hyphen_number
+        available = width
+        try:
+            self.font_size = font.size
+            for _ in range(8):
+                self.hyphen_number = original_hyphen
+                if available <= 0:
+                    break
+                rows = self.wrap(text, font, available, hyphenate)
+                planned = []
+                excess = 0.0
+                for index, tokens in enumerate(rows):
+                    justified = justify and index < len(rows) - 1
+                    bounds = self._v2_row_bounds(tokens, font, available, justified)
+                    excess = max(excess, bounds[2] - bounds[0] - width)
+                    planned.append({"tokens": tokens, "font": font, "width": available,
+                                    "justify": justified, "bounds": bounds})
+                if excess <= 1e-7:
+                    return planned, self.hyphen_number
+                available -= excess + 1
+            raise LayoutError("Enveloppe glyphique trop large pour la colonne")
+        finally:
+            self.font_size, self.hyphen_number = original_size, original_hyphen
+
+    def _v2_column_ok(self, width: float, main_width: float | None = None) -> bool:
+        """Reject unusable column choices before the planner draws a count."""
+        from .layout import small_body_size
+
+        normal = max(10, round((width if main_width is None else main_width) / self.layout_body_ratio))
+        sizes = {normal, small_body_size(normal, self.layout_options["small_body_ratio"])}
+        inset = max(self.layout_options["box_padding_px"]) + 2
+        title_width = width - 2 * inset if self.layout_options["boxed_ad_probability"] else width
+        for size in sorted(sizes):
+            regular = self._v2_font("OldStandard-Regular.ttf", size)
+            bold = self._v2_font("OldStandard-Bold.ttf", max(12, round(size * 1.25)))
+            for role in ("title", "body", "advertisement"):
+                available = width if role == "body" else title_width
+                font = bold if role == "title" else regular
+                for token in self._layout_unbreakable[role]:
+                    _, bounds = self._v2_word_bounds(token, font)
+                    if bounds[2] - bounds[0] > available:
+                        return False
+        return True
+
+    @staticmethod
+    def _v2_placed(row: dict, x: float, baseline: float, column: int, kind: str) -> dict:
+        return {**row, "x": x - row["bounds"][0], "baseline": baseline,
+                "column": column, "kind": kind}
+
+    @staticmethod
+    def _v2_bounds(rows: list[dict]) -> list[float]:
+        return [min(r["x"] + r["bounds"][0] for r in rows),
+                min(r["baseline"] + r["bounds"][1] for r in rows),
+                max(r["x"] + r["bounds"][2] for r in rows),
+                max(r["baseline"] + r["bounds"][3] for r in rows)]
+
+    @staticmethod
+    def _v2_native_width(rows: list[dict]) -> float:
+        """Actual native headline envelope; never substitute its reservation.
+
+        The ×2 annotations also contain this native support, so checking this
+        narrower envelope makes the decision independent of raster factor.
+        """
+        lefts, rights = [], []
+        for row in rows:
+            font, pen = row["font"], row["x"]
+            space = font.getlength(" ", **SHAPING)
+            for token in row["tokens"]:
+                text = token["text"]
+                advance = font.getlength(text, **SHAPING)
+                bounds = font.getbbox(text, anchor="ls", **SHAPING)
+                lefts.append(pen + min(0, bounds[0]))
+                rights.append(pen + max(advance, bounds[2]))
+                pen += advance + space
+        return max(rights) - min(lefts)
+
+    def _v2_balance(self, rows: list[dict], rects: list[list[float]], spacing: float) -> dict | None:
+        """Distribute a complete segment across all headline columns."""
+        per_column, extra = divmod(len(rows), len(rects))
+        if per_column < 2:
+            return None
+        placed, offset = [], 0
+        for column, rect in enumerate(rects):
+            count = per_column + (column < extra)
+            chunk = rows[offset:offset + count]
+            baseline = rect[1] - chunk[0]["bounds"][1]
+            for row in chunk:
+                if baseline + row["bounds"][3] > rect[3]:
+                    return None
+                placed.append(self._v2_placed(row, rect[0], baseline, column, "body"))
+                baseline += spacing
+            offset += count
+        return {"rows": placed, "bottom": self._v2_bounds(placed)[3]}
+
+    def _v2_fit(self, body: list[dict], heading: list[dict], rects: list[list[float]],
+                cursor: tuple[int, float], spacing: float, padding: int | None = None) -> dict | None:
+        """Fit a whole article before touching pixels, IDs or source spans."""
+        for first_column in range(cursor[0], len(rects)):
+            first_y = cursor[1] if first_column == cursor[0] else rects[first_column][1]
+            inset = padding + 2 if padding is not None else 0
+            column = first_column
+            x0, top, _x1, bottom = rects[column]
+            y = max(top, first_y) + inset
+            bottom -= inset
+            placed = []
+            for row in heading:
+                baseline = y - row["bounds"][1]
+                placed.append(self._v2_placed(row, x0 + inset, baseline, column, "heading"))
+                y = baseline + row["bounds"][3] + 2
+            if y - body[0]["bounds"][1] + body[0]["bounds"][3] > bottom:
+                continue
+            baseline = y - body[0]["bounds"][1]
+            for index, row in enumerate(body):
+                if baseline + row["bounds"][3] > bottom:
+                    if padding is not None or column + 1 >= len(rects):
+                        break
+                    column += 1
+                    x0, top, _x1, bottom = rects[column]
+                    baseline = top - row["bounds"][1]
+                if baseline + row["bounds"][3] > bottom:
+                    break
+                placed.append(self._v2_placed(row, x0 + inset, baseline, column, "body"))
+                if index == len(body) - 1:
+                    end = baseline + row["bounds"][3] + inset + spacing * 0.6
+                    return {"rows": placed, "cursor": (column, end)}
+                baseline += spacing
+            if padding is None:
+                # Starting later cannot add capacity to a flowing article.
+                return None
+        return None
+
+    def _v2_span(self, unit: tuple, article: dict, block_ids: list[str]) -> None:
+        source, _, start, end = unit
+        self.used_spans.append({
+            "asset_id": source["id"], "start": start, "end": end,
+            "source_document_id": source["metadata"]["source_document_id"],
+            "article_id": article["id"], "block_ids": block_ids,
+        })
+
+    def _v2_commit(self, candidate: dict) -> dict:
+        article = self.article()
+        meta = candidate["metadata"]
+        article["extensions"] = {"mf:layout": meta}
+        block, previous = None, None
+        blocks_by_kind = {"heading": [], "body": []}
+        for row in candidate["rows"]:
+            key = row["kind"], row["column"]
+            if key != previous:
+                category = "annonce" if candidate["ad"] else ("titre" if key[0] == "heading" else "texte")
+                block = self.block(category, article)
+                blocks_by_kind[key[0]].append(block["id"])
+                previous = key
+            self.add_line(row["tokens"], block, row["x"], row["baseline"], row["font"],
+                          row["width"], justify=row["justify"])
+        if blocks_by_kind["heading"]:
+            self._v2_span(candidate["title"], article, blocks_by_kind["heading"])
+        self._v2_span(candidate["body"], article, blocks_by_kind["body"])
+        self.hyphen_number = candidate["next_hyphen"]
+        if meta["headline"] is not None:
+            meta["headline"]["block_id"] = blocks_by_kind["heading"][0]
+        if candidate["padding"] is not None:
+            # The frame follows actual annotations, not a nominal justified
+            # width; all four interior gaps are exactly the recorded padding.
+            polygons = [b["polygon"] for b in self.blocks if b["article_id"] == article["id"]]
+            content = envelope(polygons)
+            inset = candidate["padding"] + 2
+            x0, y0 = content[0][0] - inset, content[0][1] - inset
+            x1, y1 = content[2][0] + inset, content[2][1] + inset
+            rule_ids = []
+            for rect in ([x0, y0, x1, y0 + 2], [x1 - 2, y0, x1, y1],
+                         [x0, y1 - 2, x1, y1], [x0, y0, x0 + 2, y1]):
+                self.separator(*rect)
+                rule_ids.append(self.blocks[-1]["id"])
+            meta["box"] = {"padding": candidate["padding"], "rule_ids": rule_ids,
+                           "bbox": [x0, y0, x1, y1]}
+        return article
+
+    def _v2_type(self, zone_id: str, role: str) -> tuple[dict, ImageFont.FreeTypeFont, float]:
+        typo = self.layout_typography[zone_id]
+        requested = self.rng.random() < self.layout_options["small_body_probability"][role]
+        size = typo["small_body_size"] if requested else typo["normal_body_size"]
+        metadata = {"zone_id": zone_id, "body_font_size": size,
+                    "small_body_requested": requested, "small_body": size < typo["normal_body_size"],
+                    "headline": None, "box": None}
+        spacing = typo["line_spacing_small"] if requested else typo["line_spacing_normal"]
+        return metadata, self._v2_font("OldStandard-Regular.ttf", size), spacing
+
+    def _v2_headline(self, zone: dict) -> tuple[int, float]:
+        from . import layout
+
+        meta, font, spacing = self._v2_type(zone["id"], "body")
+        headline_font = self._v2_font("OldStandard-Bold.ttf", max(12, round(font.size * 2)))
+        area = layout.headline_rect(self.layout_plan, zone["id"])
+        for attempt in range(1, 33):
+            body = self.rng.choice(self.role_units["body"])
+            title = self.rng.choice(self.role_units["title"])
+            try:
+                headings, _ = self._v2_rows(title[1], headline_font, area[2] - area[0],
+                                           hyphenate=False, justify=False)
+                placed, y = [], area[1]
+                for row in headings:
+                    baseline = y - row["bounds"][1]
+                    placed.append(self._v2_placed(row, area[0], baseline, 0, "heading"))
+                    y = baseline + row["bounds"][3] + 2
+                single_width = zone["columns"][0][1] - zone["columns"][0][0]
+                if self._v2_native_width(placed) <= single_width + self.gutter:
+                    raise layout.LayoutError("Le titre large ne dépasse pas une colonne et sa gouttière")
+                # Preview uses a common ×1/×2 envelope; both reservations do too.
+                headline_bottom = self._v2_bounds(placed)[3]
+                plan = layout.reserve_headline(self.layout_plan, zone["id"], headline_bottom, spacing * 0.35)
+                rects = layout.headline_columns(plan, zone["id"])
+                body_rows, next_hyphen = self._v2_rows(
+                    body[1], font, rects[0][2] - rects[0][0], hyphenate=True, justify=True,
+                )
+                fit = self._v2_balance(body_rows, rects, spacing)
+                if fit is not None:
+                    normal = self.layout_typography[zone["id"]]["normal_body_size"]
+                    normal_height = sum(self._v2_font("OldStandard-Regular.ttf", normal).getmetrics())
+                    plan = layout.reserve_headline_band(
+                        plan, zone["id"], fit["bottom"], spacing * 0.6,
+                        max(normal_height, self.layout_typography[zone["id"]]["line_spacing_normal"]),
+                    )
+            except ValueError:
+                fit = None
+            if fit is None:
+                self.layout_rejected_candidates["headline"] += 1
+                continue
+            self.layout_plan = plan
+            accepted_zone = next(z for z in plan["zones"] if z["id"] == zone["id"])
+            reserved = accepted_zone["headline_reserved"]
+            meta["headline"] = {"block_id": None, "reservation_bbox": deepcopy(reserved),
+                                "body_column_indices": sorted({row["column"] for row in fit["rows"]}),
+                                "attempts": attempt}
+            self._v2_commit({"metadata": meta, "rows": placed + fit["rows"], "body": body,
+                             "title": title, "ad": False, "padding": None,
+                             "next_hyphen": next_hyphen})
+            return (0, accepted_zone["headline_body_band"][3])
+        raise layout.LayoutError("Aucun article complet ne tient sous le titre large après 32 essais")
+
+    def _v2_zone(self, zone: dict) -> None:
+        from . import layout
+
+        before = len(self.articles)
+        if zone["headline_span"] is not None:
+            cursor = self._v2_headline(zone)
+        else:
+            cursor = (0, zone["bbox"][1])
+        rects = layout.columns_below(self.layout_plan, zone["id"])
+        rejected = 0
+        pending_rejections = {"boxed_ad": 0, "ordinary": 0}
+        while rejected < 32:
+            ad = self.rng.random() < 0.18
+            role = "advertisement" if ad else "body"
+            meta, font, spacing = self._v2_type(zone["id"], role)
+            boxed = ad and self.rng.random() < self.layout_options["boxed_ad_probability"]
+            padding = self.rng.randint(*self.layout_options["box_padding_px"]) if boxed else None
+            body = self.rng.choice(self.role_units[role])
+            title = self.rng.choice(self.role_units["title"])
+            wants_title = self.rng.random() < (0.25 if ad else 0.55)
+            width = rects[0][2] - rects[0][0] - (2 * (padding + 2) if boxed else 0)
+            try:
+                rows, next_hyphen = self._v2_rows(body[1], font, width, hyphenate=True, justify=True)
+                heading = []
+                if wants_title:
+                    bold = self._v2_font("OldStandard-Bold.ttf", max(12, round(font.size * 1.25)))
+                    heading, _ = self._v2_rows(title[1], bold, width, hyphenate=False, justify=False)
+                fit = self._v2_fit(rows, heading, rects, cursor, spacing, padding)
+            except ValueError:
+                fit = None
+            if fit is None:
+                rejected += 1
+                pending_rejections["boxed_ad" if boxed else "ordinary"] += 1
+                continue
+            for kind, count in pending_rejections.items():
+                self.layout_rejected_candidates[kind] += count
+            self._v2_commit({"metadata": meta, "rows": fit["rows"], "body": body,
+                             "title": title, "ad": ad, "padding": padding,
+                             "next_hyphen": next_hyphen})
+            cursor = fit["cursor"]
+            rejected = 0
+            pending_rejections = {"boxed_ad": 0, "ordinary": 0}
+        self.layout_termination_rejections[zone["id"]] = rejected
+        if len(self.articles) == before:
+            raise layout.LayoutError(f"Aucun article complet ne tient dans la zone {zone['id']}")
+
+    def _content_v2(self) -> None:
+        from . import layout
+
+        header = self.article()
+        self.template_article_ids.append(header["id"])
+        title = self.block("titre", header)
+        heading = "MILLE FEUILLES"
+        head_width = self.masthead.getlength(heading, **SHAPING)
+        baseline = self.margin + self.masthead.getmetrics()[0]
+        self.add_line([{"text": word} for word in heading.split()], title,
+                      (self.config.width - head_width) / 2, baseline, self.masthead, head_width)
+        subtitle = "Journal de démonstration — Édition synthétique"
+        metadata_block = self.block("texte", header)
+        subfont = self.font("OldStandard-Regular.ttf", round(self.font_size * 1.25))
+        subwidth = subfont.getlength(subtitle, **SHAPING)
+        self.add_line([{"text": word} for word in subtitle.split()], metadata_block,
+                      (self.config.width - subwidth) / 2, baseline + self.font_size * 2, subfont, subwidth)
+        head_bounds = self._v2_row_bounds(
+            [{"text": word} for word in heading.split()], self.masthead, head_width, False,
+        )
+        sub_bounds = self._v2_row_bounds(
+            [{"text": word} for word in subtitle.split()], subfont, subwidth, False,
+        )
+        header_bottom = max(baseline + head_bounds[3], baseline + self.font_size * 2 + sub_bounds[3])
+        self.top = max(self.top, baseline + self.font_size * 4, header_bottom + self.spacing * 2)
+        self.separator(self.margin, self.top - self.spacing * 1.2,
+                       self.config.width - self.margin, self.top - self.spacing * 1.2 + 2)
+        self.layout_plan = layout.place_zones(
+            self.layout_draws, top=self.top, bottom=self.bottom,
+            min_zone_height=6 * max(t["line_spacing_normal"] for t in self.layout_typography.values()),
+        )
+        # Textual reading order is constructed article by article, main first.
+        # Rules are never inserted in the ordered stream.
+        for zone in self.layout_plan["zones"]:
+            self._v2_zone(zone)
+        for rect in self.layout_plan["zone_rules"]:
+            self.separator(*rect)
+        for zone in self.layout_plan["zones"]:
+            reserved = zone["headline_reserved"]
+            for index in range(1, len(zone["columns"])):
+                x = (zone["columns"][index - 1][1] + zone["columns"][index][0]) / 2
+                top = reserved[3] if reserved and index < zone["headline_span"] else zone["bbox"][1]
+                self.separator(x - 1, top, x + 1, zone["bbox"][3])
 
     def _check_coverage(self) -> None:
         text = "MILLE FEUILLES Journal de démonstration — Édition synthétique -0123456789"
@@ -595,12 +1042,26 @@ class Composer:
                 "line_ids": [lid for b in text_blocks for lid in b["line_ids"]],
             },
         }
+        if self.config.layout_profile is not None:
+            page["profile"] = PROFILE_LAYOUT
+            page["provenance"]["template_id"] = "template_press_v2"
+            page["provenance"]["parameters"].update({
+                "layout_profile": self.config.layout_profile,
+                "layout": self.layout_plan,
+                "layout_body_ratio": self.layout_body_ratio,
+                "layout_typography": self.layout_typography,
+                "layout_rejected_candidates": self.layout_rejected_candidates,
+                "layout_termination_rejections": self.layout_termination_rejections,
+            })
         return page
 
     def _finish_measured(self, out_root: Path) -> dict:
         from . import degrade, diagnostics
 
-        self.content()
+        if self.config.layout_profile is None:
+            self.content()
+        else:
+            self._content_v2()
         angle = self.rng.uniform(-0.35, 0.35)
         theta = math.radians(angle)
         c, s = math.cos(theta), math.sin(theta)
@@ -657,7 +1118,7 @@ class Composer:
         image_path.parent.mkdir(parents=True, exist_ok=True)
         self.canvas.save(image_path, compress_level=6, dpi=(self.config.dpi, self.config.dpi))
         page = self._page(image_path, transforms, angle, resolved.get("blur", {}).get("sigma_px", 0.0))
-        page["profile"] = PROFILE_MEASURED
+        page["profile"] = PROFILE_LAYOUT if self.config.layout_profile is not None else PROFILE_MEASURED
         paper, ink = degrade.reference_levels(resolved)
         page["provenance"]["parameters"].update({
             "degradation_profile": resolved,

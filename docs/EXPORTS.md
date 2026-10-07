@@ -148,7 +148,7 @@ articles et lisibilité sont portés par les mécanismes standards
 | Type de tag | `TYPE` | Données |
 |---|---|---|
 | `LayoutTag` | `mille-feuilles:category` | `LABEL` = catégorie canonique |
-| `StructureTag` | `mille-feuilles:article` | `LABEL` = article ; `DESCRIPTION` = JSON `{block_ids}` |
+| `StructureTag` | `mille-feuilles:article` | `LABEL` = article ; `DESCRIPTION` = JSON `{block_ids}`, complété par `extensions` si l'article en possède |
 | `OtherTag` | `mille-feuilles:legibility` | `LABEL` = état canonique |
 | `OtherTag` | `mille-feuilles:hyphenation` | `LABEL` = groupe ; `DESCRIPTION` = texte reconstruit |
 | `OtherTag` | `mille-feuilles:spaces` | `LABEL` = ligne ; `DESCRIPTION` = JSON des nombres d'espaces entre mots |
@@ -160,6 +160,12 @@ les espaces multiples. Les `char_span` Unicode sont reconstruits depuis
 les `String/CONTENT` et ces intervalles ; ils sont vérifiés à la relecture.
 Les lignes vides sont refusées : ALTO impose au moins un `String` dans
 une `TextLine` dans ce profil.
+
+Les extensions d'article, notamment les réservations de mise en page v2,
+restent dans ce JSON du `StructureTag` et sont confrontées au canonique à la
+relecture. PAGE les transporte déjà avec l'objet article complet. Un lecteur
+qui ignore ces métadonnées spécifiques ne récupère pas leur sémantique ; les
+polygones, références d'article et ordre restent les projections documentées.
 
 Une césure garde son texte diplomatique, tiret compris, dans `CONTENT` ;
 `SUBS_TYPE=HypPart1/HypPart2` et `SUBS_CONTENT` portent la reconstruction.

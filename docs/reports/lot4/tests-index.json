@@ -1,0 +1,92 @@
+{
+  "format": "mille-feuilles-lot4-test-evidence",
+  "tests_passed_distinct": 941,
+  "initial": {
+    "passed": 931,
+    "failed": 4,
+    "errors": 4,
+    "seconds": 315.54
+  },
+  "retry": {
+    "passed": 10,
+    "seconds": 29.02,
+    "scope": "Eight cases affected by transient disk exhaustion, plus two new acceptance-path regression cases"
+  },
+  "scope": "Frozen implementation on a working tree before source commit; no production guard bypassed. CLI acceptance follows on a clean commit. Original failed outputs retained.",
+  "environment": {
+    "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+    "platform": "macOS-26.4.1-arm64-arm-64bit",
+    "implementation": "CPython",
+    "generator": "0.3.0",
+    "packages": {
+      "Pillow": "12.3.0",
+      "numpy": "2.5.3",
+      "fonttools": "4.66.1",
+      "lxml": "6.1.3",
+      "jsonschema": "4.26.0",
+      "shapely": "2.1.2"
+    },
+    "freetype": "2.14.3",
+    "layout_engine": "pillow-freetype-basic",
+    "sources": {
+      "src/mille_feuilles/__init__.py": "31b3d4495cbf00993b369306a1b5740783eb845b76a4d92612881ebe1b9dd493",
+      "src/mille_feuilles/catalog.py": "9ed1ebf69f61fcd304a0443c1ba1cab56286bb3ed4079ecaed17cd691d5d7fd2",
+      "src/mille_feuilles/cli.py": "2ea57343da493260e49586b21a67cbe2aeb5edf4ef2594179304167fcc4e2dfe",
+      "src/mille_feuilles/degrade.py": "834f3e7ce1583f4f6c403a2e5d8231f962be20a12f85a23b538c2f1983a66e9d",
+      "src/mille_feuilles/diagnostics.py": "b86eb29959d621b3b0da509f61f5d4f179ee085980727c60a4e831b0090e3ccd",
+      "src/mille_feuilles/exports.py": "279030f33aa76381f9fb7c8086d48f53c110fb030de8b18b17e683b47b6c6f05",
+      "src/mille_feuilles/io.py": "fa26d558c5582013dda07116c517fc1e87e624f66c5e4d434dca384a8f1aee84",
+      "src/mille_feuilles/layout.py": "c75919f4d219c56adfdbd0ffdf143a1568a2e3c0367878b023ea1e953cff638b",
+      "src/mille_feuilles/partition.py": "c5fa133fe262c70f0e1abd519e6a3e98363ef55a0d115e6a66a8ee23f9984bc9",
+      "src/mille_feuilles/pipeline.py": "b6d65e8759a3bc58851e99bd79a51b463518e38886e2a467e46a8ca2ffc41839",
+      "src/mille_feuilles/render.py": "38149df7fb76ec5792cc6c524733a5d3855934e991088807a632a5abddb4cf10",
+      "src/mille_feuilles/validation.py": "d0f1bed2d994100a488d9fdd3cfb53a4ad5628dd494d87a2d39c81c2d248440b",
+      "schemas/assets.schema.json": "7de8b38999e53502da7162d7ff148304de5dc22aacecb6a23d7602f982e98648",
+      "schemas/degradation-profile.schema.json": "6f9df6ecc8e3cf70b6e769db6566d8c101619d771ff9e4aa5186e8758708d617",
+      "schemas/manifest.schema.json": "9312c2337501a7085c77297f2c1cbab233828c8b261b65e027f81c47fe3b4baf",
+      "schemas/page.schema.json": "ea63ea01a57319a53b3a66fe83e29c859e82ca7a0ff197e2e2737708da3e9e19",
+      "schemas/xml/provenance.json": "f2e8bb4dc146e90dd0aa39798f2081863ed5d258eeee14eaa875f5eb3ea5317c",
+      "schemas/xml/alto-4-4.xsd": "5564fd29d2dd090d8102b8a0aa081906afd677cd5ecc632312e56f21ea14702b",
+      "schemas/xml/page-2019-07-15.xsd": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5",
+      "schemas/xml/xlink.xsd": "f1f5bb6003165cdd8f6c1fcc32f8fd1f965e1681010f3b9806d9460bcffa8a3c",
+      "uv.lock": "0c46dec6a1cf38ac326946382e1da143655a4c72204aaf406ee91714b96cac45",
+      "pyproject.toml": "fd9109a78f69a3fac32fa5feab02dd6586d5ebf72caa126dabbad79be2ee9859"
+    }
+  },
+  "commands": {
+    "initial": "uv run --locked --offline python -m pytest -q --basetemp runs/pytest-lot4-final-20261007",
+    "retry": "uv run --locked --offline pytest -q --basetemp runs/pytest-lot4-disk-retry-20261007 tests/test_accept_layout.py tests/test_partitioned_pipeline.py::test_rehashed_partition_mismatch_cannot_be_accepted_as_train tests/test_partitioned_pipeline.py::test_rehashed_train_character_counts_must_match_copied_text tests/test_pipeline.py::test_two_page_serial_and_parallel_builds_are_bit_identical tests/test_pipeline.py::test_real_exports_assets_and_qa_are_complete tests/test_pipeline.py::test_nonempty_destination_is_refused_without_touching_user_files[True] tests/test_pipeline.py::test_failed_export_leaves_no_accepted_partial_dataset tests/test_pipeline.py::test_failed_page_cancels_queued_work_waits_for_active_pages_and_preserves_error tests/test_pipeline.py::test_compare_detects_removed_image"
+  },
+  "files": [
+    {
+      "path": "initial-tests-disk-failure.txt",
+      "sha256": "a7f818f6c95e3a88d61a69e0e6eecec577f43c6db615e52aba029e16aa1d765d",
+      "bytes": 24065
+    },
+    {
+      "path": "tests-disk-retry.txt",
+      "sha256": "84298be5a4c6c8c3e9627e84116a6760fa6ded3f6027027ee7e077aed7fe1e13",
+      "bytes": 100
+    },
+    {
+      "path": "ruff.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    {
+      "path": "assets.json",
+      "sha256": "d367651e464d26b391387c82b170acdebf3799941c085410ae856ae57d2f576c",
+      "bytes": 1794
+    },
+    {
+      "path": "actual-balanced-mutations.json",
+      "sha256": "bd83110a7cf73f7c8640d3640ede1952cbb5218c5cec13647fd2378493ab6000",
+      "bytes": 7567
+    },
+    {
+      "path": "claude/NOTE-LAYOUT-V2-BALANCED.md",
+      "sha256": "9084385d72f2849ddbb6016538c07f5a44c4a102558faa90ac7b40a640a62744",
+      "bytes": 2633
+    }
+  ]
+}

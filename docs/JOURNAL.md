@@ -209,3 +209,22 @@ distincts, titres larges, corps par article et annonces encadrées. Pendant le g
 du lot 3, le développement et les tests de ces interfaces restent dans les
 scratchpads. Les essais de plan et de raccordement ne valent pas encore une
 acceptation de pages rendues v2.
+
+## Lot 4 — intégration des zones et de la bande équilibrée
+
+Le rendu v2, le planificateur et le validateur sont intégrés. La première page
+réelle révèle une perte des extensions d'article dans ALTO, corrigée avec une
+régression d'aller-retour. La revue de Claude conduit ensuite à équilibrer
+l'article du titre large sur toutes les colonnes couvertes, avec une bande
+réservée, et à employer le corps normal de main dans le rez-de-chaussée.
+Le nouveau lot compact passe ; Claude confirme les cinq lignes par colonne
+et la reprise des autres articles sous la bande. Les lignes orphelines restent
+une limite typographique déclarée. Les prototypes antérieurs sont conservés.
+
+La vérification intégrée couvre **941 tests distincts réussis** : premier
+passage de 931 succès, quatre échecs et quatre erreurs liés à une saturation
+disque transitoire, puis reprise des huit cas et deux régressions nouvelles
+(10 succès). Aucun correctif de production ni contournement des gardes disque
+n'est nécessaire à cette reprise. Ruff et les actifs passent. Les commandes,
+les deux sorties et la revue sont archivées dans `reports/lot4/tests-index.json`.
+La campagne CLI sur commit propre et sa revue visuelle suivent séparément.

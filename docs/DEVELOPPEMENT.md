@@ -55,11 +55,14 @@ Son acceptation au commit `cb24e39` passe 652 tests, 224 contrôles CLI, six pag
 de référence et un rejeu complet. La revue visuelle et les limites sont archivées
 dans [VALIDATION](VALIDATION.md). Cette clôture porte sur le lot, pas sur le projet.
 
-Le lot 4 en préparation est `fr_press_19c_layout_v2` : un rez-de-chaussée à
+Le lot 4 en cours d'acceptation est `fr_press_19c_layout_v2` : un rez-de-chaussée à
 colonnage distinct, un titre large en tête de zone principale, des corps par
 article et des annonces encadrées. Il exige un profil de dégradation explicite,
 dont `identity`, et conserve les chemins antérieurs. Claude possède le
 planificateur, ses tests et la documentation spécifique ; Codex et ses agents
 possèdent le rendu, les schémas, la validation, le CLI et les preuves d'intégration.
-Les signatures sont reportées faute de texte source approprié. Les proportions
-restent déclarées et non calibrées ; aucun nouveau corpus n'est ouvert.
+Les signatures sont reportées faute de texte source approprié. Les probabilités
+de tirage restent déclarées et non calibrées ; aucun nouveau corpus n'est ouvert.
+La revue de pages réelles a ajouté une bande équilibrée sous le titre large et
+un corps normal commun aux zones. La diversité produite et les refus contrôlés
+restent à mesurer par la campagne ; ils ne constituent pas une calibration.

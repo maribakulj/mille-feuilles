@@ -17,7 +17,8 @@
     "profile": {
       "enum": [
         "fr_press_19c_columns_4_6",
-        "fr_press_19c_columns_4_6_measured"
+        "fr_press_19c_columns_4_6_measured",
+        "fr_press_19c_layout_v2"
       ]
     },
     "generator": {
@@ -319,7 +320,10 @@
       "if": {
         "properties": {
           "profile": {
-            "const": "fr_press_19c_columns_4_6_measured"
+            "enum": [
+              "fr_press_19c_columns_4_6_measured",
+              "fr_press_19c_layout_v2"
+            ]
           }
         }
       },

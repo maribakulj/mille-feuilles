@@ -105,7 +105,9 @@ Passer ensuite `--degradation-profile profils/identity-x2.json` à la commande d
 génération. Le ×2 dessine sur une grille double, puis réduit la couverture grise
 avant le masque et les effets photométriques. L'image, les annotations et les
 paramètres d'effets en pixels désignent la résolution finale. Ce mode augmente
-le coût mémoire ; son coût à taille pilote reste à établir avant production.
+le coût mémoire ; la [campagne du lot 3](docs/VALIDATION.md) mesure environ
+20 s par page à taille pilote, exports et validation inclus, et un maximum RSS
+cumulé des enfants de 1,12 Go sur la machine de mesure.
 
 Ces pages utilisent **`fr_press_19c_columns_4_6_measured`**, toujours en schéma
 **0.3.0**. À paramètres de composition, sources, graine et facteur identiques,
@@ -130,6 +132,27 @@ pour passer les seuils. Le contrôle d'occupation du masque dans les blocs ne
 reconstruit pas les glyphes ; un masque falsifié puis réempreinté peut rester
 compatible avec ces zones. La relecture visuelle et la reproduction conservent
 donc leur rôle dans l'acceptation.
+
+## Mise en page par zones — lot 4 en développement
+
+Le profil `fr_press_19c_layout_v2` ajoute un rez-de-chaussée à colonnage distinct,
+un titre large avec son article réparti sur les colonnes couvertes, des corps
+par article et des annonces encadrées. Il exige un profil de dégradation
+explicite ; `identity` permet de contrôler la composition.
+
+```sh
+uv run --locked mille-feuilles generate --output runs/mise-en-page-v2 \
+  --pages 2 --width 1200 --height 1656 --columns 4 --seed 20261007 \
+  --layout-profile fr_press_19c_layout_v2 --degradation-profile identity
+```
+
+`--columns` fixe seulement la zone principale. Les choix sont déclarés dans
+`template_press_v2` avec `calibrated: false`. Le plan, les fontes par zone et les
+réservations des articles sont conservés dans le canonique. Les statistiques
+rapportent les structures effectivement produites, les corps et les hauteurs
+de ligne. Les [règles de mise en page](docs/MISE_EN_PAGE.md) précisent les rejets
+contrôlés quand les textes ne tiennent pas ; la campagne finale de ce profil
+reste à effectuer.
 
 ## Lire et vérifier le résultat
 
