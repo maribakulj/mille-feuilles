@@ -181,3 +181,16 @@ Les interfaces sont stabilisées autour de `check_profile`, `check_parameters`
 et `diagnostics.document`. Le masque d'encre idéale précède les altérations
 photométriques. Chaque étape comporte une revue réciproque ; le profil mesuré
 reste expérimental et n'utilise aucun corpus réel.
+
+Le lot 3 est accepté au commit `cb24e39` : 652 tests, 224 contrôles CLI,
+six pages de référence et rejeu complet, puis revue de six miniatures et
+17 extraits. Ses preuves et limites sont archivées séparément dans
+`reports/lot3/acceptance/`. La contrainte de disque a retardé cette campagne ;
+elle a démarré quand sa réserve était de nouveau disponible, sans nettoyage.
+
+Pendant le gel, le binôme prépare le lot 4 dans des scratchpads : Claude possède
+`layout.py`, ses tests et `MISE_EN_PAGE.md` ; Codex coordonne le rendu, les
+schémas, la validation, le pipeline et le CLI. Les relectures ont déjà corrigé
+les entrées mal formées du planificateur, le coût du filtrage des colonnes et la
+confusion entre rejets de candidats et essais de clôture d'une zone. Ces tests
+purs restent distincts de l'acceptation à venir sur des pages v2 rendues.

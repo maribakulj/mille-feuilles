@@ -1,0 +1,9 @@
+{
+  "format": "mille-feuilles-degradation-profile",
+  "version": "1",
+  "calibrated": false,
+  "oversampling": 1,
+  "name": "identity",
+  "description": "Aucune altération : papier 255, encre 0 ; sert de référence pour les diagnostics.",
+  "families": {}
+}

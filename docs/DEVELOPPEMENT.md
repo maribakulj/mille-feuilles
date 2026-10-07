@@ -42,7 +42,7 @@ Les amplitudes, interfaces et fichiers du prochain lot sont convenus avec Claude
 avant écriture. Les campagnes restent compactes tant que le disque est contraint.
 Aucun déplacement ni suppression des lots, corpus ou preuves existants.
 
-Le premier périmètre convenu pour le lot 3 est un profil expérimental
+Le lot 3 livré fournit un profil expérimental
 `controlled-v1`, sans calibration historique : perte d'encre, contraste,
 éclairage, flou et bruit. Le masque d'encre idéale est conservé avant altérations
 photométriques, les générateurs aléatoires de composition et de dégradation sont
@@ -50,3 +50,16 @@ séparés, et les diagnostics sont recalculés par le validateur. Les étiquette
 `readable`, `uncertain`, `illegible` reposent sur des seuils déclarés ; elles
 restent des indicateurs heuristiques, sans preuve d'équivalence à la lecture
 humaine. Le verso et la simulation de numérisation plus complète sont reportés.
+
+Son acceptation au commit `cb24e39` passe 652 tests, 224 contrôles CLI, six pages
+de référence et un rejeu complet. La revue visuelle et les limites sont archivées
+dans [VALIDATION](VALIDATION.md). Cette clôture porte sur le lot, pas sur le projet.
+
+Le lot 4 en préparation est `fr_press_19c_layout_v2` : un rez-de-chaussée à
+colonnage distinct, un titre large en tête de zone principale, des corps par
+article et des annonces encadrées. Il exige un profil de dégradation explicite,
+dont `identity`, et conserve les chemins antérieurs. Claude possède le
+planificateur, ses tests et la documentation spécifique ; Codex et ses agents
+possèdent le rendu, les schémas, la validation, le CLI et les preuves d'intégration.
+Les signatures sont reportées faute de texte source approprié. Les proportions
+restent déclarées et non calibrées ; aucun nouveau corpus n'est ouvert.

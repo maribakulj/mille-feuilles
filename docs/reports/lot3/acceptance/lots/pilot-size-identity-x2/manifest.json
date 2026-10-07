@@ -1,0 +1,234 @@
+{
+  "artifacts": [
+    {
+      "path": "assets/catalog.json",
+      "role": "assets",
+      "sha256": "15d6b6cb0528af01a74755c332481e8544c36d87ca53a93beb8c34f068851b20"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/DESCRIPTION.en_us.html",
+      "role": "assets",
+      "sha256": "9aa61fa5d8872f9cab53be3ff1e040abbd0af0931207bd6ea9d297ef89506223"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/GFSDidot-Regular.ttf",
+      "role": "assets",
+      "sha256": "4fc784ab824e8866eeef8ad55976b93e7e170fb1b8237fd4f8781b5b4dd297f9"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/METADATA.pb",
+      "role": "assets",
+      "sha256": "aa07c9c90cea6cc13577262558cd366c2fdee90b57e6f75d752f010ff0f6b751"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/OFL.txt",
+      "role": "assets",
+      "sha256": "9e19c0d2e7e7adcbe9dfd0749e34dda41e7e356e0f2cc082d61d2fc9b6e0cef7"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+      "role": "assets",
+      "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/METADATA.pb",
+      "role": "assets",
+      "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OFL.txt",
+      "role": "assets",
+      "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Bold.ttf",
+      "role": "assets",
+      "sha256": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Italic.ttf",
+      "role": "assets",
+      "sha256": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Regular.ttf",
+      "role": "assets",
+      "sha256": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac"
+    },
+    {
+      "path": "assets/template-NOTICE.txt",
+      "role": "assets",
+      "sha256": "62b0f4bc3bc1a43f19db3653d026273378fd839c98635868081e964491f0a831"
+    },
+    {
+      "path": "assets/template.json",
+      "role": "assets",
+      "sha256": "17836669eea499cb7f29a2e9fde614f5a0090fa8e22c2365d8d2e234d7f1853b"
+    },
+    {
+      "path": "assets/texts/CC0-1.0.txt",
+      "role": "assets",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "assets/texts/NOTICE.md",
+      "role": "assets",
+      "sha256": "b2ce6e45a24ee9c034039d18450ec8c6d2611319bfb7a7b8801f8139926dd014"
+    },
+    {
+      "path": "assets/texts/annonces-fr.txt",
+      "role": "assets",
+      "sha256": "7881bb7fca96af44c294f8a6603f924eee958ab5b6394bc7c8b47cf2734af4fc"
+    },
+    {
+      "path": "assets/texts/demo-fr.txt",
+      "role": "assets",
+      "sha256": "1025138a6e80735785d415c157a91cb856a34a86659ca7a5215193197e992895"
+    },
+    {
+      "path": "assets/texts/titres-fr.txt",
+      "role": "assets",
+      "sha256": "30f846cdeec76617013e7891dd4c5695c11358b652cceefba20755255d6e0c72"
+    },
+    {
+      "path": "assets.json",
+      "role": "assets.json",
+      "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+    },
+    {
+      "path": "calibration/CADRAGE.md",
+      "role": "calibration",
+      "sha256": "7e9960f8709c3a8415ac142c6b604a7340746e8168e23dfb5f598e95bf1f01c7"
+    },
+    {
+      "path": "calibration/fichiers_lus.tsv",
+      "role": "calibration",
+      "sha256": "73d4e7abef71200bc078c8a45bc84657bd12b3aba26f70e2e7b89f5bab28073a"
+    },
+    {
+      "path": "config.json",
+      "role": "config.json",
+      "sha256": "654749313dfe014b72af3f723cfbeb4c337c0132a3f56ca922daaa1a5a2e92ae"
+    },
+    {
+      "path": "environment.json",
+      "role": "environment.json",
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "exports/alto/mf_0000.xml",
+      "role": "exports",
+      "sha256": "141450801bc3eb685b2e074228b73d7b9a6dc6a2a8934707994390461b0fa702"
+    },
+    {
+      "path": "exports/coco/instances.json",
+      "role": "exports",
+      "sha256": "e457f05020c289ffed56391e0dc56201150d97a52a48d82aa2bb1aa84dffc67e"
+    },
+    {
+      "path": "exports/page/mf_0000.xml",
+      "role": "exports",
+      "sha256": "1d25b0c8dacbd7f61591beaa474d3ad38892c8e9cc5ec76ea50e47813bf53121"
+    },
+    {
+      "path": "exports/reports/mf_0000.json",
+      "role": "exports",
+      "sha256": "4dbc4d496dc9634f3d25df34e97a9699df323391418fbea320052d13cea88142"
+    },
+    {
+      "path": "images/mf_0000.png",
+      "role": "images",
+      "sha256": "8dda16076d78a4bbb2933e80ed7460e2c1d9540796687817ef35df5221125174"
+    },
+    {
+      "path": "pages/mf_0000.json",
+      "role": "pages",
+      "sha256": "301f3ebfde64588e57c13483373547165686ba2928611a98de947b886cc179e3"
+    },
+    {
+      "path": "provenance/degradation-profile.json",
+      "role": "provenance",
+      "sha256": "eb8b5fa3ea0f14774dc38338d86625a24434db2636c69b3b5f823ae3df16a7c0"
+    },
+    {
+      "path": "qa/contact_00.jpg",
+      "role": "qa",
+      "sha256": "6e6cdd41f40480b2bfacf12a941e9b274bda77ebdba4f67353fb94a084f3b8da"
+    },
+    {
+      "path": "qa/diagnostics/mf_0000.json",
+      "role": "qa",
+      "sha256": "718eda7bfbc723f53891f28879df0fad3f7e2db4c82404572a6903e41cd837cf"
+    },
+    {
+      "path": "qa/masks/mf_0000.png",
+      "role": "qa",
+      "sha256": "e31863e76a1229afb73c8fdaa17871a6c1529ef0018d3b83d79b3a4b1a53a699"
+    },
+    {
+      "path": "qa/mf_0000.png",
+      "role": "qa",
+      "sha256": "631eb67b5d104349ab184745fbff979999d3e9ac51a7d96f4acbf198c1d9833e"
+    },
+    {
+      "path": "qa/severity_00.jpg",
+      "role": "qa",
+      "sha256": "6e6cdd41f40480b2bfacf12a941e9b274bda77ebdba4f67353fb94a084f3b8da"
+    },
+    {
+      "path": "qa/statistics.json",
+      "role": "qa",
+      "sha256": "74ab93ca1090010bddfe55067d564427cd189a1e7c58f3474e54047f833fd882"
+    }
+  ],
+  "assets": {
+    "path": "assets.json",
+    "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+  },
+  "calibration": {
+    "files_read": {
+      "path": "calibration/fichiers_lus.tsv",
+      "sha256": "73d4e7abef71200bc078c8a45bc84657bd12b3aba26f70e2e7b89f5bab28073a"
+    },
+    "protocol_path": "calibration/CADRAGE.md",
+    "protocol_sha256": "7e9960f8709c3a8415ac142c6b604a7340746e8168e23dfb5f598e95bf1f01c7",
+    "source_partitions": [
+      "train",
+      "dev"
+    ]
+  },
+  "config": {
+    "path": "config.json",
+    "sha256": "654749313dfe014b72af3f723cfbeb4c337c0132a3f56ca922daaa1a5a2e92ae"
+  },
+  "dataset_id": "mf_demo_20261009_1_measured_3fe7fe60864b",
+  "extensions": {
+    "mf:degradation_profile": {
+      "path": "provenance/degradation-profile.json",
+      "sha256": "eb8b5fa3ea0f14774dc38338d86625a24434db2636c69b3b5f823ae3df16a7c0"
+    }
+  },
+  "generator": {
+    "commit": "cb24e39e42d6c7519a32f6b70bcbccced6e13f36",
+    "dirty": false,
+    "environment_path": "environment.json",
+    "environment_sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+  },
+  "pages": [
+    {
+      "id": "mf_0000",
+      "path": "pages/mf_0000.json",
+      "sha256": "301f3ebfde64588e57c13483373547165686ba2928611a98de947b886cc179e3",
+      "source_group_ids": [
+        "mille_feuilles_original_demo_20261007"
+      ]
+    }
+  ],
+  "profile": "fr_press_19c_columns_4_6_measured",
+  "rng": {
+    "algorithm": "SHA256 per-page; Python MT19937; numpy PCG64",
+    "seed": 20261009,
+    "version": "1"
+  },
+  "schema_version": "0.3.0"
+}

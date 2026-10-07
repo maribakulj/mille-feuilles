@@ -1,0 +1,50 @@
+{
+  "blocks": 206,
+  "categories": {
+    "annonce": 18,
+    "separateur": 84,
+    "texte": 68,
+    "titre": 36
+  },
+  "columns": {
+    "6": 1
+  },
+  "cross_block_articles": 41,
+  "degradations": {
+    "measured": 1
+  },
+  "hyphenation_groups": 72,
+  "lines": 774,
+  "measured_degradations": {
+    "calibrated": false,
+    "legibility": {
+      "illegible": 8,
+      "readable": 5190,
+      "uncertain": 1
+    },
+    "legibility_method": "heuristic-v1",
+    "pages": [
+      {
+        "contrast": 200.0,
+        "edge_contrast_proxy": 0.3912,
+        "ink_loss_fraction": 0.0,
+        "ink_median": 55.0,
+        "ink_pixels": 811968,
+        "legibility": {
+          "illegible": 8,
+          "readable": 5190,
+          "uncertain": 1
+        },
+        "noise_mad_sigma": 0.0,
+        "otsu_threshold": 164,
+        "page_id": "mf_0000",
+        "paper_median": 255.0,
+        "spurious_ink_fraction": 0.00035
+      }
+    ],
+    "profile": "identity"
+  },
+  "pages": 1,
+  "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+  "words": 5199
+}

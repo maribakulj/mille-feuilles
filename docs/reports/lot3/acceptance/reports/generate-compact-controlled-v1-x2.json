@@ -1,0 +1,121 @@
+{
+  "checks": [
+    {
+      "detail": "verified",
+      "name": "manifest",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "file_hashes",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "strict_json_files",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "unique_manifest_entries",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "manifest_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "asset_registry",
+      "status": "pass"
+    },
+    {
+      "detail": "unpartitioned dataset; no partition isolation claim",
+      "name": "partition_receipt",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "assets",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "degradation_profile",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "export_inventory",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "exports",
+      "status": "pass"
+    }
+  ],
+  "errors": [],
+  "statistics": {
+    "blocks": 70,
+    "categories": {
+      "annonce": 8,
+      "separateur": 29,
+      "texte": 22,
+      "titre": 11
+    },
+    "columns": {
+      "4": 1
+    },
+    "cross_block_articles": 14,
+    "degradations": {
+      "measured": 1
+    },
+    "hyphenation_groups": 34,
+    "lines": 292,
+    "measured_degradations": {
+      "calibrated": false,
+      "legibility": {
+        "illegible": 1030,
+        "readable": 46,
+        "uncertain": 623
+      },
+      "legibility_method": "heuristic-v1",
+      "pages": [
+        {
+          "contrast": 39.0,
+          "edge_contrast_proxy": 0.225697,
+          "ink_loss_fraction": 0.018512,
+          "ink_median": 203.0,
+          "ink_pixels": 65472,
+          "legibility": {
+            "illegible": 1030,
+            "readable": 46,
+            "uncertain": 623
+          },
+          "noise_mad_sigma": 2.9652,
+          "otsu_threshold": 222,
+          "page_id": "mf_0000",
+          "paper_median": 242.0,
+          "spurious_ink_fraction": 0.004445
+        }
+      ],
+      "profile": "controlled-v1"
+    },
+    "pages": 1,
+    "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+    "words": 1699
+  },
+  "status": "pass"
+}

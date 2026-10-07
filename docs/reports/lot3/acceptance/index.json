@@ -1,0 +1,548 @@
+{
+  "format": "mille-feuilles-light-evidence-archive",
+  "version": "1",
+  "status": "pass",
+  "created_at_utc": "2026-10-07T16:12:50.398966+00:00",
+  "source_commit": "cb24e39e42d6c7519a32f6b70bcbccced6e13f36",
+  "source_dirty": false,
+  "source_root": "/Users/marcel/heritage-synth/runs/accept-measured-lot3",
+  "source_acceptance_sha256": "6f230ebce458abb04e8576667cd31cca78127a271af119556932086d3aaa4bee",
+  "scope": "Exact lightweight copies of the lot 3 measured acceptance; not a standalone dataset",
+  "included": [
+    "Original acceptance.json unchanged",
+    "All reports/ and sources/ files",
+    "config.json, environment.json, manifest.json, assets.json and qa/statistics.json for all seven complete lots",
+    "All visual/ files present at archival time",
+    "Exact visual-selection script from /private/tmp/mf-lot3-visual/make_review.py"
+  ],
+  "excluded": [
+    "Full canonical page JSON",
+    "Full-page images, masks and QA overlays",
+    "Font binaries and copied text assets",
+    "Per-word diagnostics",
+    "XML/COCO exports",
+    "Raw logs (retained in the source run)",
+    "Scratch tests"
+  ],
+  "visual_review": {
+    "original_acceptance_status": "not_run",
+    "separate_report": {
+      "path": "reports/visual-review.json",
+      "sha256": "e1006dd019ccf2218f8f80d3a00d856f5bcc653309a8206c76723d58bfc3a8ea",
+      "status": "pass_with_documented_limits"
+    },
+    "reviewed_scope": "Six page thumbnails and seventeen selected word crops; no blind transcription or exhaustive word review",
+    "interpretation": "The original technical acceptance remains unchanged; visual conclusions and limits belong to the separate coordinator review"
+  },
+  "copy_verification": {
+    "method": "Source and destination byte equality, size equality and SHA-256, checked after every exclusive copy",
+    "verified_files": 81,
+    "all_equal": true,
+    "sources_unchanged": true
+  },
+  "footprint": {
+    "source_acceptance_logical_bytes_before_visual": 69619373,
+    "source_run_logical_bytes_with_visual_at_archive": 70254670,
+    "source_du": {
+      "argv": [
+        "du",
+        "-sk",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3"
+      ],
+      "stdout": "69416\t/Users/marcel/heritage-synth/runs/accept-measured-lot3",
+      "allocated_kib": 69416,
+      "allocated_bytes": 71081984
+    },
+    "archived_payload_logical_bytes_excluding_index": 937486,
+    "measurement_note": "Logical bytes are summed regular-file st_size; du -sk reports allocated blocks in KiB. This index is excluded from its own inventory and payload size."
+  },
+  "files": [
+    {
+      "path": "acceptance.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/acceptance.json",
+      "bytes": 48553,
+      "sha256": "6f230ebce458abb04e8576667cd31cca78127a271af119556932086d3aaa4bee"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x1/assets.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x1/assets.json",
+      "bytes": 11721,
+      "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x1/config.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x1/config.json",
+      "bytes": 1773,
+      "sha256": "3e89c9fa58205f28d37c4c7a0321369d1fafb711ece6448650e2fc63c8822615"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x1/environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x1/environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x1/manifest.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x1/manifest.json",
+      "bytes": 7569,
+      "sha256": "d3c1fcc443b4c3846558fd092bd7dba150ecc465d668cad77bdbfd3ee7f1eff2"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x1/qa/statistics.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x1/qa/statistics.json",
+      "bytes": 1109,
+      "sha256": "94750918d2a53ef4a18889405e4a7a56adcfe7efed27f835bc0023b52d169868"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2-replay/assets.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2-replay/assets.json",
+      "bytes": 11721,
+      "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2-replay/config.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2-replay/config.json",
+      "bytes": 1773,
+      "sha256": "80b9a21e3592f22f76b98e7d2189753d0f5bf92f61ccb9de2e93542e1f99a91e"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2-replay/environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2-replay/environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2-replay/manifest.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2-replay/manifest.json",
+      "bytes": 7569,
+      "sha256": "63619675de571a617fede21de7ed1fef47a367d4f54cf37df33ee527166b4bbc"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2-replay/qa/statistics.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2-replay/qa/statistics.json",
+      "bytes": 1109,
+      "sha256": "67ae314e0d55a8133c105bc8f2f6ab2de28d7004ce4837d8896dfa57bb6b5cb9"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2/assets.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2/assets.json",
+      "bytes": 11721,
+      "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2/config.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2/config.json",
+      "bytes": 1773,
+      "sha256": "80b9a21e3592f22f76b98e7d2189753d0f5bf92f61ccb9de2e93542e1f99a91e"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2/environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2/environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2/manifest.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2/manifest.json",
+      "bytes": 7569,
+      "sha256": "63619675de571a617fede21de7ed1fef47a367d4f54cf37df33ee527166b4bbc"
+    },
+    {
+      "path": "lots/compact-controlled-v1-x2/qa/statistics.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2/qa/statistics.json",
+      "bytes": 1109,
+      "sha256": "67ae314e0d55a8133c105bc8f2f6ab2de28d7004ce4837d8896dfa57bb6b5cb9"
+    },
+    {
+      "path": "lots/compact-identity-x1/assets.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1/assets.json",
+      "bytes": 11721,
+      "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+    },
+    {
+      "path": "lots/compact-identity-x1/config.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1/config.json",
+      "bytes": 529,
+      "sha256": "08039fb52f7a78ed2854ef96866b45113b729feb9fed6609e9fe2379d9657d42"
+    },
+    {
+      "path": "lots/compact-identity-x1/environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1/environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "lots/compact-identity-x1/manifest.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1/manifest.json",
+      "bytes": 7569,
+      "sha256": "261cd68605e4850751371ef55576545e505eba07ce2639102efaa3ce964755f9"
+    },
+    {
+      "path": "lots/compact-identity-x1/qa/statistics.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1/qa/statistics.json",
+      "bytes": 1090,
+      "sha256": "f6e6a865e5b5c3335f28b55d7a878772c722839b54ee4464d47fa4614b7cea8a"
+    },
+    {
+      "path": "lots/compact-identity-x2/assets.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x2/assets.json",
+      "bytes": 11721,
+      "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+    },
+    {
+      "path": "lots/compact-identity-x2/config.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x2/config.json",
+      "bytes": 529,
+      "sha256": "91ef9bc5ce7dee53de25b61fcd3dfb71bea7cfa998972c865fbf86150eea4ba6"
+    },
+    {
+      "path": "lots/compact-identity-x2/environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x2/environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "lots/compact-identity-x2/manifest.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x2/manifest.json",
+      "bytes": 7569,
+      "sha256": "cc8de6cbfb7754b193792805528a33b9c901ca566058e6a8ffa4bab8575a0b91"
+    },
+    {
+      "path": "lots/compact-identity-x2/qa/statistics.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x2/qa/statistics.json",
+      "bytes": 1090,
+      "sha256": "29a23b50aee818e5348fdc949eff25f05352b6ea3bc326a79fc07cd960bb7cbb"
+    },
+    {
+      "path": "lots/pilot-size-controlled-v1-x2/assets.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-controlled-v1-x2/assets.json",
+      "bytes": 11721,
+      "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+    },
+    {
+      "path": "lots/pilot-size-controlled-v1-x2/config.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-controlled-v1-x2/config.json",
+      "bytes": 1774,
+      "sha256": "7b5f290796a9f15a325947a3e0d2c7148f1da59a3e9d7e0f039dd2ea7ec242eb"
+    },
+    {
+      "path": "lots/pilot-size-controlled-v1-x2/environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-controlled-v1-x2/environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "lots/pilot-size-controlled-v1-x2/manifest.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-controlled-v1-x2/manifest.json",
+      "bytes": 7569,
+      "sha256": "f92d6fc4f4468fdaf9ec6bec826535186e73111655ef424bec245df638d004d6"
+    },
+    {
+      "path": "lots/pilot-size-controlled-v1-x2/qa/statistics.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-controlled-v1-x2/qa/statistics.json",
+      "bytes": 1112,
+      "sha256": "0f97a5e444210116aa3540ffb0bb5c917c284dcb90852b220190cf6862643e92"
+    },
+    {
+      "path": "lots/pilot-size-identity-x2/assets.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-identity-x2/assets.json",
+      "bytes": 11721,
+      "sha256": "6d796c35bcb2fcece2b5a239a88c85f41e117bb0043cbeabad1cb4f6a82b28d6"
+    },
+    {
+      "path": "lots/pilot-size-identity-x2/config.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-identity-x2/config.json",
+      "bytes": 530,
+      "sha256": "654749313dfe014b72af3f723cfbeb4c337c0132a3f56ca922daaa1a5a2e92ae"
+    },
+    {
+      "path": "lots/pilot-size-identity-x2/environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-identity-x2/environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "lots/pilot-size-identity-x2/manifest.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-identity-x2/manifest.json",
+      "bytes": 7569,
+      "sha256": "433820cd76bc89213b8261e2ee3a5516ba21d92e144e99e1f74fd0b204d8ed4f"
+    },
+    {
+      "path": "lots/pilot-size-identity-x2/qa/statistics.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-identity-x2/qa/statistics.json",
+      "bytes": 1090,
+      "sha256": "74ab93ca1090010bddfe55067d564427cd189a1e7c58f3474e54047f833fd882"
+    },
+    {
+      "path": "reports/archive-index.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/archive-index.json",
+      "bytes": 27314,
+      "sha256": "d468285b15e789a1ac9bed65877f0a4bc8c65b107bba54a6cb58d6725943a4b0"
+    },
+    {
+      "path": "reports/code.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/code.json",
+      "bytes": 396,
+      "sha256": "724b647701e61b7435f6825cc5d198fc8255bc77f18d18e3b26283834e5cd94f"
+    },
+    {
+      "path": "reports/compare-controlled-replay.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/compare-controlled-replay.json",
+      "bytes": 67,
+      "sha256": "e87483f6ffe1100c29b0fc297667e6d03edb84447f75198c6c7ca2ba16d7dca8"
+    },
+    {
+      "path": "reports/final-code.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/final-code.json",
+      "bytes": 396,
+      "sha256": "724b647701e61b7435f6825cc5d198fc8255bc77f18d18e3b26283834e5cd94f"
+    },
+    {
+      "path": "reports/final-environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/final-environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "reports/generate-compact-controlled-v1-x1.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/generate-compact-controlled-v1-x1.json",
+      "bytes": 2575,
+      "sha256": "5692db969c04ca0a015e4c8b048b472a288b4496a71372935604454f3dc9f0ef"
+    },
+    {
+      "path": "reports/generate-compact-controlled-v1-x2-replay.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/generate-compact-controlled-v1-x2-replay.json",
+      "bytes": 2575,
+      "sha256": "d895a4d94e8206d563b464eef59dd47ade4582e281510266437db39d421ed9db"
+    },
+    {
+      "path": "reports/generate-compact-controlled-v1-x2.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/generate-compact-controlled-v1-x2.json",
+      "bytes": 2575,
+      "sha256": "d895a4d94e8206d563b464eef59dd47ade4582e281510266437db39d421ed9db"
+    },
+    {
+      "path": "reports/generate-compact-identity-x1.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/generate-compact-identity-x1.json",
+      "bytes": 2556,
+      "sha256": "35e130bd598bfd8c6d9f6b2eaf19b51943441d452df736cbc0c2ba6e22b07686"
+    },
+    {
+      "path": "reports/generate-compact-identity-x2.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/generate-compact-identity-x2.json",
+      "bytes": 2556,
+      "sha256": "1e5335c6ee55f8233855a9bf9ad2a81c616b4e5afe11eb7daded90eea74c36b5"
+    },
+    {
+      "path": "reports/generate-pilot-size-controlled-v1-x2.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/generate-pilot-size-controlled-v1-x2.json",
+      "bytes": 2578,
+      "sha256": "4b907b95e3cd3b0a4cc072b1bb5d6eebecec845ad382bc3364a64829ab829bba"
+    },
+    {
+      "path": "reports/generate-pilot-size-identity-x2.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/generate-pilot-size-identity-x2.json",
+      "bytes": 2556,
+      "sha256": "e5499706e841abe0257a78ecb91b39be018fa6dcd72455b225433af7a6913c58"
+    },
+    {
+      "path": "reports/preflight-environment.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/preflight-environment.json",
+      "bytes": 2583,
+      "sha256": "7c02f5843ea75994a73bb0bd4a004b5323064228353653cb74f409136e878269"
+    },
+    {
+      "path": "reports/reproduce-controlled.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/reproduce-controlled.json",
+      "bytes": 6332,
+      "sha256": "ea072b16305d69038a99b26e7762f8241262730230e56c5e04e9ac9b2a25dd5d"
+    },
+    {
+      "path": "reports/reproduction-proof.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/reproduction-proof.json",
+      "bytes": 6332,
+      "sha256": "ea072b16305d69038a99b26e7762f8241262730230e56c5e04e9ac9b2a25dd5d"
+    },
+    {
+      "path": "reports/visual-review.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/visual-review.json",
+      "bytes": 2666,
+      "sha256": "e1006dd019ccf2218f8f80d3a00d856f5bcc653309a8206c76723d58bfc3a8ea"
+    },
+    {
+      "path": "sources/builtin-catalog.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/builtin-catalog.json",
+      "bytes": 10881,
+      "sha256": "15d6b6cb0528af01a74755c332481e8544c36d87ca53a93beb8c34f068851b20"
+    },
+    {
+      "path": "sources/original-input-sha256.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/original-input-sha256.json",
+      "bytes": 1942,
+      "sha256": "a1ce24cbe86b5d9ddc2b74bee3d3519eaa5ce1fe802227c2f06f550b10fc70b3"
+    },
+    {
+      "path": "sources/profiles/controlled-v1-x1.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/controlled-v1-x1.json",
+      "bytes": 1244,
+      "sha256": "6e8ad3a0efd95042e51ce8b67ac58a94244cf83d28350189f74987d60ef47867"
+    },
+    {
+      "path": "sources/profiles/controlled-v1-x2.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/controlled-v1-x2.json",
+      "bytes": 1244,
+      "sha256": "4b3fb02c907fece24a6f4590683f60a1aba2997ae5a269cfa6271d69e00f55d0"
+    },
+    {
+      "path": "sources/profiles/identity-x1.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/identity-x1.json",
+      "bytes": 260,
+      "sha256": "4dcbb6e6807eecb089026dfed451c6a81047524ad4a75e5ba6ca859ffb193e24"
+    },
+    {
+      "path": "sources/profiles/identity-x2.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/identity-x2.json",
+      "bytes": 260,
+      "sha256": "eb8b5fa3ea0f14774dc38338d86625a24434db2636c69b3b5f823ae3df16a7c0"
+    },
+    {
+      "path": "sources/profiles/original-controlled-v1.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/original-controlled-v1.json",
+      "bytes": 1244,
+      "sha256": "1a508d5ff96019828ea603daa4143d435048773e46fa0243211f5e02db1d9ace"
+    },
+    {
+      "path": "sources/profiles/original-identity.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/original-identity.json",
+      "bytes": 260,
+      "sha256": "f2d8d1f86f512a3c4d44f3227382df530495c7982214c49d2f10ba41efa3bb8b"
+    },
+    {
+      "path": "tools/make_review.py",
+      "source_path": "/private/tmp/mf-lot3-visual/make_review.py",
+      "bytes": 2826,
+      "sha256": "021c19949f4b3f2424002d84757832f0fdb6516fe19d8a5a142f77082f98b75f"
+    },
+    {
+      "path": "visual/compact-controlled-v1-x1-illegible.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-controlled-v1-x1-illegible.png",
+      "bytes": 976,
+      "sha256": "7622d65d86c96efeb8784a8ac99125047de8079dbe068ba2cfad61fa14799ff3"
+    },
+    {
+      "path": "visual/compact-controlled-v1-x1-readable.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-controlled-v1-x1-readable.png",
+      "bytes": 1994,
+      "sha256": "1834daebc4bb01c5c4b57b6aad860be146b35741a66b282db4a9f3451386bf52"
+    },
+    {
+      "path": "visual/compact-controlled-v1-x1-uncertain.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-controlled-v1-x1-uncertain.png",
+      "bytes": 1112,
+      "sha256": "ec3fe06c2cf7d57a0b3a85dddb6d99e3d7fb9ef5938b7ed5be2d107e898ffecf"
+    },
+    {
+      "path": "visual/compact-controlled-v1-x2-illegible.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-controlled-v1-x2-illegible.png",
+      "bytes": 1195,
+      "sha256": "d0dc976e9ce18368ecdcb8ee03a7cdfbb4464bd9fd08df1943e0b7a626e4721e"
+    },
+    {
+      "path": "visual/compact-controlled-v1-x2-readable.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-controlled-v1-x2-readable.png",
+      "bytes": 1182,
+      "sha256": "95e0192c9088baa70d94ff3485a02399b94698b254432fa87ac5f00c8f59d77f"
+    },
+    {
+      "path": "visual/compact-controlled-v1-x2-uncertain.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-controlled-v1-x2-uncertain.png",
+      "bytes": 1063,
+      "sha256": "7d49db6409a8e2923fd6750fef0fc3f46021c9634d098510fe793158b87e9d8c"
+    },
+    {
+      "path": "visual/compact-identity-x1-illegible.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-identity-x1-illegible.png",
+      "bytes": 366,
+      "sha256": "5647ace665ca9b3faf83806e32bed92fc2e4b345715b78072e6cbc4a314f58c9"
+    },
+    {
+      "path": "visual/compact-identity-x1-readable.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-identity-x1-readable.png",
+      "bytes": 1407,
+      "sha256": "f19cebad43b2629d7f908af783762ad9baf5f053665494eddce861880f180f2b"
+    },
+    {
+      "path": "visual/compact-identity-x2-illegible.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-identity-x2-illegible.png",
+      "bytes": 375,
+      "sha256": "96ab92fc63254249240c7afbb199a7f13f99ee339fa3db5b9de30d7fca85de63"
+    },
+    {
+      "path": "visual/compact-identity-x2-readable.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-identity-x2-readable.png",
+      "bytes": 1105,
+      "sha256": "956f53e109b2f9865ee23410d2f598e7f0798431d0e6cb64a0ffa78ffa228497"
+    },
+    {
+      "path": "visual/compact-identity-x2-uncertain.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/compact-identity-x2-uncertain.png",
+      "bytes": 366,
+      "sha256": "0113755f679dfa80fd57644f8af2a0cba0cad2b8881c19377e86131daa35de37"
+    },
+    {
+      "path": "visual/overview.jpg",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/overview.jpg",
+      "bytes": 457839,
+      "sha256": "8b4467d35621399159930fb690d89d6a07fef307589343b3a6c05c8f178236ea"
+    },
+    {
+      "path": "visual/pilot-size-controlled-v1-x2-illegible.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/pilot-size-controlled-v1-x2-illegible.png",
+      "bytes": 867,
+      "sha256": "48f662be0db71d317dee964d36870e84246f4d03411413066b233f3ece8c641e"
+    },
+    {
+      "path": "visual/pilot-size-controlled-v1-x2-readable.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/pilot-size-controlled-v1-x2-readable.png",
+      "bytes": 1654,
+      "sha256": "c22c630535c090765b428d78b1cf27928eee520ab626d5a50c7458c81f09a16d"
+    },
+    {
+      "path": "visual/pilot-size-controlled-v1-x2-uncertain.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/pilot-size-controlled-v1-x2-uncertain.png",
+      "bytes": 1633,
+      "sha256": "42c23d0dd32a83b234534bf66ca1d7b3ce81cfb866a26a9a50fa0e10e65b5ea6"
+    },
+    {
+      "path": "visual/pilot-size-identity-x2-illegible.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/pilot-size-identity-x2-illegible.png",
+      "bytes": 259,
+      "sha256": "cc17ac5e52f98fad996e0681d2e1aedbc3aab1035cb9468134f9fd5e3f85f7b7"
+    },
+    {
+      "path": "visual/pilot-size-identity-x2-readable.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/pilot-size-identity-x2-readable.png",
+      "bytes": 943,
+      "sha256": "9b16460b56ae42f15c8e48c0b9d42caf5d637aefad878e459cda108e3cad10be"
+    },
+    {
+      "path": "visual/pilot-size-identity-x2-uncertain.png",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/pilot-size-identity-x2-uncertain.png",
+      "bytes": 322,
+      "sha256": "b5fbe991b17cdbcbe932e4d7e6ace6e12976b37f6e50248f1ea60909b7003118"
+    },
+    {
+      "path": "visual/selection.json",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/selection.json",
+      "bytes": 9704,
+      "sha256": "3bcd67e3c5015ea23c3e0a8629df5aa09103e991927e60a7b1e79bcdffdeec13"
+    },
+    {
+      "path": "visual/word-crops.jpg",
+      "source_path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/visual/word-crops.jpg",
+      "bytes": 148269,
+      "sha256": "9455ead67fc2d37edc7a34be984e4917a24d92a9d0168b7a9f215cca43c50fda"
+    }
+  ],
+  "updated_at_utc": "2026-10-07T16:14:58.171122+00:00"
+}

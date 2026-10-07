@@ -89,7 +89,7 @@ détecteur général de quasi-doublons. La génération tire uniformément les u
 d'un rôle : les documents contenant plus d'unités ont davantage de poids. Le
 nombre de pages ne mesure donc ni la diversité des documents ni leur équilibre.
 
-## Lot 3 — dégradations mesurées, acceptation en cours
+## Lot 3 — dégradations mesurées, acceptation technique réussie
 
 Le profil `fr_press_19c_columns_4_6_measured` étend le contrat 0.3 sans changer
 les pages du profil historique. Le fichier de dégradation est embarqué et haché ;
@@ -120,19 +120,84 @@ un masque tout-encre et recalculé les mesures, exports et empreintes : ce cas
 a motivé un contrôle supplémentaire de confinement aux blocs. Un masque faux mais
 contenu dans les blocs reste une limite du validateur sans reproduction.
 
-Preuves attendues avant acceptation : suite complète et revue croisée ; paires
+Protocole d'acceptation : suite complète et revue croisée ; paires
 identity/controlled aux facteurs ×1 et ×2, masques et composition identiques dans
 chaque paire ; exports et diagnostics recalculés ; rejeu et reproduction complets ;
 mesure du coût à taille pilote avec un worker ; inspection des images et mots
 par sévérité. Aucun gain sur un corpus réel ni calibration historique n'est annoncé.
-Les résultats finaux de cette campagne restent à renseigner.
+Les résultats techniques sont consignés ci-dessous ; le rapport automatique
+conserve son statut de revue visuelle `not_run`.
 
 La suite intégrée passe **652 tests en 349,57 s**, Ruff sans erreur. Les
 [sorties et la revue indépendante de Claude](reports/lot3/tests-index.json)
 sont figées avant l'acceptation CLI. Claude compare aussi un lot de deux pages
-avec workers 1 puis 2 : 45 fichiers identiques, ce qui complète le futur rejeu
+avec workers 1 puis 2 : 45 fichiers identiques, ce qui complète le rejeu
 CLI d'une seule page. Six cas historiques clean/mixed/faint conservent leurs
 PNG et JSON identiques au commit `4153d99`.
+
+### Campagne CLI du 7 octobre 2026
+
+La [campagne technique](reports/lot3/acceptance/acceptance.json) passe ses
+**224 contrôles**, sans erreur, depuis le commit propre
+`cb24e39e42d6c7519a32f6b70bcbccced6e13f36`. Le code, l'environnement et les
+actifs sont restés identiques avant, pendant et après les neuf commandes.
+Les six pages de base utilisent la graine 20261009, les trois textes originaux
+de démonstration et les profils `identity` / `controlled-v1` ; elles totalisent
+**17 194 occurrences de mots**. Aucun corpus réel n'est utilisé.
+
+Les trois paires partagent textes, spans, polygones, ordre de lecture et masque
+idéal octet pour octet, à dimensions et facteur identiques. Leurs PNG et leurs
+pixels décodés en niveaux de gris diffèrent. Les diagnostics, leurs références,
+les étiquettes, les statistiques et les exports passent les contrôles du lot.
+Les fréquences des étiquettes sont observées, sans fréquence minimale imposée
+ni interprétation comme vérité de lecture humaine.
+
+Le rejeu de la page compacte `controlled-v1` ×2 depuis ses propres actifs, avec
+`--jobs 2`, donne [37 fichiers identiques](reports/lot3/acceptance/reports/compare-controlled-replay.json).
+Une page unique ne prouve pas l'exécution simultanée de deux tâches ; le test
+Claude à deux pages cité plus haut apporte cette preuve séparée.
+La [reproduction séquentielle](reports/lot3/acceptance/reports/reproduction-proof.json)
+de cette même page donne **un PNG et un JSON canonique identiques**, sans écart
+ni changement d'environnement. La campagne exécute donc huit rendus au total :
+six pages de base, un rejeu et une reproduction.
+
+| Dimensions finales / colonnes | Suréchantillonnage | Mots par page | Temps identity | Temps controlled-v1 |
+|---|---:|---:|---:|---:|
+| 800 × 1100 / 4 | ×1 | 1 699 | 5,01 s | 5,57 s |
+| 800 × 1100 / 4 | ×2 | 1 699 | 6,21 s | 5,95 s |
+| 2680 × 3698 / 6 | ×2 | 5 199 | 20,62 s | 20,04 s |
+
+Ces temps correspondent à une seule exécution par cas, avec un worker, et
+incluent les exports et la validation. Ils ne sont ni des moyennes de benchmark
+ni des mesures du seul rendu. Le rejeu prend 6,21 s, la comparaison 1,74 s et la
+reproduction 5,36 s. Le maximum mémoire final `RUSAGE_CHILDREN.ru_maxrss` est
+**1 122 795 520 octets** sur macOS : c'est le maximum cumulé des processus enfants,
+pas une différence entre commandes ni un pic attribuable à chaque profil.
+Le script conserve la convention brute macOS en octets et Linux en Kio.
+
+Le volume logique final du rapport automatique est **69 619 373 octets** avant
+les visuels, puis **70 254 670 octets** après leur ajout et celui de la note visuelle.
+La mesure `du -sk` donne **69 416 Kio alloués** (71 081 984 octets) ; elle mesure
+les blocs disque, distincts de la somme des tailles logiques des fichiers.
+Le plafond de 150 000 000 octets est contrôlé entre les commandes et à la fin,
+sans quota atomique pendant un sous-processus.
+
+L'[index SHA-256](reports/lot3/acceptance/index.json) recense **81 copies exactes** :
+rapport original, rapports techniques, sources des profils, métadonnées et
+statistiques des sept lots complets, visuels et script de sélection. Les copies
+ont été comparées aux sources par octets, taille et SHA-256. Cette archive légère
+n'est pas un lot autonome : les pages complètes, fontes, masques, diagnostics
+par mot, exports et journaux bruts restent dans `runs/accept-measured-lot3`.
+Le rapport automatique original et sa copie gardent `visual_review.status: not_run`.
+
+La [revue visuelle séparée](reports/lot3/acceptance/reports/visual-review.json)
+conclut `pass_with_documented_limits` après examen de **six miniatures de pages
+et dix-sept extraits de mots**. Elle relève des tirets visibles sous `identity`
+classés `illegible` avec `ink_pixels=0`, car leur couverture ne franchit pas le
+seuil du masque idéal, ainsi que des mots `controlled` très flous néanmoins
+classés `readable`. Les seuils sont restés figés après cette inspection.
+Ce sondage ne constitue ni une transcription humaine en aveugle ni une mesure
+de précision des étiquettes ; aucune lisibilité exhaustive n'est revendiquée.
 
 ## Historique 0.2 — protocole fixé avant production
 

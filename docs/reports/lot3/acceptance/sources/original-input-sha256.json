@@ -1,0 +1,20 @@
+{
+  "assets/catalog.json": "15d6b6cb0528af01a74755c332481e8544c36d87ca53a93beb8c34f068851b20",
+  "assets/fonts/gfsdidot/DESCRIPTION.en_us.html": "9aa61fa5d8872f9cab53be3ff1e040abbd0af0931207bd6ea9d297ef89506223",
+  "assets/fonts/gfsdidot/GFSDidot-Regular.ttf": "4fc784ab824e8866eeef8ad55976b93e7e170fb1b8237fd4f8781b5b4dd297f9",
+  "assets/fonts/gfsdidot/METADATA.pb": "aa07c9c90cea6cc13577262558cd366c2fdee90b57e6f75d752f010ff0f6b751",
+  "assets/fonts/gfsdidot/OFL.txt": "9e19c0d2e7e7adcbe9dfd0749e34dda41e7e356e0f2cc082d61d2fc9b6e0cef7",
+  "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57",
+  "assets/fonts/oldstandardtt/METADATA.pb": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d",
+  "assets/fonts/oldstandardtt/OFL.txt": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd",
+  "assets/fonts/oldstandardtt/OldStandard-Bold.ttf": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db",
+  "assets/fonts/oldstandardtt/OldStandard-Italic.ttf": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564",
+  "assets/fonts/oldstandardtt/OldStandard-Regular.ttf": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac",
+  "assets/texts/CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+  "assets/texts/NOTICE.md": "b2ce6e45a24ee9c034039d18450ec8c6d2611319bfb7a7b8801f8139926dd014",
+  "assets/texts/annonces-fr.txt": "7881bb7fca96af44c294f8a6603f924eee958ab5b6394bc7c8b47cf2734af4fc",
+  "assets/texts/demo-fr.txt": "1025138a6e80735785d415c157a91cb856a34a86659ca7a5215193197e992895",
+  "assets/texts/titres-fr.txt": "30f846cdeec76617013e7891dd4c5695c11358b652cceefba20755255d6e0c72",
+  "profiles/controlled-v1.json": "1a508d5ff96019828ea603daa4143d435048773e46fa0243211f5e02db1d9ace",
+  "profiles/identity.json": "f2d8d1f86f512a3c4d44f3227382df530495c7982214c49d2f10ba41efa3bb8b"
+}

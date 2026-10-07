@@ -1,0 +1,45 @@
+{
+  "format": "mille-feuilles-visual-review",
+  "version": "1",
+  "status": "pass_with_documented_limits",
+  "reviewer": "Codex",
+  "reviewed_at_utc": "2026-10-07T16:13:06.656484+00:00",
+  "source_commit": "cb24e39e42d6c7519a32f6b70bcbccced6e13f36",
+  "technical_report": {
+    "path": "acceptance.json",
+    "sha256": "6f230ebce458abb04e8576667cd31cca78127a271af119556932086d3aaa4bee",
+    "status": "pass",
+    "not_modified": true
+  },
+  "reviewed": [
+    {
+      "path": "visual/overview.jpg",
+      "sha256": "8b4467d35621399159930fb690d89d6a07fef307589343b3a6c05c8f178236ea",
+      "scope": "Six severity-sheet page thumbnails: compact identity/controlled x1/x2 and pilot-size identity/controlled x2"
+    },
+    {
+      "path": "visual/word-crops.jpg",
+      "sha256": "9455ead67fc2d37edc7a34be984e4917a24d92a9d0168b7a9f215cca43c50fda",
+      "scope": "Seventeen selected native word crops displayed with nearest-neighbor enlargement; exact IDs and source rectangles in selection.json"
+    }
+  ],
+  "selection": {
+    "path": "visual/selection.json",
+    "sha256": "3bcd67e3c5015ea23c3e0a8629df5aa09103e991927e60a7b1e79bcdffdeec13",
+    "word_crops": 17
+  },
+  "observations": [
+    "Les trois paires conservent visuellement les colonnes, titres, coupures et espaces ; controlled réduit nettement le contraste et brouille les contours.",
+    "Aucune collision ou découpe de mot manifeste observée dans ces vues ; ce sondage ne remplace pas les contrôles géométriques exhaustifs.",
+    "Le corps de 10 px des pages compactes est beaucoup plus affecté que le corps à taille pilote par les mêmes paramètres photométriques finaux.",
+    "Sous identity, des tirets visibles sont classés illegible avec ink_pixels=0 : leur couverture ne passe pas le seuil 0,5 du masque idéal. Un signe peut être visible sans fournir assez de pixels au diagnostic.",
+    "Des mots controlled proches du seuil restent très flous tout en étant classés readable ; cette étiquette ne certifie ni lecture humaine ni cible OCR."
+  ],
+  "limitations": [
+    "Sondage visuel de six miniatures et dix-sept extraits, sans transcription aveugle ni estimation de précision des étiquettes.",
+    "Une graine de campagne, trois compositions/facteurs ; les distributions ne sont pas calibrées sur des documents historiques.",
+    "Les petits glyphes manquants éventuels dans les légendes de la planche sont dus à sa police de légende ; selection.json conserve les textes exacts.",
+    "Les seuils de heuristic-v1 sont restés figés ; aucune retouche après inspection des résultats.",
+    "Pas de gain OCR/segmentation/OLR ni de robustesse historique revendiqué."
+  ]
+}

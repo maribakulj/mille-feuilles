@@ -1,0 +1,102 @@
+{
+  "environment": {
+    "current": {
+      "freetype": "2.14.3",
+      "generator": "0.3.0",
+      "implementation": "CPython",
+      "layout_engine": "pillow-freetype-basic",
+      "packages": {
+        "Pillow": "12.3.0",
+        "fonttools": "4.66.1",
+        "jsonschema": "4.26.0",
+        "lxml": "6.1.3",
+        "numpy": "2.5.3",
+        "shapely": "2.1.2"
+      },
+      "platform": "macOS-26.4.1-arm64-arm-64bit",
+      "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+      "sources": {
+        "pyproject.toml": "fd9109a78f69a3fac32fa5feab02dd6586d5ebf72caa126dabbad79be2ee9859",
+        "schemas/assets.schema.json": "7de8b38999e53502da7162d7ff148304de5dc22aacecb6a23d7602f982e98648",
+        "schemas/degradation-profile.schema.json": "6f9df6ecc8e3cf70b6e769db6566d8c101619d771ff9e4aa5186e8758708d617",
+        "schemas/manifest.schema.json": "33e77121a83c1b214a08a5dea388fb2406e69b1023b5ed0d2c6f3719321f46a0",
+        "schemas/page.schema.json": "c9a5e2a939295e6bad9f4bcafdcf59d8e4e53ab9a19aa3a92883297f256ef2bd",
+        "schemas/xml/alto-4-4.xsd": "5564fd29d2dd090d8102b8a0aa081906afd677cd5ecc632312e56f21ea14702b",
+        "schemas/xml/page-2019-07-15.xsd": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5",
+        "schemas/xml/provenance.json": "f2e8bb4dc146e90dd0aa39798f2081863ed5d258eeee14eaa875f5eb3ea5317c",
+        "schemas/xml/xlink.xsd": "f1f5bb6003165cdd8f6c1fcc32f8fd1f965e1681010f3b9806d9460bcffa8a3c",
+        "src/mille_feuilles/__init__.py": "31b3d4495cbf00993b369306a1b5740783eb845b76a4d92612881ebe1b9dd493",
+        "src/mille_feuilles/catalog.py": "9ed1ebf69f61fcd304a0443c1ba1cab56286bb3ed4079ecaed17cd691d5d7fd2",
+        "src/mille_feuilles/cli.py": "baccd82bf9a1bd4f9aa66b7cc65efde230a1bd50e76563a33ff8b3957b423fcf",
+        "src/mille_feuilles/degrade.py": "834f3e7ce1583f4f6c403a2e5d8231f962be20a12f85a23b538c2f1983a66e9d",
+        "src/mille_feuilles/diagnostics.py": "b86eb29959d621b3b0da509f61f5d4f179ee085980727c60a4e831b0090e3ccd",
+        "src/mille_feuilles/exports.py": "bb9b24de0f536558db4971ab38f3fe0956c45be3237902fc5b3539d6f729bf4a",
+        "src/mille_feuilles/io.py": "fa26d558c5582013dda07116c517fc1e87e624f66c5e4d434dca384a8f1aee84",
+        "src/mille_feuilles/partition.py": "c5fa133fe262c70f0e1abd519e6a3e98363ef55a0d115e6a66a8ee23f9984bc9",
+        "src/mille_feuilles/pipeline.py": "9339cb29dc71283fb0f1c80f2c3fc564ecbd1c387965922e8babb1714eea48c9",
+        "src/mille_feuilles/render.py": "8922e8160b2f68ea1dafd200f23e6a081785a3e7c908a9e96035254aa7695164",
+        "src/mille_feuilles/validation.py": "b9aac66c72541c6cf9bc9e554de5f0f4bfdccd221c8c5d412790db5109917564",
+        "uv.lock": "0c46dec6a1cf38ac326946382e1da143655a4c72204aaf406ee91714b96cac45"
+      }
+    },
+    "differences": [],
+    "match": true,
+    "source": {
+      "freetype": "2.14.3",
+      "generator": "0.3.0",
+      "implementation": "CPython",
+      "layout_engine": "pillow-freetype-basic",
+      "packages": {
+        "Pillow": "12.3.0",
+        "fonttools": "4.66.1",
+        "jsonschema": "4.26.0",
+        "lxml": "6.1.3",
+        "numpy": "2.5.3",
+        "shapely": "2.1.2"
+      },
+      "platform": "macOS-26.4.1-arm64-arm-64bit",
+      "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+      "sources": {
+        "pyproject.toml": "fd9109a78f69a3fac32fa5feab02dd6586d5ebf72caa126dabbad79be2ee9859",
+        "schemas/assets.schema.json": "7de8b38999e53502da7162d7ff148304de5dc22aacecb6a23d7602f982e98648",
+        "schemas/degradation-profile.schema.json": "6f9df6ecc8e3cf70b6e769db6566d8c101619d771ff9e4aa5186e8758708d617",
+        "schemas/manifest.schema.json": "33e77121a83c1b214a08a5dea388fb2406e69b1023b5ed0d2c6f3719321f46a0",
+        "schemas/page.schema.json": "c9a5e2a939295e6bad9f4bcafdcf59d8e4e53ab9a19aa3a92883297f256ef2bd",
+        "schemas/xml/alto-4-4.xsd": "5564fd29d2dd090d8102b8a0aa081906afd677cd5ecc632312e56f21ea14702b",
+        "schemas/xml/page-2019-07-15.xsd": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5",
+        "schemas/xml/provenance.json": "f2e8bb4dc146e90dd0aa39798f2081863ed5d258eeee14eaa875f5eb3ea5317c",
+        "schemas/xml/xlink.xsd": "f1f5bb6003165cdd8f6c1fcc32f8fd1f965e1681010f3b9806d9460bcffa8a3c",
+        "src/mille_feuilles/__init__.py": "31b3d4495cbf00993b369306a1b5740783eb845b76a4d92612881ebe1b9dd493",
+        "src/mille_feuilles/catalog.py": "9ed1ebf69f61fcd304a0443c1ba1cab56286bb3ed4079ecaed17cd691d5d7fd2",
+        "src/mille_feuilles/cli.py": "baccd82bf9a1bd4f9aa66b7cc65efde230a1bd50e76563a33ff8b3957b423fcf",
+        "src/mille_feuilles/degrade.py": "834f3e7ce1583f4f6c403a2e5d8231f962be20a12f85a23b538c2f1983a66e9d",
+        "src/mille_feuilles/diagnostics.py": "b86eb29959d621b3b0da509f61f5d4f179ee085980727c60a4e831b0090e3ccd",
+        "src/mille_feuilles/exports.py": "bb9b24de0f536558db4971ab38f3fe0956c45be3237902fc5b3539d6f729bf4a",
+        "src/mille_feuilles/io.py": "fa26d558c5582013dda07116c517fc1e87e624f66c5e4d434dca384a8f1aee84",
+        "src/mille_feuilles/partition.py": "c5fa133fe262c70f0e1abd519e6a3e98363ef55a0d115e6a66a8ee23f9984bc9",
+        "src/mille_feuilles/pipeline.py": "9339cb29dc71283fb0f1c80f2c3fc564ecbd1c387965922e8babb1714eea48c9",
+        "src/mille_feuilles/render.py": "8922e8160b2f68ea1dafd200f23e6a081785a3e7c908a9e96035254aa7695164",
+        "src/mille_feuilles/validation.py": "b9aac66c72541c6cf9bc9e554de5f0f4bfdccd221c8c5d412790db5109917564",
+        "uv.lock": "0c46dec6a1cf38ac326946382e1da143655a4c72204aaf406ee91714b96cac45"
+      }
+    }
+  },
+  "errors": [],
+  "files_compared": 2,
+  "mismatches": [],
+  "output_root": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reproduced-controlled-x2",
+  "pages_expected": 1,
+  "pages_reproduced": 1,
+  "scope": "all source PNG images and canonical page JSON; sequential render_page",
+  "source_commit": "cb24e39e42d6c7519a32f6b70bcbccced6e13f36",
+  "source_dirty": false,
+  "source_manifest_sha256": "63619675de571a617fede21de7ed1fef47a367d4f54cf37df33ee527166b4bbc",
+  "source_root": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2",
+  "space": {
+    "available_bytes": 821329920,
+    "original_images_and_json_bytes": 1660053,
+    "required_bytes": 501660053,
+    "reserve_bytes": 500000000
+  },
+  "status": "pass"
+}

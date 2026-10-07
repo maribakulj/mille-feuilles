@@ -97,6 +97,17 @@ planches de fixtures synthétiques :
   que ses empreintes et ses diagnostics sont recalculés, le recalcul reste cohérent avec ce faux masque :
   les mesures et les SHA-256 **ne prouvent pas** que le masque correspond aux glyphes rendus. Seules la
   reproduction déterministe de la génération et les tests du rendu confrontent le masque au dessin.
+- **Signe visible sans pixel de masque.** Constaté à l'acceptation du lot 3 (`cb24e39`). Sous `identity`,
+  des tirets visibles sont classés `illegible` avec `ink_pixels = 0` : leur couverture idéale reste sous le
+  seuil de 0,5 du masque. Un signe peut donc être visible sans fournir assez de pixels au diagnostic.
+- **Mot flou classé lisible.** Constaté à la même acceptation. Sous `controlled-v1`, des mots proches des
+  seuils restent très flous tout en étant classés `readable`. Pour un même profil, le corps de 10 px des
+  pages compactes est bien plus atteint que le corps de la taille pilote.
+  Ces deux constats viennent d'un sondage visuel (6 miniatures, 17 extraits de mots), sans transcription
+  à l'aveugle ni estimation de la précision des étiquettes. Preuve :
+  [note visuelle](reports/lot3/acceptance/reports/visual-review.json). Les identifiants et rectangles
+  exacts des extraits sont dans [la sélection](reports/lot3/acceptance/visual/selection.json).
+  **Les seuils de `heuristic-v1` restent figés** : aucune retouche après inspection.
 - **Lettres cassées.** Une lettre partiellement effacée par les cassures (« m·nicipal ») laisse le mot
   `readable`, car sa rétention globale reste haute. L'heuristique ne détecte pas les substitutions
   plausibles de lettres.

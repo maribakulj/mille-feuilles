@@ -1,0 +1,22 @@
+{
+  "pages": 1,
+  "render": {
+    "columns": 6,
+    "degradation": "mixed",
+    "degradation_profile": {
+      "calibrated": false,
+      "description": "Aucune altération : papier 255, encre 0 ; sert de référence pour les diagnostics.",
+      "families": {},
+      "format": "mille-feuilles-degradation-profile",
+      "name": "identity",
+      "oversampling": 2,
+      "version": "1"
+    },
+    "dpi": 150,
+    "height": 3698,
+    "partition": null,
+    "seed": 20261009,
+    "width": 2680
+  },
+  "schema_version": "0.3.0"
+}

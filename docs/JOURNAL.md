@@ -187,3 +187,25 @@ empreintes, diagnostics et exports. Claude reproduit six cas historiques au
 commit `4153d99` et un lot de deux pages avec workers 1 puis 2 (45 fichiers
 identiques). Les preuves et ses scripts sont archivés dans `reports/lot3/`.
 La campagne CLI, les coûts à taille pilote et la revue visuelle suivent.
+
+L'acceptation au commit propre `cb24e39` passe les **224 contrôles** : six pages
+de référence, 17 194 mots, trois paires identity/controlled à composition et
+masque identiques, pixels distincts. Le rejeu compare 37 fichiers identiques ;
+la reproduction retrouve le PNG, la page JSON, le masque et les diagnostics.
+La campagne mesure 5,01–6,21 s par page compacte et 20,04–20,62 s à taille pilote,
+exports et validation inclus. Le maximum RSS cumulé des processus enfants est
+1 122 795 520 octets ; il n'est pas un pic attribuable à chaque profil.
+
+Six miniatures et 17 extraits sont inspectés. Certains tirets visibles sous
+identity sont étiquetés illisibles faute de pixels de masque ; des mots très
+flous restent `readable` sous controlled. Les seuils restent figés et ne
+certifient pas une cible OCR. La note visuelle est distincte du rapport technique
+original, qui conserve honnêtement `visual_review: not_run`. Les preuves légères
+sont archivées dans `reports/lot3/acceptance/`, et environ 70,25 Mo de production
+sont conservés sans déplacement ni suppression.
+
+Le lot 4 est préparé avec Claude : planificateur pur, deux zones de colonnages
+distincts, titres larges, corps par article et annonces encadrées. Pendant le gel
+du lot 3, le développement et les tests de ces interfaces restent dans les
+scratchpads. Les essais de plan et de raccordement ne valent pas encore une
+acceptation de pages rendues v2.

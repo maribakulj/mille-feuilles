@@ -1,0 +1,74 @@
+{
+  "format": "mille-feuilles-degradation-profile",
+  "version": "1",
+  "calibrated": false,
+  "oversampling": 1,
+  "name": "controlled-v1",
+  "description": "Perte d'encre, contraste, éclairage, flou et bruit contrôlés ; intervalles déclarés, non calibrés sur des pages réelles.",
+  "families": {
+    "ink_loss": {
+      "erosion": {
+        "uniform": [
+          0.0,
+          0.5
+        ]
+      },
+      "break_density": {
+        "uniform": [
+          0.0,
+          0.06
+        ]
+      },
+      "break_scale_px": {
+        "uniform": [
+          1.0,
+          3.0
+        ]
+      }
+    },
+    "contrast": {
+      "paper_level": {
+        "uniform": [
+          222,
+          250
+        ]
+      },
+      "ink_level": {
+        "uniform": [
+          15,
+          130
+        ]
+      }
+    },
+    "illumination": {
+      "amplitude": {
+        "uniform": [
+          0,
+          20
+        ]
+      },
+      "direction_degrees": {
+        "uniform": [
+          0,
+          360
+        ]
+      }
+    },
+    "blur": {
+      "sigma_px": {
+        "uniform": [
+          0.0,
+          1.4
+        ]
+      }
+    },
+    "noise": {
+      "sigma": {
+        "uniform": [
+          0.0,
+          5.0
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "selection": "Closest contrast to 40 among words >=4 characters for each nonempty label; fallback all words; deterministic ID tie-break",
+  "records": [
+    {
+      "lot": "compact-identity-x1",
+      "word_id": "mf_0000_w000834",
+      "text": "discuté",
+      "label": "readable",
+      "crop": "compact-identity-x1-readable.png",
+      "source_bbox": [
+        243,
+        1019,
+        290,
+        1041
+      ],
+      "metrics": {
+        "contrast": 173.8,
+        "ink": 81.2,
+        "ink_pixels": 37,
+        "legibility": "readable",
+        "paper": 255.0,
+        "retention": 1.0
+      },
+      "source_image_sha256": "7bf8f9eddb816002d9f70c8d9010bd4d9b5e73fdab46ad91272ebcb8269d2ab4"
+    },
+    {
+      "lot": "compact-identity-x1",
+      "word_id": "mf_0000_w000005",
+      "text": "—",
+      "label": "illegible",
+      "crop": "compact-identity-x1-illegible.png",
+      "source_bbox": [
+        401,
+        58,
+        430,
+        82
+      ],
+      "metrics": {
+        "contrast": 0.0,
+        "ink": 255.0,
+        "ink_pixels": 0,
+        "legibility": "illegible",
+        "paper": 255.0,
+        "retention": 0.0
+      },
+      "source_image_sha256": "7bf8f9eddb816002d9f70c8d9010bd4d9b5e73fdab46ad91272ebcb8269d2ab4"
+    },
+    {
+      "lot": "compact-controlled-v1-x1",
+      "word_id": "mf_0000_w001085",
+      "text": "LECTURES",
+      "label": "readable",
+      "crop": "compact-controlled-v1-x1-readable.png",
+      "source_bbox": [
+        501,
+        583,
+        585,
+        607
+      ],
+      "metrics": {
+        "contrast": 69.0,
+        "ink": 171.0,
+        "ink_pixels": 201,
+        "legibility": "readable",
+        "paper": 240.0,
+        "retention": 0.810945
+      },
+      "source_image_sha256": "1a1b4d9a3148c369aa369ca147cc36987fc46980f521f26186456e5dd1333c71"
+    },
+    {
+      "lot": "compact-controlled-v1-x1",
+      "word_id": "mf_0000_w000257",
+      "text": "jamais",
+      "label": "uncertain",
+      "crop": "compact-controlled-v1-x1-uncertain.png",
+      "source_bbox": [
+        149,
+        622,
+        195,
+        644
+      ],
+      "metrics": {
+        "contrast": 40.0,
+        "ink": 202.0,
+        "ink_pixels": 42,
+        "legibility": "uncertain",
+        "paper": 242.0,
+        "retention": 0.309524
+      },
+      "source_image_sha256": "1a1b4d9a3148c369aa369ca147cc36987fc46980f521f26186456e5dd1333c71"
+    },
+    {
+      "lot": "compact-controlled-v1-x1",
+      "word_id": "mf_0000_w000013",
+      "text": "claire",
+      "label": "illegible",
+      "crop": "compact-controlled-v1-x1-illegible.png",
+      "source_bbox": [
+        139,
+        110,
+        180,
+        132
+      ],
+      "metrics": {
+        "contrast": 40.0,
+        "ink": 200.0,
+        "ink_pixels": 31,
+        "legibility": "illegible",
+        "paper": 240.0,
+        "retention": 0.193548
+      },
+      "source_image_sha256": "1a1b4d9a3148c369aa369ca147cc36987fc46980f521f26186456e5dd1333c71"
+    },
+    {
+      "lot": "compact-identity-x2",
+      "word_id": "mf_0000_w000296",
+      "text": "quart-",
+      "label": "readable",
+      "crop": "compact-identity-x2-readable.png",
+      "source_bbox": [
+        172,
+        704,
+        216,
+        726
+      ],
+      "metrics": {
+        "contrast": 171.0,
+        "ink": 84.0,
+        "ink_pixels": 31,
+        "legibility": "readable",
+        "paper": 255.0,
+        "retention": 1.0
+      },
+      "source_image_sha256": "423953a6b319ba96c0b2ab526c9e751049597120fd31dfa9b91068db93b5d17e"
+    },
+    {
+      "lot": "compact-identity-x2",
+      "word_id": "mf_0000_w000173",
+      "text": ":",
+      "label": "uncertain",
+      "crop": "compact-identity-x2-uncertain.png",
+      "source_bbox": [
+        151,
+        449,
+        171,
+        471
+      ],
+      "metrics": {
+        "contrast": 130.0,
+        "ink": 125.0,
+        "ink_pixels": 1,
+        "legibility": "uncertain",
+        "paper": 255.0,
+        "retention": 1.0
+      },
+      "source_image_sha256": "423953a6b319ba96c0b2ab526c9e751049597120fd31dfa9b91068db93b5d17e"
+    },
+    {
+      "lot": "compact-identity-x2",
+      "word_id": "mf_0000_w000005",
+      "text": "—",
+      "label": "illegible",
+      "crop": "compact-identity-x2-illegible.png",
+      "source_bbox": [
+        401,
+        58,
+        430,
+        82
+      ],
+      "metrics": {
+        "contrast": 0.0,
+        "ink": 255.0,
+        "ink_pixels": 0,
+        "legibility": "illegible",
+        "paper": 255.0,
+        "retention": 0.0
+      },
+      "source_image_sha256": "423953a6b319ba96c0b2ab526c9e751049597120fd31dfa9b91068db93b5d17e"
+    },
+    {
+      "lot": "compact-controlled-v1-x2",
+      "word_id": "mf_0000_w000035",
+      "text": "déposer",
+      "label": "readable",
+      "crop": "compact-controlled-v1-x2-readable.png",
+      "source_bbox": [
+        108,
+        155,
+        158,
+        177
+      ],
+      "metrics": {
+        "contrast": 44.5,
+        "ink": 196.0,
+        "ink_pixels": 37,
+        "legibility": "readable",
+        "paper": 240.5,
+        "retention": 0.702703
+      },
+      "source_image_sha256": "f56f0452260d113d155a6d2442359ed2dcdc9fb4f6dd2f69f21df62b3319f2e9"
+    },
+    {
+      "lot": "compact-controlled-v1-x2",
+      "word_id": "mf_0000_w000510",
+      "text": "seront",
+      "label": "uncertain",
+      "crop": "compact-controlled-v1-x2-uncertain.png",
+      "source_bbox": [
+        315,
+        313,
+        359,
+        335
+      ],
+      "metrics": {
+        "contrast": 40.0,
+        "ink": 200.0,
+        "ink_pixels": 26,
+        "legibility": "uncertain",
+        "paper": 240.0,
+        "retention": 0.346154
+      },
+      "source_image_sha256": "f56f0452260d113d155a6d2442359ed2dcdc9fb4f6dd2f69f21df62b3319f2e9"
+    },
+    {
+      "lot": "compact-controlled-v1-x2",
+      "word_id": "mf_0000_w000014",
+      "text": "donnant",
+      "label": "illegible",
+      "crop": "compact-controlled-v1-x2-illegible.png",
+      "source_bbox": [
+        166,
+        110,
+        218,
+        132
+      ],
+      "metrics": {
+        "contrast": 40.0,
+        "ink": 199.0,
+        "ink_pixels": 41,
+        "legibility": "illegible",
+        "paper": 239.0,
+        "retention": 0.292683
+      },
+      "source_image_sha256": "f56f0452260d113d155a6d2442359ed2dcdc9fb4f6dd2f69f21df62b3319f2e9"
+    },
+    {
+      "lot": "pilot-size-identity-x2",
+      "word_id": "mf_0000_w002885",
+      "text": "plus",
+      "label": "readable",
+      "crop": "pilot-size-identity-x2-readable.png",
+      "source_bbox": [
+        1492,
+        1441,
+        1542,
+        1472
+      ],
+      "metrics": {
+        "contrast": 214.7,
+        "ink": 40.3,
+        "ink_pixels": 124,
+        "legibility": "readable",
+        "paper": 255.0,
+        "retention": 1.0
+      },
+      "source_image_sha256": "8dda16076d78a4bbb2933e80ed7460e2c1d9540796687817ef35df5221125174"
+    },
+    {
+      "lot": "pilot-size-identity-x2",
+      "word_id": "mf_0000_w000423",
+      "text": "—",
+      "label": "uncertain",
+      "crop": "pilot-size-identity-x2-uncertain.png",
+      "source_bbox": [
+        308,
+        1922,
+        344,
+        1953
+      ],
+      "metrics": {
+        "contrast": 129.0,
+        "ink": 126.0,
+        "ink_pixels": 1,
+        "legibility": "uncertain",
+        "paper": 255.0,
+        "retention": 1.0
+      },
+      "source_image_sha256": "8dda16076d78a4bbb2933e80ed7460e2c1d9540796687817ef35df5221125174"
+    },
+    {
+      "lot": "pilot-size-identity-x2",
+      "word_id": "mf_0000_w000005",
+      "text": "—",
+      "label": "illegible",
+      "crop": "pilot-size-identity-x2-illegible.png",
+      "source_bbox": [
+        1357,
+        190,
+        1398,
+        226
+      ],
+      "metrics": {
+        "contrast": 0.0,
+        "ink": 255.0,
+        "ink_pixels": 0,
+        "legibility": "illegible",
+        "paper": 255.0,
+        "retention": 0.0
+      },
+      "source_image_sha256": "8dda16076d78a4bbb2933e80ed7460e2c1d9540796687817ef35df5221125174"
+    },
+    {
+      "lot": "pilot-size-controlled-v1-x2",
+      "word_id": "mf_0000_w000543",
+      "text": "celui",
+      "label": "readable",
+      "crop": "pilot-size-controlled-v1-x2-readable.png",
+      "source_bbox": [
+        173,
+        2347,
+        227,
+        2378
+      ],
+      "metrics": {
+        "contrast": 53.0,
+        "ink": 191.0,
+        "ink_pixels": 119,
+        "legibility": "readable",
+        "paper": 244.0,
+        "retention": 0.747899
+      },
+      "source_image_sha256": "6d4913fe0c3ca1f80901f5d4360af0d3a6dec7bf95f8702ea96a15be50503219"
+    },
+    {
+      "lot": "pilot-size-controlled-v1-x2",
+      "word_id": "mf_0000_w001895",
+      "text": "livre",
+      "label": "uncertain",
+      "crop": "pilot-size-controlled-v1-x2-uncertain.png",
+      "source_bbox": [
+        1217,
+        1047,
+        1271,
+        1078
+      ],
+      "metrics": {
+        "contrast": 54.1,
+        "ink": 186.9,
+        "ink_pixels": 80,
+        "legibility": "uncertain",
+        "paper": 241.0,
+        "retention": 0.55
+      },
+      "source_image_sha256": "6d4913fe0c3ca1f80901f5d4360af0d3a6dec7bf95f8702ea96a15be50503219"
+    },
+    {
+      "lot": "pilot-size-controlled-v1-x2",
+      "word_id": "mf_0000_w000255",
+      "text": ";",
+      "label": "illegible",
+      "crop": "pilot-size-controlled-v1-x2-illegible.png",
+      "source_bbox": [
+        362,
+        1216,
+        385,
+        1247
+      ],
+      "metrics": {
+        "contrast": 40.0,
+        "ink": 201.0,
+        "ink_pixels": 11,
+        "legibility": "illegible",
+        "paper": 241.0,
+        "retention": 0.272727
+      },
+      "source_image_sha256": "6d4913fe0c3ca1f80901f5d4360af0d3a6dec7bf95f8702ea96a15be50503219"
+    }
+  ]
+}

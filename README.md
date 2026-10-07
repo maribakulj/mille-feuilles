@@ -19,9 +19,12 @@ technique d'une évaluation sur des documents historiques réels.
 L'acceptation du **lot 2**, en 0.3.0, a passé **483 tests**. Son essai CLI a importé
 18 documents, en a exclu deux et a produit **trois pages**, une par partition,
 avec reproduction du lot train à l'identique. Ces résultats restent les preuves
-du lot 2. Le **lot 3 est en cours** : il ajoute des dégradations déclarées, un
-masque d'encre idéale et une lisibilité mesurée par heuristique. Sa campagne
-finale d'acceptation et ses résultats restent à consigner.
+du lot 2. Le **lot 3 est éprouvé** : **652 tests**, puis **224 contrôles** sur six
+pages de référence, avec rejeu et reproduction identiques. Il ajoute des
+dégradations déclarées, un masque d'encre idéale et une lisibilité mesurée par
+heuristique. La revue de six miniatures et 17 extraits confirme aussi les
+limites de ces étiquettes ; les [preuves](docs/VALIDATION.md) les détaillent.
+Le binôme poursuit le lot 4, consacré à la diversité des mises en page.
 
 ## Démarrer
 

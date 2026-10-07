@@ -1,0 +1,1182 @@
+{
+  "checks": [
+    "before generate-compact-identity-x1: written volume 20314 bytes is below 150000000 bytes",
+    "before generate-compact-identity-x1: commit, clean Git and script hashes unchanged",
+    "before generate-compact-identity-x1: environment unchanged",
+    "before generate-compact-identity-x1: original assets/profiles unchanged",
+    "after generate-compact-identity-x1: written volume 5614205 bytes is below 150000000 bytes",
+    "generate-compact-identity-x1: command exited successfully",
+    "generate-compact-identity-x1: JSON report passed",
+    "after generate-compact-identity-x1: commit, clean Git and script hashes unchanged",
+    "after generate-compact-identity-x1: environment unchanged",
+    "after generate-compact-identity-x1: original assets/profiles unchanged",
+    "compact-identity-x1: every generation validation check passed",
+    "compact-identity-x1: unique artifact inventory",
+    "compact-identity-x1: inventory covers every generated artifact",
+    "compact-identity-x1: every artifact SHA-256 matches its bytes",
+    "compact-identity-x1: recorded environment equals preflight",
+    "compact-identity-x1: recorded committed clean source",
+    "compact-identity-x1: original builtin text assets only",
+    "compact-identity-x1: embedded/config/input profile identical",
+    "compact-identity-x1: measured one-page configuration matches requested dimensions",
+    "compact-identity-x1: exactly one canonical page",
+    "compact-identity-x1: final grayscale dimensions",
+    "compact-identity-x1: final ideal-mask dimensions",
+    "compact-identity-x1: observed word labels match measured diagnostics",
+    "compact-identity-x1: diagnostic counts agree",
+    "compact-identity-x1: aggregate statistics equal page observations",
+    "compact-identity-x1: severity contact sheet inventoried",
+    "compact-identity-x1: severity sheet decodes",
+    "before generate-compact-controlled-v1-x1: written volume 5616761 bytes is below 150000000 bytes",
+    "before generate-compact-controlled-v1-x1: commit, clean Git and script hashes unchanged",
+    "before generate-compact-controlled-v1-x1: environment unchanged",
+    "before generate-compact-controlled-v1-x1: original assets/profiles unchanged",
+    "after generate-compact-controlled-v1-x1: written volume 11275236 bytes is below 150000000 bytes",
+    "generate-compact-controlled-v1-x1: command exited successfully",
+    "generate-compact-controlled-v1-x1: JSON report passed",
+    "after generate-compact-controlled-v1-x1: commit, clean Git and script hashes unchanged",
+    "after generate-compact-controlled-v1-x1: environment unchanged",
+    "after generate-compact-controlled-v1-x1: original assets/profiles unchanged",
+    "compact-controlled-v1-x1: every generation validation check passed",
+    "compact-controlled-v1-x1: unique artifact inventory",
+    "compact-controlled-v1-x1: inventory covers every generated artifact",
+    "compact-controlled-v1-x1: every artifact SHA-256 matches its bytes",
+    "compact-controlled-v1-x1: recorded environment equals preflight",
+    "compact-controlled-v1-x1: recorded committed clean source",
+    "compact-controlled-v1-x1: original builtin text assets only",
+    "compact-controlled-v1-x1: embedded/config/input profile identical",
+    "compact-controlled-v1-x1: measured one-page configuration matches requested dimensions",
+    "compact-controlled-v1-x1: exactly one canonical page",
+    "compact-controlled-v1-x1: final grayscale dimensions",
+    "compact-controlled-v1-x1: final ideal-mask dimensions",
+    "compact-controlled-v1-x1: observed word labels match measured diagnostics",
+    "compact-controlled-v1-x1: diagnostic counts agree",
+    "compact-controlled-v1-x1: aggregate statistics equal page observations",
+    "compact-controlled-v1-x1: severity contact sheet inventoried",
+    "compact-controlled-v1-x1: severity sheet decodes",
+    "compact-x1: identical text/spans/geometry/order/mask, different final images",
+    "before generate-compact-identity-x2: written volume 11277811 bytes is below 150000000 bytes",
+    "before generate-compact-identity-x2: commit, clean Git and script hashes unchanged",
+    "before generate-compact-identity-x2: environment unchanged",
+    "before generate-compact-identity-x2: original assets/profiles unchanged",
+    "after generate-compact-identity-x2: written volume 16818964 bytes is below 150000000 bytes",
+    "generate-compact-identity-x2: command exited successfully",
+    "generate-compact-identity-x2: JSON report passed",
+    "after generate-compact-identity-x2: commit, clean Git and script hashes unchanged",
+    "after generate-compact-identity-x2: environment unchanged",
+    "after generate-compact-identity-x2: original assets/profiles unchanged",
+    "compact-identity-x2: every generation validation check passed",
+    "compact-identity-x2: unique artifact inventory",
+    "compact-identity-x2: inventory covers every generated artifact",
+    "compact-identity-x2: every artifact SHA-256 matches its bytes",
+    "compact-identity-x2: recorded environment equals preflight",
+    "compact-identity-x2: recorded committed clean source",
+    "compact-identity-x2: original builtin text assets only",
+    "compact-identity-x2: embedded/config/input profile identical",
+    "compact-identity-x2: measured one-page configuration matches requested dimensions",
+    "compact-identity-x2: exactly one canonical page",
+    "compact-identity-x2: final grayscale dimensions",
+    "compact-identity-x2: final ideal-mask dimensions",
+    "compact-identity-x2: observed word labels match measured diagnostics",
+    "compact-identity-x2: diagnostic counts agree",
+    "compact-identity-x2: aggregate statistics equal page observations",
+    "compact-identity-x2: severity contact sheet inventoried",
+    "compact-identity-x2: severity sheet decodes",
+    "before generate-compact-controlled-v1-x2: written volume 16821520 bytes is below 150000000 bytes",
+    "before generate-compact-controlled-v1-x2: commit, clean Git and script hashes unchanged",
+    "before generate-compact-controlled-v1-x2: environment unchanged",
+    "before generate-compact-controlled-v1-x2: original assets/profiles unchanged",
+    "after generate-compact-controlled-v1-x2: written volume 22465000 bytes is below 150000000 bytes",
+    "generate-compact-controlled-v1-x2: command exited successfully",
+    "generate-compact-controlled-v1-x2: JSON report passed",
+    "after generate-compact-controlled-v1-x2: commit, clean Git and script hashes unchanged",
+    "after generate-compact-controlled-v1-x2: environment unchanged",
+    "after generate-compact-controlled-v1-x2: original assets/profiles unchanged",
+    "compact-controlled-v1-x2: every generation validation check passed",
+    "compact-controlled-v1-x2: unique artifact inventory",
+    "compact-controlled-v1-x2: inventory covers every generated artifact",
+    "compact-controlled-v1-x2: every artifact SHA-256 matches its bytes",
+    "compact-controlled-v1-x2: recorded environment equals preflight",
+    "compact-controlled-v1-x2: recorded committed clean source",
+    "compact-controlled-v1-x2: original builtin text assets only",
+    "compact-controlled-v1-x2: embedded/config/input profile identical",
+    "compact-controlled-v1-x2: measured one-page configuration matches requested dimensions",
+    "compact-controlled-v1-x2: exactly one canonical page",
+    "compact-controlled-v1-x2: final grayscale dimensions",
+    "compact-controlled-v1-x2: final ideal-mask dimensions",
+    "compact-controlled-v1-x2: observed word labels match measured diagnostics",
+    "compact-controlled-v1-x2: diagnostic counts agree",
+    "compact-controlled-v1-x2: aggregate statistics equal page observations",
+    "compact-controlled-v1-x2: severity contact sheet inventoried",
+    "compact-controlled-v1-x2: severity sheet decodes",
+    "compact-x2: identical text/spans/geometry/order/mask, different final images",
+    "before generate-pilot-size-identity-x2: written volume 22467575 bytes is below 150000000 bytes",
+    "before generate-pilot-size-identity-x2: commit, clean Git and script hashes unchanged",
+    "before generate-pilot-size-identity-x2: environment unchanged",
+    "before generate-pilot-size-identity-x2: original assets/profiles unchanged",
+    "after generate-pilot-size-identity-x2: written volume 40151502 bytes is below 150000000 bytes",
+    "generate-pilot-size-identity-x2: command exited successfully",
+    "generate-pilot-size-identity-x2: JSON report passed",
+    "after generate-pilot-size-identity-x2: commit, clean Git and script hashes unchanged",
+    "after generate-pilot-size-identity-x2: environment unchanged",
+    "after generate-pilot-size-identity-x2: original assets/profiles unchanged",
+    "pilot-size-identity-x2: every generation validation check passed",
+    "pilot-size-identity-x2: unique artifact inventory",
+    "pilot-size-identity-x2: inventory covers every generated artifact",
+    "pilot-size-identity-x2: every artifact SHA-256 matches its bytes",
+    "pilot-size-identity-x2: recorded environment equals preflight",
+    "pilot-size-identity-x2: recorded committed clean source",
+    "pilot-size-identity-x2: original builtin text assets only",
+    "pilot-size-identity-x2: embedded/config/input profile identical",
+    "pilot-size-identity-x2: measured one-page configuration matches requested dimensions",
+    "pilot-size-identity-x2: exactly one canonical page",
+    "pilot-size-identity-x2: final grayscale dimensions",
+    "pilot-size-identity-x2: final ideal-mask dimensions",
+    "pilot-size-identity-x2: observed word labels match measured diagnostics",
+    "pilot-size-identity-x2: diagnostic counts agree",
+    "pilot-size-identity-x2: aggregate statistics equal page observations",
+    "pilot-size-identity-x2: severity contact sheet inventoried",
+    "pilot-size-identity-x2: severity sheet decodes",
+    "before generate-pilot-size-controlled-v1-x2: written volume 40154058 bytes is below 150000000 bytes",
+    "before generate-pilot-size-controlled-v1-x2: commit, clean Git and script hashes unchanged",
+    "before generate-pilot-size-controlled-v1-x2: environment unchanged",
+    "before generate-pilot-size-controlled-v1-x2: original assets/profiles unchanged",
+    "after generate-pilot-size-controlled-v1-x2: written volume 60830514 bytes is below 150000000 bytes",
+    "generate-pilot-size-controlled-v1-x2: command exited successfully",
+    "generate-pilot-size-controlled-v1-x2: JSON report passed",
+    "after generate-pilot-size-controlled-v1-x2: commit, clean Git and script hashes unchanged",
+    "after generate-pilot-size-controlled-v1-x2: environment unchanged",
+    "after generate-pilot-size-controlled-v1-x2: original assets/profiles unchanged",
+    "pilot-size-controlled-v1-x2: every generation validation check passed",
+    "pilot-size-controlled-v1-x2: unique artifact inventory",
+    "pilot-size-controlled-v1-x2: inventory covers every generated artifact",
+    "pilot-size-controlled-v1-x2: every artifact SHA-256 matches its bytes",
+    "pilot-size-controlled-v1-x2: recorded environment equals preflight",
+    "pilot-size-controlled-v1-x2: recorded committed clean source",
+    "pilot-size-controlled-v1-x2: original builtin text assets only",
+    "pilot-size-controlled-v1-x2: embedded/config/input profile identical",
+    "pilot-size-controlled-v1-x2: measured one-page configuration matches requested dimensions",
+    "pilot-size-controlled-v1-x2: exactly one canonical page",
+    "pilot-size-controlled-v1-x2: final grayscale dimensions",
+    "pilot-size-controlled-v1-x2: final ideal-mask dimensions",
+    "pilot-size-controlled-v1-x2: observed word labels match measured diagnostics",
+    "pilot-size-controlled-v1-x2: diagnostic counts agree",
+    "pilot-size-controlled-v1-x2: aggregate statistics equal page observations",
+    "pilot-size-controlled-v1-x2: severity contact sheet inventoried",
+    "pilot-size-controlled-v1-x2: severity sheet decodes",
+    "pilot-size-x2: identical text/spans/geometry/order/mask, different final images",
+    "before generate-compact-controlled-v1-x2-replay: written volume 60833092 bytes is below 150000000 bytes",
+    "before generate-compact-controlled-v1-x2-replay: commit, clean Git and script hashes unchanged",
+    "before generate-compact-controlled-v1-x2-replay: environment unchanged",
+    "before generate-compact-controlled-v1-x2-replay: original assets/profiles unchanged",
+    "after generate-compact-controlled-v1-x2-replay: written volume 66476572 bytes is below 150000000 bytes",
+    "generate-compact-controlled-v1-x2-replay: command exited successfully",
+    "generate-compact-controlled-v1-x2-replay: JSON report passed",
+    "after generate-compact-controlled-v1-x2-replay: commit, clean Git and script hashes unchanged",
+    "after generate-compact-controlled-v1-x2-replay: environment unchanged",
+    "after generate-compact-controlled-v1-x2-replay: original assets/profiles unchanged",
+    "compact-controlled-v1-x2-replay: every generation validation check passed",
+    "compact-controlled-v1-x2-replay: unique artifact inventory",
+    "compact-controlled-v1-x2-replay: inventory covers every generated artifact",
+    "compact-controlled-v1-x2-replay: every artifact SHA-256 matches its bytes",
+    "compact-controlled-v1-x2-replay: recorded environment equals preflight",
+    "compact-controlled-v1-x2-replay: recorded committed clean source",
+    "compact-controlled-v1-x2-replay: original builtin text assets only",
+    "compact-controlled-v1-x2-replay: embedded/config/input profile identical",
+    "compact-controlled-v1-x2-replay: measured one-page configuration matches requested dimensions",
+    "compact-controlled-v1-x2-replay: exactly one canonical page",
+    "compact-controlled-v1-x2-replay: final grayscale dimensions",
+    "compact-controlled-v1-x2-replay: final ideal-mask dimensions",
+    "compact-controlled-v1-x2-replay: observed word labels match measured diagnostics",
+    "compact-controlled-v1-x2-replay: diagnostic counts agree",
+    "compact-controlled-v1-x2-replay: aggregate statistics equal page observations",
+    "compact-controlled-v1-x2-replay: severity contact sheet inventoried",
+    "compact-controlled-v1-x2-replay: severity sheet decodes",
+    "before compare-controlled-replay: written volume 66479147 bytes is below 150000000 bytes",
+    "before compare-controlled-replay: commit, clean Git and script hashes unchanged",
+    "before compare-controlled-replay: environment unchanged",
+    "before compare-controlled-replay: original assets/profiles unchanged",
+    "after compare-controlled-replay: written volume 66479214 bytes is below 150000000 bytes",
+    "compare-controlled-replay: command exited successfully",
+    "compare-controlled-replay: JSON report passed",
+    "after compare-controlled-replay: commit, clean Git and script hashes unchanged",
+    "after compare-controlled-replay: environment unchanged",
+    "after compare-controlled-replay: original assets/profiles unchanged",
+    "Complete controlled replay is byte-identical, including QA",
+    "before reproduce-controlled: written volume 66479281 bytes is below 150000000 bytes",
+    "before reproduce-controlled: commit, clean Git and script hashes unchanged",
+    "before reproduce-controlled: environment unchanged",
+    "before reproduce-controlled: original assets/profiles unchanged",
+    "after reproduce-controlled: written volume 69534195 bytes is below 150000000 bytes",
+    "reproduce-controlled: command exited successfully",
+    "reproduce-controlled: JSON report passed",
+    "after reproduce-controlled: commit, clean Git and script hashes unchanged",
+    "after reproduce-controlled: environment unchanged",
+    "after reproduce-controlled: original assets/profiles unchanged",
+    "Sequential reproduction matches measured PNG/page JSON",
+    "Reproduced bytes identical: images/mf_0000.png",
+    "Reproduced bytes identical: pages/mf_0000.json",
+    "Reproduced bytes identical: qa/diagnostics/mf_0000.json",
+    "Reproduced bytes identical: qa/masks/mf_0000.png",
+    "Replay source lot remained immutable",
+    "Archived source profiles remained immutable",
+    "final: commit, clean Git and script hashes unchanged",
+    "final: environment unchanged",
+    "final: original assets/profiles unchanged",
+    "Archived final code/environment observations equal preflight"
+  ],
+  "child_usage_final": {
+    "ru_maxrss_bytes": 1122795520,
+    "ru_maxrss_raw": 1122795520,
+    "ru_maxrss_unit": "bytes",
+    "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+    "system_cpu_seconds": 1.720003,
+    "user_cpu_seconds": 73.954601
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--dpi",
+        "150",
+        "--seed",
+        "20261009",
+        "--jobs",
+        "1",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/identity-x1.json"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 143245312,
+        "ru_maxrss_raw": 143245312,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.14651899999999998,
+        "user_cpu_seconds": 4.742172
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 8798208,
+        "ru_maxrss_raw": 8798208,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.025953999999999998,
+        "user_cpu_seconds": 0.016221
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 5.012393333003274,
+      "exit_code": 0,
+      "name": "generate-compact-identity-x1",
+      "report": "reports/generate-compact-identity-x1.json",
+      "started_at_utc": "2026-10-07T16:05:38.373057+00:00",
+      "stderr": "logs/generate-compact-identity-x1.stderr.log",
+      "stdout": "logs/generate-compact-identity-x1.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x1",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--dpi",
+        "150",
+        "--seed",
+        "20261009",
+        "--jobs",
+        "1",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/controlled-v1-x1.json"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 158580736,
+        "ru_maxrss_raw": 158580736,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.290643,
+        "user_cpu_seconds": 9.992288
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 143245312,
+        "ru_maxrss_raw": 143245312,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.162177,
+        "user_cpu_seconds": 4.757849
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 5.565021624999645,
+      "exit_code": 0,
+      "name": "generate-compact-controlled-v1-x1",
+      "report": "reports/generate-compact-controlled-v1-x1.json",
+      "started_at_utc": "2026-10-07T16:05:43.483526+00:00",
+      "stderr": "logs/generate-compact-controlled-v1-x1.stderr.log",
+      "stdout": "logs/generate-compact-controlled-v1-x1.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x2",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--dpi",
+        "150",
+        "--seed",
+        "20261009",
+        "--jobs",
+        "1",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/identity-x2.json"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 187236352,
+        "ru_maxrss_raw": 187236352,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.437001,
+        "user_cpu_seconds": 16.003928
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 158580736,
+        "ru_maxrss_raw": 158580736,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.30538899999999997,
+        "user_cpu_seconds": 10.008457
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 6.2085616670010495,
+      "exit_code": 0,
+      "name": "generate-compact-identity-x2",
+      "report": "reports/generate-compact-identity-x2.json",
+      "started_at_utc": "2026-10-07T16:05:49.277052+00:00",
+      "stderr": "logs/generate-compact-identity-x2.stderr.log",
+      "stdout": "logs/generate-compact-identity-x2.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--dpi",
+        "150",
+        "--seed",
+        "20261009",
+        "--jobs",
+        "1",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/controlled-v1-x2.json"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 193265664,
+        "ru_maxrss_raw": 193265664,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.556622,
+        "user_cpu_seconds": 21.808603
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 187236352,
+        "ru_maxrss_raw": 187236352,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.450976,
+        "user_cpu_seconds": 16.018545
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 5.954954125001677,
+      "exit_code": 0,
+      "name": "generate-compact-controlled-v1-x2",
+      "report": "reports/generate-compact-controlled-v1-x2.json",
+      "started_at_utc": "2026-10-07T16:05:55.580837+00:00",
+      "stderr": "logs/generate-compact-controlled-v1-x2.stderr.log",
+      "stdout": "logs/generate-compact-controlled-v1-x2.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-identity-x2",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "1",
+        "--width",
+        "2680",
+        "--height",
+        "3698",
+        "--columns",
+        "6",
+        "--dpi",
+        "150",
+        "--seed",
+        "20261009",
+        "--jobs",
+        "1",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/identity-x2.json"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.9675189999999999,
+        "user_cpu_seconds": 41.782153
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 193265664,
+        "ru_maxrss_raw": 193265664,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.5704739999999999,
+        "user_cpu_seconds": 21.823542
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 20.621171915998275,
+      "exit_code": 0,
+      "name": "generate-pilot-size-identity-x2",
+      "report": "reports/generate-pilot-size-identity-x2.json",
+      "started_at_utc": "2026-10-07T16:06:01.761317+00:00",
+      "stderr": "logs/generate-pilot-size-identity-x2.stderr.log",
+      "stdout": "logs/generate-pilot-size-identity-x2.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/pilot-size-controlled-v1-x2",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "1",
+        "--width",
+        "2680",
+        "--height",
+        "3698",
+        "--columns",
+        "6",
+        "--dpi",
+        "150",
+        "--seed",
+        "20261009",
+        "--jobs",
+        "1",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/sources/profiles/controlled-v1-x2.json"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 1.39141,
+        "user_cpu_seconds": 61.082977
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 0.9835849999999999,
+        "user_cpu_seconds": 41.79723
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 20.04018987499876,
+      "exit_code": 0,
+      "name": "generate-pilot-size-controlled-v1-x2",
+      "report": "reports/generate-pilot-size-controlled-v1-x2.json",
+      "started_at_utc": "2026-10-07T16:06:22.587469+00:00",
+      "stderr": "logs/generate-pilot-size-controlled-v1-x2.stderr.log",
+      "stdout": "logs/generate-pilot-size-controlled-v1-x2.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2-replay",
+        "--assets-root",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--dpi",
+        "150",
+        "--seed",
+        "20261009",
+        "--jobs",
+        "2",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2/provenance/degradation-profile.json"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 1.52438,
+        "user_cpu_seconds": 67.075315
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 1.405842,
+        "user_cpu_seconds": 61.097756
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 6.207965166999202,
+      "exit_code": 0,
+      "name": "generate-compact-controlled-v1-x2-replay",
+      "report": "reports/generate-compact-controlled-v1-x2-replay.json",
+      "started_at_utc": "2026-10-07T16:06:43.343767+00:00",
+      "stderr": "logs/generate-compact-controlled-v1-x2-replay.stderr.log",
+      "stdout": "logs/generate-compact-controlled-v1-x2-replay.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "compare",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2-replay"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 1.59604,
+        "user_cpu_seconds": 68.735278
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 1.538928,
+        "user_cpu_seconds": 67.090509
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 1.744804624999233,
+      "exit_code": 0,
+      "name": "compare-controlled-replay",
+      "report": "reports/compare-controlled-replay.json",
+      "started_at_utc": "2026-10-07T16:06:49.667875+00:00",
+      "stderr": "logs/compare-controlled-replay.stderr.log",
+      "stdout": "logs/compare-controlled-replay.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "/Users/marcel/heritage-synth/tools/reproduce_pilot.py",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-controlled-v1-x2",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reproduced-controlled-x2",
+        "--report",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/reports/reproduction-proof.json"
+      ],
+      "child_usage_after": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 1.700372,
+        "user_cpu_seconds": 73.932697
+      },
+      "child_usage_before": {
+        "ru_maxrss_bytes": 1122795520,
+        "ru_maxrss_raw": 1122795520,
+        "ru_maxrss_unit": "bytes",
+        "scope": "RUSAGE_CHILDREN cumulative maximum; not a delta or per-command peak",
+        "system_cpu_seconds": 1.611034,
+        "user_cpu_seconds": 68.751189
+      },
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 5.363710042001912,
+      "exit_code": 0,
+      "name": "reproduce-controlled",
+      "report": "reports/reproduce-controlled.json",
+      "started_at_utc": "2026-10-07T16:06:51.521251+00:00",
+      "stderr": "logs/reproduce-controlled.stderr.log",
+      "stdout": "logs/reproduce-controlled.stdout.log"
+    }
+  ],
+  "counts": {
+    "base_pages": 6,
+    "compared_pairs": 3,
+    "rendered_pages_total": 8,
+    "replay_pages": 1,
+    "reproduced_pages": 1
+  },
+  "errors": [],
+  "footprint": {
+    "before_summary_bytes": 69570820,
+    "by_top_directory_before_summary": {
+      "logs": 24892,
+      "lots": 66422401,
+      "reports": 63974,
+      "reproduced-controlled-x2": 3042218,
+      "sources": 17335
+    },
+    "limit_bytes": 150000000,
+    "measurement": "Sum of regular-file st_size; logical bytes, not allocated disk blocks",
+    "total_bytes_including_summary": 69619373
+  },
+  "format": "mille-feuilles-measured-acceptance",
+  "initial_free_bytes": 892395520,
+  "legibility_note": "Heuristic observations only; no required random label frequency or OCR claim",
+  "lots": {
+    "compact-controlled-v1-x1": {
+      "bytes": 5655830,
+      "columns": 4,
+      "dataset_id": "mf_demo_20261009_1_measured_1be0e17af162",
+      "dimensions": [
+        800,
+        1100
+      ],
+      "legibility": {
+        "illegible": 1180,
+        "readable": 45,
+        "uncertain": 474
+      },
+      "manifest_sha256": "d3c1fcc443b4c3846558fd092bd7dba150ecc465d668cad77bdbfd3ee7f1eff2",
+      "measurements": {
+        "contrast": 39.0,
+        "edge_contrast_proxy": 0.255134,
+        "ink_loss_fraction": 0.031446,
+        "ink_median": 203.0,
+        "ink_pixels": 72824,
+        "legibility": {
+          "illegible": 1180,
+          "readable": 45,
+          "uncertain": 474
+        },
+        "noise_mad_sigma": 2.9652,
+        "otsu_threshold": 221,
+        "paper_median": 242.0,
+        "spurious_ink_fraction": 0.005984
+      },
+      "oversampling": 1,
+      "path": "lots/compact-controlled-v1-x1",
+      "profile": "controlled-v1",
+      "profile_canonical_sha256": "1be0e17af16263c3bdc760673fa8df727ce36412d2eee1cc878dfd7dcf6f58fa",
+      "words": 1699
+    },
+    "compact-controlled-v1-x2": {
+      "bytes": 5640835,
+      "columns": 4,
+      "dataset_id": "mf_demo_20261009_1_measured_858691cb1484",
+      "dimensions": [
+        800,
+        1100
+      ],
+      "legibility": {
+        "illegible": 1030,
+        "readable": 46,
+        "uncertain": 623
+      },
+      "manifest_sha256": "63619675de571a617fede21de7ed1fef47a367d4f54cf37df33ee527166b4bbc",
+      "measurements": {
+        "contrast": 39.0,
+        "edge_contrast_proxy": 0.225697,
+        "ink_loss_fraction": 0.018512,
+        "ink_median": 203.0,
+        "ink_pixels": 65472,
+        "legibility": {
+          "illegible": 1030,
+          "readable": 46,
+          "uncertain": 623
+        },
+        "noise_mad_sigma": 2.9652,
+        "otsu_threshold": 222,
+        "paper_median": 242.0,
+        "spurious_ink_fraction": 0.004445
+      },
+      "oversampling": 2,
+      "path": "lots/compact-controlled-v1-x2",
+      "profile": "controlled-v1",
+      "profile_canonical_sha256": "858691cb148434947a2599e21477fa95a1684efbbe36a287feb6ba37d22b430a",
+      "words": 1699
+    },
+    "compact-controlled-v1-x2-replay": {
+      "bytes": 5640835,
+      "columns": 4,
+      "dataset_id": "mf_demo_20261009_1_measured_858691cb1484",
+      "dimensions": [
+        800,
+        1100
+      ],
+      "legibility": {
+        "illegible": 1030,
+        "readable": 46,
+        "uncertain": 623
+      },
+      "manifest_sha256": "63619675de571a617fede21de7ed1fef47a367d4f54cf37df33ee527166b4bbc",
+      "measurements": {
+        "contrast": 39.0,
+        "edge_contrast_proxy": 0.225697,
+        "ink_loss_fraction": 0.018512,
+        "ink_median": 203.0,
+        "ink_pixels": 65472,
+        "legibility": {
+          "illegible": 1030,
+          "readable": 46,
+          "uncertain": 623
+        },
+        "noise_mad_sigma": 2.9652,
+        "otsu_threshold": 222,
+        "paper_median": 242.0,
+        "spurious_ink_fraction": 0.004445
+      },
+      "oversampling": 2,
+      "path": "lots/compact-controlled-v1-x2-replay",
+      "profile": "controlled-v1",
+      "profile_canonical_sha256": "858691cb148434947a2599e21477fa95a1684efbbe36a287feb6ba37d22b430a",
+      "words": 1699
+    },
+    "compact-identity-x1": {
+      "bytes": 5591265,
+      "columns": 4,
+      "dataset_id": "mf_demo_20261009_1_measured_433805226daf",
+      "dimensions": [
+        800,
+        1100
+      ],
+      "legibility": {
+        "illegible": 7,
+        "readable": 1692,
+        "uncertain": 0
+      },
+      "manifest_sha256": "261cd68605e4850751371ef55576545e505eba07ce2639102efaa3ce964755f9",
+      "measurements": {
+        "contrast": 180.0,
+        "edge_contrast_proxy": 0.316576,
+        "ink_loss_fraction": 0.0,
+        "ink_median": 75.0,
+        "ink_pixels": 72824,
+        "legibility": {
+          "illegible": 7,
+          "readable": 1692,
+          "uncertain": 0
+        },
+        "noise_mad_sigma": 0.0,
+        "otsu_threshold": 180,
+        "paper_median": 255.0,
+        "spurious_ink_fraction": 0.004106
+      },
+      "oversampling": 1,
+      "path": "lots/compact-identity-x1",
+      "profile": "identity",
+      "profile_canonical_sha256": "433805226daf31e80569923d0c4669681078add0534db3660d592e809c4d02ea",
+      "words": 1699
+    },
+    "compact-identity-x2": {
+      "bytes": 5538527,
+      "columns": 4,
+      "dataset_id": "mf_demo_20261009_1_measured_3fe7fe60864b",
+      "dimensions": [
+        800,
+        1100
+      ],
+      "legibility": {
+        "illegible": 7,
+        "readable": 1688,
+        "uncertain": 4
+      },
+      "manifest_sha256": "cc8de6cbfb7754b193792805528a33b9c901ca566058e6a8ffa4bab8575a0b91",
+      "measurements": {
+        "contrast": 178.0,
+        "edge_contrast_proxy": 0.319027,
+        "ink_loss_fraction": 0.0,
+        "ink_median": 77.0,
+        "ink_pixels": 65472,
+        "legibility": {
+          "illegible": 7,
+          "readable": 1688,
+          "uncertain": 4
+        },
+        "noise_mad_sigma": 0.0,
+        "otsu_threshold": 181,
+        "paper_median": 255.0,
+        "spurious_ink_fraction": 0.003965
+      },
+      "oversampling": 2,
+      "path": "lots/compact-identity-x2",
+      "profile": "identity",
+      "profile_canonical_sha256": "3fe7fe60864b8b69d8387385213f9cda1936404341f604e601abf949077f5700",
+      "words": 1699
+    },
+    "pilot-size-controlled-v1-x2": {
+      "bytes": 20673808,
+      "columns": 6,
+      "dataset_id": "mf_demo_20261009_1_measured_858691cb1484",
+      "dimensions": [
+        2680,
+        3698
+      ],
+      "legibility": {
+        "illegible": 24,
+        "readable": 5074,
+        "uncertain": 101
+      },
+      "manifest_sha256": "f92d6fc4f4468fdaf9ec6bec826535186e73111655ef424bec245df638d004d6",
+      "measurements": {
+        "contrast": 52.0,
+        "edge_contrast_proxy": 0.192633,
+        "ink_loss_fraction": 0.015694,
+        "ink_median": 191.0,
+        "ink_pixels": 811968,
+        "legibility": {
+          "illegible": 24,
+          "readable": 5074,
+          "uncertain": 101
+        },
+        "noise_mad_sigma": 2.9652,
+        "otsu_threshold": 220,
+        "paper_median": 243.0,
+        "spurious_ink_fraction": 0.000288
+      },
+      "oversampling": 2,
+      "path": "lots/pilot-size-controlled-v1-x2",
+      "profile": "controlled-v1",
+      "profile_canonical_sha256": "858691cb148434947a2599e21477fa95a1684efbbe36a287feb6ba37d22b430a",
+      "words": 5199
+    },
+    "pilot-size-identity-x2": {
+      "bytes": 17681301,
+      "columns": 6,
+      "dataset_id": "mf_demo_20261009_1_measured_3fe7fe60864b",
+      "dimensions": [
+        2680,
+        3698
+      ],
+      "legibility": {
+        "illegible": 8,
+        "readable": 5190,
+        "uncertain": 1
+      },
+      "manifest_sha256": "433820cd76bc89213b8261e2ee3a5516ba21d92e144e99e1f74fd0b204d8ed4f",
+      "measurements": {
+        "contrast": 200.0,
+        "edge_contrast_proxy": 0.3912,
+        "ink_loss_fraction": 0.0,
+        "ink_median": 55.0,
+        "ink_pixels": 811968,
+        "legibility": {
+          "illegible": 8,
+          "readable": 5190,
+          "uncertain": 1
+        },
+        "noise_mad_sigma": 0.0,
+        "otsu_threshold": 164,
+        "paper_median": 255.0,
+        "spurious_ink_fraction": 0.00035
+      },
+      "oversampling": 2,
+      "path": "lots/pilot-size-identity-x2",
+      "profile": "identity",
+      "profile_canonical_sha256": "3fe7fe60864b8b69d8387385213f9cda1936404341f604e601abf949077f5700",
+      "words": 5199
+    }
+  },
+  "pairs": [
+    {
+      "composition_sha256": "4ead5ee6d4b451f65dee8ff1fa84bc739e3e339c1f835c069088cefccb9ccbbc",
+      "controlled_image_sha256": "1a1b4d9a3148c369aa369ca147cc36987fc46980f521f26186456e5dd1333c71",
+      "controlled_pixels_sha256": "cf1f5d3be187c9f1a62b4c0a4ffef74a5c72e933b9cec27b914f7ffd93fc2e09",
+      "decoded_mode": "L",
+      "decoded_pixels_differ": true,
+      "decoded_size": [
+        800,
+        1100
+      ],
+      "identity_image_sha256": "7bf8f9eddb816002d9f70c8d9010bd4d9b5e73fdab46ad91272ebcb8269d2ab4",
+      "identity_pixels_sha256": "eda79df4ea715c0caad24fa8656634131d3bf4ba28c843af057dc012fe5fd204",
+      "mask_sha256": "33dfc5e8f598499f8711a133898752cd566ab162fa6cd280135a4176f1faac5b",
+      "name": "compact-x1",
+      "status": "pass"
+    },
+    {
+      "composition_sha256": "3c9947f961ddb63881a0fc4b397f11ff08365e44e1578f774889a2ed100390ac",
+      "controlled_image_sha256": "f56f0452260d113d155a6d2442359ed2dcdc9fb4f6dd2f69f21df62b3319f2e9",
+      "controlled_pixels_sha256": "4ce0b4def5f48072311454ce558b0798bc8cb3c87400141f502dc874f761b921",
+      "decoded_mode": "L",
+      "decoded_pixels_differ": true,
+      "decoded_size": [
+        800,
+        1100
+      ],
+      "identity_image_sha256": "423953a6b319ba96c0b2ab526c9e751049597120fd31dfa9b91068db93b5d17e",
+      "identity_pixels_sha256": "739cf80d7022f7e358f491295c00f01a3c7ffe5f49598ea7ef8760e70e2db92c",
+      "mask_sha256": "a20e8d1fa9647e6c93119855adf6e1348dec32719cee9a26c04a7c69760563c6",
+      "name": "compact-x2",
+      "status": "pass"
+    },
+    {
+      "composition_sha256": "c03d036a0fe4a16dc20348dc2ab0e9728229839f8379b583ad60e627cf6954ac",
+      "controlled_image_sha256": "6d4913fe0c3ca1f80901f5d4360af0d3a6dec7bf95f8702ea96a15be50503219",
+      "controlled_pixels_sha256": "f8113e976fd3d3501df4d664d0e2b03ed1cd2ea3519353e937ac1eac879a520b",
+      "decoded_mode": "L",
+      "decoded_pixels_differ": true,
+      "decoded_size": [
+        2680,
+        3698
+      ],
+      "identity_image_sha256": "8dda16076d78a4bbb2933e80ed7460e2c1d9540796687817ef35df5221125174",
+      "identity_pixels_sha256": "a9f997aff41a0ff30160139872269e50098ff770ad8cfecd6e90b65deb1eee3a",
+      "mask_sha256": "e31863e76a1229afb73c8fdaa17871a6c1529ef0018d3b83d79b3a4b1a53a699",
+      "name": "pilot-size-x2",
+      "status": "pass"
+    }
+  ],
+  "planned_counts": {
+    "base_pages": 6,
+    "replay_pages": 1,
+    "reproduced_pages": 1
+  },
+  "resource_note": "Command time includes exports/validation; child ru_maxrss is cumulative, not per-command",
+  "scope": "Technical acceptance using bundled original demonstration assets only",
+  "seed": 20261009,
+  "status": "pass",
+  "version": "1",
+  "visual_review": {
+    "note": "Required separately; no image was visually accepted by this script",
+    "status": "not_run",
+    "targets": [
+      {
+        "path": "lots/compact-identity-x1/images/mf_0000.png",
+        "sha256": "7bf8f9eddb816002d9f70c8d9010bd4d9b5e73fdab46ad91272ebcb8269d2ab4"
+      },
+      {
+        "path": "lots/compact-identity-x1/qa/severity_00.jpg",
+        "sha256": "3c2004614f8f0fc41e688562534e3ab2f34d3383fe57432535976955630464bb"
+      },
+      {
+        "path": "lots/compact-controlled-v1-x1/images/mf_0000.png",
+        "sha256": "1a1b4d9a3148c369aa369ca147cc36987fc46980f521f26186456e5dd1333c71"
+      },
+      {
+        "path": "lots/compact-controlled-v1-x1/qa/severity_00.jpg",
+        "sha256": "6a9a0dfeef757179fb8cd99cabfeed75c2a618db48e536a7ccdfd3c1e26130e7"
+      },
+      {
+        "path": "lots/compact-identity-x2/images/mf_0000.png",
+        "sha256": "423953a6b319ba96c0b2ab526c9e751049597120fd31dfa9b91068db93b5d17e"
+      },
+      {
+        "path": "lots/compact-identity-x2/qa/severity_00.jpg",
+        "sha256": "a02332641c966bb19774ca87a18dd65a7dac1209dd739dde3109756e77bcfa8e"
+      },
+      {
+        "path": "lots/compact-controlled-v1-x2/images/mf_0000.png",
+        "sha256": "f56f0452260d113d155a6d2442359ed2dcdc9fb4f6dd2f69f21df62b3319f2e9"
+      },
+      {
+        "path": "lots/compact-controlled-v1-x2/qa/severity_00.jpg",
+        "sha256": "043a67e8f6a8a09ffe57d8c5f0c20520fff35dd34dd600a9cc238b1b730ff8a9"
+      },
+      {
+        "path": "lots/pilot-size-identity-x2/images/mf_0000.png",
+        "sha256": "8dda16076d78a4bbb2933e80ed7460e2c1d9540796687817ef35df5221125174"
+      },
+      {
+        "path": "lots/pilot-size-identity-x2/qa/severity_00.jpg",
+        "sha256": "6e6cdd41f40480b2bfacf12a941e9b274bda77ebdba4f67353fb94a084f3b8da"
+      },
+      {
+        "path": "lots/pilot-size-controlled-v1-x2/images/mf_0000.png",
+        "sha256": "6d4913fe0c3ca1f80901f5d4360af0d3a6dec7bf95f8702ea96a15be50503219"
+      },
+      {
+        "path": "lots/pilot-size-controlled-v1-x2/qa/severity_00.jpg",
+        "sha256": "5d3b527d5c7b6559e151a694044e6b902186a99fe2992abe2d43e427ab61c8ac"
+      },
+      {
+        "path": "lots/compact-controlled-v1-x2-replay/images/mf_0000.png",
+        "sha256": "f56f0452260d113d155a6d2442359ed2dcdc9fb4f6dd2f69f21df62b3319f2e9"
+      },
+      {
+        "path": "lots/compact-controlled-v1-x2-replay/qa/severity_00.jpg",
+        "sha256": "043a67e8f6a8a09ffe57d8c5f0c20520fff35dd34dd600a9cc238b1b730ff8a9"
+      }
+    ]
+  },
+  "volume_checks": [
+    {
+      "limit_bytes": 150000000,
+      "stage": "before generate-compact-identity-x1",
+      "status": "pass",
+      "written_bytes": 20314
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after generate-compact-identity-x1",
+      "status": "pass",
+      "written_bytes": 5614205
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "before generate-compact-controlled-v1-x1",
+      "status": "pass",
+      "written_bytes": 5616761
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after generate-compact-controlled-v1-x1",
+      "status": "pass",
+      "written_bytes": 11275236
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "before generate-compact-identity-x2",
+      "status": "pass",
+      "written_bytes": 11277811
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after generate-compact-identity-x2",
+      "status": "pass",
+      "written_bytes": 16818964
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "before generate-compact-controlled-v1-x2",
+      "status": "pass",
+      "written_bytes": 16821520
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after generate-compact-controlled-v1-x2",
+      "status": "pass",
+      "written_bytes": 22465000
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "before generate-pilot-size-identity-x2",
+      "status": "pass",
+      "written_bytes": 22467575
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after generate-pilot-size-identity-x2",
+      "status": "pass",
+      "written_bytes": 40151502
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "before generate-pilot-size-controlled-v1-x2",
+      "status": "pass",
+      "written_bytes": 40154058
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after generate-pilot-size-controlled-v1-x2",
+      "status": "pass",
+      "written_bytes": 60830514
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "before generate-compact-controlled-v1-x2-replay",
+      "status": "pass",
+      "written_bytes": 60833092
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after generate-compact-controlled-v1-x2-replay",
+      "status": "pass",
+      "written_bytes": 66476572
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "before compare-controlled-replay",
+      "status": "pass",
+      "written_bytes": 66479147
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after compare-controlled-replay",
+      "status": "pass",
+      "written_bytes": 66479214
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "before reproduce-controlled",
+      "status": "pass",
+      "written_bytes": 66479281
+    },
+    {
+      "limit_bytes": 150000000,
+      "stage": "after reproduce-controlled",
+      "status": "pass",
+      "written_bytes": 69534195
+    }
+  ],
+  "volume_limit_note": "Checked between commands and at completion; no atomic subprocess quota"
+}

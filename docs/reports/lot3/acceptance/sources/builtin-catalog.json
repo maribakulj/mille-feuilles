@@ -1,0 +1,261 @@
+{
+  "schema_version": "0.2.0",
+  "assets": [
+    {
+      "id": "font_oldstandard_regular",
+      "kind": "font",
+      "path": "assets/fonts/oldstandardtt/OldStandard-Regular.ttf",
+      "sha256": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac",
+      "source_uri": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OldStandard-Regular.ttf",
+      "rights": {
+        "status": "verified",
+        "license": "OFL-1.1",
+        "evidence_uri": "https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OFL.txt",
+        "attribution": "Copyright 2011 The Old Standard Project Authors (amkryukov@gmail.com)",
+        "redistribution_allowed": true
+      },
+      "metadata": {
+        "family": "Old Standard TT",
+        "style": "Regular",
+        "version": "Version 3.000",
+        "face_index": 0,
+        "axes": {},
+        "upstream_commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+        "modified": false,
+        "evidence_files": [
+          {
+            "path": "assets/fonts/oldstandardtt/OFL.txt",
+            "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/METADATA.pb",
+            "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+            "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+          }
+        ]
+      }
+    },
+    {
+      "id": "font_oldstandard_bold",
+      "kind": "font",
+      "path": "assets/fonts/oldstandardtt/OldStandard-Bold.ttf",
+      "sha256": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db",
+      "source_uri": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OldStandard-Bold.ttf",
+      "rights": {
+        "status": "verified",
+        "license": "OFL-1.1",
+        "evidence_uri": "https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OFL.txt",
+        "attribution": "Copyright 2011 The Old Standard Project Authors (amkryukov@gmail.com)",
+        "redistribution_allowed": true
+      },
+      "metadata": {
+        "family": "Old Standard TT",
+        "style": "Bold",
+        "version": "Version 3.000",
+        "face_index": 0,
+        "axes": {},
+        "upstream_commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+        "modified": false,
+        "evidence_files": [
+          {
+            "path": "assets/fonts/oldstandardtt/OFL.txt",
+            "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/METADATA.pb",
+            "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+            "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+          }
+        ]
+      }
+    },
+    {
+      "id": "font_oldstandard_italic",
+      "kind": "font",
+      "path": "assets/fonts/oldstandardtt/OldStandard-Italic.ttf",
+      "sha256": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564",
+      "source_uri": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OldStandard-Italic.ttf",
+      "rights": {
+        "status": "verified",
+        "license": "OFL-1.1",
+        "evidence_uri": "https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OFL.txt",
+        "attribution": "Copyright 2011 The Old Standard Project Authors (amkryukov@gmail.com)",
+        "redistribution_allowed": true
+      },
+      "metadata": {
+        "family": "Old Standard TT",
+        "style": "Italic",
+        "version": "Version 3.000",
+        "face_index": 0,
+        "axes": {},
+        "upstream_commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+        "modified": false,
+        "evidence_files": [
+          {
+            "path": "assets/fonts/oldstandardtt/OFL.txt",
+            "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/METADATA.pb",
+            "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+            "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+          }
+        ]
+      }
+    },
+    {
+      "id": "font_gfsdidot_regular",
+      "kind": "font",
+      "path": "assets/fonts/gfsdidot/GFSDidot-Regular.ttf",
+      "sha256": "4fc784ab824e8866eeef8ad55976b93e7e170fb1b8237fd4f8781b5b4dd297f9",
+      "source_uri": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/gfsdidot/GFSDidot-Regular.ttf",
+      "rights": {
+        "status": "verified",
+        "license": "OFL-1.1",
+        "evidence_uri": "https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/gfsdidot/OFL.txt",
+        "attribution": "Copyright (c) Takis Katsoulidis and George D. Matthiopoulos, 2001. All rights reserved.",
+        "redistribution_allowed": true
+      },
+      "metadata": {
+        "family": "GFS Didot",
+        "style": "Regular",
+        "version": "Version 1.0 ",
+        "face_index": 0,
+        "axes": {},
+        "upstream_commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+        "modified": false,
+        "evidence_files": [
+          {
+            "path": "assets/fonts/gfsdidot/OFL.txt",
+            "sha256": "9e19c0d2e7e7adcbe9dfd0749e34dda41e7e356e0f2cc082d61d2fc9b6e0cef7"
+          },
+          {
+            "path": "assets/fonts/gfsdidot/METADATA.pb",
+            "sha256": "aa07c9c90cea6cc13577262558cd366c2fdee90b57e6f75d752f010ff0f6b751"
+          },
+          {
+            "path": "assets/fonts/gfsdidot/DESCRIPTION.en_us.html",
+            "sha256": "9aa61fa5d8872f9cab53be3ff1e040abbd0af0931207bd6ea9d297ef89506223"
+          }
+        ]
+      }
+    },
+    {
+      "id": "text_demo_fr",
+      "kind": "text",
+      "path": "assets/texts/demo-fr.txt",
+      "sha256": "1025138a6e80735785d415c157a91cb856a34a86659ca7a5215193197e992895",
+      "source_uri": "urn:mille-feuilles:original:mille_feuilles_demo_articles_20261007",
+      "rights": {
+        "status": "verified",
+        "license": "CC0-1.0",
+        "evidence_uri": "assets/texts/NOTICE.md",
+        "attribution": "Textes originaux de démonstration rédigés par Codex pour Mille Feuilles, 7 octobre 2026. Aucun document historique repris.",
+        "redistribution_allowed": true
+      },
+      "metadata": {
+        "source_document_id": "mille_feuilles_demo_articles_20261007",
+        "source_group_id": "mille_feuilles_original_demo_20261007",
+        "language": "fr",
+        "content_type": "original_synthetic_demonstration",
+        "historical_corpus": false,
+        "created": "2026-10-07",
+        "role": "body",
+        "units": 30,
+        "unit_separator": "\\n\\n",
+        "preparation": "UTF-8 sans BOM, NFC, texte original ; aucune OCR, modernisation ou copie de corpus. Offsets Unicode dans ce fichier intact.",
+        "evidence_files": [
+          {
+            "path": "assets/texts/NOTICE.md",
+            "sha256": "b2ce6e45a24ee9c034039d18450ec8c6d2611319bfb7a7b8801f8139926dd014"
+          },
+          {
+            "path": "assets/texts/CC0-1.0.txt",
+            "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+          }
+        ]
+      }
+    },
+    {
+      "id": "text_titres_fr",
+      "kind": "text",
+      "path": "assets/texts/titres-fr.txt",
+      "sha256": "30f846cdeec76617013e7891dd4c5695c11358b652cceefba20755255d6e0c72",
+      "source_uri": "urn:mille-feuilles:original:mille_feuilles_demo_titles_20261007",
+      "rights": {
+        "status": "verified",
+        "license": "CC0-1.0",
+        "evidence_uri": "assets/texts/NOTICE.md",
+        "attribution": "Textes originaux de démonstration rédigés par Codex pour Mille Feuilles, 7 octobre 2026. Aucun document historique repris.",
+        "redistribution_allowed": true
+      },
+      "metadata": {
+        "source_document_id": "mille_feuilles_demo_titles_20261007",
+        "source_group_id": "mille_feuilles_original_demo_20261007",
+        "language": "fr",
+        "content_type": "original_synthetic_demonstration",
+        "historical_corpus": false,
+        "created": "2026-10-07",
+        "role": "title",
+        "units": 30,
+        "unit_separator": "\\n",
+        "preparation": "UTF-8 sans BOM, NFC, texte original ; aucune OCR, modernisation ou copie de corpus. Offsets Unicode dans ce fichier intact.",
+        "evidence_files": [
+          {
+            "path": "assets/texts/NOTICE.md",
+            "sha256": "b2ce6e45a24ee9c034039d18450ec8c6d2611319bfb7a7b8801f8139926dd014"
+          },
+          {
+            "path": "assets/texts/CC0-1.0.txt",
+            "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+          }
+        ]
+      }
+    },
+    {
+      "id": "text_annonces_fr",
+      "kind": "text",
+      "path": "assets/texts/annonces-fr.txt",
+      "sha256": "7881bb7fca96af44c294f8a6603f924eee958ab5b6394bc7c8b47cf2734af4fc",
+      "source_uri": "urn:mille-feuilles:original:mille_feuilles_demo_notices_20261007",
+      "rights": {
+        "status": "verified",
+        "license": "CC0-1.0",
+        "evidence_uri": "assets/texts/NOTICE.md",
+        "attribution": "Textes originaux de démonstration rédigés par Codex pour Mille Feuilles, 7 octobre 2026. Aucun document historique repris.",
+        "redistribution_allowed": true
+      },
+      "metadata": {
+        "source_document_id": "mille_feuilles_demo_notices_20261007",
+        "source_group_id": "mille_feuilles_original_demo_20261007",
+        "language": "fr",
+        "content_type": "original_synthetic_demonstration",
+        "historical_corpus": false,
+        "created": "2026-10-07",
+        "role": "advertisement",
+        "units": 12,
+        "unit_separator": "\\n\\n",
+        "preparation": "UTF-8 sans BOM, NFC, texte original ; aucune OCR, modernisation ou copie de corpus. Offsets Unicode dans ce fichier intact.",
+        "evidence_files": [
+          {
+            "path": "assets/texts/NOTICE.md",
+            "sha256": "b2ce6e45a24ee9c034039d18450ec8c6d2611319bfb7a7b8801f8139926dd014"
+          },
+          {
+            "path": "assets/texts/CC0-1.0.txt",
+            "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+          }
+        ]
+      }
+    }
+  ]
+}
