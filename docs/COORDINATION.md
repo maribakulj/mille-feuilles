@@ -107,7 +107,7 @@ Mille Feuilles, distinct de Claude Axel dont la passation reste close.
 | Codex, coordination | `01a11578-05cf-7b23-91c2-bd17c54923f3`, `w8:p1` | Synchronisation de la livraison et des preuves ; traitement des constats ; revue des contributions de Claude. |
 | Claude, dédié au projet | `99660c03-830a-4e8e-be3c-f4fdedd08762`, `w8:p2` | Revue critique indépendante du code et des preuves du pilote ; recherche ciblée de défauts et retour avec sévérité, localisation et reproduction. |
 
-Claude a reçu l'état du dépôt et commencé sa revue. Le code source évalué est
+Claude a reçu l'état du dépôt et confirmé la répartition. Le code source évalué est
 `0d1e2b701e9f6ba4d571a5f4894bd40071792225` ; les preuves sont dans
 `docs/reports/`. Cette nouvelle revue ne remplace pas les validations archivées.
 
@@ -120,9 +120,25 @@ Règles de travail communes :
 - Laisser terminer les processus actifs ; échanger les résultats et les
   limitations, sans compter une simple prise en charge comme une validation.
 - Limiter cette première revue aux contrôles ciblés : les campagnes acceptées
-  sont conservées, le disque dispose de moins de 1 Gio libre. Ne déplacer ni
+  sont conservées ; au début de la revue, le disque avait moins de 1 Gio libre. Ne déplacer ni
   supprimer aucun fichier, conformément à l'inventaire demandé par Marcel.
 - Garder les expériences et la coordination Axel dans leur projet.
 
-La revue Claude est en cours ; ses conclusions et les actions convenues seront
-ajoutées au journal après réception.
+La première [revue Claude](REVUE_CLAUDE.md) est terminée. Elle a confirmé deux
+contrôles géométriques ciblés, reproduit la limite du lecteur PAGE d'Axel,
+demandé une formulation plus précise des dégradations et identifié un contrôle
+manquant entre segments sources et texte composé. La répartition des corrections
+est explicite :
+
+- Codex : `src/mille_feuilles/validation.py`, raccordement dans
+  `tests/test_validation.py`, README et documentation de contrat, exports,
+  validation, journal et coordination.
+- Claude : `tests/test_text_provenance.py` et `docs/REVUE_CLAUDE.md` ; revue du
+  correctif et des formulations Codex.
+- Codex relit les tests et la note Claude ; les conclusions de cette revue
+  réciproque et les résultats d'exécution sont consignés dans le journal.
+
+Un test spécifique au lecteur Axel n'est pas ajouté au générateur : il serait
+dépendant d'un checkout externe et de conventions aval non encore adaptées.
+La reproduction documentée suffit pour cette livraison ; une fixture et son
+test d'intégration accompagneront l'interface de l'adaptateur à définir côté Axel.

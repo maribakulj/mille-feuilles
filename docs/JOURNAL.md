@@ -71,3 +71,37 @@ documentaire conserve le commit exact de production et ne modifie pas le moteur.
 Les textes embarqués sont synthétiques et répétés. Ni leur représentativité
 historique ni un gain d'OCR sur des documents réels ne sont démontrés par ces
 contrôles. Les expériences comparatives avec Axel restent un chantier distinct.
+
+## Première revue réciproque Codex / Claude
+
+Marcel a ajouté un Claude dédié au projet dans `w8:p2`. La documentation du
+pilote et ses 19 preuves ont été synchronisées au commit `a135961` ; Claude
+a relu ce point stable avant toute modification. Sa [note](REVUE_CLAUDE.md)
+confirme l'absence de défaut dans les contrôles ciblés de rotation et de
+chevauchement de lignes, et apporte trois constats traités en commun :
+
+- C1 : limite connue des conventions PAGE lues par Axel, désormais signalée
+  directement dans README, EXPORTS et VALIDATION. Aucun format modifié, aucun
+  adaptateur implicite ajouté et aucune modification d'Axel.
+- C2 : libellés `aged` et `faint` explicités comme variations légères, avec
+  amplitudes mesurées et distinction entre seuil de contrôle et difficulté
+  réellement éprouvée par les pages du pilote.
+- C3 : Codex ajoute une confrontation des segments sources au texte reconstruit
+  de chaque article ; Claude écrit des tests indépendants et relit le contrôle.
+  L'occurrence d'un segment ne prouve pas son attribution unique lorsque le
+  texte se répète, ni la couverture des textes de gabarit.
+
+Les fichiers ont été attribués avant les écritures. Codex a relu les tests
+Claude et demandé que la mutation d'une vraie page reste valide au niveau
+structurel, ainsi que des cas de blocs sans article et de tableaux de stockage
+réordonnés. Le test de raccordement déplace un span vers un autre passage du
+même actif et recalcule l'empreinte : seul le nouveau contrôle sémantique permet
+de rejeter cette provenance incorrecte.
+
+La revue réciproque est acceptée : Claude a relu le helper et son appel après
+validation structurelle, Codex a relu les 24 tests et la note corrigée.
+La suite finale passe **227 tests en 143,60 s**, Ruff est sans erreur, et les
+**209 contrôles** repassent sur les 100 pages conservées. Les sorties sont
+archivées dans [reports/claude-review/](reports/claude-review/index.json), avec
+empreintes des fichiers vérifiés. Les 19 preuves du pilote initial restent
+intactes. Aucun nouveau rendu du pilote, déplacement ou nettoyage n'a été fait.

@@ -115,6 +115,13 @@ Chaque `text_span` est `{asset_id, start, end, source_document_id}`. L'intervall
 semi-ouvert est en **points de code Unicode** dans l'actif UTF-8 original,
 avant préparation. Il est non vide, dans les bornes de l'actif, et son document
 correspond à `metadata.source_document_id`. Les actifs utilisés sont déclarés.
+Le validateur du lot confronte chaque segment au texte composé : les mots du
+segment, après normalisation NFC et des espaces, doivent apparaître dans un
+même article (ou bloc sans article), avec les seules césures annotées recollées.
+Les tirets lexicaux et la ponctuation restent inchangés. L'ordre des spans ne
+définit pas l'ordre de lecture. Le schéma ne lie pas un span à un article : ce
+contrôle d'occurrence ne garantit ni une attribution unique, ni le nombre
+d'utilisations d'un segment répété, ni la couverture des textes du gabarit.
 Les titres et textes composés ne deviennent pas une source historique par le
 simple fait de leur rendu dans une maquette ancienne.
 

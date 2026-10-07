@@ -9,7 +9,8 @@ Dépôt privé : [maribakulj/mille-feuilles](https://github.com/maribakulj/mille
 Dossier de travail actuel : `~/heritage-synth`. Axel/ebortz/babaorum reste un
 consommateur indépendant, sous sa propre coordination.
 
-La version 0.2.0 est éprouvée sur **100 pages** : 202 tests passent, les exports
+La version 0.2.0 est éprouvée sur **100 pages** : **227 tests passent** après
+la revue réciproque Codex / Claude, les exports
 sont validés et les 100 images/annotations ont été reproduites à l'identique.
 Les [preuves et limites](docs/VALIDATION.md) distinguent cette validation
 technique d'une évaluation sur des documents historiques réels.
@@ -44,7 +45,11 @@ uv run --locked mille-feuilles generate --output runs/essai \
   --columns 5 --degradation clean --seed 127
 ```
 
-Modes : `clean`, `aged`, `faint`, `mixed`. Chaque page possède une graine dérivée
+Modes : `clean`, `aged`, `faint`, `mixed`. `aged` ajoute une légère teinte au
+papier et `faint` réduit modérément le contraste ; ces noms ne désignent pas une
+simulation de presse fortement dégradée. Ces deux modes partagent un bruit très
+faible, un flou ≤ 0,3 px et une rotation d'au plus 0,35° (0,34° observé sur le
+pilote). Chaque page possède une graine dérivée
 de son index : le nombre de workers ne change pas son contenu. Le profil emploie
 Pillow/FreeType BASIC, du français NFC, des fontes OFL épinglées et les mêmes
 mesures pour dessiner et annoter chaque mot. Les dégradations photométriques et
@@ -57,7 +62,8 @@ Le générateur vérifie l'espace libre avant de démarrer. Les lots sont hors G
 ## Lire et vérifier le résultat
 
 - `images/` et `pages/` : PNG et JSON canonique de chaque page.
-- `exports/page/`, `exports/alto/`, `exports/coco/` : projections interopérables.
+- `exports/page/`, `exports/alto/`, `exports/coco/` : projections selon les
+  [profils documentés](docs/EXPORTS.md), avec métadonnées complémentaires.
 - `exports/reports/` : correspondances d'identifiants et informations non
   représentables directement dans les formats d'export.
 - `qa/` : contours, baselines, identifiants/ordre des blocs, planches de contact,
@@ -66,8 +72,16 @@ Le générateur vérifie l'espace libre avant de démarrer. Les lots sont hors G
   actifs, versions, empreintes et provenance ; `calibration/` conserve les relevés
   hérités sans relire les corpus réels.
 
+Le lecteur PAGE actuel d'Axel attend des conventions NewsEye différentes :
+sans adaptateur, il perd le type des titres, les articles et le rang des annonces.
+La validation du format ne garantit pas l'interprétation par tout lecteur.
+L'adaptateur aval reste à réaliser avant une évaluation avec Axel.
+
 `validate` contrôle les schémas JSON, références et géométries, spans Unicode,
 césures, fichiers et SHA-256, preuves de droits, PNG, XSD et relecture des exports.
+Chaque segment source déclaré doit aussi se retrouver dans le texte d'un
+article (ou bloc sans article) après normalisation des espaces et reconstruction
+des césures ; ce contrôle ne résout pas l'attribution unique de segments répétés.
 Il sort avec un code non nul dès qu'un contrôle échoue. `qa/report.json` est le
 résultat de l'audit, exclu des empreintes pour éviter une référence circulaire ;
 une nouvelle commande `validate` recalcule les contrôles.
@@ -141,6 +155,7 @@ uv run --locked python assets/verify_assets.py
 
 - [Contrat 0.2.0](docs/CONTRAT_DONNEES.md) et [décisions](docs/DECISIONS.md).
 - [Protocole et preuves de validation du pilote](docs/VALIDATION.md).
+- [Revue critique de Claude](docs/REVUE_CLAUDE.md).
 - [Cadrage reçu de Claude](docs/CADRAGE.md), fondé sur 1 253 pages train/dev.
 - [Actifs et licences](docs/ACTIFS.md), [exports](docs/EXPORTS.md),
   [revue indépendante du rendu](docs/REVUE_RENDU.md).

@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "date": "2026-10-07",
+  "review_base_commit": "a135961ed8c63ce6a810d08a16331af08922180f",
+  "production_commit": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+  "pilot_manifest_sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+  "scope": "Reviewed provenance validation addition. Renderer, exporters, assets and schemas unchanged. Original production proofs remain in ../index.json.",
+  "reviewed_source_sha256": {
+    "src/mille_feuilles/validation.py": "4c8f5967aecb8d8e3c96640298927f0e492a1cede1b85ec8b0340bde86b1cf05",
+    "tests/test_validation.py": "c3374aeea062846c83e435fa7a17f6ea6bfb1fc5e00bb7cce153eafe062f9b0c",
+    "tests/test_text_provenance.py": "bdeb00487c287479396ac1f7c0bbe4d50d6213db84daf2ceb5e7ff167f58d702"
+  },
+  "commands": [
+    {
+      "command": "uv run --locked --offline pytest -q --basetemp=runs/pytest-claude-release",
+      "exit_code": 0,
+      "tests_passed": 227
+    },
+    {
+      "command": "uv run --locked --offline ruff check src tests assets/verify_assets.py tools/audit_legibility.py tools/reproduce_pilot.py",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked --offline mille-feuilles validate runs/pilot-v0.2-r2",
+      "exit_code": 0,
+      "checks_passed": 209,
+      "pages": 100
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "tests.txt",
+      "source_path": "runs/pytest-claude-release.log",
+      "bytes": 352,
+      "sha256": "3faa99396e7648ff064b645036606d5eb23f48be3cfcf4ec06b3b12b1e22eb13"
+    },
+    {
+      "path": "ruff.txt",
+      "source_path": "runs/ruff-claude-release.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "pilot-revalidation.json",
+      "source_path": "runs/pilot-v0.2-r2-claude-revalidation.json",
+      "bytes": 20314,
+      "sha256": "266d3b5418bf8e29d46e583568658496cf084057ed82837a3ad081c37b1f616b"
+    }
+  ],
+  "review": "../../REVUE_CLAUDE.md",
+  "limitations": [
+    "Source-span occurrence is checked, not unique article attribution or repeated-segment multiplicity.",
+    "No new 100-page generation or new bitwise reproduction was required; original rendering code and the accepted lot are unchanged.",
+    "Axel-specific PAGE adaptation and evidence of real-document OCR gains remain outside this delivery."
+  ]
+}

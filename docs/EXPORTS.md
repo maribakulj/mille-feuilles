@@ -51,6 +51,22 @@ Les chemins d'images inscrits dans les exports se résolvent depuis la
 racine du lot, conformément au contrat. Le lecteur doit donc utiliser la
 racine du lot comme base, y compris quand le XML est dans un sous-dossier.
 
+### Lecture par Axel : adaptateur encore nécessaire
+
+La revue Claude du 7 octobre 2026 a chargé l'export PAGE `mf_0003` du pilote
+avec le lecteur local `axel.olr.page.load_page`, spécialisé dans les conventions
+NewsEye. Il lit 89 blocs textuels, mais reconnaît **0 des 26 titres**, aucun
+article sur les **535 lignes**, et reporte les **14 annonces** en fin d'ordre.
+Ce lecteur attend des structures dans `custom`, alors que notre profil utilise
+le type PAGE natif et du JSON complémentaire ; il ordonne les `TextRegion`
+enfants des annonces indépendamment de leur conteneur référencé.
+
+Il faut donc un adaptateur explicite avant d'utiliser ces exports dans les
+métriques Axel. Aucun adaptateur ni changement d'Axel n'est livré ici. Ce
+constat ne remet pas en cause la conformité XSD et ne constitue pas un essai
+d'autres lecteurs. La [revue](REVUE_CLAUDE.md) conserve la reproduction ; un
+test d'intégration devra accompagner l'interface de l'adaptateur une fois fixée.
+
 Le validateur vérifie les empreintes de l'archive XSD, la conformité XML,
 puis relit les **valeurs effectivement exportées** : identifiants,
 transcriptions des mots et lignes, ordre des blocs et lignes, catégories,

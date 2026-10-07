@@ -295,6 +295,55 @@ def validate_page(page: dict) -> list[str]:
     return errors
 
 
+def validate_text_provenance(page: dict, text_assets: dict[str, str]) -> list[str]:
+    """Check declared source segments against the text of a structurally valid page.
+
+    Call after validate_page has accepted ownership, order and hyphenation.
+    A source segment must occur within one article (or one unassigned block),
+    with only whitespace and NFC normalization and annotated dehyphenation.
+    The 0.2.0 schema does not map spans to articles: this is an occurrence
+    check, not unique attribution, multiplicity or coverage of template text.
+    """
+    blocks = {block["id"]: block for block in page["blocks"]}
+    lines = {line["id"]: line for line in page["lines"]}
+    words = {word["id"]: word for word in page["words"]}
+    groups = [article["block_ids"] for article in page["articles"]]
+    groups.extend([block["id"]] for block in blocks.values() if block["article_id"] is None)
+    sequences = []
+    for block_ids in groups:
+        tokens = []
+        for bid in block_ids:
+            for lid in blocks[bid]["line_ids"]:
+                for wid in lines[lid]["word_ids"]:
+                    word = words[wid]
+                    hyphen = word["hyphenation"]
+                    if hyphen is None:
+                        tokens.append(word["text"])
+                    elif hyphen["part"] == "start":
+                        tokens.append(hyphen["reconstructed_text"])
+        if tokens:
+            sequences.append(tokens)
+    errors = []
+    for index, span in enumerate(page["provenance"]["text_spans"]):
+        label = f"text span {index} ({span['asset_id']}:{span['start']}:{span['end']})"
+        source = text_assets.get(span["asset_id"])
+        if source is None:
+            errors.append(f"{label}: source text unavailable")
+            continue
+        if not 0 <= span["start"] < span["end"] <= len(source):
+            errors.append(f"{label}: invalid Unicode source bounds")
+            continue
+        expected = unicodedata.normalize("NFC", source[span["start"]:span["end"]]).split()
+        if not expected or not any(
+            sequence[start:start + len(expected)] == expected
+            for sequence in sequences
+            for start in range(len(sequence) - len(expected) + 1)
+            if sequence[start] == expected[0]
+        ):
+            errors.append(f"{label}: source segment not found in composed article text")
+    return errors
+
+
 def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
     """Audit hashes, assets, canonical annotations, images and optional exports."""
     try:
@@ -490,6 +539,7 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
                     page_issues.append("text span source_document_id differs from asset")
                 if span["end"] > len(text_assets.get(span["asset_id"], "")):
                     page_issues.append("text span exceeds Unicode source length")
+            page_issues += validate_text_provenance(page, text_assets)
             if not source_documents.issubset(set(record["source_group_ids"])):
                 page_issues.append("source_group_ids omit source text documents")
             image = page["image"]

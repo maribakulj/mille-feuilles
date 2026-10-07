@@ -78,7 +78,7 @@ def page():
             "template_id": "template_press_v1",
             "asset_ids": ["text1", "template_press_v1"],
             "text_spans": [
-                {"asset_id": "text1", "start": 0, "end": 20, "source_document_id": "original:demo"}
+                {"asset_id": "text1", "start": 0, "end": 19, "source_document_id": "original:demo"}
             ],
             "parameters": {"columns": 4, "render_dpi": 150},
         },
@@ -336,6 +336,22 @@ def test_valid_dataset_hashes_and_unicode_sources(dataset):
     result = validate_dataset(dataset, verify_exports=False)
     assert result["status"] == "pass", result["errors"]
     assert result["checks"][-1]["status"] == "not_run"
+
+
+def test_rehashed_source_span_must_occur_in_composed_text(dataset):
+    page_path = dataset / "pages/p1.json"
+    page = load_json(page_path)
+    # A different, in-bounds segment of the same verified source document.
+    source = (dataset / "assets/text.txt").read_text(encoding="utf-8")
+    page["provenance"]["text_spans"][0].update(start=source.index("Texte"), end=len(source))
+    assert validate_page(page) == []
+    page_path.write_text(json.dumps(page, ensure_ascii=False), encoding="utf-8")
+    manifest = load_json(dataset / "manifest.json")
+    manifest["pages"][0]["sha256"] = hashlib.sha256(page_path.read_bytes()).hexdigest()
+    (dataset / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    result = validate_dataset(dataset, verify_exports=False)
+    assert result["status"] == "fail"
+    assert any("source segment not found" in error for error in result["errors"])
 
 
 def test_tamper_detected(dataset):

@@ -57,9 +57,19 @@ changement dans [reports/](reports/index.json), avec leurs SHA-256.
 | Reproduction | **100 PNG + 100 JSON**, soit **200 fichiers identiques octet pour octet** ; zéro écart ; environnement strictement identique ; rendu séquentiel comparé au pilote à deux workers | [Rapport de reproduction](reports/reproducibility.json) |
 
 La répartition est de **7 / 33 / 60 pages à 4 / 5 / 6 colonnes**, et de
-**22 propres / 50 vieillies / 28 à encre faible**. Les classes produites sont
+**22 `clean` / 50 `aged` / 28 `faint`**. Les deux derniers modes apportent
+respectivement une légère teinte au papier et une réduction modérée du contraste.
+Les classes produites sont
 3 114 titres, 5 673 blocs texte, 1 489 annonces et 7 056 séparateurs. Il n'y a
 aucun tableau, illustration, légende ou bloc `autre` dans ce lot.
+
+La revue Claude relève des écarts papier–encre paramétrés de 206–229 niveaux
+pour `aged` et de 158–182 pour `faint`, avec un bruit de σ = 0,55 et un flou
+≤ 0,3 px. Les deux modes partagent ce bruit, ce flou et une rotation légère
+(au plus 0,34° observé). Ces écarts de paramètres sont distincts du contraste local mesuré
+dans les pixels des mots. Le minimum observé de 74 reste au-dessus du seuil
+de 40 : le pilote n'éprouve pas la lisibilité aux limites de ce seuil ni une
+presse fortement dégradée.
 
 L'environnement mesuré est macOS 26.4.1 arm64, CPython 3.12.13, FreeType 2.14.3,
 Pillow 12.3.0 et moteur BASIC. Les autres versions et empreintes des sources
@@ -93,6 +103,25 @@ préservation de cette erreur sont testées. Le second pilote a été intégrale
 produit et contrôlé après ces corrections. Aucun lot n'a été déplacé ou supprimé.
 
 ## Commandes de vérification
+
+### Contrôle supplémentaire après la revue Claude
+
+La [revue réciproque](REVUE_CLAUDE.md) du même jour a ajouté un contrôle
+d'occurrence des segments sources dans le texte composé, avec 24 tests écrits
+par Claude et un test de raccordement écrit par Codex. Après leurs relectures
+mutuelles, la suite complète passe **227 tests en 143,60 s**, et Ruff ne signale
+aucune erreur. La revalidation en lecture du pilote conservé passe à nouveau
+les **209 contrôles**, dont le nouveau contrôle de provenance inclus dans les
+contrôles de fichiers de chaque page.
+
+Les [preuves complémentaires](reports/claude-review/index.json) identifient
+les sources relues, les commandes, leurs sorties et leurs empreintes. Les
+19 preuves initiales restent inchangées : les 202 tests du tableau précédent
+décrivent le commit de production du pilote. Le moteur, les exporteurs, les
+actifs et les schémas sont inchangés ; les pages n'ont pas été régénérées.
+La reproduction initiale de 200 fichiers reste celle de son commit source.
+
+### Reproduire le protocole initial
 
 Depuis le commit de production et l'environnement verrouillé, choisir des
 destinations neuves (les chemins ci-dessous existent déjà sur la machine de
@@ -131,6 +160,12 @@ Regular/Bold dans ce profil. Le moteur de composition BASIC est explicite ; les
 ligatures OpenType discrétionnaires ne sont pas activées.
 Les césures suivent la largeur de composition, sans dictionnaire syllabique ;
 les contrôles garantissent leur reconstruction, pas leur qualité linguistique.
+
+Les exports sont validés selon nos profils documentés ; une lecture directe
+avec le lecteur NewsEye d'Axel perd titres, articles et rang des annonces
+sur la page testée `mf_0003`. L'adaptateur aval reste nécessaire et absent.
+La conformité XSD et la relecture interne ne prouvent pas la compatibilité avec
+ce lecteur. Voir la [reproduction de cette limite](EXPORTS.md#lecture-par-axel--adaptateur-encore-nécessaire).
 
 Le fonctionnement validé est celui d'un checkout du dépôt avec l'environnement
 verrouillé. La reproduction bit à bit sur un autre système ou avec une autre
