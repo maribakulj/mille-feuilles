@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mille-feuilles.invalid/schemas/newseye-manifest.schema.json",
+  "title": "Mille Feuilles standalone PAGE NewsEye projection version 1",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "mille-feuilles-newseye-bundle"
+    },
+    "version": {
+      "const": "1"
+    },
+    "profile": {
+      "const": "page-newseye-v1"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "$ref": "#/$defs/id"
+        },
+        "manifest": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "provenance/source-manifest.json"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "validation": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "provenance/source-validation.json"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "dataset_id",
+        "manifest",
+        "validation"
+      ],
+      "additionalProperties": false
+    },
+    "generator": {
+      "type": "object",
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}(?![\\s\\S])"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "environment": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "provenance/environment.json"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "commit",
+        "dirty",
+        "environment"
+      ],
+      "additionalProperties": false
+    },
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "PAGE 2019-07-15"
+        },
+        "namespace": {
+          "const": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15"
+        },
+        "xsd": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "schemas/page-2019-07-15.xsd"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "license": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "schemas/PAGE-LICENSE"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "schemas/provenance.json"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "namespace",
+        "xsd",
+        "license",
+        "provenance"
+      ],
+      "additionalProperties": false
+    },
+    "page_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "minItems": 1,
+      "maxItems": 100,
+      "uniqueItems": true
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "source_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "xml": {
+            "$ref": "#/$defs/ref"
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "$ref": "#/$defs/path"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          "canonical": {
+            "$ref": "#/$defs/ref"
+          },
+          "report": {
+            "$ref": "#/$defs/ref"
+          }
+        },
+        "required": [
+          "id",
+          "source_index",
+          "xml",
+          "image",
+          "canonical",
+          "report"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 100
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "$ref": "#/$defs/path"
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "role": {
+            "enum": [
+              "xml",
+              "image",
+              "canonical",
+              "page_report",
+              "source_manifest",
+              "source_validation",
+              "environment",
+              "schema",
+              "schema_license",
+              "schema_provenance"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes",
+          "role"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "source_validation": {
+          "const": "recorded pass at export"
+        },
+        "source_rights_revalidated": {
+          "const": false
+        },
+        "external_reader": {
+          "const": "not_evaluated"
+        },
+        "model_evaluation": {
+          "const": "not_evaluated"
+        },
+        "byte_budget": {
+          "const": "preflight estimate and post-copy check; not an atomic quota"
+        }
+      },
+      "required": [
+        "source_validation",
+        "source_rights_revalidated",
+        "external_reader",
+        "model_evaluation",
+        "byte_budget"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "profile",
+    "source",
+    "generator",
+    "schema",
+    "page_ids",
+    "pages",
+    "artifacts",
+    "scope"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?!/)(?!.*//)(?!.*\\\\)(?!.*:)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\x00-\\x1f]+(?<!/)(?![\\s\\S])"
+    },
+    "ref": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

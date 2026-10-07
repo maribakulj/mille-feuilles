@@ -1,0 +1,74 @@
+{
+  "status": "pass",
+  "created_utc": "2026-10-07T17:34:54.636554+00:00",
+  "task": "Independent PAGE NewsEye reader before producer, frozen fixtures revision 3.1",
+  "scope": "Reader and tests only, no rendering, no corpus access, no exporter or producer helper imported",
+  "code_sha256": {
+    "src/mille_feuilles/newseye_reader.py": "4b9312c9631dfc30cfca78dc2de5c9ed81d159554ff05e8fce478e48df157be6",
+    "tests/test_newseye_reader.py": "350bb98335c33e305a073296146d3aef6eecafc1f7eb5be2c40d15cada4758ff"
+  },
+  "normative_fixture_sha256": {
+    "tests/fixtures/newseye/SPEC.md": "0481bd10ee7c26892c070d974f2882375ee8d857e6cc61cb6aab21248d3c5dad",
+    "tests/fixtures/newseye/fixture-1-order.expected-geometry.json": "e809c30577b9a19843f9a99719b88167fe6bc053b39f2d06675c9b5f1b00dae3",
+    "tests/fixtures/newseye/fixture-1-order.expected-reading.json": "df25e4ea6e4b7eee95bc929aadca0832bea68f5569defdae2a36820f16777a3b",
+    "tests/fixtures/newseye/fixture-1-order.expected.xml": "edf1781442990d9f348d0637e4f82bd2f23679220324f442bf5cce8567be512a",
+    "tests/fixtures/newseye/fixture-1-order.reader-variant.xml": "759703a229d6d55642577836552ec3d6b5ca2bda5bfbde2d14caaa192151aeb6",
+    "tests/fixtures/newseye/fixture-2-unicode-hyphen-geometry.expected-geometry.json": "51ba43797c212e0063b5f2bf2475ec54b17ed0859860d65a85dd13c4cdc54efa",
+    "tests/fixtures/newseye/fixture-2-unicode-hyphen-geometry.expected-reading.json": "72abc655499218c1373f83cf5f9cc24a0e0bbdbd04d2ae57e8f4cdfe8cd56ac6",
+    "tests/fixtures/newseye/fixture-2-unicode-hyphen-geometry.expected.xml": "3e49cde3fd16343b80dfaacaf4b11e04ae1676575cb55f459e666ad8a0163fba"
+  },
+  "checks": {
+    "pytest": {
+      "command": [
+        "/Users/marcel/heritage-synth/.venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/private/tmp/mf-newseye-reader/tests/test_newseye_reader.py",
+        "--basetemp=/private/tmp/mf-newseye-reader/pytest-final-tmp"
+      ],
+      "returncode": 0,
+      "log": "/private/tmp/mf-newseye-reader/pytest-final.log",
+      "sha256": "9d89b498b52de021544e2a49bca2ec6de9d0023e185a330e071b067dd51af30e"
+    },
+    "ruff": {
+      "command": [
+        "/Users/marcel/heritage-synth/.venv/bin/ruff",
+        "check",
+        "--no-cache",
+        "--config",
+        "/Users/marcel/heritage-synth/pyproject.toml",
+        "/private/tmp/mf-newseye-reader/src/mille_feuilles/newseye_reader.py",
+        "/private/tmp/mf-newseye-reader/tests/test_newseye_reader.py"
+      ],
+      "returncode": 0,
+      "log": "/private/tmp/mf-newseye-reader/ruff-final.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    }
+  },
+  "review": {
+    "agent": "reader_contract_review",
+    "closed_findings": [
+      "Refuse hidden text in an empty RegionRefIndexed",
+      "At least one Word per line confirmed for the complete local profile",
+      "Expose region_types for nontext category comparisons"
+    ],
+    "approved_restriction": "Missing heading custom type is a controlled grammar error rather than a fallback category."
+  },
+  "limits": [
+    "Own profile only; not a claim of universal NewsEye or Transkribus interoperability",
+    "No image read or human readability claim",
+    "No real-page or producer validation at this reader-first stage",
+    "Descriptive format/version/note metadata are excluded from golden observations"
+  ],
+  "copied_to_repository": {
+    "files": [
+      "src/mille_feuilles/newseye_reader.py",
+      "tests/test_newseye_reader.py"
+    ],
+    "byte_identical_to_tested_scratch": true
+  }
+}

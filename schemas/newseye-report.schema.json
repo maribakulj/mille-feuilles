@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mille-feuilles.invalid/schemas/newseye-report.schema.json",
+  "title": "Mille Feuilles PAGE NewsEye report version 1",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "mille-feuilles-newseye-report"
+    },
+    "version": {
+      "const": "1"
+    },
+    "profile": {
+      "const": "page-newseye-v1"
+    },
+    "page_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+    },
+    "image_filename": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?!/)(?!.*//)(?!.*\\\\)(?!.*:)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\x00-\\x1f]+(?<!/)(?![\\s\\S])"
+    },
+    "id_mapping": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[rasglw]_[A-Za-z0-9_.-]+(?![\\s\\S])"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_.-]+(?![\\s\\S])"
+      }
+    },
+    "not_represented": {
+      "const": [
+        "page.schema_version",
+        "page.profile",
+        "page.provenance",
+        "page.transforms",
+        "page.extensions",
+        "page.image.sha256",
+        "page.image.color_mode",
+        "page.image.dpi",
+        "article.list",
+        "article.extensions",
+        "block.category.autre",
+        "block.order.nontextual",
+        "block.advert_link",
+        "line.legibility",
+        "line.extensions",
+        "word.legibility",
+        "word.char_span",
+        "word.hyphenation",
+        "geometry.subpixel"
+      ]
+    },
+    "notes": {
+      "const": [
+        "Projection page-newseye-v1 of the canonical page; keep the canonical JSON to preserve non-projected data.",
+        "ReadingOrder lists TextRegions only; AdvertRegion, SeparatorRegion and GraphicRegion are unordered.",
+        "Each advertisement is a TextRegion followed by a sibling AdvertRegion with identical Coords; the pairing is geometric, not by identifier.",
+        "custom attributes use the profile grammar name {key:value;}; no JSON.",
+        "Articles are carried by structure {id:...; type:article;} on each TextLine only.",
+        "Coordinates are rounded with floor(v + 0.5) and clamped to the image; every Baseline point is kept.",
+        "Hyphenated words keep their visible hyphen; no reconstruction is projected.",
+        "imageFilename is a relative POSIX path; the bundle makes it resolvable.",
+        "Conventions of this profile only; no claim of compatibility with every NewsEye or Transkribus reader."
+      ]
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "profile",
+    "page_id",
+    "image_filename",
+    "id_mapping",
+    "not_represented",
+    "notes"
+  ],
+  "additionalProperties": false
+}
