@@ -1,0 +1,33 @@
+{
+  "scope": "Cross-review before final acceptance; no external reader, model evaluation or new image render.",
+  "reviewers": [
+    "Claude w8:p2",
+    "Codex coordinator",
+    "Codex validation_contrat",
+    "Codex exporteurs"
+  ],
+  "files_sha256": {
+    "src/mille_feuilles/newseye_bundle.py": "e357911eb63acceb845d799d8f8f95afa42bd3e2a4a11c52aec2d42b479f4851",
+    "tests/test_newseye_bundle.py": "543129a3058900c3e8cd19ec77a9cb572608c24edf8c8af7d230de527e373dfc",
+    "tools/accept_newseye.py": "730478bffccbd23a40f585c839e7fcf295acca532e835db39da7f56e0aa758cc"
+  },
+  "findings_resolved": [
+    "Unsafe image path disagreement between producer, reader and schema",
+    "Report v2: six additional omissions; 25 stable entries, nine notes",
+    "Sorted unordered separator observations",
+    "Controlled refusal of malformed archived source manifest and degenerate rounded polygons",
+    "Full source validation receipt must cover all pages, including unselected pages",
+    "Code/environment captured before first projection and checked before mkdir and after copy",
+    "PNG CRC verification followed by actual pixel decoding",
+    "Acceptance inputs anchored to committed historical manifest bytes before mkdir",
+    "Required named checks, source snapshots including empty directories, independent canonical observations"
+  ],
+  "remaining_limits": [
+    "Archived source validation is a receipt, not renewed rights/source-content validation or authentication",
+    "Three producer real-page tests depend on unversioned local runs and skip when absent",
+    "Source/receipt corruption orchestration tests use manually authored fixtures and simulated source validation; separate negative calls real validator on incomplete source",
+    "No real Axel reader was run; observed compatibility is with the written profile only",
+    "Acceptance compares exact cover values on selected examples; bundle allows 1e-12 numerical tolerance",
+    "Budgets checked before/after operations are not atomic filesystem quotas"
+  ]
+}

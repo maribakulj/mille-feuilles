@@ -68,11 +68,15 @@ un corps normal commun aux zones. La campagne au commit `69f0e50` passe 284
 contrôles sur sept pages et reproduit les deux pages de rejeu à l'identique.
 Cette observation ne constitue pas une calibration ni un taux de réussite général.
 
-Le prochain lot est un export optionnel `page-newseye-v1`, appliqué à la demande
+Le lot 5 ajoute un export optionnel `page-newseye-v1`, appliqué à la demande
 à un lot existant dans une destination neuve. Il vise les trois pertes décrites
 dans EXPORTS : titres, appartenance des lignes aux articles et ordre des annonces.
 La projection reste PAGE 2019, conserve les mots, et possède une fixture XML
-originale écrite à la main avant le producteur. Un lecteur de conformité
-indépendant doit éprouver les règles et leurs mutations. La compatibilité avec
+originale écrite à la main avant le producteur. Le lecteur de conformité
+indépendant éprouve les règles et leurs mutations. La compatibilité avec
 le lecteur réel d'Axel reste une preuve externe sous sa propre coordination.
-La préparation se fait dans les scratchpads avant attribution des fichiers.
+Claude écrit le producteur et ses tests ; Codex et ses agents écrivent le lecteur,
+le bundle autonome, le CLI, les schémas et l'acceptation. La revue corrige les
+chemins d'image, complète les pertes du rapport version 2 et exige le décodage
+réel des PNG copiés. La campagne CLI finale doit ensuite ancrer les sources
+historiques, comparer tous les éléments au canonique et éprouver les refus.

@@ -240,3 +240,26 @@ alors que des extraits restent déchiffrables à l'œil. Aucun seuil n'est retou
 87 preuves légères sont copiées et vérifiées ; les lots complets restent locaux.
 L'export NewsEye est ensuite cadré sur des fixtures originales, sans lire Axel
 ni ses corpus et sans modifier les exports génériques.
+
+## Lot 5 — projection PAGE NewsEye
+
+Les fixtures originales et leurs attendus géométriques sont figés en `135fe97`,
+puis le lecteur indépendant et ses 118 tests en `7c88927`. Claude écrit ensuite
+le producteur. Les comparaisons portent sur les textes, articles, catégories,
+ordre, sommets et tous les points de baseline, avec mutations contradictoires.
+Les trois pages locales facultatives comprennent `mf_0003` du pilote : notre
+lecteur de profil y retrouve 26 titres, 535 lignes avec article et les 14 annonces
+aux rangs canoniques. Cela ne prouve pas encore une lecture par Axel lui-même.
+
+La revue corrige un désaccord sur les chemins d'image et complète le rapport
+en version 2 : 25 pertes déclarées, neuf notes. Le bundle valide la source entière
+avant toute écriture, copie les octets originaux dans une destination séparée,
+puis recoupe la projection avec le lecteur indépendant. Les tests découvrent
+qu'un PNG peut avoir des CRC valides sans pixels décodables : le contrôle exige
+aussi son décodage. Les reçus tronqués, fichiers réempreintés et changements
+de source ou de code sont éprouvés sur petites fixtures. Les 249 tests dédiés
+passent ; une première CLI réelle de deux pages v2 passe et écrit 6 121 724 octets.
+La suite complète passe ensuite 1 190 tests en 719,42 s, avec Ruff et la
+vérification des actifs réussis. Les empreintes du code sont inchangées pendant
+les tests. Les sorties sont archivées dans `reports/lot5/tests-index.json` ;
+l'acceptation ancrée sur commit propre suit séparément.

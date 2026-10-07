@@ -1,14 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://mille-feuilles.invalid/schemas/newseye-report.schema.json",
-  "title": "Mille Feuilles PAGE NewsEye report version 1",
+  "title": "Mille Feuilles PAGE NewsEye report version 2",
   "type": "object",
   "properties": {
     "format": {
       "const": "mille-feuilles-newseye-report"
     },
     "version": {
-      "const": "1"
+      "const": "2"
     },
     "profile": {
       "const": "page-newseye-v1"
@@ -21,7 +21,7 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 512,
-      "pattern": "^(?!/)(?!.*//)(?!.*\\\\)(?!.*:)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\x00-\\x1f]+(?<!/)(?![\\s\\S])"
+      "pattern": "^(?!/)(?!.*//)(?!.*\\\\)(?!.*:)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\x00-\\x1f\\x7f]+(?<!/)(?![\\s\\S])"
     },
     "id_mapping": {
       "type": "object",
@@ -41,19 +41,25 @@
         "page.provenance",
         "page.transforms",
         "page.extensions",
+        "page.image.path",
         "page.image.sha256",
         "page.image.color_mode",
         "page.image.dpi",
+        "page.image.extensions",
         "article.list",
         "article.extensions",
         "block.category.autre",
         "block.order.nontextual",
+        "block.article_id.nontextual",
+        "block.extensions",
         "block.advert_link",
         "line.legibility",
         "line.extensions",
         "word.legibility",
         "word.char_span",
         "word.hyphenation",
+        "word.extensions",
+        "page.reading_order.extensions",
         "geometry.subpixel"
       ]
     },

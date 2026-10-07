@@ -1,0 +1,80 @@
+[
+ {
+  "page": "runs/pilot-v0.2-r2/pages/mf_0003.json",
+  "page_sha256": "2252a97743ec95f8906fa121f2322ad08192577b182e8dda51f104d8727850e0",
+  "xml_sha256": "f041ef31cd722dd88154b2e629a4d0e05b9a070943fdd2824f9c6247badedb24",
+  "text_regions": 89,
+  "titres": 26,
+  "annonces": 14,
+  "advert_ranks": [
+   3,
+   4,
+   24,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   40,
+   73,
+   75,
+   78,
+   81
+  ],
+  "lignes_avec_article": 535,
+  "mots": 3732,
+  "separateurs": 62,
+  "omitted": []
+ },
+ {
+  "page": "runs/accept-layout-v2/lots/compact-identity-x1/pages/mf_0001.json",
+  "page_sha256": "29b553365b276660340d0b12fd16e99483523cac2efd15bf0747c831630bc2ac",
+  "xml_sha256": "7966dcc57d63c63bb685f4afb58cbe1ab655f044710bb75d161c239d9ff6ff68",
+  "text_regions": 64,
+  "titres": 19,
+  "annonces": 10,
+  "advert_ranks": [
+   6,
+   7,
+   8,
+   13,
+   22,
+   26,
+   27,
+   34,
+   35,
+   39
+  ],
+  "lignes_avec_article": 333,
+  "mots": 2402,
+  "separateurs": 11,
+  "omitted": []
+ },
+ {
+  "page": "runs/accept-layout-v2/lots/compact-identity-x1/pages/mf_0000.json",
+  "page_sha256": "c20cf68f01608b9834e17040cf3939ff91c8a16eaa0e8cbe64e6758a73531468",
+  "xml_sha256": "1afefb7560a75162c5f28462682cd8a7ede7791d36917ffa5585a793ac07e269",
+  "text_regions": 60,
+  "titres": 16,
+  "annonces": 12,
+  "advert_ranks": [
+   17,
+   21,
+   32,
+   33,
+   34,
+   40,
+   41,
+   45,
+   48,
+   49,
+   52,
+   53
+  ],
+  "lignes_avec_article": 365,
+  "mots": 2387,
+  "separateurs": 8,
+  "omitted": []
+ }
+]

@@ -1,0 +1,1 @@
+7c88927 Verify strict independent NewsEye reader before implementing producer

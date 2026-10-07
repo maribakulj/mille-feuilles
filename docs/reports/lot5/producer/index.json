@@ -1,0 +1,137 @@
+{
+  "scope": "Successive producer review states, not all the final implementation; no rendered datasets copied. Final state is report-v2.",
+  "files": [
+    {
+      "path": "initial/NOTE-PRODUCTEUR-NEWSEYE.md",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/NOTE-PRODUCTEUR-NEWSEYE.md",
+      "sha256": "9c8ebea0bc404836163f3b0a421ad895f0c564c69a5f7281585d1de250ae690f",
+      "size_bytes": 4832
+    },
+    {
+      "path": "initial/head.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/head.txt",
+      "sha256": "a4a92fe08058c87ed6a0e9232d3995f95cc6057650726df20d3e6968b3142629",
+      "size_bytes": 78
+    },
+    {
+      "path": "initial/mutate_producer.py",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/mutate_producer.py",
+      "sha256": "5d1a3bdb44263b1e8c2f252376f0a7ef8cb89f00c6ab3e2e6d9b4376684e4903",
+      "size_bytes": 4742
+    },
+    {
+      "path": "initial/mutations.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/mutations.txt",
+      "sha256": "7a86142808309926822279390f37b9f5e2e646f842c8217b32dd6ffe05f7e55e",
+      "size_bytes": 705
+    },
+    {
+      "path": "initial/pages-reelles.json",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/pages-reelles.json",
+      "sha256": "464f652d1b76cda04bc36778c5c39db493f44f7494d9a52372c3890e4c7fba53",
+      "size_bytes": 1475
+    },
+    {
+      "path": "initial/pytest-159.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/pytest-159.txt",
+      "sha256": "bfd920b6fe3b76368f4a2459e13a98c1ea805fb30f22e74939890c62c8e1e276",
+      "size_bytes": 260
+    },
+    {
+      "path": "initial/pytest-pages-reelles.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/pytest-pages-reelles.txt",
+      "sha256": "c7c508334060d97d6f10a3e3951eef7443c36d7690d8c958680a2ac1278c36be",
+      "size_bytes": 814
+    },
+    {
+      "path": "initial/ruff.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/ruff.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "size_bytes": 19
+    },
+    {
+      "path": "initial/sha256.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur/sha256.txt",
+      "sha256": "ab9b36ac5db2df2f8fd1f76edfe74c8c4ff5a4139e274b81000b26ed34faa6cc",
+      "size_bytes": 588
+    },
+    {
+      "path": "paths-revision/NOTE-PRODUCTEUR-NEWSEYE-R2.md",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-r2/NOTE-PRODUCTEUR-NEWSEYE-R2.md",
+      "sha256": "1a38713082eac4fc6606a628fc42e1a5404bf697a0a263705b8f597dcd5c8659",
+      "size_bytes": 3695
+    },
+    {
+      "path": "paths-revision/head.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-r2/head.txt",
+      "sha256": "a4a92fe08058c87ed6a0e9232d3995f95cc6057650726df20d3e6968b3142629",
+      "size_bytes": 78
+    },
+    {
+      "path": "paths-revision/mutate_producer.py",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-r2/mutate_producer.py",
+      "sha256": "47fbe0bc68f922b120efa6bb3d5e6a7579eaa501d962b24ca44d0ed695cff9b9",
+      "size_bytes": 4985
+    },
+    {
+      "path": "paths-revision/mutations.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-r2/mutations.txt",
+      "sha256": "43a9cbafc67b3cf4d1c27c93a38dffcc1ae415efdbdf34f6e1242c7a015b170e",
+      "size_bytes": 840
+    },
+    {
+      "path": "paths-revision/pytest-pages-reelles.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-r2/pytest-pages-reelles.txt",
+      "sha256": "d5d931d6d9a1ffb1af6f71b0e41d6cb120d86a09f77e05c4d7ccda7275a7dbfb",
+      "size_bytes": 814
+    },
+    {
+      "path": "paths-revision/pytest-suite.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-r2/pytest-suite.txt",
+      "sha256": "391a087ec3f90ae50f7b33ee6c3784d8fb4494242a83cc15003c4c10bd4ca660",
+      "size_bytes": 260
+    },
+    {
+      "path": "paths-revision/ruff.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-r2/ruff.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "size_bytes": 19
+    },
+    {
+      "path": "paths-revision/sha256.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-r2/sha256.txt",
+      "sha256": "475ec7074c5bdd4a8b729d59dbe0c9dd1430ddeceb66cc5a4eb000c6957cbb8f",
+      "size_bytes": 588
+    },
+    {
+      "path": "report-v2/ADDENDUM.md",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-addendum/ADDENDUM.md",
+      "sha256": "00b5564063d2314bb55c9c092a41730cce34de6f5d1f24abc2d61ee2bb0c6c95",
+      "size_bytes": 1485
+    },
+    {
+      "path": "report-v2/pytest-pages-reelles.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-addendum/pytest-pages-reelles.txt",
+      "sha256": "88293629b383bb60eaff5106378ae4a41ddf11af8e3738c6fe582a98f74864a4",
+      "size_bytes": 814
+    },
+    {
+      "path": "report-v2/pytest-suite.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-addendum/pytest-suite.txt",
+      "sha256": "5b443bf4a2312485e698440ccad68871f230da46f57b0a0996daf7abb5bb6055",
+      "size_bytes": 260
+    },
+    {
+      "path": "report-v2/ruff.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-addendum/ruff.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "size_bytes": 19
+    },
+    {
+      "path": "report-v2/sha256.txt",
+      "source": "/private/tmp/claude-501/-Users-marcel/99660c03-830a-4e8e-be3c-f4fdedd08762/scratchpad/preuve-lot5-producteur-addendum/sha256.txt",
+      "sha256": "6206ba241557465392141593f8da5eb44d44ac4747adcd9dd4c60cca6355985b",
+      "size_bytes": 390
+    }
+  ]
+}

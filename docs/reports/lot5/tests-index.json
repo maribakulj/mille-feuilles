@@ -1,0 +1,46 @@
+{
+  "status": "pass",
+  "pytest": {
+    "passed": 1190,
+    "seconds": 719.42,
+    "command": "uv run --locked --offline pytest -q -p no:cacheprovider --basetemp /private/tmp/mf-pytest-lot5-final",
+    "optional_local_producer_tests": 3,
+    "passed_excluding_three_local_producer_tests": 1187
+  },
+  "ruff": "pass",
+  "assets": "pass",
+  "tested_sources_unchanged": true,
+  "code_state": "input-state.json hashes, HEAD 7c88927 plus the documented working tree; source commit follows",
+  "files": [
+    {
+      "path": "tests/assets.log",
+      "source": "runs/tests-lot5/assets.log",
+      "sha256": "d367651e464d26b391387c82b170acdebf3799941c085410ae856ae57d2f576c",
+      "size_bytes": 1794
+    },
+    {
+      "path": "tests/input-state.json",
+      "source": "runs/tests-lot5/input-state.json",
+      "sha256": "2f27a47cc616d412d69da882647192a0ba88fb1de3dbbb5046b62ea6846f49e2",
+      "size_bytes": 6852
+    },
+    {
+      "path": "tests/pytest.log",
+      "source": "runs/tests-lot5/pytest.log",
+      "sha256": "b8b5a79eaca0e6490c13f40b65c7a446e5529ef22564925013c82921d96f40a2",
+      "size_bytes": 1393
+    },
+    {
+      "path": "tests/ruff.log",
+      "source": "runs/tests-lot5/ruff.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "size_bytes": 19
+    },
+    {
+      "path": "tests/first-v2-export.json",
+      "source": "runs/newseye-first-v2-export.json",
+      "sha256": "3a793b7252fb0174185ddc7350c98c69093e507c90e14fa7eac9c3e616c7d41e",
+      "size_bytes": 1552
+    }
+  ]
+}

@@ -61,13 +61,26 @@ Ce lecteur attend des structures dans `custom`, alors que notre profil utilise
 le type PAGE natif et du JSON complémentaire ; il ordonne les `TextRegion`
 enfants des annonces indépendamment de leur conteneur référencé.
 
-Il faut donc un adaptateur explicite avant d'utiliser ces exports dans les
-métriques Axel. Aucun adaptateur ni changement d'Axel n'est livré ici. Ce
-constat ne remet pas en cause la conformité XSD et ne constitue pas un essai
-d'autres lecteurs. La [revue](REVUE_CLAUDE.md) conserve la reproduction ; un
-test d'intégration devra accompagner l'interface de l'adaptateur une fois fixée.
+Ce constat concerne l'export générique, conservé tel quel. Le profil optionnel
+[`page-newseye-v1`](EXPORT_NEWSEYE.md) fournit désormais une projection distincte,
+avec des régions textuelles de premier niveau, la grammaire `custom` déclarée,
+les articles sur les lignes et les annonces dans l'ordre canonique. Les fixtures
+manuelles et le lecteur indépendant précèdent son producteur dans Git.
+La [revue](REVUE_CLAUDE.md) conserve le constat initial ; notre lecteur de profil
+ne constitue pas un essai du lecteur réel d'Axel, qui reste nécessaire avant
+d'utiliser cette interface dans ses métriques. Aucun code d'Axel n'est modifié.
 
-Le validateur vérifie les empreintes de l'archive XSD, la conformité XML,
+`export-newseye --from LOT --output DESTINATION [--page ID]` (option répétable) valide le lot
+source entier avant toute écriture, puis conserve uniquement les images et
+canoniques sélectionnés avec les XML, rapports, manifeste et XSD PAGE archivé.
+`validate DESTINATION` reconnaît ce bundle autonome et confronte chaque région,
+ligne, mot, sommet et point de baseline à son canonique. Le rapport des pertes
+version 2 décrit 25 informations ou relations non projetées ; il reste distinct
+de la version 1 du profil et du manifeste. La validation archivée de la source
+est un reçu de l'export, pas une authentification ni un nouvel audit des actifs
+sources absents de la projection.
+
+Pour les exports génériques, le validateur vérifie les empreintes de l'archive XSD, la conformité XML,
 puis relit les **valeurs effectivement exportées** : identifiants,
 transcriptions des mots et lignes, ordre des blocs et lignes, catégories,
 articles, géométries, baselines, spans, lisibilité et césures. Pour COCO,

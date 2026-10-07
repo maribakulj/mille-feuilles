@@ -215,3 +215,20 @@ La limite des étiquettes de lisibilité en petit corps est documentée sans cha
 les seuils. Les preuves sont archivées dans `reports/lot4/acceptance/`.
 Le binôme poursuit le cadrage d'un export PAGE NewsEye autonome, avec des
 fixtures originales et un lecteur indépendant avant l'écriture du producteur.
+
+Pour le lot 5, les fixtures sont commitées en `135fe97`, puis le lecteur et ses
+118 tests en `7c88927`, avant le feu vert donné à Claude pour le producteur.
+Claude possède `exports_newseye.py`, ses tests et `EXPORT_NEWSEYE.md`. Les agents
+Codex se répartissent lecteur, bundle autonome et script d'acceptation ; Codex
+coordonne CLI, contrats JSON, revues et preuves. La revue complète le rapport
+des pertes (version 2), unifie les chemins sûrs et vérifie le décodage des PNG.
+Les 249 tests NewsEye passent, dont trois sondes locales facultatives. Un premier
+export CLI des deux pages v2 ×2 passe, sans nouveau rendu. Le gel est maintenu
+pour la suite complète et la campagne sur commit propre.
+
+Le lot suivant convenu est A1 : rapport structurel autonome face aux relevés
+agrégés archivés. Claude prépare spécification et attendus manuels dans son
+scratchpad ; Codex fait auditer les définitions et prépare l'orchestration.
+Aucun corpus n'est rouvert et aucun rendu v3 n'est engagé. Les fonctions de
+mesure historiques pourront être réutilisées en mémoire après contrôle de leur
+empreinte, sans appeler le programme de calibration ni ses accès aux corpus.

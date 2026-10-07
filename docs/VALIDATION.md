@@ -89,6 +89,69 @@ détecteur général de quasi-doublons. La génération tire uniformément les u
 d'un rôle : les documents contenant plus d'unités ont davantage de poids. Le
 nombre de pages ne mesure donc ni la diversité des documents ni leur équilibre.
 
+## Lot 5 — projection PAGE NewsEye autonome
+
+Le profil `page-newseye-v1` est distinct des exports génériques. Ses fixtures
+canoniques, XML et lectures attendues ont été écrites à la main puis commitées
+en `135fe97`. Le lecteur indépendant est figé en `7c88927` avant l'écriture du
+producteur : [preuve des 118 tests](reports/lot5/reader-first/reader-first-proof.json).
+Les [preuves successives de Claude](reports/lot5/producer/index.json) conservent
+le premier producteur, le correctif des chemins d'image, puis le rapport v2.
+Les 25 pertes et neuf notes sont normatives dans le schéma du rapport ; le
+profil et le manifeste du bundle restent en version 1.
+
+La suite intégrée NewsEye passe 249 tests : lecteur (118), producteur (55),
+bundle (69), routage CLI (7). Trois tests du producteur sont des sondes locales
+facultatives sur `runs/` et sont ignorés si ces lots sont absents. Les fixtures
+portables couvrent notamment Unicode, géométrie fractionnaire, baseline à trois
+points, annonces intercalées, permutation physique du XML, mots homographes,
+types de régions et refus des blocs libres ou annonces ambiguës.
+
+La [suite complète](reports/lot5/tests-index.json) passe **1 190 tests en
+719,42 s**, dont les trois sondes locales facultatives. Ruff et la vérification
+des actifs passent ; les empreintes du code testé restent inchangées pendant
+l'exécution. Un premier export CLI des deux pages v2 ×2 passe, avec 6 121 724
+octets copiés ; ce raccordement sur arbre de travail ne remplace pas la
+campagne sur commit propre ci-dessous.
+
+Les tests du bundle mutent et réempreintent XML, rapport, reçu et manifeste
+source ; leur rejet ne repose donc pas seulement sur les SHA. Les fixtures
+d'orchestration emploient une validation source simulée, tandis qu'un cas
+négatif appelle le vrai validateur sur une source incomplète. Ils éprouvent
+aussi le changement de source ou de code pendant l'export, les fichiers
+partiels conservés, les limites avant écriture et les PNG aux CRC corrects
+mais dont les pixels ne se décodent pas. Ils ne constituent pas un essai CLI
+de corruption d'un actif d'un lot complet.
+
+La campagne finale utilise un commit propre :
+
+```sh
+uv run --locked --offline python tools/accept_newseye.py \
+  --output runs/accept-newseye-v1 \
+  --legacy-source runs/pilot-v0.2-r2 \
+  --layout-source runs/accept-layout-v2/lots/compact-identity-x2
+```
+
+Elle ancre les manifestes sources sur leurs archives Git avant de créer sa
+destination. Elle projette `mf_0003` après validation des 100 pages du pilote,
+deux pages v2, puis répète l'export v2. Tous les points et textes, les articles,
+les catégories et l'ordre sont comparés au canonique par une observation
+indépendante. Elle exige 26 titres, 535 lignes avec article et les 14 annonces
+aux rangs canoniques du pilote. Les PNG et JSON sont copiés octet pour octet ;
+les chemins d'image sont résolubles dans le bundle. Les noms des contrôles
+doivent être présents et uniques dans les rapports de chaque export et validate.
+Quatre refus CLI portent sur une page inconnue, un doublon, une destination
+imbriquée et une destination existante. Les snapshots incluent les dossiers
+vides afin de détecter une création intempestive.
+
+La campagne ne génère aucune image et ne revendique aucune nouvelle revue
+visuelle. Elle compare exactement les recouvrements 0 et 1 de ces trois pages ;
+le validateur du bundle admet une tolérance numérique de 1e-12. Le budget de
+200 Mo et la réserve d'un Go sont contrôlés entre les commandes, sans quota
+atomique. Le lecteur réel d'Axel et une évaluation de modèle restent
+`not_evaluated`. Le reçu source témoigne d'un contrôle à l'export ; il ne
+réauthentifie pas les données ni les droits absents du bundle autonome.
+
 ## Lot 4 — mise en page par zones, acceptation technique réussie
 
 Le profil `fr_press_19c_layout_v2` exige un profil photométrique explicite et
@@ -452,9 +515,11 @@ les contrôles garantissent leur reconstruction, pas leur qualité linguistique.
 
 Les exports sont validés selon nos profils documentés ; une lecture directe
 avec le lecteur NewsEye d'Axel perd titres, articles et rang des annonces
-sur la page testée `mf_0003`. L'adaptateur aval reste nécessaire et absent.
-La conformité XSD et la relecture interne ne prouvent pas la compatibilité avec
-ce lecteur. Voir la [reproduction de cette limite](EXPORTS.md#lecture-par-axel--adaptateur-encore-nécessaire).
+sur la page testée `mf_0003` dans l'export générique. Le profil supplémentaire
+[`page-newseye-v1`](EXPORT_NEWSEYE.md) conserve ces relations sous ses conventions
+déclarées. La conformité XSD et notre lecteur indépendant ne prouvent pas la
+compatibilité avec le lecteur réel d'Axel. Voir la
+[reproduction de la limite générique](EXPORTS.md#lecture-par-axel--adaptateur-encore-nécessaire).
 
 Le fonctionnement validé est celui d'un checkout du dépôt avec l'environnement
 verrouillé. La reproduction bit à bit sur un autre système ou avec une autre

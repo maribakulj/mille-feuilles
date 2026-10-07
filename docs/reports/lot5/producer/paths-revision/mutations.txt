@@ -1,0 +1,13 @@
+témoin (intact)                    54 passed in 1.93s
+annonce avant son texte            1 failed, 53 passed in 1.80s
+index de ligne +1                  16 failed, 38 passed in 1.14s
+arrondi du banquier                5 failed, 49 passed in 1.75s
+chevauchement non contrôlé         1 failed, 53 passed in 1.64s
+baseline réduite aux extrémités    3 failed, 51 passed in 1.70s
+article du premier bloc partout    5 failed, 49 passed in 1.70s
+annonce hors de l'ordre            11 failed, 43 passed in 1.87s
+bloc libre accepté                 2 failed, 52 passed in 1.73s
+deux-points accepté                3 failed, 51 passed in 1.84s
+contrôles U+0000..001F/U+007F acceptés 5 failed, 49 passed in 1.91s
+segments vides et '..' acceptés    6 failed, 48 passed in 1.73s
+apostrophe normalisée              8 failed, 46 passed in 0.97s

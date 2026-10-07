@@ -47,6 +47,15 @@ def main(argv: list[str] | None = None) -> int:
     compare = commands.add_parser("compare", help="Comparer bit à bit deux générations complètes")
     compare.add_argument("first", type=Path)
     compare.add_argument("second", type=Path)
+    newseye = commands.add_parser(
+        "export-newseye", help="Projeter un lot vérifié en PAGE NewsEye, sans nouveau rendu"
+    )
+    newseye.add_argument("--from", dest="source", required=True, type=Path)
+    newseye.add_argument("--output", required=True, type=Path, help="Destination neuve et séparée")
+    newseye.add_argument(
+        "--page", action="append", dest="page_ids",
+        help="Identifiant de page à copier (répétable) ; toutes les pages par défaut",
+    )
     importer = commands.add_parser("import-texts", help="Importer des documents locaux vérifiés")
     importer.add_argument("--manifest", required=True, type=Path, help="Manifeste JSONL des documents")
     importer.add_argument("--into", required=True, type=Path, help="Bundle de destination neuf ou vide")
@@ -86,9 +95,24 @@ def main(argv: list[str] | None = None) -> int:
                 asset_source=args.assets_root,
             )
         elif args.command == "validate":
-            result = validate_dataset(args.dataset)
+            try:
+                manifest = json.loads((args.dataset / "manifest.json").read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                # Keep the existing validator's structured failure for unreadable
+                # or malformed dataset manifests; dispatch only recognized bundles.
+                manifest = None
+            if isinstance(manifest, dict) and manifest.get("format") == "mille-feuilles-newseye-bundle":
+                from .newseye_bundle import validate_bundle
+
+                result = validate_bundle(args.dataset)
+            else:
+                result = validate_dataset(args.dataset)
         elif args.command == "compare":
             result = compare_lots(args.first, args.second)
+        elif args.command == "export-newseye":
+            from .newseye_bundle import export_bundle
+
+            result = export_bundle(args.source, args.output, page_ids=args.page_ids)
         elif args.command == "import-texts":
             from .catalog import import_texts
 

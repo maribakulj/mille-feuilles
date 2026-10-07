@@ -176,9 +176,26 @@ filtre de supervision OCR.
 Le lecteur PAGE actuel d'Axel attend des conventions NewsEye différentes :
 sans adaptateur, il perd le type des titres, les articles et le rang des annonces.
 La validation du format ne garantit pas l'interprétation par tout lecteur.
-L'adaptateur aval reste à réaliser avant une évaluation avec Axel.
+Une projection supplémentaire [PAGE NewsEye](docs/EXPORT_NEWSEYE.md) applique
+des conventions explicites, éprouvées par un lecteur indépendant. La lecture
+par Axel lui-même reste à vérifier sous sa propre coordination.
 
-`validate` contrôle les schémas JSON, références et géométries, spans Unicode,
+```sh
+uv run --locked mille-feuilles export-newseye --from runs/pilote \
+  --output runs/pilote-newseye --page mf_0003
+uv run --locked mille-feuilles validate runs/pilote-newseye
+```
+
+La commande valide tout le lot source, puis copie les pages sélectionnées dans
+une destination neuve et séparée, sans nouveau rendu. Les XML à la racine
+référencent les PNG copiés dans `images/` ; les JSON canoniques conservés dans
+`provenance/pages/` permettent de retrouver les informations non projetées.
+Sans `--page`, toutes les pages sont sélectionnées (plafonds : 100 pages,
+200 Mo, réserve de disque de 500 Mo). Le validateur autonome recoupe le XML,
+les images et le canonique ; le contrôle complet de la source est un reçu
+archivé, sans nouvelle vérification des textes et droits absents du bundle.
+
+Pour un lot natif, `validate` contrôle les schémas JSON, références et géométries, spans Unicode,
 césures, fichiers et SHA-256, preuves de droits, PNG, XSD et relecture des exports.
 En 0.3.0, chaque segment source désigne son article et ses blocs ordonnés ; leur
 texte reconstruit doit lui être exactement égal après normalisation NFC, des

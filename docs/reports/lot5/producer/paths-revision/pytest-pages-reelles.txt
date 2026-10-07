@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0 -- /Users/marcel/heritage-synth/.venv/bin/python
+rootdir: /Users/marcel/heritage-synth
+configfile: pyproject.toml
+collecting ... collected 54 items / 51 deselected / 3 selected
+
+tests/test_exports_newseye.py::test_real_page_reading_equals_the_canonical_page[runs/pilot-v0.2-r2/pages/mf_0003.json] PASSED [ 33%]
+tests/test_exports_newseye.py::test_real_page_reading_equals_the_canonical_page[lots/compact-identity-x1/pages/mf_0001.json] PASSED [ 66%]
+tests/test_exports_newseye.py::test_real_page_reading_equals_the_canonical_page[lots/compact-identity-x1/pages/mf_0000.json] PASSED [100%]
+
+======================= 3 passed, 51 deselected in 1.84s =======================
