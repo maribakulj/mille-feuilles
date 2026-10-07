@@ -1,5 +1,6 @@
 """Pixel-audit checks independent of declared readability or valid hashes."""
 
+import importlib.util
 import json
 import shutil
 
@@ -7,11 +8,18 @@ import numpy as np
 from PIL import Image
 import pytest
 
-from mille_feuilles.io import sha256
+from mille_feuilles.io import ROOT, sha256
 from mille_feuilles.pipeline import build_dataset
 from mille_feuilles.render import Config
 from mille_feuilles.validation import load_json
-from tools.audit_legibility import THRESHOLDS, audit_legibility, main, measure_word
+
+spec = importlib.util.spec_from_file_location("audit_legibility", ROOT / "tools/audit_legibility.py")
+audit_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(audit_module)
+THRESHOLDS = audit_module.THRESHOLDS
+audit_legibility = audit_module.audit_legibility
+main = audit_module.main
+measure_word = audit_module.measure_word
 
 
 @pytest.fixture(scope="module")
