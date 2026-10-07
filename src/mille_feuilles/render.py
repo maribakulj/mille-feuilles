@@ -303,6 +303,11 @@ class Composer:
         return self.column < self.cols
 
     def separator(self, x0: float, y0: float, x1: float, y1: float) -> None:
+        # A one-pixel rule can lose a distinct corner after rotation and PAGE's
+        # integer rounding. Keep both the raster and its composition envelope
+        # at least two pixels thick; the exporter still rejects degenerate shapes.
+        x1 = max(x1, x0 + 2)
+        y1 = max(y1, y0 + 2)
         block = self.block("separateur", None)
         block["polygon"] = box(x0, y0, x1, y1)
         self.draw.rectangle((x0, y0, x1, y1), fill=min(150, self.ink + 35))

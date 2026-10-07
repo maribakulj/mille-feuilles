@@ -1,8 +1,10 @@
 """End-to-end assembly checks with small real images and XML exports."""
 
 from copy import deepcopy
+from concurrent.futures import ThreadPoolExecutor
 import json
 import shutil
+from threading import Event, Lock, Thread
 
 import pytest
 
@@ -133,6 +135,105 @@ def test_failed_export_leaves_no_accepted_partial_dataset(tmp_path, monkeypatch)
         pipeline.build_dataset(output, Config(width=800, height=1100, columns=4))
     after = {str(p.relative_to(output)): sha256(p) for p in output.rglob("*") if p.is_file()}
     assert before == after
+
+
+def test_failed_page_cancels_queued_work_waits_for_active_pages_and_preserves_error(
+    tmp_path, monkeypatch
+):
+    from mille_feuilles import exports, validation
+
+    task_count = 12
+    submitted = []
+    submitted_lock = Lock()
+    all_submitted = Event()
+    queue_cancelled = Event()
+    active_started = Event()
+    release_active = Event()
+    build_finished = Event()
+    entered = [Event() for _ in range(task_count)]
+    started, finished = set(), set()
+    work_lock = Lock()
+    primary = OSError("first page export failed")
+    secondary = RuntimeError("an active page also failed while draining")
+    outcome = {}
+
+    def observe_completion(_future):
+        with submitted_lock:
+            if (
+                len(submitted) == task_count
+                and any(future.cancelled() for future in submitted)
+                and all(future.running() or future.done() for future in submitted)
+            ):
+                queue_cancelled.set()
+
+    class ObservedExecutor(ThreadPoolExecutor):
+        # Observe public Future states; execution and cancellation use the real
+        # executor, so shutdown(cancel_futures=True) would satisfy this too.
+        def submit(self, fn, /, *args, **kwargs):
+            future = super().submit(fn, *args, **kwargs)
+            with submitted_lock:
+                submitted.append(future)
+                if len(submitted) == task_count:
+                    all_submitted.set()
+            future.add_done_callback(observe_completion)
+            return future
+
+    def controlled_render(_config, index, _assets, _root):
+        entered[index].set()
+        if index == 0:
+            assert active_started.wait(5), "A second page must already be active"
+            assert all_submitted.wait(5), "There must be queued work to cancel"
+            raise primary
+        with work_lock:
+            started.add(index)
+        active_started.set()
+        assert release_active.wait(10), "The test did not release active work"
+        with work_lock:
+            finished.add(index)
+        if index == 1:
+            raise secondary
+        return {"page_id": f"mf_{index:04d}", "words": []}
+
+    def run_build():
+        try:
+            outcome["result"] = pipeline.build_dataset(
+                tmp_path / "cancelled_campaign",
+                Config(width=800, height=1100, columns=4),
+                count=task_count,
+                jobs=2,
+            )
+        except BaseException as exc:
+            outcome["error"] = exc
+        finally:
+            build_finished.set()
+
+    monkeypatch.setattr(pipeline, "ThreadPoolExecutor", ObservedExecutor)
+    monkeypatch.setattr(pipeline, "render_page", controlled_render)
+    monkeypatch.setattr(validation, "validate_page", lambda _page: [])
+    monkeypatch.setattr(exports, "export_page", lambda _page, _root: None)
+    monkeypatch.setattr(pipeline, "overlay", lambda _page, _root: None)
+    worker = Thread(target=run_build, daemon=True)
+    worker.start()
+    try:
+        assert queue_cancelled.wait(5), "Queued pages should be cancelled after the first error"
+        for index, future in enumerate(submitted):
+            if future.running():
+                assert entered[index].wait(5)
+        with work_lock:
+            active_before_release = set(started)
+        assert active_before_release
+        assert len(active_before_release) < task_count - 1
+        assert not build_finished.is_set(), "The pipeline must wait for already-active pages"
+    finally:
+        release_active.set()
+        worker.join(timeout=10)
+    assert not worker.is_alive()
+    assert outcome.get("error") is primary, "A later error must not replace the original exception"
+    assert started == active_before_release, "No queued page may start after cancellation"
+    assert finished == started, "Every already-active page must be allowed to finish"
+    assert any(future.cancelled() for future in submitted)
+    assert not (tmp_path / "cancelled_campaign/manifest.json").exists()
+    assert not (tmp_path / "cancelled_campaign/qa/report.json").exists()
 
 
 def test_compare_detects_removed_image(repeated_lots, tmp_path):

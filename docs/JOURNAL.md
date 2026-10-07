@@ -45,6 +45,14 @@ annotations et les fontes. Ils vérifient aussi les césures entre colonnes,
 les transformations, les refus d'entrées invalides et la reproductibilité.
 Les tests de chaîne comparent de vrais lots produits avec un et deux workers.
 
+La première campagne de 100 pages (`runs/pilot-v0.2`) a révélé un filet de 1 px
+dont deux sommets deviennent identiques après arrondi PAGE, page `mf_0029`.
+Le lot non accepté est conservé. Les filets ont maintenant une épaisseur minimale
+de 2 px, dans le PNG et les annotations ; la régression reproduit exactement
+la page fautive, sans affaiblir le rejet des exports dégénérés. Les 26 tests de
+rendu passent. Une erreur annule désormais les tâches encore en attente et
+laisse finir celles déjà actives, avant de remonter l'erreur initiale.
+
 ## Travail restant avant acceptation
 
 1. Les contrôles de présence des planches QA et des preuves de licence sont

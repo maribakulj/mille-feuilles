@@ -285,13 +285,20 @@ def build_dataset(
 
     with ThreadPoolExecutor(max_workers=jobs) as pool:
         futures = {pool.submit(produce, index): index for index in range(count)}
-        for future in as_completed(futures):
-            page = future.result()
-            pages.append(page)
-            if progress:
-                progress(
-                    f"{len(pages)}/{count} pages : {page['page_id']}, {len(page['words'])} mots"
-                )
+        try:
+            for future in as_completed(futures):
+                page = future.result()
+                pages.append(page)
+                if progress:
+                    progress(
+                        f"{len(pages)}/{count} pages : {page['page_id']}, {len(page['words'])} mots"
+                    )
+        except BaseException:
+            # Running pages finish before the context manager exits. Pending
+            # pages must not turn one failed export into a full failed campaign.
+            for pending in futures:
+                pending.cancel()
+            raise
     pages.sort(key=lambda p: p["page_id"])
     export_coco(pages, root)
     contact_sheets(pages, root)

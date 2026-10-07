@@ -19,6 +19,7 @@ from shapely.geometry import LineString, Polygon
 
 from mille_feuilles.render import Composer, Config, render_page
 from mille_feuilles.validation import validate_page
+from mille_feuilles.exports import export_page
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -165,6 +166,23 @@ def test_unicode_source_document_provenance_survives_render(clean_page):
             word = words[wid]
             start, end = word["char_span"]
             assert line["text"][start:end] == word["text"]
+
+
+def test_rotated_rules_survive_page_integer_quantization(assets_root):
+    # Actual 100-page pilot failure: a one-pixel rule at index 29 rounded its
+    # first and last corners to the same PAGE point, despite a valid canonical.
+    from lxml import etree
+
+    root, assets = assets_root
+    page = render_page(Config(seed=20261007), 29, assets, root)
+    assert validate_page(page) == []
+    paths = export_page(page, root)
+    tree = etree.parse(str(root / paths["page"]))
+    regions = tree.findall(".//{*}SeparatorRegion/{*}Coords")
+    assert regions
+    for region in regions:
+        points = region.attrib["points"].split()
+        assert len(points) >= 3 and len(set(points)) == len(points)
 
 
 def test_reading_order_finishes_articles_and_preserves_cross_column_hyphens(clean_page):
