@@ -1,0 +1,642 @@
+{
+  "schema_version": "0.3.0",
+  "page_id": "p",
+  "profile": "fr_press_19c_columns_4_6",
+  "image": {
+    "path": "images/p.png",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "width": 400,
+    "height": 300,
+    "color_mode": "L",
+    "dpi": 150
+  },
+  "language": "fr",
+  "provenance": {
+    "seed": 0,
+    "template_id": "template_press_v1",
+    "asset_ids": [
+      "template_press_v1",
+      "text_fixture"
+    ],
+    "text_spans": [
+      {
+        "asset_id": "text_fixture",
+        "start": 0,
+        "end": 36,
+        "source_document_id": "fixture",
+        "article_id": "p_a0001",
+        "block_ids": [
+          "p_b0000"
+        ]
+      },
+      {
+        "asset_id": "text_fixture",
+        "start": 37,
+        "end": 63,
+        "source_document_id": "fixture",
+        "article_id": "p_a0001",
+        "block_ids": [
+          "p_b0001"
+        ]
+      }
+    ],
+    "parameters": {
+      "columns": 4,
+      "render_dpi": 150
+    },
+    "extensions": {
+      "mf:template_article_ids": []
+    }
+  },
+  "transforms": [],
+  "articles": [
+    {
+      "id": "p_a0001",
+      "block_ids": [
+        "p_b0000",
+        "p_b0001"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "p_b0000",
+      "category": "titre",
+      "polygon": [
+        [
+          10,
+          10
+        ],
+        [
+          326,
+          10
+        ],
+        [
+          326,
+          30
+        ],
+        [
+          10,
+          30
+        ]
+      ],
+      "article_id": "p_a0001",
+      "line_ids": [
+        "p_l00000"
+      ]
+    },
+    {
+      "id": "p_b0001",
+      "category": "texte",
+      "polygon": [
+        [
+          10.0,
+          50.0
+        ],
+        [
+          150.4,
+          50.0
+        ],
+        [
+          150.4,
+          86.0
+        ],
+        [
+          10.0,
+          86.0
+        ]
+      ],
+      "article_id": "p_a0001",
+      "line_ids": [
+        "p_l00001",
+        "p_l00002"
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": "p_l00000",
+      "block_id": "p_b0000",
+      "polygon": [
+        [
+          10,
+          10
+        ],
+        [
+          326,
+          10
+        ],
+        [
+          326,
+          30
+        ],
+        [
+          10,
+          30
+        ]
+      ],
+      "baseline": [
+        [
+          10,
+          26
+        ],
+        [
+          326,
+          26
+        ]
+      ],
+      "text": "Œuvres d’été « Ponts & chaussées » —",
+      "word_ids": [
+        "p_w000000",
+        "p_w000001",
+        "p_w000002",
+        "p_w000003",
+        "p_w000004",
+        "p_w000005",
+        "p_w000006",
+        "p_w000007"
+      ],
+      "legibility": "readable"
+    },
+    {
+      "id": "p_l00001",
+      "block_id": "p_b0001",
+      "polygon": [
+        [
+          10.49,
+          50.0
+        ],
+        [
+          90.75,
+          50.0
+        ],
+        [
+          90.75,
+          66.0
+        ],
+        [
+          10.49,
+          66.0
+        ]
+      ],
+      "baseline": [
+        [
+          10.49,
+          62.5
+        ],
+        [
+          90.75,
+          62.5
+        ]
+      ],
+      "text": "La disso-",
+      "word_ids": [
+        "p_w000008",
+        "p_w000009"
+      ],
+      "legibility": "readable"
+    },
+    {
+      "id": "p_l00002",
+      "block_id": "p_b0001",
+      "polygon": [
+        [
+          10.0,
+          70.0
+        ],
+        [
+          150.4,
+          70.0
+        ],
+        [
+          150.4,
+          86.0
+        ],
+        [
+          10.0,
+          86.0
+        ]
+      ],
+      "baseline": [
+        [
+          10.0,
+          82.49
+        ],
+        [
+          80.5,
+          82.0
+        ],
+        [
+          150.4,
+          82.49
+        ]
+      ],
+      "text": "lution du conseil.",
+      "word_ids": [
+        "p_w000010",
+        "p_w000011",
+        "p_w000012"
+      ],
+      "legibility": "readable"
+    }
+  ],
+  "words": [
+    {
+      "id": "p_w000000",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          10,
+          10
+        ],
+        [
+          70,
+          10
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          10,
+          30
+        ]
+      ],
+      "text": "Œuvres",
+      "char_span": [
+        0,
+        6
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000001",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          76,
+          10
+        ],
+        [
+          120,
+          10
+        ],
+        [
+          120,
+          30
+        ],
+        [
+          76,
+          30
+        ]
+      ],
+      "text": "d’été",
+      "char_span": [
+        7,
+        12
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000002",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          126,
+          10
+        ],
+        [
+          134,
+          10
+        ],
+        [
+          134,
+          30
+        ],
+        [
+          126,
+          30
+        ]
+      ],
+      "text": "«",
+      "char_span": [
+        13,
+        14
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000003",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          140,
+          10
+        ],
+        [
+          184,
+          10
+        ],
+        [
+          184,
+          30
+        ],
+        [
+          140,
+          30
+        ]
+      ],
+      "text": "Ponts",
+      "char_span": [
+        15,
+        20
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000004",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          190,
+          10
+        ],
+        [
+          200,
+          10
+        ],
+        [
+          200,
+          30
+        ],
+        [
+          190,
+          30
+        ]
+      ],
+      "text": "&",
+      "char_span": [
+        21,
+        22
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000005",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          206,
+          10
+        ],
+        [
+          286,
+          10
+        ],
+        [
+          286,
+          30
+        ],
+        [
+          206,
+          30
+        ]
+      ],
+      "text": "chaussées",
+      "char_span": [
+        23,
+        32
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000006",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          292,
+          10
+        ],
+        [
+          300,
+          10
+        ],
+        [
+          300,
+          30
+        ],
+        [
+          292,
+          30
+        ]
+      ],
+      "text": "»",
+      "char_span": [
+        33,
+        34
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000007",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          306,
+          10
+        ],
+        [
+          326,
+          10
+        ],
+        [
+          326,
+          30
+        ],
+        [
+          306,
+          30
+        ]
+      ],
+      "text": "—",
+      "char_span": [
+        35,
+        36
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000008",
+      "line_id": "p_l00001",
+      "polygon": [
+        [
+          10.5,
+          50.49
+        ],
+        [
+          30.49,
+          50.0
+        ],
+        [
+          30.5,
+          65.5
+        ],
+        [
+          10.49,
+          66.0
+        ]
+      ],
+      "text": "La",
+      "char_span": [
+        0,
+        2
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000009",
+      "line_id": "p_l00001",
+      "polygon": [
+        [
+          36.25,
+          50.0
+        ],
+        [
+          90.75,
+          50.0
+        ],
+        [
+          90.75,
+          66.0
+        ],
+        [
+          36.25,
+          66.0
+        ]
+      ],
+      "text": "disso-",
+      "char_span": [
+        3,
+        9
+      ],
+      "legibility": "readable",
+      "hyphenation": {
+        "group_id": "p_h00000",
+        "part": "start",
+        "reconstructed_text": "dissolution"
+      }
+    },
+    {
+      "id": "p_w000010",
+      "line_id": "p_l00002",
+      "polygon": [
+        [
+          10.0,
+          70.0
+        ],
+        [
+          60.5,
+          70.0
+        ],
+        [
+          60.5,
+          86.0
+        ],
+        [
+          10.0,
+          86.0
+        ]
+      ],
+      "text": "lution",
+      "char_span": [
+        0,
+        6
+      ],
+      "legibility": "readable",
+      "hyphenation": {
+        "group_id": "p_h00000",
+        "part": "end",
+        "reconstructed_text": "dissolution"
+      }
+    },
+    {
+      "id": "p_w000011",
+      "line_id": "p_l00002",
+      "polygon": [
+        [
+          66.0,
+          70.0
+        ],
+        [
+          84.0,
+          70.0
+        ],
+        [
+          84.0,
+          86.0
+        ],
+        [
+          66.0,
+          86.0
+        ]
+      ],
+      "text": "du",
+      "char_span": [
+        7,
+        9
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000012",
+      "line_id": "p_l00002",
+      "polygon": [
+        [
+          90.0,
+          70.0
+        ],
+        [
+          150.4,
+          70.0
+        ],
+        [
+          150.4,
+          86.0
+        ],
+        [
+          90.0,
+          86.0
+        ]
+      ],
+      "text": "conseil.",
+      "char_span": [
+        10,
+        18
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    }
+  ],
+  "reading_order": {
+    "block_ids": [
+      "p_b0000",
+      "p_b0001"
+    ],
+    "unordered_block_ids": [],
+    "line_ids": [
+      "p_l00000",
+      "p_l00001",
+      "p_l00002"
+    ]
+  }
+}

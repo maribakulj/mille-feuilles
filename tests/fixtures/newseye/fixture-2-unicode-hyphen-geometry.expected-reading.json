@@ -1,0 +1,15 @@
+{
+  "format": "mille-feuilles-newseye-expected-reading",
+  "version": "1",
+  "note": "Written by hand from SPEC.md section 4. The hyphen stays visible; no reconstruction.",
+  "text_regions_in_order": [
+    {"id": "r_p_b0000", "structure": "heading", "kind": "titre",
+     "lines": [["l_p_l00000", "p_a0001", "Œuvres d’été « Ponts & chaussées » —"]]},
+    {"id": "r_p_b0001", "structure": "paragraph", "kind": "texte",
+     "lines": [["l_p_l00001", "p_a0001", "La disso-"], ["l_p_l00002", "p_a0001", "lution du conseil."]]}
+  ],
+  "advert_cover_max": {"r_p_b0000": 0.0, "r_p_b0001": 0.0},
+  "advert_ranks": [],
+  "separators": [],
+  "omitted_text_regions": []
+}

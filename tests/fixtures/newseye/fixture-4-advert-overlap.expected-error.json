@@ -1,0 +1,12 @@
+{
+  "format": "mille-feuilles-newseye-expected-error",
+  "version": "1",
+  "note": "Valid 0.3.0 canonical page (validate_page = [], validate_text_provenance = []) whose advertisement block p_b0003 (y 60..95) overlaps the ordinary block p_b0004 (y 50..65). An AdvertRegion with these Coords would intersect r_p_b0004 with positive area, which makes the advertisement typing by cover ambiguous. The profile refuses it; it does not shrink or move geometry. For information only: cover(r_p_b0004) would be 510 / 1800 = 0.283 (< 0.5), so a reader would not mistype it; the refusal is a conservative rule of the profile (any positive-area overlap), not a cover threshold.",
+  "error_class": "NewsEyeExportError (subclass of ValueError)",
+  "code": "advert_overlap",
+  "block_ids": [
+    "p_b0003",
+    "p_b0004"
+  ],
+  "writes": "none"
+}

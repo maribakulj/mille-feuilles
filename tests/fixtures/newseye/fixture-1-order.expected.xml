@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 https://www.primaresearch.org/schema/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd" pcGtsId="p_p">
+  <Metadata>
+    <Creator>Mille Feuilles</Creator>
+    <Created>1970-01-01T00:00:00Z</Created>
+    <LastChange>1970-01-01T00:00:00Z</LastChange>
+    <Comments>Synthetic composition. Projection page-newseye-v1; fixed dates are reproducibility sentinels.</Comments>
+  </Metadata>
+  <Page imageFilename="images/p.png" imageWidth="400" imageHeight="300" primaryLanguage="French">
+    <ReadingOrder>
+      <OrderedGroup id="mf_newseye_order">
+        <RegionRefIndexed index="0" regionRef="r_p_b0000"/>
+        <RegionRefIndexed index="1" regionRef="r_p_b0004"/>
+        <RegionRefIndexed index="2" regionRef="r_p_b0003"/>
+        <RegionRefIndexed index="3" regionRef="r_p_b0001"/>
+        <RegionRefIndexed index="4" regionRef="r_p_b0002"/>
+      </OrderedGroup>
+    </ReadingOrder>
+    <TextRegion id="r_p_b0000" type="heading" custom="readingOrder {index:0;} structure {type:heading;}">
+      <Coords points="10,10 200,10 200,30 10,30"/>
+      <TextLine id="l_p_l00000" custom="readingOrder {index:0;} structure {id:p_a0000; type:article;}">
+        <Coords points="10,10 200,10 200,30 10,30"/>
+        <Baseline points="10,26 200,26"/>
+        <Word id="w_p_w000000">
+          <Coords points="10,10 90,10 90,30 10,30"/>
+          <TextEquiv><Unicode>MILLE</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000001">
+          <Coords points="100,10 200,10 200,30 100,30"/>
+          <TextEquiv><Unicode>FEUILLES</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>MILLE FEUILLES</Unicode></TextEquiv>
+      </TextLine>
+      <TextEquiv><Unicode>MILLE FEUILLES</Unicode></TextEquiv>
+    </TextRegion>
+    <TextRegion id="r_p_b0004" type="paragraph" custom="readingOrder {index:1;} structure {type:paragraph;}">
+      <Coords points="10,50 130,50 130,65 10,65"/>
+      <TextLine id="l_p_l00005" custom="readingOrder {index:0;} structure {id:p_a0003; type:article;}">
+        <Coords points="10,50 130,50 130,65 10,65"/>
+        <Baseline points="10,62 130,62"/>
+        <Word id="w_p_w000010">
+          <Coords points="10,50 25,50 25,65 10,65"/>
+          <TextEquiv><Unicode>Le</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000011">
+          <Coords points="30,50 80,50 80,65 30,65"/>
+          <TextEquiv><Unicode>marché</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000012">
+          <Coords points="85,50 130,50 130,65 85,65"/>
+          <TextEquiv><Unicode>ouvre.</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>Le marché ouvre.</Unicode></TextEquiv>
+      </TextLine>
+      <TextEquiv><Unicode>Le marché ouvre.</Unicode></TextEquiv>
+    </TextRegion>
+    <TextRegion id="r_p_b0003" type="paragraph" custom="readingOrder {index:2;} structure {type:paragraph;}">
+      <Coords points="10,80 112,80 112,95 10,95"/>
+      <TextLine id="l_p_l00004" custom="readingOrder {index:0;} structure {id:p_a0002; type:article;}">
+        <Coords points="10,80 112,80 112,95 10,95"/>
+        <Baseline points="10,92 112,92"/>
+        <Word id="w_p_w000007">
+          <Coords points="10,80 60,80 60,95 10,95"/>
+          <TextEquiv><Unicode>Vente</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000008">
+          <Coords points="64,80 68,80 68,95 64,95"/>
+          <TextEquiv><Unicode>:</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000009">
+          <Coords points="72,80 112,80 112,95 72,95"/>
+          <TextEquiv><Unicode>bois.</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>Vente : bois.</Unicode></TextEquiv>
+      </TextLine>
+      <TextEquiv><Unicode>Vente : bois.</Unicode></TextEquiv>
+    </TextRegion>
+    <AdvertRegion id="a_p_b0003">
+      <Coords points="10,80 112,80 112,95 10,95"/>
+    </AdvertRegion>
+    <TextRegion id="r_p_b0001" type="heading" custom="readingOrder {index:3;} structure {type:heading;}">
+      <Coords points="210,50 310,50 310,70 210,70"/>
+      <TextLine id="l_p_l00001" custom="readingOrder {index:0;} structure {id:p_a0001; type:article;}">
+        <Coords points="210,50 310,50 310,70 210,70"/>
+        <Baseline points="210,66 310,66"/>
+        <Word id="w_p_w000002">
+          <Coords points="210,50 310,50 310,70 210,70"/>
+          <TextEquiv><Unicode>Chronique</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>Chronique</Unicode></TextEquiv>
+      </TextLine>
+      <TextEquiv><Unicode>Chronique</Unicode></TextEquiv>
+    </TextRegion>
+    <TextRegion id="r_p_b0002" type="paragraph" custom="readingOrder {index:4;} structure {type:paragraph;}">
+      <Coords points="210,80 312,80 312,115 210,115"/>
+      <TextLine id="l_p_l00002" custom="readingOrder {index:0;} structure {id:p_a0001; type:article;}">
+        <Coords points="210,80 312,80 312,95 210,95"/>
+        <Baseline points="210,92 312,92"/>
+        <Word id="w_p_w000003">
+          <Coords points="210,80 230,80 230,95 210,95"/>
+          <TextEquiv><Unicode>Le</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000004">
+          <Coords points="236,80 296,80 296,95 236,95"/>
+          <TextEquiv><Unicode>conseil</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000005">
+          <Coords points="302,80 312,80 312,95 302,95"/>
+          <TextEquiv><Unicode>a</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>Le conseil a</Unicode></TextEquiv>
+      </TextLine>
+      <TextLine id="l_p_l00003" custom="readingOrder {index:1;} structure {id:p_a0001; type:article;}">
+        <Coords points="210,100 252,100 252,115 210,115"/>
+        <Baseline points="210,112 252,112"/>
+        <Word id="w_p_w000006">
+          <Coords points="210,100 252,100 252,115 210,115"/>
+          <TextEquiv><Unicode>voté.</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>voté.</Unicode></TextEquiv>
+      </TextLine>
+      <TextEquiv><Unicode>Le conseil a
+voté.</Unicode></TextEquiv>
+    </TextRegion>
+    <SeparatorRegion id="s_p_b0005">
+      <Coords points="199,40 201,40 201,140 199,140"/>
+    </SeparatorRegion>
+  </Page>
+</PcGts>

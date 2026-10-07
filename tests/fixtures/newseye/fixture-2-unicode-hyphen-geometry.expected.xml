@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 https://www.primaresearch.org/schema/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd" pcGtsId="p_p">
+  <Metadata>
+    <Creator>Mille Feuilles</Creator>
+    <Created>1970-01-01T00:00:00Z</Created>
+    <LastChange>1970-01-01T00:00:00Z</LastChange>
+    <Comments>Synthetic composition. Projection page-newseye-v1; fixed dates are reproducibility sentinels.</Comments>
+  </Metadata>
+  <Page imageFilename="images/p.png" imageWidth="400" imageHeight="300" primaryLanguage="French">
+    <ReadingOrder>
+      <OrderedGroup id="mf_newseye_order">
+        <RegionRefIndexed index="0" regionRef="r_p_b0000"/>
+        <RegionRefIndexed index="1" regionRef="r_p_b0001"/>
+      </OrderedGroup>
+    </ReadingOrder>
+    <TextRegion id="r_p_b0000" type="heading" custom="readingOrder {index:0;} structure {type:heading;}">
+      <Coords points="10,10 326,10 326,30 10,30"/>
+      <TextLine id="l_p_l00000" custom="readingOrder {index:0;} structure {id:p_a0001; type:article;}">
+        <Coords points="10,10 326,10 326,30 10,30"/>
+        <Baseline points="10,26 326,26"/>
+        <Word id="w_p_w000000">
+          <Coords points="10,10 70,10 70,30 10,30"/>
+          <TextEquiv><Unicode>Œuvres</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000001">
+          <Coords points="76,10 120,10 120,30 76,30"/>
+          <TextEquiv><Unicode>d’été</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000002">
+          <Coords points="126,10 134,10 134,30 126,30"/>
+          <TextEquiv><Unicode>«</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000003">
+          <Coords points="140,10 184,10 184,30 140,30"/>
+          <TextEquiv><Unicode>Ponts</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000004">
+          <Coords points="190,10 200,10 200,30 190,30"/>
+          <TextEquiv><Unicode>&amp;</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000005">
+          <Coords points="206,10 286,10 286,30 206,30"/>
+          <TextEquiv><Unicode>chaussées</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000006">
+          <Coords points="292,10 300,10 300,30 292,30"/>
+          <TextEquiv><Unicode>»</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000007">
+          <Coords points="306,10 326,10 326,30 306,30"/>
+          <TextEquiv><Unicode>—</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>Œuvres d’été « Ponts &amp; chaussées » —</Unicode></TextEquiv>
+      </TextLine>
+      <TextEquiv><Unicode>Œuvres d’été « Ponts &amp; chaussées » —</Unicode></TextEquiv>
+    </TextRegion>
+    <TextRegion id="r_p_b0001" type="paragraph" custom="readingOrder {index:1;} structure {type:paragraph;}">
+      <Coords points="10,50 150,50 150,86 10,86"/>
+      <TextLine id="l_p_l00001" custom="readingOrder {index:0;} structure {id:p_a0001; type:article;}">
+        <Coords points="10,50 91,50 91,66 10,66"/>
+        <Baseline points="10,63 91,63"/>
+        <Word id="w_p_w000008">
+          <Coords points="11,50 30,50 31,66 10,66"/>
+          <TextEquiv><Unicode>La</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000009">
+          <Coords points="36,50 91,50 91,66 36,66"/>
+          <TextEquiv><Unicode>disso-</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>La disso-</Unicode></TextEquiv>
+      </TextLine>
+      <TextLine id="l_p_l00002" custom="readingOrder {index:1;} structure {id:p_a0001; type:article;}">
+        <Coords points="10,70 150,70 150,86 10,86"/>
+        <Baseline points="10,82 81,82 150,82"/>
+        <Word id="w_p_w000010">
+          <Coords points="10,70 61,70 61,86 10,86"/>
+          <TextEquiv><Unicode>lution</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000011">
+          <Coords points="66,70 84,70 84,86 66,86"/>
+          <TextEquiv><Unicode>du</Unicode></TextEquiv>
+        </Word>
+        <Word id="w_p_w000012">
+          <Coords points="90,70 150,70 150,86 90,86"/>
+          <TextEquiv><Unicode>conseil.</Unicode></TextEquiv>
+        </Word>
+        <TextEquiv><Unicode>lution du conseil.</Unicode></TextEquiv>
+      </TextLine>
+      <TextEquiv><Unicode>La disso-
+lution du conseil.</Unicode></TextEquiv>
+    </TextRegion>
+  </Page>
+</PcGts>

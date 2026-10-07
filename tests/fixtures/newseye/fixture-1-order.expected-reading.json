@@ -1,0 +1,21 @@
+{
+  "format": "mille-feuilles-newseye-expected-reading",
+  "version": "1",
+  "note": "Written by hand from SPEC.md section 4. Applies to fixture-1-order.expected.xml AND to fixture-1-order.reader-variant.xml (same reading, different document order).",
+  "text_regions_in_order": [
+    {"id": "r_p_b0000", "structure": "heading", "kind": "titre",
+     "lines": [["l_p_l00000", "p_a0000", "MILLE FEUILLES"]]},
+    {"id": "r_p_b0004", "structure": "paragraph", "kind": "texte",
+     "lines": [["l_p_l00005", "p_a0003", "Le marché ouvre."]]},
+    {"id": "r_p_b0003", "structure": "paragraph", "kind": "annonce",
+     "lines": [["l_p_l00004", "p_a0002", "Vente : bois."]]},
+    {"id": "r_p_b0001", "structure": "heading", "kind": "titre",
+     "lines": [["l_p_l00001", "p_a0001", "Chronique"]]},
+    {"id": "r_p_b0002", "structure": "paragraph", "kind": "texte",
+     "lines": [["l_p_l00002", "p_a0001", "Le conseil a"], ["l_p_l00003", "p_a0001", "voté."]]}
+  ],
+  "advert_cover_max": {"r_p_b0000": 0.0, "r_p_b0004": 0.0, "r_p_b0003": 1.0, "r_p_b0001": 0.0, "r_p_b0002": 0.0},
+  "advert_ranks": [2],
+  "separators": ["s_p_b0005"],
+  "omitted_text_regions": []
+}

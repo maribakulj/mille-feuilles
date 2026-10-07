@@ -1,0 +1,888 @@
+{
+  "schema_version": "0.3.0",
+  "page_id": "p",
+  "profile": "fr_press_19c_columns_4_6",
+  "image": {
+    "path": "images/p.png",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "width": 400,
+    "height": 300,
+    "color_mode": "L",
+    "dpi": 150
+  },
+  "language": "fr",
+  "provenance": {
+    "seed": 0,
+    "template_id": "template_press_v1",
+    "asset_ids": [
+      "template_press_v1",
+      "text_fixture"
+    ],
+    "text_spans": [
+      {
+        "asset_id": "text_fixture",
+        "start": 0,
+        "end": 9,
+        "source_document_id": "fixture",
+        "article_id": "p_a0001",
+        "block_ids": [
+          "p_b0001"
+        ]
+      },
+      {
+        "asset_id": "text_fixture",
+        "start": 10,
+        "end": 28,
+        "source_document_id": "fixture",
+        "article_id": "p_a0001",
+        "block_ids": [
+          "p_b0002"
+        ]
+      },
+      {
+        "asset_id": "text_fixture",
+        "start": 29,
+        "end": 42,
+        "source_document_id": "fixture",
+        "article_id": "p_a0002",
+        "block_ids": [
+          "p_b0003"
+        ]
+      },
+      {
+        "asset_id": "text_fixture",
+        "start": 43,
+        "end": 59,
+        "source_document_id": "fixture",
+        "article_id": "p_a0003",
+        "block_ids": [
+          "p_b0004"
+        ]
+      }
+    ],
+    "parameters": {
+      "columns": 4,
+      "render_dpi": 150
+    },
+    "extensions": {
+      "mf:template_article_ids": [
+        "p_a0000"
+      ]
+    }
+  },
+  "transforms": [],
+  "articles": [
+    {
+      "id": "p_a0000",
+      "block_ids": [
+        "p_b0000"
+      ]
+    },
+    {
+      "id": "p_a0001",
+      "block_ids": [
+        "p_b0001",
+        "p_b0002"
+      ]
+    },
+    {
+      "id": "p_a0002",
+      "block_ids": [
+        "p_b0003"
+      ]
+    },
+    {
+      "id": "p_a0003",
+      "block_ids": [
+        "p_b0004"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "p_b0000",
+      "category": "titre",
+      "polygon": [
+        [
+          10,
+          10
+        ],
+        [
+          200,
+          10
+        ],
+        [
+          200,
+          30
+        ],
+        [
+          10,
+          30
+        ]
+      ],
+      "article_id": "p_a0000",
+      "line_ids": [
+        "p_l00000"
+      ]
+    },
+    {
+      "id": "p_b0001",
+      "category": "titre",
+      "polygon": [
+        [
+          210,
+          50
+        ],
+        [
+          310,
+          50
+        ],
+        [
+          310,
+          70
+        ],
+        [
+          210,
+          70
+        ]
+      ],
+      "article_id": "p_a0001",
+      "line_ids": [
+        "p_l00001"
+      ]
+    },
+    {
+      "id": "p_b0002",
+      "category": "texte",
+      "polygon": [
+        [
+          210,
+          80
+        ],
+        [
+          312,
+          80
+        ],
+        [
+          312,
+          115
+        ],
+        [
+          210,
+          115
+        ]
+      ],
+      "article_id": "p_a0001",
+      "line_ids": [
+        "p_l00002",
+        "p_l00003"
+      ]
+    },
+    {
+      "id": "p_b0003",
+      "category": "annonce",
+      "polygon": [
+        [
+          10,
+          60
+        ],
+        [
+          112,
+          60
+        ],
+        [
+          112,
+          95
+        ],
+        [
+          10,
+          95
+        ]
+      ],
+      "article_id": "p_a0002",
+      "line_ids": [
+        "p_l00004"
+      ]
+    },
+    {
+      "id": "p_b0004",
+      "category": "texte",
+      "polygon": [
+        [
+          10,
+          50
+        ],
+        [
+          130,
+          50
+        ],
+        [
+          130,
+          65
+        ],
+        [
+          10,
+          65
+        ]
+      ],
+      "article_id": "p_a0003",
+      "line_ids": [
+        "p_l00005"
+      ]
+    },
+    {
+      "id": "p_b0005",
+      "category": "separateur",
+      "polygon": [
+        [
+          199,
+          40
+        ],
+        [
+          201,
+          40
+        ],
+        [
+          201,
+          140
+        ],
+        [
+          199,
+          140
+        ]
+      ],
+      "article_id": null,
+      "line_ids": []
+    }
+  ],
+  "lines": [
+    {
+      "id": "p_l00000",
+      "block_id": "p_b0000",
+      "polygon": [
+        [
+          10,
+          10
+        ],
+        [
+          200,
+          10
+        ],
+        [
+          200,
+          30
+        ],
+        [
+          10,
+          30
+        ]
+      ],
+      "baseline": [
+        [
+          10,
+          26
+        ],
+        [
+          200,
+          26
+        ]
+      ],
+      "text": "MILLE FEUILLES",
+      "word_ids": [
+        "p_w000000",
+        "p_w000001"
+      ],
+      "legibility": "readable"
+    },
+    {
+      "id": "p_l00001",
+      "block_id": "p_b0001",
+      "polygon": [
+        [
+          210,
+          50
+        ],
+        [
+          310,
+          50
+        ],
+        [
+          310,
+          70
+        ],
+        [
+          210,
+          70
+        ]
+      ],
+      "baseline": [
+        [
+          210,
+          66
+        ],
+        [
+          310,
+          66
+        ]
+      ],
+      "text": "Chronique",
+      "word_ids": [
+        "p_w000002"
+      ],
+      "legibility": "readable"
+    },
+    {
+      "id": "p_l00002",
+      "block_id": "p_b0002",
+      "polygon": [
+        [
+          210,
+          80
+        ],
+        [
+          312,
+          80
+        ],
+        [
+          312,
+          95
+        ],
+        [
+          210,
+          95
+        ]
+      ],
+      "baseline": [
+        [
+          210,
+          92
+        ],
+        [
+          312,
+          92
+        ]
+      ],
+      "text": "Le conseil a",
+      "word_ids": [
+        "p_w000003",
+        "p_w000004",
+        "p_w000005"
+      ],
+      "legibility": "readable"
+    },
+    {
+      "id": "p_l00003",
+      "block_id": "p_b0002",
+      "polygon": [
+        [
+          210,
+          100
+        ],
+        [
+          252,
+          100
+        ],
+        [
+          252,
+          115
+        ],
+        [
+          210,
+          115
+        ]
+      ],
+      "baseline": [
+        [
+          210,
+          112
+        ],
+        [
+          252,
+          112
+        ]
+      ],
+      "text": "voté.",
+      "word_ids": [
+        "p_w000006"
+      ],
+      "legibility": "readable"
+    },
+    {
+      "id": "p_l00004",
+      "block_id": "p_b0003",
+      "polygon": [
+        [
+          10,
+          80
+        ],
+        [
+          112,
+          80
+        ],
+        [
+          112,
+          95
+        ],
+        [
+          10,
+          95
+        ]
+      ],
+      "baseline": [
+        [
+          10,
+          92
+        ],
+        [
+          112,
+          92
+        ]
+      ],
+      "text": "Vente : bois.",
+      "word_ids": [
+        "p_w000007",
+        "p_w000008",
+        "p_w000009"
+      ],
+      "legibility": "readable"
+    },
+    {
+      "id": "p_l00005",
+      "block_id": "p_b0004",
+      "polygon": [
+        [
+          10,
+          50
+        ],
+        [
+          130,
+          50
+        ],
+        [
+          130,
+          65
+        ],
+        [
+          10,
+          65
+        ]
+      ],
+      "baseline": [
+        [
+          10,
+          62
+        ],
+        [
+          130,
+          62
+        ]
+      ],
+      "text": "Le marché ouvre.",
+      "word_ids": [
+        "p_w000010",
+        "p_w000011",
+        "p_w000012"
+      ],
+      "legibility": "readable"
+    }
+  ],
+  "words": [
+    {
+      "id": "p_w000000",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          10,
+          10
+        ],
+        [
+          90,
+          10
+        ],
+        [
+          90,
+          30
+        ],
+        [
+          10,
+          30
+        ]
+      ],
+      "text": "MILLE",
+      "char_span": [
+        0,
+        5
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000001",
+      "line_id": "p_l00000",
+      "polygon": [
+        [
+          100,
+          10
+        ],
+        [
+          200,
+          10
+        ],
+        [
+          200,
+          30
+        ],
+        [
+          100,
+          30
+        ]
+      ],
+      "text": "FEUILLES",
+      "char_span": [
+        6,
+        14
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000002",
+      "line_id": "p_l00001",
+      "polygon": [
+        [
+          210,
+          50
+        ],
+        [
+          310,
+          50
+        ],
+        [
+          310,
+          70
+        ],
+        [
+          210,
+          70
+        ]
+      ],
+      "text": "Chronique",
+      "char_span": [
+        0,
+        9
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000003",
+      "line_id": "p_l00002",
+      "polygon": [
+        [
+          210,
+          80
+        ],
+        [
+          230,
+          80
+        ],
+        [
+          230,
+          95
+        ],
+        [
+          210,
+          95
+        ]
+      ],
+      "text": "Le",
+      "char_span": [
+        0,
+        2
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000004",
+      "line_id": "p_l00002",
+      "polygon": [
+        [
+          236,
+          80
+        ],
+        [
+          296,
+          80
+        ],
+        [
+          296,
+          95
+        ],
+        [
+          236,
+          95
+        ]
+      ],
+      "text": "conseil",
+      "char_span": [
+        3,
+        10
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000005",
+      "line_id": "p_l00002",
+      "polygon": [
+        [
+          302,
+          80
+        ],
+        [
+          312,
+          80
+        ],
+        [
+          312,
+          95
+        ],
+        [
+          302,
+          95
+        ]
+      ],
+      "text": "a",
+      "char_span": [
+        11,
+        12
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000006",
+      "line_id": "p_l00003",
+      "polygon": [
+        [
+          210,
+          100
+        ],
+        [
+          252,
+          100
+        ],
+        [
+          252,
+          115
+        ],
+        [
+          210,
+          115
+        ]
+      ],
+      "text": "voté.",
+      "char_span": [
+        0,
+        5
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000007",
+      "line_id": "p_l00004",
+      "polygon": [
+        [
+          10,
+          80
+        ],
+        [
+          60,
+          80
+        ],
+        [
+          60,
+          95
+        ],
+        [
+          10,
+          95
+        ]
+      ],
+      "text": "Vente",
+      "char_span": [
+        0,
+        5
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000008",
+      "line_id": "p_l00004",
+      "polygon": [
+        [
+          64,
+          80
+        ],
+        [
+          68,
+          80
+        ],
+        [
+          68,
+          95
+        ],
+        [
+          64,
+          95
+        ]
+      ],
+      "text": ":",
+      "char_span": [
+        6,
+        7
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000009",
+      "line_id": "p_l00004",
+      "polygon": [
+        [
+          72,
+          80
+        ],
+        [
+          112,
+          80
+        ],
+        [
+          112,
+          95
+        ],
+        [
+          72,
+          95
+        ]
+      ],
+      "text": "bois.",
+      "char_span": [
+        8,
+        13
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000010",
+      "line_id": "p_l00005",
+      "polygon": [
+        [
+          10,
+          50
+        ],
+        [
+          25,
+          50
+        ],
+        [
+          25,
+          65
+        ],
+        [
+          10,
+          65
+        ]
+      ],
+      "text": "Le",
+      "char_span": [
+        0,
+        2
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000011",
+      "line_id": "p_l00005",
+      "polygon": [
+        [
+          30,
+          50
+        ],
+        [
+          80,
+          50
+        ],
+        [
+          80,
+          65
+        ],
+        [
+          30,
+          65
+        ]
+      ],
+      "text": "marché",
+      "char_span": [
+        3,
+        9
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    },
+    {
+      "id": "p_w000012",
+      "line_id": "p_l00005",
+      "polygon": [
+        [
+          85,
+          50
+        ],
+        [
+          130,
+          50
+        ],
+        [
+          130,
+          65
+        ],
+        [
+          85,
+          65
+        ]
+      ],
+      "text": "ouvre.",
+      "char_span": [
+        10,
+        16
+      ],
+      "legibility": "readable",
+      "hyphenation": null
+    }
+  ],
+  "reading_order": {
+    "block_ids": [
+      "p_b0000",
+      "p_b0004",
+      "p_b0003",
+      "p_b0001",
+      "p_b0002"
+    ],
+    "unordered_block_ids": [
+      "p_b0005"
+    ],
+    "line_ids": [
+      "p_l00000",
+      "p_l00005",
+      "p_l00004",
+      "p_l00001",
+      "p_l00002",
+      "p_l00003"
+    ]
+  }
+}

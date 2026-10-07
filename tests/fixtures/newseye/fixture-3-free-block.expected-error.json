@@ -1,0 +1,9 @@
+{
+  "format": "mille-feuilles-newseye-expected-error",
+  "version": "1",
+  "note": "The page is a valid 0.2.0 canonical page (validate_page = []) with a textual block that belongs to no article. Profile page-newseye-v1 refuses it: the article of each TextLine cannot be expressed. The refusal is a decision of this profile, not of the canonical schema.",
+  "error_class": "NewsEyeExportError (subclass of ValueError)",
+  "code": "free_text_block",
+  "block_ids": ["p_b0004"],
+  "writes": "none (no file is created in the destination)"
+}
