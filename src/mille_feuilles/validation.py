@@ -1,4 +1,4 @@
-"""Strict, read-only validation of the canonical 0.2.0 interchange format.
+"""Strict, read-only validation of canonical 0.2.0 and 0.3.0 datasets.
 
 Only files named by the dataset are opened, after containment checks. The
 historical paths inside the calibration audit are evidence, never inputs.
@@ -286,6 +286,8 @@ def validate_page(page: dict) -> list[str]:
     for span in page["provenance"]["text_spans"]:
         if span["start"] >= span["end"] or span["asset_id"] not in page["provenance"]["asset_ids"]:
             errors.append("provenance: empty/reversed text span or undeclared asset")
+    if page["schema_version"] == "0.3.0":
+        errors.extend(_validate_span_bindings(page))
     for transform in page["transforms"]:
         if transform["geometry"] != "identity":
             matrix = transform["geometry"]["matrix"]
@@ -295,34 +297,96 @@ def validate_page(page: dict) -> list[str]:
     return errors
 
 
+def _validate_span_bindings(page: dict) -> list[str]:
+    """Validate complete, disjoint ownership of textual blocks in version 0.3."""
+    errors = []
+    articles = {a["id"]: a for a in page["articles"]}
+    blocks = {b["id"]: b for b in page["blocks"]}
+    lines = {line["id"]: line for line in page["lines"]}
+    owners = defaultdict(list)
+    template_ids = page["provenance"].get("extensions", {}).get("mf:template_article_ids", [])
+    article_order = list(dict.fromkeys(
+        blocks[bid]["article_id"]
+        for bid in page["reading_order"]["block_ids"] if bid in blocks
+    ))
+    if template_ids != [aid for aid in article_order if aid in template_ids]:
+        errors.append("provenance: template article ids must exist in reading order")
+    for aid in template_ids:
+        if aid not in articles:
+            errors.append(f"provenance: unknown template article {aid}")
+            continue
+        for bid in articles[aid]["block_ids"]:
+            if bid in blocks and blocks[bid]["category"] not in _NON_TEXT:
+                owners[bid].append("template")
+    for index, span in enumerate(page["provenance"]["text_spans"]):
+        aid = span["article_id"]
+        bids = span["block_ids"]
+        label = f"text span {index}"
+        if aid not in articles:
+            errors.append(f"{label}: unknown article_id {aid}")
+        else:
+            expected = [bid for bid in articles[aid]["block_ids"] if bid in bids]
+            if bids != expected:
+                errors.append(f"{label}: block_ids must follow their article order")
+        for bid in bids:
+            block = blocks.get(bid)
+            if block is None or block["category"] in _NON_TEXT:
+                errors.append(f"{label}: unknown or nontextual block {bid}")
+                continue
+            if block["article_id"] != aid:
+                errors.append(f"{label}: non-reciprocal article/block binding {bid}")
+            owners[bid].append(index)
+    for bid, block in blocks.items():
+        if block["category"] not in _NON_TEXT and len(owners[bid]) != 1:
+            errors.append(f"{bid}: textual block must have exactly one provenance owner")
+    hyphen_owners = defaultdict(list)
+    for word in page["words"]:
+        if word["hyphenation"] is not None and word["line_id"] in lines:
+            bid = lines[word["line_id"]]["block_id"]
+            hyphen_owners[word["hyphenation"]["group_id"]].append(owners[bid])
+    for gid, memberships in hyphen_owners.items():
+        if any(owner != memberships[0] for owner in memberships[1:]):
+            errors.append(f"{gid}: hyphenation crosses source span/template ownership")
+    return errors
+
+
+def _tokens_by_block(page: dict) -> dict[str, list[str]]:
+    """Reconstruct validated blocks once, preserving their internal reading order."""
+    blocks = {block["id"]: block for block in page["blocks"]}
+    lines = {line["id"]: line for line in page["lines"]}
+    words = {word["id"]: word for word in page["words"]}
+    result = {}
+    for bid, block in blocks.items():
+        tokens = []
+        for lid in block["line_ids"]:
+            for wid in lines[lid]["word_ids"]:
+                word = words[wid]
+                hyphen = word["hyphenation"]
+                if hyphen is None:
+                    tokens.append(word["text"])
+                elif hyphen["part"] == "start":
+                    tokens.append(hyphen["reconstructed_text"])
+        result[bid] = tokens
+    return result
+
+
 def validate_text_provenance(page: dict, text_assets: dict[str, str]) -> list[str]:
     """Check declared source segments against the text of a structurally valid page.
 
     Call after validate_page has accepted ownership, order and hyphenation.
-    A source segment must occur within one article (or one unassigned block),
-    with only whitespace and NFC normalization and annotated dehyphenation.
-    The 0.2.0 schema does not map spans to articles: this is an occurrence
-    check, not unique attribution, multiplicity or coverage of template text.
+    Version 0.3 requires exact equality with the blocks bound to each span.
+    Version 0.2 retains its occurrence check inside any single article (or
+    unassigned block), without unique attribution, multiplicity or coverage.
+    Both normalize only NFC/whitespace and explicitly annotated hyphenation.
     """
     blocks = {block["id"]: block for block in page["blocks"]}
-    lines = {line["id"]: line for line in page["lines"]}
-    words = {word["id"]: word for word in page["words"]}
     groups = [article["block_ids"] for article in page["articles"]]
     groups.extend([block["id"]] for block in blocks.values() if block["article_id"] is None)
-    sequences = []
-    for block_ids in groups:
-        tokens = []
-        for bid in block_ids:
-            for lid in blocks[bid]["line_ids"]:
-                for wid in lines[lid]["word_ids"]:
-                    word = words[wid]
-                    hyphen = word["hyphenation"]
-                    if hyphen is None:
-                        tokens.append(word["text"])
-                    elif hyphen["part"] == "start":
-                        tokens.append(hyphen["reconstructed_text"])
-        if tokens:
-            sequences.append(tokens)
+    exact = page.get("schema_version") == "0.3.0"
+    block_tokens = _tokens_by_block(page)
+    sequences = [] if exact else [
+        [token for bid in bids for token in block_tokens[bid]] for bids in groups
+    ]
     errors = []
     for index, span in enumerate(page["provenance"]["text_spans"]):
         label = f"text span {index} ({span['asset_id']}:{span['start']}:{span['end']})"
@@ -334,13 +398,370 @@ def validate_text_provenance(page: dict, text_assets: dict[str, str]) -> list[st
             errors.append(f"{label}: invalid Unicode source bounds")
             continue
         expected = unicodedata.normalize("NFC", source[span["start"]:span["end"]]).split()
-        if not expected or not any(
+        if exact:
+            actual = [token for bid in span["block_ids"] for token in block_tokens[bid]]
+            if not expected or expected != actual:
+                errors.append(f"{label}: source segment differs from exact bound block text")
+        elif not expected or not any(
             sequence[start:start + len(expected)] == expected
             for sequence in sequences
             for start in range(len(sequence) - len(expected) + 1)
             if sequence[start] == expected[0]
         ):
             errors.append(f"{label}: source segment not found in composed article text")
+    return errors
+
+
+def _validate_template_text(page: dict, template: dict) -> list[str]:
+    article_ids = page["provenance"].get("extensions", {}).get("mf:template_article_ids", [])
+    if not article_ids:
+        return []
+    literal = template["metadata"].get("literal_text")
+    if (
+        not isinstance(literal, list)
+        or not literal
+        or any(not isinstance(text, str) or not text.strip() for text in literal)
+    ):
+        return ["template metadata.literal_text must be a nonempty list of literal strings"]
+    articles = {a["id"]: a for a in page["articles"]}
+    block_ids = [bid for aid in article_ids for bid in articles[aid]["block_ids"]]
+    expected = unicodedata.normalize("NFC", " ".join(literal)).split()
+    block_tokens = _tokens_by_block(page)
+    actual = [token for bid in block_ids for token in block_tokens[bid]]
+    if actual != expected:
+        return ["template articles differ from exact template metadata.literal_text"]
+    return []
+
+
+def _partition_structure(value: dict, *, receipt: bool = False) -> list[str]:
+    """Validate the versioned metadata format without reading corpus text."""
+    name = {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,31}(?![\\s\\S])"}
+    digest = {"type": "string", "pattern": "^[a-f0-9]{64}(?![\\s\\S])"}
+    string = {"type": "string", "minLength": 1}
+    strings = {"type": "array", "items": string, "uniqueItems": True}
+    mapping = {"type": "object", "minProperties": 1, "propertyNames": name}
+    if receipt:
+        properties = {
+            "version": {"const": "1"}, "name": name,
+            "path": {"const": "provenance/partition.json"}, "sha256": digest,
+            "source_catalog_path": {"const": "provenance/source-catalog.json"},
+            "source_catalog_sha256": digest,
+        }
+    else:
+        component = {
+            "type": "object", "additionalProperties": False,
+            "properties": {
+                "key": digest, "partition": name,
+                "groups": {**strings, "minItems": 1},
+                "chars": {"type": "integer", "minimum": 1},
+            },
+            "required": ["key", "partition", "groups", "chars"],
+        }
+        properties = {
+            "format": {"const": "mille-feuilles-partition"}, "version": {"const": "1"},
+            "method": {"const": "components-sha256-greedy-v1"},
+            "seed": {"type": "integer", "minimum": 0, "maximum": 2**53 - 1},
+            "ratios": {**mapping, "additionalProperties": {"type": "number", "minimum": 0}},
+            "catalog_sha256": digest,
+            "partitions": {**mapping, "additionalProperties": strings},
+            "components": {"type": "array", "minItems": 1, "items": component},
+            "characters": {**mapping, "additionalProperties": {"type": "integer", "minimum": 0}},
+        }
+    schema = {"type": "object", "additionalProperties": False,
+              "properties": properties, "required": list(properties)}
+    return list(_finite_errors(value)) + [
+        f"partition {'receipt' if receipt else 'plan'}.{'.'.join(map(str, error.path))}: {error.message}"
+        for error in Draft202012Validator(schema).iter_errors(value)
+    ]
+
+
+def validate_partition_receipt(root: Path, manifest: dict, registry: dict) -> list[str]:
+    """Check a filtered lot's receipt from metadata only, never excluded text.
+
+    This proves consistency with the embedded source catalog and component plan.
+    Recomputing the shared-unit graph requires the original complete bundle;
+    metadata alone cannot prove that two excluded texts share no normalized unit.
+    Page partition labels are checked separately when validate_dataset reads pages.
+    """
+    errors = _structural_errors(manifest, "manifest") + _structural_errors(registry, "assets")
+    if errors:
+        return errors
+    artifacts = {item["path"]: item["sha256"] for item in manifest["artifacts"]}
+
+    def read_hashed(relative, expected=None):
+        if relative not in artifacts:
+            errors.append(f"partition metadata missing artifact: {relative}")
+        try:
+            path = safe_path(root, relative)
+            actual = hashlib.sha256(path.read_bytes()).hexdigest()
+            if expected is not None and actual != expected:
+                errors.append(f"partition SHA-256 mismatch: {relative}")
+            if relative in artifacts and artifacts[relative] != actual:
+                errors.append(f"partition artifact SHA-256 mismatch: {relative}")
+            return load_json(path)
+        except (OSError, ValueError, TypeError) as exc:
+            errors.append(f"cannot read partition metadata {relative!r}: {exc}")
+            return None
+
+    config = read_hashed(manifest["config"]["path"], manifest["config"]["sha256"])
+    if not isinstance(config, dict):
+        return errors + ["partition config must be an object"]
+    render = config.get("render", {})
+    if not isinstance(render, dict):
+        return errors + ["partition config.render must be an object"]
+    extensions = manifest.get("extensions", {})
+    receipt = extensions.get("mf:partition")
+    if "mf:partition" not in extensions:
+        if render.get("partition") is not None or config.get("partition") is not None:
+            errors.append("partition config requires a manifest mf:partition receipt")
+        return errors
+    issues = _partition_structure(receipt, receipt=True)
+    if issues:
+        return errors + issues
+    name = receipt["name"]
+    if manifest["schema_version"] != "0.3.0":
+        errors.append("partition receipt requires dataset schema_version 0.3.0")
+    if config.get("partition") != receipt or render.get("partition") != name:
+        errors.append("partition config and manifest receipt/name differ")
+    plan = read_hashed(receipt["path"], receipt["sha256"])
+    source = read_hashed(receipt["source_catalog_path"], receipt["source_catalog_sha256"])
+    selected = read_hashed("assets/catalog.json")
+    stored_registry = read_hashed(manifest["assets"]["path"], manifest["assets"]["sha256"])
+    if stored_registry != registry:
+        errors.append("partition registry differs from the manifest registry file")
+    issues = _partition_structure(plan)
+    for catalog in (source, selected):
+        issues += _structural_errors(catalog, "assets")
+    if issues:
+        return errors + issues
+    if plan["catalog_sha256"] != receipt["source_catalog_sha256"]:
+        errors.append("partition catalog_sha256 differs from source catalog receipt")
+    ratios, partitions = plan["ratios"], plan["partitions"]
+    try:
+        total = math.fsum(ratios.values())
+    except OverflowError:
+        total = math.inf
+    if not math.isfinite(total) or total <= 0:
+        return errors + ["partition ratios must have a finite positive sum"]
+    if set(ratios) != set(partitions) or set(plan["characters"]) != set(partitions):
+        return errors + ["partition names differ between ratios, partitions and characters"]
+    if name not in partitions or ratios[name] <= 0:
+        return errors + ["receipt names an unknown or zero-weight partition"]
+
+    def texts(catalog, label):
+        identities = [asset["id"] for asset in catalog["assets"]]
+        if len(identities) != len(set(identities)):
+            errors.append(f"partition {label} has duplicate asset ids")
+        return {asset["id"]: asset for asset in catalog["assets"] if asset["kind"] == "text"}
+
+    original = texts(source, "source catalog")
+    selected_texts = texts(selected, "selected catalog")
+    registered = texts(registry, "registry")
+    group_by_id, document_by_id = {}, {}
+    for identity, asset in original.items():
+        metadata = asset["metadata"]
+        document = metadata.get("source_document_id")
+        group = metadata.get("source_group_id", document)
+        if not isinstance(document, str) or not document.strip():
+            errors.append(f"partition source document id missing: {identity}")
+        if not isinstance(group, str) or not group.strip():
+            errors.append(f"partition source group id missing: {identity}")
+        if source["schema_version"] == "0.3.0" and "source_group_id" not in metadata:
+            errors.append(f"partition 0.3 source group id missing: {identity}")
+        if metadata.get("role") not in ("body", "title", "advertisement"):
+            errors.append(f"partition source role missing/unknown: {identity}")
+        group_by_id[identity], document_by_id[identity] = group, document
+    if errors:
+        return errors
+    membership = {}
+    for partition, ids in partitions.items():
+        if ids != sorted(ids):
+            errors.append(f"partition asset ids must be sorted: {partition}")
+        for identity in ids:
+            if identity in membership:
+                errors.append(f"partition asset appears in multiple partitions: {identity}")
+            membership[identity] = partition
+        roles = {original[identity]["metadata"]["role"] for identity in ids if identity in original}
+        if ratios[partition] == 0:
+            if ids:
+                errors.append(f"zero-weight partition is not empty: {partition}")
+        elif roles != {"body", "title", "advertisement"}:
+            errors.append(f"positive partition lacks required text roles: {partition}")
+    if set(membership) != set(original):
+        return errors + ["partition asset ids do not cover source text assets exactly"]
+    wanted = set(partitions[name])
+    excluded_paths = {asset["path"] for identity, asset in original.items() if identity not in wanted}
+    for relative in sorted(excluded_paths & set(artifacts)):
+        errors.append(f"partition artifact contains excluded text: {relative}")
+    for catalog, label in ((selected_texts, "selected catalog"), (registered, "registry")):
+        if set(catalog) != wanted:
+            errors.append(f"partition {label} text ids differ from selected partition")
+        for identity, asset in catalog.items():
+            if identity not in original:
+                continue
+            expected = original[identity]
+            actual_metadata, expected_metadata = asset["metadata"], expected["metadata"]
+            catalog_version = selected["schema_version"] if label == "selected catalog" else registry["schema_version"]
+            if catalog_version == "0.3.0" and "source_group_id" not in actual_metadata:
+                errors.append(f"partition {label} 0.3 source group id missing: {identity}")
+            if any(asset[key] != expected[key] for key in ("id", "path", "sha256")) or any(
+                actual_metadata.get(key) != expected_metadata.get(key)
+                for key in ("source_document_id", "role")
+            ) or actual_metadata.get("source_group_id", actual_metadata.get("source_document_id")) != group_by_id[identity]:
+                errors.append(f"partition {label} selected asset differs from source catalog: {identity}")
+    for label, values in (("group", group_by_id), ("document", document_by_id),
+                          ("sha256", {key: asset["sha256"] for key, asset in original.items()})):
+        owners = defaultdict(set)
+        for identity, value in values.items():
+            owners[value].add(membership[identity])
+        if any(len(names) != 1 for names in owners.values()):
+            errors.append(f"partition source {label} crosses partitions")
+    group_partitions = {group: membership[identity] for identity, group in group_by_id.items()}
+    component_groups, keys = Counter(), Counter()
+    characters = Counter()
+    for component in plan["components"]:
+        groups = component["groups"]
+        keys[component["key"]] += 1
+        component_groups.update(groups)
+        expected_key = hashlib.sha256("\x1f".join(sorted(groups)).encode()).hexdigest()
+        if groups != sorted(groups) or component["key"] != expected_key:
+            errors.append("partition component key/groups are not canonical")
+        if component["partition"] not in partitions:
+            errors.append("partition component names an unknown partition")
+        if any(group_partitions.get(group) != component["partition"] for group in groups):
+            errors.append("partition component groups disagree with asset assignments")
+        characters[component["partition"]] += component["chars"]
+    if set(component_groups) != set(group_partitions) or any(n != 1 for n in component_groups.values()):
+        errors.append("partition components must cover source groups exactly once")
+    if any(n != 1 for n in keys.values()):
+        errors.append("partition component keys must be unique")
+    if any(plan["characters"][key] != characters[key] for key in partitions):
+        errors.append("partition characters differ from component totals")
+    return errors
+
+
+def validate_import_receipt(root: Path, manifest: dict) -> list[str]:
+    """Bind an optional import report to its catalog using metadata only.
+
+    Exclusion claims are retained, not re-evaluated: the protected inputs and
+    excluded source texts are deliberately not read by this check.
+    """
+    errors = _structural_errors(manifest, "manifest")
+    if errors or "mf:import_report" not in manifest.get("extensions", {}):
+        return errors
+    digest = {"type": "string", "pattern": "^[a-f0-9]{64}(?![\\s\\S])"}
+    reference = manifest["extensions"]["mf:import_report"]
+    reference_schema = {
+        "type": "object", "additionalProperties": False,
+        "properties": {"path": {"const": "provenance/import-report.json"}, "sha256": digest},
+        "required": ["path", "sha256"],
+    }
+    errors += [f"import receipt: {issue.message}"
+               for issue in Draft202012Validator(reference_schema).iter_errors(reference)]
+    if errors:
+        return errors
+
+    def read_hashed(relative, expected=None):
+        records = [item for item in manifest["artifacts"] if item["path"] == relative]
+        if len(records) != 1:
+            errors.append(f"import metadata requires exactly one artifact: {relative}")
+        try:
+            path = safe_path(root, relative)
+            actual = hashlib.sha256(path.read_bytes()).hexdigest()
+            if expected is not None and actual != expected:
+                errors.append(f"import receipt SHA-256 mismatch: {relative}")
+            if len(records) == 1 and records[0]["sha256"] != actual:
+                errors.append(f"import artifact SHA-256 mismatch: {relative}")
+            return load_json(path)
+        except (OSError, ValueError, TypeError) as exc:
+            errors.append(f"cannot read import metadata {relative!r}: {exc}")
+            return None
+
+    report = read_hashed(reference["path"], reference["sha256"])
+    item_properties = {
+        "asset_id": {"type": "string", "minLength": 1},
+        "source_document_id": {"type": "string", "minLength": 1},
+        "source_group_id": {"type": "string", "minLength": 1},
+        "role": {"enum": ["body", "title", "advertisement"]},
+        "sha256": digest,
+    }
+    report_schema = {
+        "type": "object",
+        "properties": {
+            "format": {"const": "mille-feuilles-import-report"},
+            "version": {"const": "1"}, "status": {"const": "pass"},
+            "accepted": {"type": "array", "minItems": 1, "items": {
+                "type": "object", "properties": item_properties,
+                "required": list(item_properties), "additionalProperties": False,
+            }},
+        },
+        "required": ["format", "version", "status", "accepted"],
+    }
+    issues = [f"import report.{'.'.join(map(str, issue.path))}: {issue.message}"
+              for issue in Draft202012Validator(report_schema).iter_errors(report)]
+    if issues:
+        return errors + issues
+    partition = manifest.get("extensions", {}).get("mf:partition")
+    if "mf:partition" in manifest.get("extensions", {}):
+        issues = _partition_structure(partition, receipt=True)
+        if issues:
+            return errors + issues
+        catalog = read_hashed(partition["source_catalog_path"], partition["source_catalog_sha256"])
+    else:
+        catalog = read_hashed("assets/catalog.json")
+    issues = _structural_errors(catalog, "assets")
+    if issues:
+        return errors + issues
+    if catalog["schema_version"] != "0.3.0":
+        return errors + ["import receipt requires source catalog schema_version 0.3.0"]
+    expected = [
+        {"asset_id": asset["id"], "sha256": asset["sha256"],
+         **{key: asset["metadata"][key] for key in ("source_document_id", "source_group_id", "role")}}
+        for asset in catalog["assets"] if asset["kind"] == "text"
+    ]
+    for label, records in (("accepted", report["accepted"]), ("source catalog", expected)):
+        for key in ("asset_id", "source_document_id", "sha256"):
+            if len({item[key] for item in records}) != len(records):
+                errors.append(f"import {label} has duplicate {key}")
+    if sorted(report["accepted"], key=lambda item: item["asset_id"]) != sorted(
+        expected, key=lambda item: item["asset_id"]
+    ):
+        errors.append("import accepted entries differ from source catalog text identities")
+    return errors
+
+
+def _partition_character_errors(root: Path, manifest: dict, registry: dict, texts: dict) -> list[str]:
+    """Verify selected character totals after the metadata receipt has passed."""
+    receipt = manifest.get("extensions", {}).get("mf:partition")
+    if receipt is None:
+        return []
+    try:
+        plan = load_json(safe_path(root, receipt["path"]))
+    except (OSError, ValueError) as exc:
+        return [f"cannot read partition character totals: {exc}"]
+    errors = []
+    by_group = Counter()
+    for asset in registry["assets"]:
+        if asset["kind"] != "text":
+            continue
+        if asset["id"] not in texts:
+            errors.append(f"partition characters unavailable for text: {asset['id']}")
+            continue
+        metadata = asset["metadata"]
+        group = metadata.get("source_group_id", metadata.get("source_document_id"))
+        by_group[group] += len(texts[asset["id"]])
+    for component in plan["components"]:
+        if component["partition"] == receipt["name"]:
+            actual = sum(by_group[group] for group in component["groups"])
+            if actual != component["chars"]:
+                errors.append(
+                    "partition component characters differ from selected Unicode text: "
+                    + component["key"]
+                )
+    if sum(by_group.values()) != plan["characters"][receipt["name"]]:
+        errors.append(
+            "partition characters differ from selected Unicode text total: " + receipt["name"]
+        )
     return errors
 
 
@@ -433,6 +854,9 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
             if p in ("manifest.json", "qa/report.json")
         ],
     )
+    if "mf:import_report" in manifest.get("extensions", {}):
+        check("import_receipt", validate_import_receipt(root, manifest),
+              "import/catalog metadata consistency verified; exclusions not re-evaluated")
     try:
         registry = read(manifest["assets"]["path"])
         issues = _structural_errors(registry, "assets")
@@ -443,6 +867,13 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
         check("asset_registry", [str(exc)])
         return result()
     assets = {a["id"]: a for a in registry["assets"]}
+    partition_issues = validate_partition_receipt(root, manifest, registry)
+    check(
+        "partition_receipt", partition_issues,
+        "metadata consistency verified; full graph replay requires the complete source bundle"
+        if "mf:partition" in manifest.get("extensions", {})
+        else "unpartitioned dataset; no partition isolation claim",
+    )
     asset_issues = [
         f"duplicate asset id: {identity}"
         for identity, count in Counter(a["id"] for a in registry["assets"]).items()
@@ -502,6 +933,8 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
             except (OSError, ValueError) as exc:
                 asset_issues.append(str(exc))
     check("assets", asset_issues)
+    if not partition_issues and "mf:partition" in manifest.get("extensions", {}):
+        check("partition_characters", _partition_character_errors(root, manifest, registry, text_assets))
     pages = []
     for record in manifest["pages"]:
         try:
@@ -515,7 +948,13 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
                 page_issues.append("pilot profile excludes uncertain/illegible word supervision")
             if page["page_id"] != record["id"] or page["profile"] != manifest["profile"]:
                 page_issues.append("page identity/profile differs from manifest")
+            if page["schema_version"] != manifest["schema_version"]:
+                page_issues.append("page schema_version differs from manifest")
             provenance = page["provenance"]
+            receipt = manifest.get("extensions", {}).get("mf:partition")
+            expected_partition = receipt.get("name") if isinstance(receipt, dict) else None
+            if provenance["parameters"].get("partition") != expected_partition:
+                page_issues.append("page partition differs from manifest partition receipt")
             for asset_id in provenance["asset_ids"]:
                 if asset_id not in assets:
                     page_issues.append(f"unknown provenance asset: {asset_id}")
@@ -526,7 +965,10 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
                 or template["id"] not in provenance["asset_ids"]
             ):
                 page_issues.append("template_id must reference a declared template asset")
+            elif page["schema_version"] == "0.3.0":
+                page_issues += _validate_template_text(page, template)
             source_documents = set()
+            source_groups = set()
             for span in provenance["text_spans"]:
                 asset = assets.get(span["asset_id"])
                 if asset is None or asset["kind"] != "text":
@@ -537,10 +979,19 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
                 source_documents.add(span["source_document_id"])
                 if span["source_document_id"] != asset["metadata"].get("source_document_id"):
                     page_issues.append("text span source_document_id differs from asset")
+                if page["schema_version"] == "0.3.0":
+                    group = asset["metadata"].get("source_group_id")
+                    if not isinstance(group, str) or not group.strip():
+                        page_issues.append(f"used text asset missing source_group_id: {asset['id']}")
+                    else:
+                        source_groups.add(group)
                 if span["end"] > len(text_assets.get(span["asset_id"], "")):
                     page_issues.append("text span exceeds Unicode source length")
             page_issues += validate_text_provenance(page, text_assets)
-            if not source_documents.issubset(set(record["source_group_ids"])):
+            if page["schema_version"] == "0.3.0":
+                if source_groups != set(record["source_group_ids"]):
+                    page_issues.append("source_group_ids differ from exact used source groups")
+            elif not source_documents.issubset(set(record["source_group_ids"])):
                 page_issues.append("source_group_ids omit source text documents")
             image = page["image"]
             page_issues += hashed(image["path"], image["sha256"])

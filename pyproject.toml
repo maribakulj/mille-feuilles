@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mille-feuilles"
-version = "0.2.0"
+version = "0.3.0"
 description = "Reproducible synthetic historical newspaper pages with geometric ground truth"
 requires-python = ">=3.12"
 dependencies = [

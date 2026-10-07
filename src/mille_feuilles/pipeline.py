@@ -9,6 +9,7 @@ import subprocess
 import sys
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from copy import deepcopy
 from pathlib import Path
 from typing import Callable
 from urllib.parse import urlsplit
@@ -53,37 +54,41 @@ def git_state() -> tuple[str, bool]:
     return commit, dirty
 
 
-def prepare_assets(root: Path, source: Path = ROOT) -> list[dict]:
+def prepare_assets(
+    root: Path, source: Path = ROOT, allowed_text_ids: set[str] | None = None
+) -> list[dict]:
     """Copy assets and their evidence, preserving the verified source catalog."""
-    from jsonschema import Draft202012Validator
-    from .validation import load_json, safe_path
+    from .catalog import load_catalog, text_group, validate_catalog
+    from .validation import safe_path
 
     source = Path(source).resolve()
     catalog_path = safe_path(source, "assets/catalog.json")
-    catalog = load_json(catalog_path)
-    validator = Draft202012Validator(load_json(ROOT / "schemas/assets.schema.json"))
-    errors = list(validator.iter_errors(catalog))
+    catalog = load_catalog(source)
+    errors = validate_catalog(source, catalog)
     if errors:
-        raise ValueError(f"Catalogue d'actifs invalide : {errors[0].message}")
+        raise ValueError("Catalogue d'actifs invalide : " + "; ".join(errors[:5]))
     ids = [a["id"] for a in catalog["assets"]]
     if len(ids) != len(set(ids)) or "template_press_v1" in ids:
         raise ValueError("Identifiants d'actifs dupliqués ou identifiant de template réservé")
     for asset in catalog["assets"]:
         if asset["rights"]["status"] != "verified" or not asset["rights"]["redistribution_allowed"]:
             raise ValueError(f"Droits d'actif non résolus : {asset['id']}")
-    for role in ("body", "title", "advertisement"):
-        candidates = [
-            asset
-            for asset in catalog["assets"]
-            if asset["kind"] == "text" and asset["metadata"].get("role") == role
+    if allowed_text_ids is not None:
+        known = {a["id"] for a in catalog["assets"] if a["kind"] == "text"}
+        if not allowed_text_ids or not allowed_text_ids.issubset(known):
+            raise ValueError("Sélection de textes vide ou étrangère au catalogue")
+        catalog = deepcopy(catalog)
+        catalog["assets"] = [
+            a for a in catalog["assets"] if a["kind"] != "text" or a["id"] in allowed_text_ids
         ]
-        if len(candidates) != 1:
-            raise ValueError(f"Un seul actif texte requis pour le rôle {role}")
-        content = safe_path(source, candidates[0]["path"]).read_text(encoding="utf-8")
-        if not content.strip():
-            raise ValueError(f"Texte vide pour le rôle {role}")
+        roles = {a["metadata"].get("role") for a in catalog["assets"] if a["kind"] == "text"}
+        if not {"body", "title", "advertisement"}.issubset(roles):
+            raise ValueError("La sélection doit contenir les trois rôles textuels")
     (root / "assets").mkdir(exist_ok=True)
-    shutil.copyfile(catalog_path, root / "assets/catalog.json")
+    if allowed_text_ids is None:
+        shutil.copyfile(catalog_path, root / "assets/catalog.json")
+    else:
+        write_json(root / "assets/catalog.json", catalog)
     for asset in catalog["assets"]:
         evidence = asset["metadata"].get("evidence_files", [])
         if not isinstance(evidence, list) or any(
@@ -139,13 +144,19 @@ def prepare_assets(root: Path, source: Path = ROOT) -> list[dict]:
             "source": "original demonstration template, not a historical facsimile",
         },
     )
-    assets = catalog["assets"] + [
+    assets = deepcopy(catalog["assets"])
+    # New registries use explicit groups, including when the input was 0.2.0.
+    for asset in assets:
+        if asset["kind"] == "text":
+            asset["metadata"]["source_group_id"] = text_group(asset)
+            asset["metadata"].setdefault("language", "fr")
+    assets += [
         {
             "id": "template_press_v1",
             "kind": "template",
             "path": "assets/template.json",
             "sha256": sha256(template_path),
-            "source_uri": "urn:mille-feuilles:original-template:v0.2",
+            "source_uri": f"urn:mille-feuilles:original-template:v{SCHEMA_VERSION}",
             "rights": {
                 "status": "verified",
                 "license": "CC0-1.0",
@@ -166,6 +177,41 @@ def prepare_assets(root: Path, source: Path = ROOT) -> list[dict]:
     ]
     write_json(root / "assets.json", {"schema_version": SCHEMA_VERSION, "assets": assets})
     return assets
+
+
+def _select_partition(source: Path, name: str | None):
+    """Return selected IDs and immutable plan/catalog metadata to carry forward."""
+    from .partition import load_partition
+    from .validation import load_json, safe_path, validate_partition_receipt
+
+    manifest_path = source / "manifest.json"
+    if manifest_path.is_file():
+        manifest = load_json(manifest_path)
+        if not isinstance(manifest, dict):
+            raise ValueError("Manifeste source invalide")
+        receipt = manifest.get("extensions", {}).get("mf:partition")
+        if receipt is not None:
+            if not isinstance(receipt, dict) or name != receipt.get("name"):
+                raise ValueError("Réutiliser un lot partitionné exige sa même --partition")
+            registry = load_json(safe_path(source, manifest["assets"]["path"]))
+            errors = validate_partition_receipt(source, manifest, registry)
+            if errors:
+                raise ValueError("Reçu de partition source invalide : " + "; ".join(errors[:5]))
+            plan_path = safe_path(source, receipt["path"])
+            catalog_path = safe_path(source, receipt["source_catalog_path"])
+            selected = set(load_json(plan_path)["partitions"][name])
+            return selected, plan_path, catalog_path
+    if name is None:
+        if safe_path(source, "assets/partition.json").exists():
+            raise ValueError(
+                "Ce bundle possède un plan de partition : préciser --partition "
+                "pour éviter de mélanger les sources train, dev et test"
+            )
+        return None, None, None
+    selected = load_partition(source, name)
+    if not selected:
+        raise ValueError(f"La partition {name!r} est vide")
+    return selected, safe_path(source, "assets/partition.json"), safe_path(source, "assets/catalog.json")
 
 
 def overlay(page: dict, root: Path) -> None:
@@ -248,6 +294,8 @@ def build_dataset(
     config.validate()
     if not 1 <= count <= 1000 or not 1 <= jobs <= 4:
         raise ValueError("Nombre de pages attendu : 1–1000 ; jobs : 1–4")
+    source = Path(asset_source or ROOT).resolve()
+    selected, plan_path, source_catalog_path = _select_partition(source, config.partition)
     root = Path(output).absolute()
     if root.exists() and (not root.is_dir() or any(root.iterdir())):
         raise ValueError(f"Destination non vide, aucune écriture : {root}")
@@ -258,10 +306,35 @@ def build_dataset(
         raise ValueError(
             "Espace disque insuffisant pour ce lot ; réduire dimensions/nombre de pages"
         )
-    assets = prepare_assets(root, asset_source or ROOT)
+    assets = prepare_assets(root, source, selected)
+    receipt = None
+    if plan_path is not None:
+        (root / "provenance").mkdir()
+        shutil.copyfile(plan_path, root / "provenance/partition.json")
+        shutil.copyfile(source_catalog_path, root / "provenance/source-catalog.json")
+        receipt = {
+            "version": "1",
+            "name": config.partition,
+            "path": "provenance/partition.json",
+            "sha256": sha256(root / "provenance/partition.json"),
+            "source_catalog_path": "provenance/source-catalog.json",
+            "source_catalog_sha256": sha256(root / "provenance/source-catalog.json"),
+        }
+    import_ref = None
+    for relative in ("provenance/import-report.json", "assets/import-report.json"):
+        report_source = source / relative
+        if report_source.is_file():
+            from .validation import safe_path
+
+            target = root / "provenance/import-report.json"
+            target.parent.mkdir(exist_ok=True)
+            shutil.copyfile(safe_path(source, relative), target)
+            import_ref = {"path": "provenance/import-report.json", "sha256": sha256(target)}
+            break
     write_json(
         root / "config.json",
-        {"schema_version": SCHEMA_VERSION, "render": config.as_dict(), "pages": count},
+        {"schema_version": SCHEMA_VERSION, "render": config.as_dict(), "pages": count,
+         **({"partition": receipt} if receipt else {})},
     )
     write_json(root / "environment.json", environment())
     calibration_dir = root / "calibration"
@@ -334,9 +407,13 @@ def build_dataset(
         for path in sorted(root.rglob("*"))
         if path.is_file() and path.name != "manifest.json"
     ]
+    by_asset_id = {a["id"]: a for a in assets}
+    dataset_id = f"mf_demo_{config.seed}_{count}"
+    if receipt:
+        dataset_id += f"_{config.partition}_{receipt['sha256'][:12]}"
     manifest = {
         "schema_version": SCHEMA_VERSION,
-        "dataset_id": f"mf_demo_{config.seed}_{count}",
+        "dataset_id": dataset_id,
         "profile": PROFILE,
         "generator": {
             "commit": commit,
@@ -366,13 +443,18 @@ def build_dataset(
                 "path": f"pages/{p['page_id']}.json",
                 "sha256": sha256(root / "pages" / f"{p['page_id']}.json"),
                 "source_group_ids": sorted(
-                    {span["source_document_id"] for span in p["provenance"]["text_spans"]}
+                    {by_asset_id[span["asset_id"]]["metadata"]["source_group_id"]
+                     for span in p["provenance"]["text_spans"]}
                 ),
             }
             for p in pages
         ],
         "artifacts": artifacts,
     }
+    if receipt:
+        manifest["extensions"] = {"mf:partition": receipt}
+    if import_ref:
+        manifest.setdefault("extensions", {})["mf:import_report"] = import_ref
     write_json(root / "manifest.json", manifest)
     if progress:
         progress("Vérification du lot et des exports…")

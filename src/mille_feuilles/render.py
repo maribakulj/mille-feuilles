@@ -18,10 +18,11 @@ import numpy as np
 from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
+from .catalog import text_assets_by_role, text_units
 from .io import sha256
 
 PROFILE = "fr_press_19c_columns_4_6"
-SCHEMA_VERSION = "0.2.0"
+SCHEMA_VERSION = "0.3.0"
 # An explicit portable Latin/NFC profile, not an environment-dependent fallback.
 # BASIC renders the same precomposed glyphs used for measurement; discretionary
 # OpenType ligatures and complex-script shaping are outside this profile.
@@ -36,6 +37,7 @@ class Config:
     columns: int | None = None
     degradation: str = "mixed"
     seed: int = 20261007
+    partition: str | None = None
 
     def validate(self) -> None:
         if not (800 <= self.width <= 6000 and 1100 <= self.height <= 8500):
@@ -50,6 +52,11 @@ class Config:
             raise ValueError("Dégradation inconnue")
         if not 0 <= self.seed < 2**53:
             raise ValueError("Graine hors intervalle 0..2^53-1")
+        if self.partition is not None and (
+            not isinstance(self.partition, str)
+            or re.fullmatch(r"[a-z][a-z0-9_-]{0,31}", self.partition) is None
+        ):
+            raise ValueError("Nom de partition invalide")
 
     def as_dict(self) -> dict:
         return asdict(self)
@@ -78,10 +85,7 @@ def text_segments(path: Path) -> list[tuple[str, int, int]]:
     raw = path.read_text(encoding="utf-8")
     if unicodedata.normalize("NFC", raw) != raw:
         raise ValueError(f"Texte source non NFC : {path}")
-    return [
-        (m.group().strip(), m.start(), m.end())
-        for m in re.finditer(r"\S[^\n]*(?:\n(?!\n)[^\n]+)*", raw)
-    ]
+    return text_units(raw, "body")
 
 
 class Composer:
@@ -97,14 +101,18 @@ class Composer:
         for name in ("OldStandard-Regular.ttf", "OldStandard-Bold.ttf"):
             if name not in self.by_name:
                 raise ValueError(f"Fonte requise absente du catalogue : {name}")
-        self.text_roles = {}
-        for role in ("body", "title", "advertisement"):
-            matching = [
-                a for a in assets if a["kind"] == "text" and a["metadata"].get("role") == role
-            ]
-            if len(matching) != 1:
-                raise ValueError(f"Un seul actif texte de rôle {role!r} est requis")
-            self.text_roles[role] = matching[0]
+        self.text_roles = text_assets_by_role({"schema_version": SCHEMA_VERSION, "assets": assets})
+        self.role_units = {}
+        for role, documents in self.text_roles.items():
+            units = []
+            for source in documents:
+                raw = (self.asset_root / source["path"]).read_text(encoding="utf-8")
+                if unicodedata.normalize("NFC", raw) != raw:
+                    raise ValueError(f"Texte source non NFC : {source['id']}")
+                units.extend((source, text, start, end) for text, start, end in text_units(raw, role))
+            if not units:
+                raise ValueError(f"Au moins une unité de texte requise pour le rôle {role}")
+            self.role_units[role] = units
         self.cols = config.columns or self.rng.choices([4, 5, 6], [1, 3, 6])[0]
         self.margin = round(config.width * 0.035)
         self.gutter = round(config.width * self.rng.uniform(0.007, 0.010))
@@ -126,6 +134,7 @@ class Composer:
         self.articles: list[dict] = []
         self.hyphen_number = 0
         self.used_spans: list[dict] = []
+        self.template_article_ids: list[str] = []
         mode = config.degradation
         self.mode = self.rng.choice(["clean", "aged", "aged", "faint"]) if mode == "mixed" else mode
         self.paper = 255 if self.mode == "clean" else self.rng.randint(240, 251)
@@ -314,6 +323,7 @@ class Composer:
 
     def content(self) -> None:
         header = self.article()
+        self.template_article_ids.append(header["id"])
         title = self.block("titre", header)
         heading = "MILLE FEUILLES"
         head_width = self.masthead.getlength(heading, **SHAPING)
@@ -351,29 +361,22 @@ class Composer:
             self.separator(
                 sep_x, self.top - self.spacing / 3, sep_x + 1, self.bottom - self.spacing
             )
-        body_asset = self.text_roles["body"]
-        ad_asset = self.text_roles["advertisement"]
-        title_asset = self.text_roles["title"]
-        bodies = text_segments(self.asset_root / body_asset["path"])
-        ads = text_segments(self.asset_root / ad_asset["path"])
-        raw_titles = (self.asset_root / title_asset["path"]).read_text(encoding="utf-8")
-        titles = [(m.group(), m.start(), m.end()) for m in re.finditer(r"[^\n]+", raw_titles)]
-        if not bodies or not ads or not titles:
-            raise ValueError("Les trois actifs texte doivent contenir au moins une unité non vide")
+        bodies = self.role_units["body"]
+        ads = self.role_units["advertisement"]
+        titles = self.role_units["title"]
         while self.column < self.cols:
             if self.y + self.spacing * 6 > self.bottom:
                 if not self.next_column():
                     break
             ad = self.rng.random() < 0.18
-            source = ad_asset if ad else body_asset
             segment = self.rng.choice(ads if ad else bodies)
-            text, start, end = segment
+            source, text, start, end = segment
             # Two successive paragraphs produce some cross-column articles.
-            title_segment = self.rng.choice(titles)
+            title_asset, title_text, title_start, title_end = self.rng.choice(titles)
             wants_title = self.rng.random() < (0.25 if ad else 0.55)
             wrapped = self.wrap(text, self.regular, self.col_w)
             heading_rows = (
-                self.wrap(title_segment[0], self.bold, self.col_w, False) if wants_title else []
+                self.wrap(title_text, self.bold, self.col_w, False) if wants_title else []
             )
             title_height = len(heading_rows) * (sum(self.bold.getmetrics()) + 2)
             if title_height + self.spacing * 3 > self.bottom - self.top:
@@ -389,14 +392,15 @@ class Composer:
             if len(wrapped) + 2 > remaining:
                 break
             article = self.article()
-            self.used_spans.append(
-                {
-                    "asset_id": source["id"],
-                    "start": start,
-                    "end": end,
-                    "source_document_id": source["metadata"]["source_document_id"],
-                }
-            )
+            body_span = {
+                "asset_id": source["id"],
+                "start": start,
+                "end": end,
+                "source_document_id": source["metadata"]["source_document_id"],
+                "article_id": article["id"],
+                "block_ids": [],
+            }
+            self.used_spans.append(body_span)
             if wants_title:
                 heading_block = self.block("annonce" if ad else "titre", article)
                 for row in heading_rows:
@@ -406,17 +410,21 @@ class Composer:
                 self.used_spans.append(
                     {
                         "asset_id": title_asset["id"],
-                        "start": title_segment[1],
-                        "end": title_segment[2],
+                        "start": title_start,
+                        "end": title_end,
                         "source_document_id": title_asset["metadata"]["source_document_id"],
+                        "article_id": article["id"],
+                        "block_ids": [heading_block["id"]],
                     }
                 )
             block = self.block("annonce" if ad else "texte", article)
+            body_span["block_ids"].append(block["id"])
             for i, row in enumerate(wrapped):
                 if self.y + self.spacing > self.bottom:
                     if not self.next_column():
                         raise ValueError("Article dépassant la page après prévision de composition")
                     block = self.block("annonce" if ad else "texte", article)
+                    body_span["block_ids"].append(block["id"])
                 self.y += self.spacing
                 self.add_line(
                     row,
@@ -515,6 +523,7 @@ class Composer:
                 "template_id": "template_press_v1",
                 "asset_ids": [a["id"] for a in self.assets],
                 "text_spans": self.used_spans,
+                "extensions": {"mf:template_article_ids": self.template_article_ids},
                 "parameters": {
                     "columns": self.cols,
                     "render_dpi": self.config.dpi,
@@ -527,6 +536,7 @@ class Composer:
                     "paper_level": self.paper,
                     "blur_radius": blur,
                     "degradation": self.mode,
+                    "partition": self.config.partition,
                     "shaping": {
                         "engine": "pillow-freetype-basic",
                         "normalization": "NFC",

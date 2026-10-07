@@ -2,8 +2,11 @@
 """Vérifie localement le catalogue, les droits archivés et les glyphes réels.
 
 Bibliothèque standard seulement. Aucun téléchargement ni lecture de corpus.
-Usage : python3 assets/verify_assets.py [--report assets/coverage.json]
+Usage : python3 assets/verify_assets.py [--root BUNDLE] [--report assets/coverage.json]
 Le contrôle cmap ignore explicitement le glyphe manquant (index zéro).
+Les glyphes absents sont des erreurs pour les fontes requises par le profil
+(Old Standard Regular et Bold) ; pour les autres fontes, ils sont seulement
+rapportés. Catalogues 0.2.0 et 0.3.0 (import multi-document).
 """
 
 from __future__ import annotations
@@ -14,6 +17,9 @@ import json
 import struct
 import unicodedata
 from pathlib import Path
+
+
+REQUIRED_FONT_FILES = ("OldStandard-Regular.ttf", "OldStandard-Bold.ttf")
 
 
 def sha256(path: Path) -> str:
@@ -122,10 +128,11 @@ def verify(root: Path) -> dict:
             continue
         cmap = unicode_cmap((root / asset["path"]).read_bytes())
         missing = "".join(chr(cp) for cp in sorted(text_chars - cmap))
-        if missing:
+        required = Path(asset["path"]).name in REQUIRED_FONT_FILES
+        if missing and required:
             errors.append(f"Missing text glyphs in {asset['id']}: {missing}")
         font_report.append({
-            "id": asset["id"], "glyph_codepoints": len(cmap),
+            "id": asset["id"], "required_by_profile": required, "glyph_codepoints": len(cmap),
             "missing_demo_characters": missing,
             "missing_french_diagnostic": "".join(c for c in diagnostic if ord(c) not in cmap),
             "long_s": ord("ſ") in cmap,
@@ -145,8 +152,10 @@ def verify(root: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--report", type=Path)
+    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1],
+                        help="Racine du bundle contenant assets/catalog.json (dépôt par défaut)")
     args = parser.parse_args()
-    report = verify(Path(__file__).resolve().parents[1])
+    report = verify(args.root)
     result = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     if args.report:
         args.report.write_text(result, encoding="utf-8")

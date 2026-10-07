@@ -109,6 +109,61 @@ def test_blank_rehashed_png_fails_on_every_word(small_lot, tmp_path):
     assert all("fewer_than_2_ink_pixels" in word["reasons"] for word in report["suspects"])
 
 
+def test_legacy_version_measures_the_same_pixels_with_the_same_thresholds(small_lot, tmp_path):
+    root = tmp_path / "legacy"
+    shutil.copytree(small_lot, root)
+    manifest = load_json(root / "manifest.json")
+    assert manifest["schema_version"] == "0.3.0"
+    manifest["schema_version"] = "0.2.0"
+    for reference in manifest["pages"]:
+        page = load_json(root / reference["path"])
+        page["schema_version"] = "0.2.0"
+        reference["source_group_ids"] = sorted({
+            span["source_document_id"] for span in page["provenance"]["text_spans"]
+        })
+        for span in page["provenance"]["text_spans"]:
+            del span["article_id"], span["block_ids"]
+        (root / reference["path"]).write_text(json.dumps(page), encoding="utf-8")
+    (root / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    for reference in manifest["pages"]:
+        rehash(root, reference["path"])
+    current = audit_legibility(small_lot, tmp_path / "current.json", max_samples=0)
+    legacy = audit_legibility(root, tmp_path / "legacy.json", max_samples=0)
+    assert current["status"] == legacy["status"] == "pass"
+    assert current["summary"] == legacy["summary"]
+    assert current["thresholds"] == legacy["thresholds"] == THRESHOLDS
+
+
+@pytest.mark.parametrize("version", ["0.1.0", "0.4.0"])
+def test_unsupported_manifest_version_is_rejected(tmp_path, version):
+    root = tmp_path / "unsupported"
+    root.mkdir()
+    (root / "manifest.json").write_text(json.dumps({
+        "schema_version": version, "dataset_id": "unsupported", "pages": [],
+    }), encoding="utf-8")
+    report = audit_legibility(root, tmp_path / "unsupported.json")
+    assert report["status"] == "fail"
+    assert report["summary"]["words_measured"] == 0
+    assert any("Expected a version 0.2.0 or 0.3.0" in error for error in report["errors"])
+
+
+@pytest.mark.parametrize("version", ["0.2.0", "0.4.0"])
+def test_page_version_must_match_manifest_even_after_rehash(small_lot, tmp_path, version):
+    root = tmp_path / "mixed-version"
+    shutil.copytree(small_lot, root)
+    manifest = load_json(root / "manifest.json")
+    relative = manifest["pages"][0]["path"]
+    page = load_json(root / relative)
+    page["schema_version"] = version
+    (root / relative).write_text(json.dumps(page), encoding="utf-8")
+    rehash(root, relative)
+    report = audit_legibility(root, tmp_path / "mixed-version.json")
+    assert report["status"] == "fail"
+    assert report["summary"]["words_measured"] == 0
+    assert any("page schema_version differs" in error for error in report["errors"])
+    assert not any("SHA-256 mismatch" in error for error in report["errors"])
+
+
 def test_dark_pixels_outside_final_word_polygon_do_not_count_as_ink():
     pixels = np.full((40, 40), 255, dtype=np.uint8)
     pixels[8:11, 8:11] = 0  # Inside the bounding box, outside the diamond.

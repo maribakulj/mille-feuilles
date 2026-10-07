@@ -9,11 +9,15 @@ Dépôt privé : [maribakulj/mille-feuilles](https://github.com/maribakulj/mille
 Dossier de travail actuel : `~/heritage-synth`. Axel/ebortz/babaorum reste un
 consommateur indépendant, sous sa propre coordination.
 
-La version 0.2.0 est éprouvée sur **100 pages** : **227 tests passent** après
-la revue réciproque Codex / Claude, les exports
+La version **0.3.0** ajoute l'import de plusieurs documents, leur partition avant
+composition et une provenance exacte par article et bloc. La version 0.2.0
+avait été éprouvée sur **100 pages** avec **227 tests** après la revue réciproque
+Codex / Claude ; ses exports
 sont validés et les 100 images/annotations ont été reproduites à l'identique.
 Les [preuves et limites](docs/VALIDATION.md) distinguent cette validation
 technique d'une évaluation sur des documents historiques réels.
+La suite intégrée 0.3 passe **483 tests** ; l'acceptation par le CLI est consignée
+séparément dans ces preuves.
 
 ## Démarrer
 
@@ -79,9 +83,10 @@ L'adaptateur aval reste à réaliser avant une évaluation avec Axel.
 
 `validate` contrôle les schémas JSON, références et géométries, spans Unicode,
 césures, fichiers et SHA-256, preuves de droits, PNG, XSD et relecture des exports.
-Chaque segment source déclaré doit aussi se retrouver dans le texte d'un
-article (ou bloc sans article) après normalisation des espaces et reconstruction
-des césures ; ce contrôle ne résout pas l'attribution unique de segments répétés.
+En 0.3.0, chaque segment source désigne son article et ses blocs ordonnés ; leur
+texte reconstruit doit lui être exactement égal après normalisation NFC, des
+espaces et reconstruction des césures. Le bandeau est vérifié contre le texte du
+gabarit. Les anciens lots 0.2.0 gardent leur contrôle d'occurrence moins strict.
 Il sort avec un code non nul dès qu'un contrôle échoue. `qa/report.json` est le
 résultat de l'audit, exclu des empreintes pour éviter une référence circulaire ;
 une nouvelle commande `validate` recalcule les contrôles.
@@ -114,17 +119,47 @@ définis dans le [protocole d'acceptation](docs/VALIDATION.md).
 
 ## Utiliser d'autres textes
 
-`--assets-root /chemin/bundle` choisit un bundle contenant `assets/catalog.json`
-au format 0.2.0. Le catalogue livré constitue un exemple. Les chemins et preuves
-restent sous `assets/`, avec SHA-256, droits vérifiés et licence embarquée.
+Un manifeste JSONL décrit un document par ligne, ses droits, sa preuve locale,
+son rôle (`body`, `title`, `advertisement`), son identifiant documentaire unique
+et son groupe source. Le [format et les exclusions](docs/ACTIFS.md#import-local-de-plusieurs-documents-catalogue-030)
+sont documentés avec leurs limites. Plusieurs documents par rôle sont permis.
 
-Trois actifs texte sont requis, identifiés par `metadata.role` : `body`, `title`,
-`advertisement`. Leurs noms de fichiers sont libres. Les corps et annonces sont
-séparés par une ligne vide ; les titres par un saut de ligne. Chaque actif porte
-un `metadata.source_document_id`. Les fontes Old Standard Regular et Bold sont
-requises par ce profil. Un texte non NFC, un glyphe absent ou un mot non sécable
-trop large est refusé. Le catalogue d'origine est conservé dans le lot ; un lot
-livré peut servir de `--assets-root` pour réutiliser ses actifs figés.
+```sh
+uv run --locked mille-feuilles import-texts --manifest entree/import.jsonl \
+  --into runs/bundle --exclude-documents entree/exclusions.txt \
+  --exclude-ngrams entree/ngrams.json
+uv run --locked mille-feuilles partition --bundle runs/bundle \
+  --ratios 0.8 0.1 0.1 --seed 20261007
+uv run --locked mille-feuilles generate --assets-root runs/bundle \
+  --partition train --output runs/train --pages 1
+```
+
+Les chemins sources restent dans le dossier du manifeste. L'import refuse les
+droits non vérifiés, preuves manquantes, doublons d'identifiant ou de contenu,
+textes non NFC et glyphes manquants. Les fontes requises Old Standard Regular et
+Bold et leurs licences sont embarquées. Un mot non sécable trop large est refusé
+à la composition. Les corps et annonces sont séparés par une ligne vide ; les
+titres par un saut de ligne. Le tirage est uniforme sur les unités disponibles :
+un document qui en contient davantage est donc sélectionné plus souvent.
+
+Les groupes qui partagent une unité textuelle normalisée restent ensemble.
+Chaque partition de ratio positif doit posséder les trois rôles. Les ratios
+sont des objectifs : les composantes indivisibles peuvent empêcher de les
+atteindre exactement. Le catalogue de démonstration 0.2.0 reste lisible, mais
+ses trois textes forment un seul groupe, impropre à une séparation train/dev/test.
+
+Dès qu'un plan existe, **`--partition` est obligatoire**. Le lot copie uniquement
+les textes sélectionnés. Son reçu conserve le plan et le catalogue source complet :
+les identifiants, URI et empreintes dev/test sont donc visibles, sans leurs textes.
+Le rapport d'import est également conservé. Sans les deux listes d'exclusion,
+la protection contre des tests externes est marquée **NOT EVALUATED**. Même avec
+elles, le résultat porte seulement sur les exclusions fournies ; aucun jeu réel
+d'Axel n'a été certifié par notre essai.
+
+Un lot filtré peut servir de `--assets-root` pour un rejeu avec la même
+`--partition`. Ses métadonnées et textes sélectionnés sont vérifiés sans ouvrir
+les textes des autres partitions. Recalculer le graphe complet exige le bundle
+source complet. Voir les [preuves et limites](docs/VALIDATION.md).
 
 ## Portée et limites
 
@@ -153,7 +188,8 @@ uv run --locked ruff check src tests
 uv run --locked python assets/verify_assets.py
 ```
 
-- [Contrat 0.2.0](docs/CONTRAT_DONNEES.md) et [décisions](docs/DECISIONS.md).
+- [Contrat 0.3.0](docs/CONTRAT_DONNEES.md) et [décisions](docs/DECISIONS.md).
+- [Développement en cours et prochains lots](docs/DEVELOPPEMENT.md).
 - [Protocole et preuves de validation du pilote](docs/VALIDATION.md).
 - [Revue critique de Claude](docs/REVUE_CLAUDE.md).
 - [Cadrage reçu de Claude](docs/CADRAGE.md), fondé sur 1 253 pages train/dev.

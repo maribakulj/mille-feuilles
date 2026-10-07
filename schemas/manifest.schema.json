@@ -1,11 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://mille-feuilles.invalid/schemas/manifest-0.2.0.schema.json",
-  "title": "Mille Feuilles manifest 0.2.0",
+  "$id": "https://mille-feuilles.invalid/schemas/manifest-0.2-0.3.schema.json",
+  "title": "Mille Feuilles manifest 0.2.0 / 0.3.0",
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "0.2.0"
+      "enum": [
+        "0.2.0",
+        "0.3.0"
+      ]
     },
     "dataset_id": {
       "type": "string",

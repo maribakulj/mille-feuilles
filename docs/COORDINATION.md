@@ -142,3 +142,28 @@ Un test spécifique au lecteur Axel n'est pas ajouté au générateur : il serai
 dépendant d'un checkout externe et de conventions aval non encore adaptées.
 La reproduction documentée suffit pour cette livraison ; une fixture et son
 test d'intégration accompagneront l'interface de l'adaptateur à définir côté Axel.
+
+## Reprise du développement après le premier pilote
+
+Marcel a rappelé que la conversation avec Claude et le développement ne sont
+pas terminés. La clôture de la première revue ne clôt donc pas le projet.
+Le [programme de développement](DEVELOPPEMENT.md) fixe les prochains lots.
+
+Le lot 2 passe au schéma 0.3.0 : import multi-document avec exclusions dès
+l'entrée, partition des groupes reliés par unités partagées, génération filtrée,
+rejeu autonome et provenance exacte des articles. Attribution exclusive :
+
+- Claude : `catalog.py`, `partition.py`, schéma des actifs, vérification des
+  actifs, tests de catalogue et partition, section correspondante d'ACTIFS.
+- Codex et ses agents dédiés : rendu, pipeline, CLI, schémas page/manifeste,
+  validation, tests d'intégration, reproduction, acceptation et documentation commune.
+
+Les revues ont corrigé une attribution gloutonne déclarant à tort une partition
+impossible, les doublons croisés, les preuves mal formées ou absentes, les
+ratios extrêmes et la profondeur de recherche. Claude a identifié le risque
+d'oublier `--partition` : un bundle muni d'un plan exige maintenant ce choix
+avant toute création du lot. Les métadonnées dev/test transportées sont documentées.
+
+L'acceptation finale est compacte et utilise des textes originaux. Claude prépare
+ensuite avec Codex le lot de dégradations mesurées ; aucun corpus réel n'est
+ouvert, et la fin du lot 2 ne met pas fin aux échanges ni au mandat d'autonomie.

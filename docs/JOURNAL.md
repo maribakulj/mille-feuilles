@@ -105,3 +105,37 @@ La suite finale passe **227 tests en 143,60 s**, Ruff est sans erreur, et les
 archivées dans [reports/claude-review/](reports/claude-review/index.json), avec
 empreintes des fichiers vérifiés. Les 19 preuves du pilote initial restent
 intactes. Aucun nouveau rendu du pilote, déplacement ou nettoyage n'a été fait.
+
+## Lot 2 — développement repris avec Claude
+
+La clôture de la première revue au commit `654d877` a été interprétée à tort
+comme une fin du développement. Marcel a demandé de poursuivre les travaux et
+les échanges avec Claude. Le programme accepté commence par le corpus : import
+multi-document avec exclusions avant copie, partition par groupes reliés, puis
+provenance exacte des segments dans les articles et blocs (schéma 0.3.0).
+
+Claude implémente catalogue, import et partition ; Codex intègre le rendu, le
+CLI, les reçus de partition, la validation et le rejeu filtré. Les contre-exemples
+de revue ont fait corriger les doublons croisés, les preuves non hachées ou mal
+formées, la recherche de couverture des rôles et les limites numériques. La
+validation compare aussi les comptes Unicode aux textes réellement copiés,
+même si un plan et toutes ses empreintes ont été falsifiés ensemble.
+
+La revue de Claude a identifié l'oubli de `--partition` sur un bundle partitionné.
+Ce cas est désormais refusé avant création de la destination. Un lot filtré
+conserve le plan et les métadonnées complètes des sources, y compris les identités
+dev/test, mais aucun texte des autres partitions. Le rapport d'import suit le
+lot et son rejeu ; une absence d'exclusions conserve la mention NOT EVALUATED.
+
+Les essais utilisent uniquement de petites fixtures originales, sans lire les
+corpus réels ni supprimer les productions antérieures. Les preuves finales de
+ce lot sont ajoutées après exécution ; les preuves historiques 0.2.0 restent
+distinctes. La prochaine attribution porte sur les dégradations mesurées.
+
+La suite complète passe **483 tests en 176,85 s**. Elle a trouvé deux refus
+de l'audit de lisibilité, encore limité à la version 0.2 ; la compatibilité
+0.2/0.3 est corrigée et la version de chaque page est confrontée au manifeste.
+Les seuils de pixels sont inchangés. La dernière revue Claude accepte aussi
+`import_receipt`, qui relie le rapport d'import au catalogue par une bijection
+exacte des documents acceptés. Ruff et le contrôle des actifs passent ; les
+sorties sont conservées dans `reports/lot2/`. L'acceptation CLI suit sur commit propre.

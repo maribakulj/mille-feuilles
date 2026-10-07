@@ -1,6 +1,80 @@
-# Validation du pilote Mille Feuilles 0.2.0
+# Validation de Mille Feuilles — 0.3 et historique 0.2
 
-## Protocole fixé avant production
+## État de la version 0.3.0
+
+**Acceptation finale 0.3 en attente.** Le développement ajoute l'import local
+multi-document, les liens exacts entre segments et blocs, et la génération
+partitionnée. Les campagnes historiques ci-dessous ne valident pas à elles
+seules ces changements. Le nombre final de tests, le commit de livraison et
+les rapports 0.3 seront consignés après la suite intégrée et sa revue ; aucun
+nouveau pilote de 100 pages n'est annoncé ici.
+
+La suite intégrée du lot 2 passe **483 tests en 176,85 s**, Ruff et la vérification
+des actifs passent. Les [sorties figées](reports/lot2/tests-index.json) conservent
+aussi le premier passage (419 succès, deux échecs dus au filtre de version de
+l'audit de lisibilité), corrigé sans changer les seuils de pixels. L'acceptation
+CLI depuis le commit propre suit cette étape.
+
+Le [contrat 0.3](CONTRAT_DONNEES.md) conserve le profil visuel et les exigences
+géométriques du pilote, et ajoute les contrôles suivants :
+
+| Exigence 0.3 | Preuve de livraison attendue |
+|---|---|
+| Import local multi-document | Sources synthétiques de test explicites, octets et offsets Unicode préservés, droits et preuves copiés, refus des entrées invalides et des doublons documentaires |
+| Provenance exacte | Chaque span lié à son article et à ses blocs ordonnés ; couverture unique ; mutation refusée même si un autre article contient le bon texte ; bandeau égal au `literal_text` du template |
+| Groupes et partition | Groupes réels des textes utilisés, composantes réunissant les unités normalisées partagées, documents/groupes/SHA exclusifs, trois rôles par partition positive, impossibilités et limites de recherche signalées |
+| Sélection explicite | Omission de `--partition` refusée si un plan existe ; aucun texte d'une autre partition embarqué dans le lot sélectionné |
+| Reçu et reprise | Catalogue filtré, copie du catalogue global en métadonnées, plan et reçu identiques dans configuration/manifeste ; nouvelle génération depuis le lot filtré avec la même partition |
+| Intégrité sémantique | Rejet des altérations de liens, groupes, affectations, labels et comptes de caractères, même après remise à jour des SHA-256 |
+| Reproduction et exports | Petits lots multi-documents identiques avec un et deux workers ; validation des projections PAGE/ALTO/COCO et des annotations finales |
+| Compatibilité | Anciens fichiers 0.2 validés selon leur contrat ; aucune conversion implicite de leurs spans ni revendication rétroactive d'isolation |
+
+Ces critères complètent les tests ciblés ; leur tableau final de résultats et
+leurs preuves archivées restent **à renseigner**. Ils ne remplacent pas les
+contrôles visuels et de pixels lorsqu'une nouvelle campagne de rendu est
+présentée comme éprouvée.
+
+### Portée du contrôle de partition
+
+Lors d'une première génération depuis le bundle complet, le plan est recalculé
+depuis les textes vérifiés. La construction relie aussi les titres et annonces
+partagés ; elle ne découpe pas aléatoirement les pages après composition. Les
+poids finis et non négatifs sont des cibles relatives, avec une somme finie et
+positive. La contrainte de garder les composantes entières peut éloigner les
+comptes réalisés de ces cibles. Une partition positive doit contenir les trois
+rôles ; une partition de poids nul doit rester vide.
+
+Le contrôle `partition_receipt` d'un lot filtré prouve la cohérence des
+métadonnées et de leurs empreintes. Sa prévalidation ne lit ni les anciennes
+pages ni les textes exclus. Le contrôle `partition_characters`, dans la
+validation complète, mesure les longueurs Unicode réelles des textes copiés
+et les compare aux composantes sélectionnées et au total de leur partition.
+Modifier ensemble les comptes du plan et leurs empreintes ne suffit donc pas
+à les faire accepter. Les pages portent aussi le nom de partition du reçu.
+
+Les comptes des composantes exclues et leurs liens par unités communes ne sont
+pas recalculables depuis le lot filtré. Cette opération exige le bundle source
+complet ; réutiliser son reçu ne remplace pas ce calcul. Sans reçu, le rapport
+indique expressément l'absence de revendication d'isolation.
+
+`provenance/source-catalog.json` transporte les **métadonnées globales**,
+y compris identités, groupes, chemins, `source_uri` et SHA-256 des sources
+dev/test ; leurs contenus textuels ne sont pas copiés. Le rapport d'import,
+lorsqu'il existe, est conservé sous `provenance/import-report.json`. Sans
+exclusions fournies, il doit conserver **`NOT EVALUATED`** pour la protection
+externe : ni le partitionnement interne ni la copie du rapport ne démontrent
+l'absence de recouvrement avec les tests Axel ou un autre corpus.
+Le contrôle `import_receipt` vérifie la référence, les empreintes et la
+correspondance exacte des documents acceptés avec le catalogue source global ;
+il n'ouvre aucun texte exclu et ne réévalue pas les exclusions externes.
+
+Les composantes couvrent les groupes déclarés et les unités sélectionnables
+égales après NFC/réduction des espaces. Cette méthode ne constitue pas un
+détecteur général de quasi-doublons. La génération tire uniformément les unités
+d'un rôle : les documents contenant plus d'unités ont davantage de poids. Le
+nombre de pages ne mesure donc ni la diversité des documents ni leur équilibre.
+
+## Historique 0.2 — protocole fixé avant production
 
 Le pilote comprend 100 pages de démonstration, 2680 × 3698 pixels à 150 dpi,
 graine 20261007, colonnes tirées dans 4–6, dégradations `mixed`, deux workers.
@@ -35,9 +109,9 @@ L'audit de lisibilité et la reproduction sont des preuves distinctes du `pass`
 de `mille-feuilles validate`. Un fichier `qa/report.json` préexistant ne dispense
 pas d'un contrôle de son contenu et de l'intégrité du lot.
 
-## Résultats
+## Historique 0.2 — résultats du pilote
 
-**Pilote accepté le 7 octobre 2026 dans le périmètre défini ci-dessus.**
+**Pilote 0.2 accepté le 7 octobre 2026 dans le périmètre historique ci-dessus.**
 Commit de production propre :
 [`0d1e2b701e9f6ba4d571a5f4894bd40071792225`](https://github.com/maribakulj/mille-feuilles/tree/0d1e2b701e9f6ba4d571a5f4894bd40071792225).
 Le lot est `~/heritage-synth/runs/pilot-v0.2-r2` ; sa reproduction est conservée
@@ -87,7 +161,7 @@ humaine en aveugle à l'échelle native.
 
 ![Dix premières pages du pilote](reports/preview.jpg)
 
-## Boucle de correction réellement exercée
+## Historique 0.2 — boucle de correction réellement exercée
 
 La première campagne `runs/pilot-v0.2`, conservée pour diagnostic, a échoué sur
 le filet `mf_0029_b0126` : son épaisseur de 1 px permettait la fusion de deux
@@ -102,11 +176,11 @@ tâches actives avant de remonter l'erreur initiale ; la concurrence et la
 préservation de cette erreur sont testées. Le second pilote a été intégralement
 produit et contrôlé après ces corrections. Aucun lot n'a été déplacé ou supprimé.
 
-## Commandes de vérification
+## Historique 0.2 — vérification et reproduction
 
 ### Contrôle supplémentaire après la revue Claude
 
-La [revue réciproque](REVUE_CLAUDE.md) du même jour a ajouté un contrôle
+La [revue réciproque](REVUE_CLAUDE.md) de la version 0.2, le même jour, a ajouté un contrôle
 d'occurrence des segments sources dans le texte composé, avec 24 tests écrits
 par Claude et un test de raccordement écrit par Codex. Après leurs relectures
 mutuelles, la suite complète passe **227 tests en 143,60 s**, et Ruff ne signale
@@ -117,13 +191,16 @@ contrôles de fichiers de chaque page.
 Les [preuves complémentaires](reports/claude-review/index.json) identifient
 les sources relues, les commandes, leurs sorties et leurs empreintes. Les
 19 preuves initiales restent inchangées : les 202 tests du tableau précédent
-décrivent le commit de production du pilote. Le moteur, les exporteurs, les
-actifs et les schémas sont inchangés ; les pages n'ont pas été régénérées.
+décrivent le commit de production du pilote. Lors de cette revue complémentaire,
+le moteur de rendu, les exporteurs, les actifs et les schémas étaient inchangés
+par rapport à cette production ; les pages n'ont pas été régénérées.
+Les **227 tests** décrivent cette étape historique, pas la suite actuelle 0.3.
 La reproduction initiale de 200 fichiers reste celle de son commit source.
 
 ### Reproduire le protocole initial
 
-Depuis le commit de production et l'environnement verrouillé, choisir des
+Depuis un checkout du commit de production
+`0d1e2b701e9f6ba4d571a5f4894bd40071792225` et son environnement verrouillé, choisir des
 destinations neuves (les chemins ci-dessous existent déjà sur la machine de
 mesure) :
 
@@ -138,6 +215,10 @@ uv run --locked python tools/audit_legibility.py runs/pilot-v0.2-r2 --report run
 uv run --locked python tools/reproduce_pilot.py runs/pilot-v0.2-r2 --output runs/pilot-v0.2-r2-reproduction --report runs/pilot-v0.2-r2-reproduction.json
 ```
 
+Ces commandes de reproduction 0.2 ne doivent pas être exécutées depuis le
+moteur courant 0.3 pour revendiquer les mêmes octets. Lire et valider l'ancien
+contrat reste possible ; sa régénération identique exige son code de production.
+
 La génération appelle déjà la validation complète ; la commande `validate`
 permet de la recalculer après transport. Les rapports archivés décrivent cette
 exécution, avec ses chemins locaux ; le répertoire `docs/reports` n'est pas un
@@ -145,11 +226,12 @@ lot de données. Le script indépendant est conservé tel qu'exécuté depuis `r
 à côté du lot `pilot-v0.2-r2` et de son journal de progression ; les commandes
 générales réutilisables sont celles ci-dessus.
 
-## Limites d'interprétation
+## Limites d'interprétation du pilote historique 0.2
 
 Les textes sont originaux, synthétiques et répétés : les 100 pages ne sont pas
-100 sources indépendantes. Toutes les dérivations d'un document source restent
-groupées dans un éventuel découpage aval. Le pilote ne démontre pas la diversité
+100 sources indépendantes. Les trois documents partagent un groupe de source,
+et les pages réutilisent corps, titres et annonces : ce lot ne fournit pas trois
+partitions indépendantes. Il ne possède aucun reçu de partition 0.3. Le pilote ne démontre pas la diversité
 lexicale, la représentativité historique ou un gain de modèle sur des données
 réelles. Aucun entraînement n'est lancé.
 

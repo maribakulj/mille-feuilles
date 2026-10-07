@@ -9,7 +9,7 @@ import pytest
 
 from mille_feuilles import pipeline
 from mille_feuilles.io import ROOT, sha256, write_json
-from mille_feuilles.render import Config
+from mille_feuilles.render import Config, SCHEMA_VERSION
 from mille_feuilles.validation import load_json
 
 
@@ -111,7 +111,7 @@ def test_insufficient_disk_is_refused_before_output_creation(
 
 @pytest.mark.parametrize("name,value", [("width", 800.0), ("seed", True), ("columns", False)])
 def test_config_does_not_coerce_numbers(replay_tool, name, value):
-    config = {"schema_version": "0.2.0", "pages": 2, "render": Config().as_dict()}
+    config = {"schema_version": SCHEMA_VERSION, "pages": 2, "render": Config().as_dict()}
     config["render"][name] = value
     with pytest.raises(ValueError):
         replay_tool.strict_config(config)

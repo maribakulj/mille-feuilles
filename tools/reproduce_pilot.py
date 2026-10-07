@@ -24,7 +24,7 @@ from typing import Callable
 from mille_feuilles.io import sha256, write_json
 from mille_feuilles.pipeline import environment, prepare_assets
 from mille_feuilles.render import Config, SCHEMA_VERSION, render_page
-from mille_feuilles.validation import load_json, safe_path
+from mille_feuilles.validation import load_json, safe_path, validate_partition_receipt
 
 
 def checked_file(root: Path, relative: str, expected: str) -> Path:
@@ -49,7 +49,9 @@ def same_bytes(left: Path, right: Path) -> bool:
 
 
 def strict_config(value: dict) -> tuple[Config, int]:
-    if not isinstance(value, dict) or set(value) != {"schema_version", "render", "pages"}:
+    if not isinstance(value, dict) or set(value) not in (
+        {"schema_version", "render", "pages"}, {"schema_version", "render", "pages", "partition"}
+    ):
         raise ValueError("Structure de configuration inattendue")
     if value["schema_version"] != SCHEMA_VERSION:
         raise ValueError("Version de configuration incompatible")
@@ -69,6 +71,13 @@ def strict_config(value: dict) -> tuple[Config, int]:
         raise ValueError("Paramètre degradation textuel attendu")
     config = Config(**parameters)
     config.validate()
+    receipt = value.get("partition")
+    if config.partition is not None and (
+        not isinstance(receipt, dict) or receipt.get("name") != config.partition
+    ):
+        raise ValueError("Reçu de partition absent ou incohérent")
+    if config.partition is None and receipt is not None:
+        raise ValueError("Reçu de partition présent sans sélection")
     return config, count
 
 
@@ -156,6 +165,9 @@ def reproduce(
 
         registry_ref = manifest["assets"]
         registry_path = checked_file(source, registry_ref["path"], registry_ref["sha256"])
+        selection_errors = validate_partition_receipt(source, manifest, load_json(registry_path))
+        if selection_errors:
+            raise ValueError("Reçu de sélection invalide : " + "; ".join(selection_errors[:5]))
         catalog_refs = [
             record for record in manifest["artifacts"] if record["path"] == "assets/catalog.json"
         ]

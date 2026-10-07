@@ -27,6 +27,7 @@ def main(argv: list[str] | None = None) -> int:
         "--degradation", choices=["clean", "aged", "faint", "mixed"], default="mixed"
     )
     generate.add_argument("--jobs", type=int, default=1)
+    generate.add_argument("--partition", help="Partition à utiliser depuis le bundle vérifié")
     generate.add_argument(
         "--assets-root",
         type=Path,
@@ -37,6 +38,16 @@ def main(argv: list[str] | None = None) -> int:
     compare = commands.add_parser("compare", help="Comparer bit à bit deux générations complètes")
     compare.add_argument("first", type=Path)
     compare.add_argument("second", type=Path)
+    importer = commands.add_parser("import-texts", help="Importer des documents locaux vérifiés")
+    importer.add_argument("--manifest", required=True, type=Path, help="Manifeste JSONL des documents")
+    importer.add_argument("--into", required=True, type=Path, help="Bundle de destination neuf ou vide")
+    importer.add_argument("--exclude-documents", type=Path)
+    importer.add_argument("--exclude-ngrams", type=Path)
+    partition = commands.add_parser("partition", help="Répartir les groupes sources avant composition")
+    partition.add_argument("--bundle", required=True, type=Path)
+    partition.add_argument("--ratios", nargs=3, type=float, metavar=("TRAIN", "DEV", "TEST"),
+                           default=[0.8, 0.1, 0.1])
+    partition.add_argument("--seed", type=int, default=20261007)
     args = parser.parse_args(argv)
     try:
         if args.command == "generate":
@@ -47,6 +58,7 @@ def main(argv: list[str] | None = None) -> int:
                 columns=args.columns,
                 degradation=args.degradation,
                 seed=args.seed,
+                partition=args.partition,
             )
             result = build_dataset(
                 args.output,
@@ -58,8 +70,21 @@ def main(argv: list[str] | None = None) -> int:
             )
         elif args.command == "validate":
             result = validate_dataset(args.dataset)
-        else:
+        elif args.command == "compare":
             result = compare_lots(args.first, args.second)
+        elif args.command == "import-texts":
+            from .catalog import import_texts
+
+            result = import_texts(args.manifest, args.into, exclusions={
+                "documents": args.exclude_documents, "ngrams": args.exclude_ngrams,
+            })
+        else:
+            from .partition import assign_partitions
+
+            plan = assign_partitions(
+                args.bundle, dict(zip(("train", "dev", "test"), args.ratios)), args.seed
+            )
+            result = {"status": "pass", "path": str(args.bundle / "assets/partition.json"), "plan": plan}
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0 if result["status"] == "pass" else 1
     except (OSError, ValueError, RuntimeError) as exc:

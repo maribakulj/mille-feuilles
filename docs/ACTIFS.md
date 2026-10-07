@@ -98,3 +98,99 @@ Les SHA-256 exacts, versions, index de face, axes (aucun pour ces fontes fixes),
 provenances et fichiers de preuve restent dans le registre, afin d’éviter une
 seconde liste manuelle divergente. Aucun entraînement ni verdict de gain réel
 n’est associé à cette livraison.
+
+## Import local de plusieurs documents (catalogue 0.3.0)
+
+Le catalogue embarqué reste au format 0.2.0 ; il se charge toujours, mais ses
+trois textes forment un seul groupe source : aucune partition train/dev/test
+distincte ne peut en être tirée. Pour composer à partir de plusieurs documents,
+on construit un **bundle** 0.3.0 avec `mille_feuilles.catalog.import_texts` :
+
+```python
+from mille_feuilles.catalog import import_texts
+report = import_texts(Path("entree/import.jsonl"), Path("bundles/neuf"),
+                      {"documents": Path("exclusions.txt"), "ngrams": Path("ngrams.json")})
+```
+
+Le bundle doit être absent ou vide. L'import ne télécharge rien et n'ouvre que
+les fichiers nommés par le manifeste, dont les chemins sont relatifs à son dossier
+et ne peuvent pas en sortir. Il copie les fontes embarquées vérifiées et leurs
+preuves, mais aucun des trois textes de démonstration.
+
+**Manifeste d'import** : JSONL, un document par ligne. Les champs obligatoires sont
+`path`, `role` (`body`, `title` ou `advertisement`), `source_document_id`,
+`source_group_id`, `language` (`fr`), `source_uri` et `rights` (`status`,
+`license`, `evidence_path`, `attribution`, `redistribution_allowed`). Les champs
+facultatifs sont `date` (ISO), `content_type` et `historical_corpus`. Tout autre
+champ est refusé.
+
+**Un actif texte = un document source**, avec plusieurs documents par rôle. Les
+identifiants restent opaques : l'actif s'appelle `text_<sha256(id)[:20]>` et ses
+fichiers sont rangés sous `assets/texts/imported/` et `assets/evidence/`, sous
+des noms tirés de leur empreinte. Les octets sources sont conservés tels quels.
+
+**Rejets** : chaque document refusé figure dans `assets/import-report.json` avec
+ses motifs, et ses octets ne sont pas copiés. Motifs :
+- droits non vérifiés ou redistribution interdite ;
+- preuve absente ou vide ;
+- chemin dangereux ;
+- texte non UTF-8, non NFC, avec BOM, retour chariot, tabulation ou caractère
+  de contrôle ;
+- aucune unité de texte ;
+- glyphe absent d'Old Standard Regular ou Bold ;
+- document ou fichier trop volumineux ;
+- identifiant de document en double, ou contenu identique à un autre : **toutes**
+  les occurrences sont alors rejetées, quel que soit l'ordre des lignes. Les
+  doublons sont comptés sur toutes les lignes, y compris celles rejetées pour
+  un autre motif ; un doublon croisé (même identifiant avec A, même contenu avec
+  C) rejette donc A, B et C.
+
+Le bundle n'est écrit qu'après lecture et contrôle de toutes les entrées : un
+dépassement du volume total arrête l'import sans rien écrire. En 0.3.0, chaque
+actif doit avoir au moins une preuve locale dans `evidence_files`, avec son
+SHA-256. Un `evidence_uri` local doit figurer parmi ces preuves hachées ; en
+0.2.0, la notice partagée reste acceptée sous l'ancienne forme.
+
+L'import échoue (`status: fail`, sans `catalog.json`) si l'un des trois rôles
+n'a plus aucun document accepté.
+
+**Exclusions** (protection contre les fuites vers des jeux de test externes) :
+- `documents` : fichier texte UTF-8, une clé par ligne (`#` pour un commentaire).
+  Une clé égale au `source_document_id`, au `source_group_id` ou au `source_uri`
+  d'un document le fait rejeter.
+- `ngrams` : JSON `{"format": "mille-feuilles-ngram-exclusions", "version": "1",
+  "n": 8, "normalization": "nfc-casefold-word-v1", "salt_hex": …, "digest":
+  "sha256-128", "hashes": […]}`. Les mots sont `\w+` après NFC et `casefold`.
+  L'empreinte d'un n-gramme est `sha256(sel + 0x1F + mots joints par une espace)`,
+  tronquée à 32 caractères hexadécimaux ; les empreintes sont triées et uniques.
+  Un seul n-gramme protégé rejette **le document entier** : filtrer des
+  paragraphes réécrirait la source et casserait la provenance. Le producteur
+  externe peut utiliser `ngram_digests(texte, n, sel)`.
+
+Un fichier d'exclusion mal formé arrête l'import avant toute écriture. Le rapport
+conserve l'empreinte et le compte de chaque liste. Si l'une des deux n'est pas
+fournie, il indique `external_protection: "NOT EVALUATED"` et n'affirme aucune
+absence de fuite.
+
+**Partition** : `mille_feuilles.partition.assign_partitions(bundle, ratios, graine)`
+écrit `assets/partition.json`. Le graphe est recalculé à partir des fichiers du
+catalogue vérifié. Deux groupes sources sont réunis dès qu'ils partagent une
+unité normalisée (paragraphe ou ligne de titre, tous rôles confondus). Chaque
+composante va entière dans une seule partition. L'ordre des composantes découle
+de `sha256(graine:clé)`. Une recherche en profondeur, complète et bornée à
+200 000 étapes, attribue d'abord à chaque partition de ratio positif des
+composantes couvrant les trois rôles. Les plus grands ratios sont servis en
+premier, dans l'ordre issu de la graine. Le reste est ensuite réparti de façon
+gloutonne selon le nombre de caractères. Le message d'erreur distingue
+l'impossibilité démontrée, quand la recherche est épuisée, du dépassement de
+budget, où l'impossibilité n'est pas démontrée. Il y a au plus 32 partitions. Les ratios sont des nombres finis, positifs ou
+nuls, et leur somme doit rester finie, faute de quoi ils sont refusés ; le plan
+enregistre les ratios fournis. Un plan existant n'est jamais écrasé : il est renvoyé s'il est
+identique, refusé sinon. `load_partition(bundle, nom)` recalcule le plan et
+refuse un fichier modifié ou un catalogue changé.
+
+Limites : la réunion par unité identique ne détecte ni les quasi-doublons ni les
+reformulations. Des rubriques de titres communes (« Faits divers ») peuvent
+réunir beaucoup de groupes et rendre une partition impossible ; c'est voulu, car
+le système refuse plutôt que de laisser fuir. Les tests n'utilisent que des
+textes originaux écrits pour eux ; aucun corpus réel n'a été importé dans ce lot.

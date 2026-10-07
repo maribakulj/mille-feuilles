@@ -21,6 +21,7 @@ from PIL import Image, ImageDraw, ImageFont
 from mille_feuilles.io import sha256
 from mille_feuilles.validation import load_json, safe_path
 
+SUPPORTED_SCHEMA_VERSIONS = ("0.2.0", "0.3.0")
 THRESHOLDS = {
     "minimum_contrast_gray_levels": 40.0,
     "minimum_ink_pixels": 2,
@@ -335,8 +336,11 @@ def audit_legibility(
         manifest = load_json(manifest_path)
         report["manifest_sha256"] = sha256(manifest_path)
         report["dataset_id"] = manifest["dataset_id"]
-        if manifest["schema_version"] != "0.2.0" or not isinstance(manifest["pages"], list):
-            raise ValueError("Expected a version 0.2.0 manifest and page list")
+        if (
+            manifest["schema_version"] not in SUPPORTED_SCHEMA_VERSIONS
+            or not isinstance(manifest["pages"], list)
+        ):
+            raise ValueError("Expected a version 0.2.0 or 0.3.0 manifest and page list")
         records = manifest["pages"]
         if not records:
             raise ValueError("Dataset has no pages")
@@ -350,6 +354,8 @@ def audit_legibility(
             if sha256(page_path) != reference["sha256"]:
                 report["errors"].append(f"{page_id}: annotation SHA-256 mismatch")
             page = load_json(page_path)
+            if page["schema_version"] != manifest["schema_version"]:
+                raise ValueError("page schema_version differs from manifest")
             if page["page_id"] != page_id or page_id in page_ids:
                 raise ValueError("page identity mismatch or duplicate page")
             page_ids.add(page_id)

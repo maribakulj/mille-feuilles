@@ -1,0 +1,29 @@
+{
+  "format": "mille-feuilles-lot2-test-evidence",
+  "schema_version": "0.3.0",
+  "tests_passed": 483,
+  "test_seconds": 176.85,
+  "scope": "Working tree frozen before commit; complete suite after audit version and import receipt fixes. CLI acceptance recorded separately.",
+  "files": [
+    {
+      "path": "tests.txt",
+      "sha256": "71f52baab34f5ac8777f562ebef3eb61d0ee18272d0521d74918484dd92657bc",
+      "bytes": 592
+    },
+    {
+      "path": "ruff.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    {
+      "path": "assets.json",
+      "sha256": "d367651e464d26b391387c82b170acdebf3799941c085410ae856ae57d2f576c",
+      "bytes": 1794
+    },
+    {
+      "path": "initial-tests-failed.txt",
+      "sha256": "d565c106a070b7b731fbf2252b41af7a7048b1f9835bf822211de46714de0398",
+      "bytes": 3090
+    }
+  ]
+}

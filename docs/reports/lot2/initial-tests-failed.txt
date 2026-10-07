@@ -1,0 +1,53 @@
+........................................................................ [ 17%]
+.........................................................FF............. [ 34%]
+........................................................................ [ 51%]
+........................................................................ [ 68%]
+........................................................................ [ 85%]
+.............................................................            [100%]
+=================================== FAILURES ===================================
+______ test_all_words_are_measured_and_native_samples_leave_lot_unchanged ______
+
+small_lot = PosixPath('/Users/marcel/heritage-synth/runs/pytest-v03-final/legibility0/lot')
+tmp_path = PosixPath('/Users/marcel/heritage-synth/runs/pytest-v03-final/test_all_words_are_measured_an0')
+
+    def test_all_words_are_measured_and_native_samples_leave_lot_unchanged(small_lot, tmp_path):
+        before = snapshot(small_lot)
+        report_path = tmp_path / "audit.json"
+        samples_dir = tmp_path / "samples"
+        report = audit_legibility(small_lot, report_path, samples_dir, max_samples=12)
+>       assert report["status"] == "pass", report["suspects"][:5] + report["errors"]
+E       AssertionError: ['manifest: Expected a version 0.2.0 manifest and page list']
+E       assert 'fail' == 'pass'
+E         
+E         - pass
+E         + fail
+
+tests/test_legibility.py:53: AssertionError
+_________________ test_blank_rehashed_png_fails_on_every_word __________________
+
+small_lot = PosixPath('/Users/marcel/heritage-synth/runs/pytest-v03-final/legibility0/lot')
+tmp_path = PosixPath('/Users/marcel/heritage-synth/runs/pytest-v03-final/test_blank_rehashed_png_fails_0')
+
+    def test_blank_rehashed_png_fails_on_every_word(small_lot, tmp_path):
+        root = tmp_path / "blank"
+        shutil.copytree(small_lot, root)
+        manifest = load_json(root / "manifest.json")
+        page_relative = manifest["pages"][0]["path"]
+        page = load_json(root / page_relative)
+        image = page["image"]
+        Image.new("L", (image["width"], image["height"]), 255).save(root / image["path"])
+        page["image"]["sha256"] = sha256(root / image["path"])
+        (root / page_relative).write_text(json.dumps(page), encoding="utf-8")
+        rehash(root, image["path"])
+        rehash(root, page_relative)
+        report = audit_legibility(root, tmp_path / "blank-audit.json")
+        assert report["status"] == "fail"
+>       assert not report["errors"], "All hashes were updated; failure must come from actual pixels"
+E       AssertionError: All hashes were updated; failure must come from actual pixels
+E       assert not ['manifest: Expected a version 0.2.0 manifest and page list']
+
+tests/test_legibility.py:105: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_legibility.py::test_all_words_are_measured_and_native_samples_leave_lot_unchanged
+FAILED tests/test_legibility.py::test_blank_rehashed_png_fails_on_every_word
+2 failed, 419 passed in 155.12s (0:02:35)

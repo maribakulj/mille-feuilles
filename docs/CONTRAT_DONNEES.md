@@ -1,6 +1,8 @@
 # Contrat de données — Mille Feuilles
 
-Version **0.2.0**, 7 octobre 2026. Ce contrat remplace la proposition 0.1.0.
+Version **0.3.0**, 7 octobre 2026. La lecture des lots **0.2.0** reste prise en
+charge selon leur contrat historique ; leurs garanties ne deviennent pas
+automatiquement celles de 0.3.0. La proposition 0.1.0 reste refusée.
 Les schémas exécutables sont `schemas/{manifest,assets,page}.schema.json` ;
 les invariants complémentaires sont dans `src/mille_feuilles/validation.py`.
 Les décisions du cadrage sont résolues dans [DECISIONS.md](DECISIONS.md).
@@ -10,7 +12,8 @@ Les décisions du cadrage sont résolues dans [DECISIONS.md](DECISIONS.md).
 Mille Feuilles produit une image de page et sa vérité de composition : blocs,
 articles, lignes, mots, ordre, provenance et transformations. Le profil pilote
 est **`fr_press_19c_columns_4_6`**, presse française du XIXe siècle, 4 à 6
-colonnes, 100 pages. La priorité est la segmentation et l'ordre de lecture.
+colonnes. Le pilote historique 0.2 comprend 100 pages ; ce nombre ne constitue
+pas une preuve de livraison 0.3. La priorité est la segmentation et l'ordre de lecture.
 Aucun modèle OCR n'est nécessaire. Un lot de démonstration en langue française
 originale permet de vérifier le système ; il ne prouve pas le réalisme lexical
 ou historique d'un corpus de presse.
@@ -45,14 +48,14 @@ de noms séparé. Une référence doit pointer vers le bon type. Les dimensions 
 des entiers positifs ; les coordonnées sont finies.
 
 Les objets structurés refusent les champs inconnus. Les extensions facultatives
-vont dans `extensions`, avec clés préfixées par projet (`mille_feuilles:...`).
+vont dans `extensions`, avec clés préfixées par projet, notamment `mf:...`.
 Les paramètres résolus et les métadonnées d'actifs sont des objets JSON ouverts.
 
 ## 3. Manifeste et actifs
 
 | Champ de `manifest.json` | Contenu |
 |---|---|
-| `schema_version` | `"0.2.0"` |
+| `schema_version` | `"0.3.0"` ; `"0.2.0"` accepté en lecture historique |
 | `dataset_id` | Identifiant stable du lot |
 | `profile` | `"fr_press_19c_columns_4_6"` |
 | `generator` | `{commit, dirty, environment_path, environment_sha256}` ; commit Git complet |
@@ -63,11 +66,18 @@ Les paramètres résolus et les métadonnées d'actifs sont des objets JSON ouve
 | `pages` | Liste de `{id, path, sha256, source_group_ids}` |
 | `artifacts` | Liste de `{path, sha256, role}`, incluant images, actifs, exports, planches QA et fichiers de reproduction |
 
-`source_partitions` contient seulement `train` et/ou `dev`. Les fichiers
-protocoles et inventaires sont embarqués ; aucun contenu de test n'est lu.
-`source_group_ids` inclut les identifiants des documents source des textes
-composés et permet de garder ensemble les dérivés lors d'un découpage aval.
-Le manifeste ne fixe pas les partitions expérimentales d'Axel.
+`calibration.source_partitions` contient seulement `train` et/ou `dev`. Il
+désigne les sources de calibration, pas les partitions synthétiques décrites
+ci-dessous. Les protocoles et inventaires sont embarqués ; leur présence ne
+déclenche aucune lecture de contenu de test Axel.
+
+En **0.3**, `pages[].source_group_ids` est exactement l'union des
+`metadata.source_group_id` des actifs utilisés par les `text_spans` de la page.
+Un actif simplement présent dans le registre ou dans `asset_ids` n'ajoute pas
+de groupe. En **0.2**, ce champ conserve son sens historique : il doit inclure
+les `source_document_id` des segments composés, et peut contenir des valeurs
+supplémentaires. Le nom du champ ne suffit donc pas à interpréter sa sémantique
+sans lire la version. Ces partitions ne fixent pas celles des expériences Axel.
 
 `artifacts` exclut `manifest.json` et **`qa/report.json`** : aucun cycle
 empreinte/rapport. La QA écrit ce rapport après la validation et contrôle
@@ -84,11 +94,111 @@ Le validateur de lot exige `status: "verified"` et
 `redistribution_allowed: true`. Une déclaration n'est pas une expertise
 juridique : les preuves et licences sont conservées avec les ressources.
 
-Le pilote utilise **un actif texte par document**, avec
+L'import conserve **un actif texte par document**, avec
 `metadata.source_document_id` stable et règles de préparation documentées.
+Le catalogue 0.3 renseigne aussi `source_group_id`, `role` (`body`, `title`,
+`advertisement`) et `language`. Plusieurs documents peuvent servir un même
+rôle. Le registre 0.3 d'un lot généré renseigne explicitement les groupes ; à
+l'entrée d'un catalogue historique 0.2, un groupe absent prend l'identité du
+document. Cette compatibilité ne découvre pas les variantes non déclarées.
 Une fonte documente sa famille, version, face et axes utilisés. L'environnement
 fixe Python, rendu, shaping, rasterisation, dépendances et paramètres. Une graine
 seule ne garantit pas une reproduction bit à bit.
+
+### 3.1. Import et unités de composition
+
+L'import local prend un manifeste JSONL explicite, conserve les sources UTF-8
+et leurs preuves de droits, puis écrit un catalogue vérifié. Il refuse les
+doublons d'identité documentaire ou d'empreinte de document selon les règles
+de l'importeur ; les variantes d'une même origine doivent partager un groupe.
+Le format détaillé et les exclusions sont décrits dans [ACTIFS.md](ACTIFS.md).
+
+Les unités sélectionnables sont les paragraphes de corps et d'annonces, et les
+lignes de titre non vides. Le compositeur tire uniformément parmi les unités
+disponibles d'un rôle, tous documents sélectionnés réunis. Ce n'est pas un
+tirage uniforme des documents : un document comportant davantage d'unités pèse
+davantage. Ni l'import ni la multiplication des pages ne garantissent une
+distribution historique représentative.
+
+S'il existe, le rapport d'import est copié dans `provenance/import-report.json`,
+inventorié et référencé par `manifest.extensions['mf:import_report']` avec
+`{path, sha256}`. Il garde ses résultats et limites d'origine.
+Le contrôle `import_receipt` confronte sa référence à l'inventaire et exige
+une correspondance exacte entre `accepted[]` et les textes du catalogue source
+global (identifiant, document, groupe, rôle, SHA-256). Il ne réévalue pas les
+listes d'exclusion. Sans fichiers
+d'exclusion fournis, la protection externe reste **`NOT EVALUATED`** ; une
+partition interne cohérente ne prouve pas l'absence de recouvrement avec Axel
+ou avec un corpus externe. Aucun corpus de test externe n'est ouvert pour
+déduire cette protection.
+
+### 3.2. Partition avant génération et reçu embarqué
+
+Le plan `assets/partition.json` est calculé sur le bundle source complet.
+Les documents d'un même groupe sont indivisibles ; les groupes partageant une
+unité sélectionnable identique après NFC et réduction des espaces sont réunis
+dans une composante, tous rôles confondus. Un titre ou une annonce partagée
+peut donc relier deux ensembles de corps. La garantie concerne les groupes
+déclarés et ces unités normalisées ; elle ne détecte pas tous les passages
+partiels communs, les quasi-doublons ou les variantes non déclarées.
+
+Les poids `ratios` sont finis et non négatifs, leur somme finie et positive ;
+ils ne sont pas nécessairement stockés avec une somme égale à 1. Ils définissent
+des cibles relatives de caractères. Une partition de poids nul reste vide ;
+chacune de poids positif doit disposer des trois rôles. Les composantes restent
+entières, donc les proportions réellement obtenues peuvent différer des cibles.
+Une couverture impossible est refusée ; si la recherche atteint sa limite,
+le diagnostic ne prétend pas avoir démontré l'impossibilité. Les trois textes
+de démonstration, dans un même groupe, ne permettent pas trois partitions
+non vides indépendantes.
+
+Quand un plan existe, omettre `--partition` est une erreur : le générateur ne
+revient pas silencieusement à l'ensemble du catalogue. Lors d'une sélection
+initiale, `load_partition` recalcule le graphe et le plan depuis les fichiers
+du bundle complet vérifié avant le rendu.
+
+Un lot sélectionné embarque seulement les textes de sa partition, les actifs
+de rendu et leurs preuves. Son `assets/catalog.json` est filtré. Deux fichiers
+supplémentaires conservent le plan et le catalogue original :
+`provenance/partition.json` et `provenance/source-catalog.json`. Ce dernier est
+une copie des **métadonnées de toutes les partitions** : identités documentaires,
+groupes, chemins, `source_uri`, SHA-256 et droits peuvent donc révéler les
+références des sources dev/test. Il ne contient pas leurs textes.
+
+Le même reçu est présent dans `manifest.extensions['mf:partition']` et dans
+`config.json['partition']` :
+
+| Champ du reçu | Valeur |
+|---|---|
+| `version` | `"1"` |
+| `name` | Nom de la partition sélectionnée |
+| `path`, `sha256` | `provenance/partition.json` et son empreinte |
+| `source_catalog_path`, `source_catalog_sha256` | `provenance/source-catalog.json` et son empreinte |
+
+`config.render.partition` et `page.provenance.parameters.partition` portent
+ce même nom. Sans sélection, le paramètre vaut `null` et le reçu est absent.
+Le lot n'a alors aucune garantie d'isolation de partitions.
+
+`validate_partition_receipt(root, manifest, registry)` ne lit que les
+métadonnées : JSON strict, chemins, empreintes, inventaire, identités sélectionnées,
+groupes/documents/SHA confinés à une partition, couverture de tous les textes,
+rôles, composantes et sommes de caractères déclarées. Le registre et le
+catalogue filtré doivent contenir exactement les identifiants texte du plan
+pour cette partition, avec les mêmes chemins, empreintes, documents, groupes
+et rôles que le catalogue original. Le fallback groupe=document concerne le
+catalogue source 0.2, pas un groupe manquant dans un registre 0.3.
+
+La validation complète compare en plus les comptes de chaque composante
+sélectionnée et `characters[name]` aux longueurs Unicode réelles des textes
+embarqués. Pour les composantes exclues, elle ne vérifie que la cohérence des
+métadonnées. Elle ne recalcule pas leur contenu ni le graphe global : cela
+nécessite toujours le bundle complet d'origine.
+
+Un lot filtré peut servir à une nouvelle génération en indiquant la **même**
+`--partition`. La prévalidation contrôle son reçu, puis ses actifs sélectionnés ;
+elle n'appelle pas `load_partition` sur le catalogue tronqué et ne valide pas
+toutes les anciennes pages ou leurs exports. Un changement de partition exige
+de revenir au bundle complet.
 
 ## 4. Page canonique
 
@@ -111,17 +221,34 @@ initiale distincte de `image.dpi`, résolution finale. Les autres valeurs résol
 PNG, lorsqu'elle existe, doit correspondre à la résolution finale à 0,1 dpi près.
 `template_id` référence un actif `template` présent dans `asset_ids`.
 
-Chaque `text_span` est `{asset_id, start, end, source_document_id}`. L'intervalle
+En **0.3**, chaque `text_span` est
+`{asset_id, start, end, source_document_id, article_id, block_ids}`. L'intervalle
 semi-ouvert est en **points de code Unicode** dans l'actif UTF-8 original,
 avant préparation. Il est non vide, dans les bornes de l'actif, et son document
 correspond à `metadata.source_document_id`. Les actifs utilisés sont déclarés.
-Le validateur du lot confronte chaque segment au texte composé : les mots du
-segment, après normalisation NFC et des espaces, doivent apparaître dans un
-même article (ou bloc sans article), avec les seules césures annotées recollées.
-Les tirets lexicaux et la ponctuation restent inchangés. L'ordre des spans ne
-définit pas l'ordre de lecture. Le schéma ne lie pas un span à un article : ce
-contrôle d'occurrence ne garantit ni une attribution unique, ni le nombre
-d'utilisations d'un segment répété, ni la couverture des textes du gabarit.
+`article_id` doit posséder les blocs indiqués ; `block_ids` est non vide,
+sans doublons, dans l'ordre de cet article. Un titre peut désigner un bloc et
+un corps plusieurs blocs, notamment à travers des colonnes. Le texte exact
+de ces blocs, après reconstruction des seules césures annotées, doit égaler
+le segment source après NFC et réduction des espaces. Une occurrence correcte
+dans un autre article ne compense pas une mutation du texte lié. Les tirets
+lexicaux et la ponctuation restent inchangés. L'ordre des spans ne définit pas
+l'ordre de lecture.
+
+Chaque bloc textuel est couvert exactement une fois. Une césure ne traverse
+pas deux propriétaires de provenance. La seule exemption est le bandeau
+explicitement déclaré par
+`provenance.extensions['mf:template_article_ids']` : liste sans doublon,
+ordonnée dans la lecture, sans span concurrent. La concaténation de ces articles
+doit égaler exactement la liste `metadata.literal_text` du template référencé,
+après la même normalisation. Un article quelconque ne peut donc pas être
+exempté sous couvert de gabarit.
+
+En **0.2**, les spans restent `{asset_id, start, end, source_document_id}`.
+Le contrôle historique demande seulement une occurrence dans un article ou
+un bloc sans article ; il ne prouve ni attribution unique, ni multiplicité,
+ni couverture du gabarit. Cette faiblesse n'est pas présentée comme résolue
+pour les anciens fichiers sans nouvelle annotation.
 Les titres et textes composés ne deviennent pas une source historique par le
 simple fait de leur rendu dans une maquette ancienne.
 
@@ -252,13 +379,24 @@ exports XSD et relecture ; planches contours/identifiants/baselines/ordre ; cont
 visuel par page et échantillons ; reproduction bit à bit des images et annotations
 dans le même environnement verrouillé, indépendante du parallélisme.
 
-La QA des 100 pages est consignée avec les limites du profil. Des tests de
+La QA des 100 pages du pilote historique 0.2 est consignée avec les limites du profil. Des tests de
 mutations doivent rejeter les violations (empreintes, dimensions, chemins,
 références, texte, géométrie et exports), même lorsqu'un fichier altéré est
 réempreinté. Une QA synthétique ne démontre aucun gain de modèle sur du réel.
 Les seuils et tests gelés d'Axel ne sont jamais modifiés par Mille Feuilles.
 
-## 9. Migration depuis 0.1.0
+## 9. Compatibilité et migration
+
+Le validateur lit 0.2.0 et 0.3.0, avec version de page égale à celle du manifeste.
+Il ne complète pas les liens de provenance manquants d'un lot historique et
+ne lui ajoute pas une partition déduite après coup. Les preuves du pilote
+0.2, dont les 100 pages et la campagne complémentaire de 227 tests, restent
+historiques ; l'état d'acceptation 0.3 figure dans [VALIDATION.md](VALIDATION.md).
+
+Reproduire les octets du pilote 0.2 exige son commit de production
+`0d1e2b701e9f6ba4d571a5f4894bd40071792225` et son environnement verrouillé.
+La compatibilité de lecture avec le moteur courant ne promet pas une
+régénération identique par le moteur 0.3.
 
 Aucun lot canonique 0.1.0 n'a été livré avant le moteur. Il n'existe donc pas de
 migration de données implicite. Un import futur de 0.1.0 doit déclarer sa migration :
