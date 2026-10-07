@@ -53,19 +53,20 @@ la page fautive, sans affaiblir le rejet des exports dégénérés. Les 26 tests
 rendu passent. Une erreur annule désormais les tâches encore en attente et
 laisse finir celles déjà actives, avant de remonter l'erreur initiale.
 
-## Travail restant avant acceptation
+## Acceptation du pilote corrigé
 
-1. Les contrôles de présence des planches QA et des preuves de licence sont
-   terminés. La suite intégrée compte 163 tests passants avant ajout des derniers
-   contrôles de rapports et outils d'acceptation.
-2. Exécuter la suite finale stable et vérifier le fonctionnement depuis un
-   checkout propre.
-3. Produire le pilote de 100 pages sous contrôle de l'espace disque, vérifier
-   toutes ses annotations/exports et inspecter les planches de contact.
-4. Confirmer la reproductibilité du rendu livré et consigner les preuves,
-   limites et commandes dans `docs/VALIDATION.md`.
-5. Versionner et pousser le code et les preuves légères ; conserver les lots
-   volumineux hors Git.
+Le commit propre `0d1e2b701e9f6ba4d571a5f4894bd40071792225` passe 202 tests,
+Ruff et une nouvelle installation depuis GitHub. Le pilote `runs/pilot-v0.2-r2`
+contient 100 pages, 436 490 mots et 17 332 blocs ; ses 209 contrôles passent.
+Un audit indépendant relit les XML de sept pages et le COCO/inventaire complet.
+Les pixels des 436 490 mots passent les seuils fixés avant production.
+
+Trois relecteurs Codex ont inspecté les 100 miniatures et 150 crops. La
+reproduction séquentielle donne 100 PNG et 100 JSON identiques octet pour octet,
+sans changement d'environnement. Les preuves légères et les limites sont dans
+[VALIDATION.md](VALIDATION.md) et `docs/reports/`. Les lots, copies et essais
+restent hors Git, sans déplacement ni suppression. La dernière livraison
+documentaire conserve le commit exact de production et ne modifie pas le moteur.
 
 Les textes embarqués sont synthétiques et répétés. Ni leur représentativité
 historique ni un gain d'OCR sur des documents réels ne sont démontrés par ces

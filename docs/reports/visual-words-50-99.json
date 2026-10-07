@@ -1,0 +1,1310 @@
+{
+  "review_version": "1.0.0",
+  "reviewed_at_utc": "2026-10-07T10:49:21.615688+00:00",
+  "reviewer": "Codex /root/repere_passation",
+  "status": "PASS",
+  "scope": "Revue visuelle des 50 crops des planches samples_05.png à samples_09.png seulement.",
+  "dataset_root": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2",
+  "manifest_sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+  "metadata_read": {
+    "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-legibility.json",
+    "sha256": "0df1184a179a5d018700f2561ebc692e1685d691a7d03b015d31ecff99eb94e7"
+  },
+  "files_visually_opened": [
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sha256": "9a03b006d830cbc00134f5ac37afc4c760cc67a5c14f46de0a704a50c2ed4c6d",
+      "opened_with": "view_image",
+      "detail": "original",
+      "cards_visually_inspected": 10
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sha256": "0429b83d70bbbb5ea035999cb26c18e7c8e0a01ffff3f8adc7d8fa9a69413ed0",
+      "opened_with": "view_image",
+      "detail": "original",
+      "cards_visually_inspected": 10
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sha256": "0661eb8862976e1485d006b3c0d8773c15b798de14ea87dad7ed40660d1c3a93",
+      "opened_with": "view_image",
+      "detail": "original",
+      "cards_visually_inspected": 10
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sha256": "108bfe683cd4a69e25975abfd2088ee4de291f4f28be6283dbf8b153d87862c7",
+      "opened_with": "view_image",
+      "detail": "original",
+      "cards_visually_inspected": 10
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sha256": "a9636d41aaff7bc0c388a9df5cecb4398ae6c60b22fef46c3e4c875e6e61508c",
+      "opened_with": "view_image",
+      "detail": "original",
+      "cards_visually_inspected": 10
+    }
+  ],
+  "cards_visually_inspected": [
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 0,
+      "page_id": "mf_0033",
+      "tile_index": 0,
+      "word_id": "mf_0033_w002196",
+      "transcription": "des",
+      "visually_read_text": "des",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 24,
+        "contrast_gray_levels": 217.0,
+        "ink_pixels": 183,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 1,
+      "page_id": "mf_0034",
+      "tile_index": 0,
+      "word_id": "mf_0034_w003268",
+      "transcription": "fait",
+      "visually_read_text": "fait",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 193.0,
+        "ink_pixels": 147,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 2,
+      "page_id": "mf_0035",
+      "tile_index": 0,
+      "word_id": "mf_0035_w000964",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 158.0,
+        "ink_pixels": 73,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 3,
+      "page_id": "mf_0035",
+      "tile_index": 0,
+      "word_id": "mf_0035_w003209",
+      "transcription": "—",
+      "visually_read_text": "—",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection.",
+        "Tiret cadratin visible, y compris sur les variantes à faible contraste ; les extrémités paraissent intactes."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 77.0,
+        "ink_pixels": 34,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 4,
+      "page_id": "mf_0036",
+      "tile_index": 0,
+      "word_id": "mf_0036_w000797",
+      "transcription": "et",
+      "visually_read_text": "et",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 4,
+        "display_scale": 2,
+        "font_size_px": 31,
+        "contrast_gray_levels": 181.0,
+        "ink_pixels": 150,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 5,
+      "page_id": "mf_0037",
+      "tile_index": 0,
+      "word_id": "mf_0037_w004174",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 201.0,
+        "ink_pixels": 78,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 6,
+      "page_id": "mf_0038",
+      "tile_index": 0,
+      "word_id": "mf_0038_w001499",
+      "transcription": "acco-",
+      "visually_read_text": "acco-",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Tiret de césure visible et intact ; raccord avec le fragment suivant non vérifié visuellement."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 202.0,
+        "ink_pixels": 170,
+        "hyphenation_part": "start"
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 7,
+      "page_id": "mf_0038",
+      "tile_index": 0,
+      "word_id": "mf_0038_w003015",
+      "transcription": "et",
+      "visually_read_text": "et",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 198.0,
+        "ink_pixels": 72,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 8,
+      "page_id": "mf_0039",
+      "tile_index": 0,
+      "word_id": "mf_0039_w000114",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 209.0,
+        "ink_pixels": 78,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_05.png",
+      "sheet_index": 5,
+      "card_index": 9,
+      "page_id": "mf_0040",
+      "tile_index": 0,
+      "word_id": "mf_0040_w000108",
+      "transcription": "les",
+      "visually_read_text": "les",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 4,
+        "display_scale": 2,
+        "font_size_px": 30,
+        "contrast_gray_levels": 242.0,
+        "ink_pixels": 221,
+        "hyphenation_part": "end"
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 0,
+      "page_id": "mf_0040",
+      "tile_index": 0,
+      "word_id": "mf_0040_w000310",
+      "transcription": "UN",
+      "visually_read_text": "UN",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 4,
+        "display_scale": 2,
+        "font_size_px": 38,
+        "contrast_gray_levels": 242.0,
+        "ink_pixels": 640,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 1,
+      "page_id": "mf_0040",
+      "tile_index": 0,
+      "word_id": "mf_0040_w001550",
+      "transcription": "et",
+      "visually_read_text": "et",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 4,
+        "display_scale": 2,
+        "font_size_px": 30,
+        "contrast_gray_levels": 232.0,
+        "ink_pixels": 150,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 2,
+      "page_id": "mf_0041",
+      "tile_index": 0,
+      "word_id": "mf_0041_w003657",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 196.0,
+        "ink_pixels": 77,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 3,
+      "page_id": "mf_0042",
+      "tile_index": 0,
+      "word_id": "mf_0042_w000801",
+      "transcription": "—",
+      "visually_read_text": "—",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Tiret cadratin visible, y compris sur les variantes à faible contraste ; les extrémités paraissent intactes."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 4,
+        "display_scale": 2,
+        "font_size_px": 29,
+        "contrast_gray_levels": 121.0,
+        "ink_pixels": 51,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 4,
+      "page_id": "mf_0042",
+      "tile_index": 0,
+      "word_id": "mf_0042_w001935",
+      "transcription": "jeter",
+      "visually_read_text": "jeter",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 4,
+        "display_scale": 2,
+        "font_size_px": 29,
+        "contrast_gray_levels": 181.0,
+        "ink_pixels": 331,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 5,
+      "page_id": "mf_0043",
+      "tile_index": 0,
+      "word_id": "mf_0043_w002162",
+      "transcription": "si",
+      "visually_read_text": "si",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "clean",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 223.0,
+        "ink_pixels": 65,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 6,
+      "page_id": "mf_0044",
+      "tile_index": 0,
+      "word_id": "mf_0044_w002900",
+      "transcription": "Cette",
+      "visually_read_text": "Cette",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 23,
+        "contrast_gray_levels": 224.0,
+        "ink_pixels": 266,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 7,
+      "page_id": "mf_0045",
+      "tile_index": 0,
+      "word_id": "mf_0045_w001461",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 197.0,
+        "ink_pixels": 81,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 8,
+      "page_id": "mf_0046",
+      "tile_index": 0,
+      "word_id": "mf_0046_w001813",
+      "transcription": "du",
+      "visually_read_text": "du",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 24,
+        "contrast_gray_levels": 165.0,
+        "ink_pixels": 130,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_06.png",
+      "sheet_index": 6,
+      "card_index": 9,
+      "page_id": "mf_0047",
+      "tile_index": 0,
+      "word_id": "mf_0047_w000677",
+      "transcription": "et",
+      "visually_read_text": "et",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 25,
+        "contrast_gray_levels": 174.0,
+        "ink_pixels": 115,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 0,
+      "page_id": "mf_0048",
+      "tile_index": 0,
+      "word_id": "mf_0048_w001749",
+      "transcription": "ce",
+      "visually_read_text": "ce",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 192.0,
+        "ink_pixels": 68,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 1,
+      "page_id": "mf_0049",
+      "tile_index": 0,
+      "word_id": "mf_0049_w003560",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 198.7,
+        "ink_pixels": 76,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 2,
+      "page_id": "mf_0050",
+      "tile_index": 0,
+      "word_id": "mf_0050_w000587",
+      "transcription": "il",
+      "visually_read_text": "il",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 203.0,
+        "ink_pixels": 74,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 3,
+      "page_id": "mf_0051",
+      "tile_index": 0,
+      "word_id": "mf_0051_w001529",
+      "transcription": "ce",
+      "visually_read_text": "ce",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 160.0,
+        "ink_pixels": 61,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 4,
+      "page_id": "mf_0051",
+      "tile_index": 0,
+      "word_id": "mf_0051_w005107",
+      "transcription": "—",
+      "visually_read_text": "—",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection.",
+        "Tiret cadratin visible, y compris sur les variantes à faible contraste ; les extrémités paraissent intactes."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 79.0,
+        "ink_pixels": 33,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 5,
+      "page_id": "mf_0052",
+      "tile_index": 0,
+      "word_id": "mf_0052_w000462",
+      "transcription": "il",
+      "visually_read_text": "il",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection."
+      ],
+      "sample_metadata": {
+        "degradation": "clean",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 236.0,
+        "ink_pixels": 60,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 6,
+      "page_id": "mf_0053",
+      "tile_index": 0,
+      "word_id": "mf_0053_w004678",
+      "transcription": "DES",
+      "visually_read_text": "DES",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 24,
+        "contrast_gray_levels": 215.0,
+        "ink_pixels": 443,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 7,
+      "page_id": "mf_0053",
+      "tile_index": 0,
+      "word_id": "mf_0053_w005335",
+      "transcription": "et",
+      "visually_read_text": "et",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 195.0,
+        "ink_pixels": 68,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 8,
+      "page_id": "mf_0054",
+      "tile_index": 0,
+      "word_id": "mf_0054_w002033",
+      "transcription": "il",
+      "visually_read_text": "il",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection."
+      ],
+      "sample_metadata": {
+        "degradation": "clean",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 229.0,
+        "ink_pixels": 60,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_07.png",
+      "sheet_index": 7,
+      "card_index": 9,
+      "page_id": "mf_0055",
+      "tile_index": 0,
+      "word_id": "mf_0055_w001771",
+      "transcription": "si",
+      "visually_read_text": "si",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "clean",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 220.0,
+        "ink_pixels": 65,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 0,
+      "page_id": "mf_0056",
+      "tile_index": 0,
+      "word_id": "mf_0056_w003032",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 198.0,
+        "ink_pixels": 78,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 1,
+      "page_id": "mf_0057",
+      "tile_index": 0,
+      "word_id": "mf_0057_w000163",
+      "transcription": "le",
+      "visually_read_text": "le",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 23,
+        "contrast_gray_levels": 156.0,
+        "ink_pixels": 89,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 2,
+      "page_id": "mf_0057",
+      "tile_index": 0,
+      "word_id": "mf_0057_w003093",
+      "transcription": "remp-",
+      "visually_read_text": "remp-",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection.",
+        "Tiret de césure visible et intact ; raccord avec le fragment suivant non vérifié visuellement."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 23,
+        "contrast_gray_levels": 160.0,
+        "ink_pixels": 250,
+        "hyphenation_part": "start"
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 3,
+      "page_id": "mf_0057",
+      "tile_index": 0,
+      "word_id": "mf_0057_w003286",
+      "transcription": "ont",
+      "visually_read_text": "ont",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 23,
+        "contrast_gray_levels": 157.0,
+        "ink_pixels": 139,
+        "hyphenation_part": "end"
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 4,
+      "page_id": "mf_0058",
+      "tile_index": 0,
+      "word_id": "mf_0058_w000321",
+      "transcription": "de",
+      "visually_read_text": "de",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 24,
+        "contrast_gray_levels": 206.0,
+        "ink_pixels": 128,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 5,
+      "page_id": "mf_0059",
+      "tile_index": 0,
+      "word_id": "mf_0059_w005343",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 193.0,
+        "ink_pixels": 80,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 6,
+      "page_id": "mf_0060",
+      "tile_index": 0,
+      "word_id": "mf_0060_w002592",
+      "transcription": "la",
+      "visually_read_text": "la",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 211.0,
+        "ink_pixels": 78,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 7,
+      "page_id": "mf_0061",
+      "tile_index": 0,
+      "word_id": "mf_0061_w002260",
+      "transcription": "et",
+      "visually_read_text": "et",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 203.0,
+        "ink_pixels": 69,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 8,
+      "page_id": "mf_0062",
+      "tile_index": 0,
+      "word_id": "mf_0062_w002002",
+      "transcription": "et",
+      "visually_read_text": "et",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 5,
+        "display_scale": 2,
+        "font_size_px": 25,
+        "contrast_gray_levels": 214.0,
+        "ink_pixels": 116,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_08.png",
+      "sheet_index": 8,
+      "card_index": 9,
+      "page_id": "mf_0063",
+      "tile_index": 0,
+      "word_id": "mf_0063_w002169",
+      "transcription": "compa-",
+      "visually_read_text": "compa-",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Tiret de césure visible et intact ; raccord avec le fragment suivant non vérifié visuellement."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 155.0,
+        "ink_pixels": 225,
+        "hyphenation_part": "start"
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 0,
+      "page_id": "mf_0063",
+      "tile_index": 0,
+      "word_id": "mf_0063_w002611",
+      "transcription": "rée",
+      "visually_read_text": "rée",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection.",
+        "Accent aigu de « é » visible et distinct du corps de la lettre."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 152.0,
+        "ink_pixels": 104,
+        "hyphenation_part": "end"
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 1,
+      "page_id": "mf_0063",
+      "tile_index": 0,
+      "word_id": "mf_0063_w002672",
+      "transcription": "ce",
+      "visually_read_text": "ce",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 143.0,
+        "ink_pixels": 64,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 2,
+      "page_id": "mf_0063",
+      "tile_index": 0,
+      "word_id": "mf_0063_w003011",
+      "transcription": "SCIENCES",
+      "visually_read_text": "SCIENCES",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 24,
+        "contrast_gray_levels": 167.0,
+        "ink_pixels": 975,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 3,
+      "page_id": "mf_0063",
+      "tile_index": 0,
+      "word_id": "mf_0063_w003475",
+      "transcription": "—",
+      "visually_read_text": "—",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Tiret cadratin visible, y compris sur les variantes à faible contraste ; les extrémités paraissent intactes."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 75.0,
+        "ink_pixels": 34,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 4,
+      "page_id": "mf_0064",
+      "tile_index": 0,
+      "word_id": "mf_0064_w004464",
+      "transcription": "fait",
+      "visually_read_text": "fait",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 209.0,
+        "ink_pixels": 146,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 5,
+      "page_id": "mf_0065",
+      "tile_index": 0,
+      "word_id": "mf_0065_w000804",
+      "transcription": "—",
+      "visually_read_text": "—",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection.",
+        "Tiret cadratin visible, y compris sur les variantes à faible contraste ; les extrémités paraissent intactes."
+      ],
+      "sample_metadata": {
+        "degradation": "clean",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 150.0,
+        "ink_pixels": 17,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 6,
+      "page_id": "mf_0065",
+      "tile_index": 0,
+      "word_id": "mf_0065_w002571",
+      "transcription": "il",
+      "visually_read_text": "il",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "clean",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 218.0,
+        "ink_pixels": 60,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 7,
+      "page_id": "mf_0066",
+      "tile_index": 0,
+      "word_id": "mf_0066_w000253",
+      "transcription": "tat",
+      "visually_read_text": "tat",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Petit fragment d’encre en bordure du recadrage, hors du mot cible ; il ne gêne pas sa lecture. Origine non déterminée dans cette inspection."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 200.0,
+        "ink_pixels": 103,
+        "hyphenation_part": "end"
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 8,
+      "page_id": "mf_0066",
+      "tile_index": 0,
+      "word_id": "mf_0066_w000887",
+      "transcription": "ce",
+      "visually_read_text": "ce",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé."
+      ],
+      "sample_metadata": {
+        "degradation": "aged",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 19,
+        "contrast_gray_levels": 195.0,
+        "ink_pixels": 66,
+        "hyphenation_part": null
+      }
+    },
+    {
+      "sheet_path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_09.png",
+      "sheet_index": 9,
+      "card_index": 9,
+      "page_id": "mf_0067",
+      "tile_index": 0,
+      "word_id": "mf_0067_w004513",
+      "transcription": "—",
+      "visually_read_text": "—",
+      "status": "PASS",
+      "observations": [
+        "Le mot cible se lit et correspond à la transcription affichée.",
+        "Aucun masque, rognage ou chevauchement gênant du mot cible observé.",
+        "Tiret cadratin visible, y compris sur les variantes à faible contraste ; les extrémités paraissent intactes."
+      ],
+      "sample_metadata": {
+        "degradation": "faint",
+        "columns": 6,
+        "display_scale": 2,
+        "font_size_px": 20,
+        "contrast_gray_levels": 84.0,
+        "ink_pixels": 35,
+        "hyphenation_part": null
+      }
+    }
+  ],
+  "summary": {
+    "sheet_count": 5,
+    "crop_count": 50,
+    "unique_page_count": 35,
+    "text_mismatches": 0,
+    "target_clipping_observed": 0,
+    "target_masking_observed": 0,
+    "blocking_anomalies": [],
+    "nonblocking_observations": [
+      "Des fragments d’encre très petits sont visibles en bordure de certains recadrages, hors mot cible ; ils ne masquent pas les lettres cibles. Leur origine n’a pas été déterminée."
+    ],
+    "accent_examples": [
+      "mf_0063_w002611 : rée, accent aigu visible"
+    ],
+    "hyphenation_start_examples": [
+      "mf_0038_w001499 : acco-",
+      "mf_0057_w003093 : remp-",
+      "mf_0063_w002169 : compa-"
+    ],
+    "punctuation_only_count": 6
+  },
+  "method": [
+    "Ouverture réelle de chacune des cinq planches par view_image en détail original.",
+    "Inspection des dix cartes de chaque planche en ordre de lecture, comparaison du crop avec la transcription affichée.",
+    "Confrontation des transcriptions lues avec les métadonnées sample_sheets.cards et samples ; vérification SHA256 des cinq planches."
+  ],
+  "limitations": [
+    "Ces crops sont présentés agrandis ×2 ; la lecture à l’échelle native et dans la page complète n’est pas évaluée ici.",
+    "La transcription attendue était visible durant la revue ; ceci ne constitue pas une expérience de lecture en aveugle.",
+    "Seuls ces 50 crops ont été inspectés dans cette revue, et aucun jugement exhaustif n’est porté sur les 436 490 mots du lot.",
+    "La couverture des accents est limitée au contenu effectivement présent, notamment « rée » ; elle ne prouve pas la lisibilité de tous les signes français.",
+    "Les tirets de césure présents ont été observés ; la continuité sémantique et l’ordre des fragments entre lignes ou colonnes ne sont pas vérifiés par ces crops isolés.",
+    "Ce contrôle ne prouve ni reconnaissance OCR, ni réalisme historique, ni gain sur des documents réels."
+  ],
+  "source_or_dataset_files_modified": false
+}

@@ -1,0 +1,8 @@
+{
+  "command": "uv run --locked ruff check src tests assets/verify_assets.py tools/audit_legibility.py tools/reproduce_pilot.py",
+  "exit_code": 0,
+  "stdout": "All checks passed!\n",
+  "stderr": "",
+  "source_commit": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+  "checked_sources_unchanged_since_commit": true
+}

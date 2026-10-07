@@ -1,0 +1,121 @@
+{
+  "source_commit": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+  "pilot_manifest_sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+  "artifacts": [
+    {
+      "path": "pilot-manifest.json",
+      "source_path": "runs/pilot-v0.2-r2/manifest.json",
+      "sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+      "bytes": 135566
+    },
+    {
+      "path": "pilot-validation.json",
+      "source_path": "runs/pilot-v0.2-r2/qa/report.json",
+      "sha256": "08f3b5e05c3dc46e041c6ad1ca5d2a8e670487da36349a49a50c94594b4180cc",
+      "bytes": 20838
+    },
+    {
+      "path": "pilot-statistics.json",
+      "source_path": "runs/pilot-v0.2-r2/qa/statistics.json",
+      "sha256": "3e447f548dd0eedabf23813cf96c121905a1dec73f2153073e28bb5bdf185f85",
+      "bytes": 459
+    },
+    {
+      "path": "environment.json",
+      "source_path": "runs/pilot-v0.2-r2/environment.json",
+      "sha256": "f6859dd2b3c01f0c19eaea650cbd01847cd2950246b10ab9f3bc38e208caed14",
+      "bytes": 2042
+    },
+    {
+      "path": "reproducibility.json",
+      "source_path": "runs/pilot-v0.2-r2-reproduction.json",
+      "sha256": "63669fdb3272964c69b4f991fc65b75357748d3e27f9bed403b8b02a500063e4",
+      "bytes": 5164
+    },
+    {
+      "path": "legibility.json",
+      "source_path": "runs/pilot-v0.2-r2-legibility.json",
+      "sha256": "0df1184a179a5d018700f2561ebc692e1685d691a7d03b015d31ecff99eb94e7",
+      "bytes": 219163
+    },
+    {
+      "path": "visual-summary.json",
+      "source_path": "runs/pilot-v0.2-r2-visual-summary.json",
+      "sha256": "7f0fb8b33ea0da8391fa181f326d4e76339437ff11bbf6942db0220ced3e1c48",
+      "bytes": 6994
+    },
+    {
+      "path": "visual-coordinator.json",
+      "source_path": "runs/pilot-v0.2-r2-visual-review.json",
+      "sha256": "fb4fdec7e2434302ddc854196c0e829fa21e5dc27dea5de05ab0afec0547ab64",
+      "bytes": 17424
+    },
+    {
+      "path": "visual-pages-40-69.json",
+      "source_path": "runs/pilot-v0.2-r2-visual-pages-40-69.json",
+      "sha256": "e34a40ad59cfb2db3ae1679b8865d3395f8cab467c228cde2b536803cc34383d",
+      "bytes": 12639
+    },
+    {
+      "path": "visual-pages-70-99.json",
+      "source_path": "runs/pilot-v0.2-r2-visual-pages-70-99.json",
+      "sha256": "a7c62c21635af0626007c435e51d3a4beb59e5318849c93d5abb21716bb4f8f6",
+      "bytes": 10548
+    },
+    {
+      "path": "visual-words-50-99.json",
+      "source_path": "runs/pilot-v0.2-r2-visual-words-50-99.json",
+      "sha256": "f0e6d3e4b958595b4330322918b99e33c65e5e1b788768355e3902ca7aa6d34a",
+      "bytes": 45652
+    },
+    {
+      "path": "visual-words-100-149.json",
+      "source_path": "runs/pilot-v0.2-r2-visual-words-100-149.json",
+      "sha256": "85e33eba6ad4894fdf0f3585ca1c90763684f617508bba35bab4ca001a270669",
+      "bytes": 28638
+    },
+    {
+      "path": "independent-exports.json",
+      "source_path": "runs/pilot-v0.2-r2-independent-exports.json",
+      "sha256": "a195ec64396f431d6082f9d4ae0276cb9a759a1412981e400f2ba6dd2d4fc6d9",
+      "bytes": 63265
+    },
+    {
+      "path": "independent-exports-audit.py",
+      "source_path": "runs/pilot-v0.2-r2-independent-exports-audit.py",
+      "sha256": "00a6b232cf5e9a99064627380e4ede45a26e1421de449af1ee9f1580ac3ef1b6",
+      "bytes": 25366
+    },
+    {
+      "path": "clean-checkout.json",
+      "source_path": "runs/clean-checkout-r2-verification.json",
+      "sha256": "9777a3e6ce23ce81f3bdab00c7d09704ba2cef96623e3c7eb1308e20b0dae688",
+      "bytes": 7609
+    },
+    {
+      "path": "tests.txt",
+      "source_path": "runs/pytest-release-r2.log",
+      "sha256": "fee3b57a2e06b343fa5fe8b0be8d7abd374ccc42ed75e8d0dc9b61277cee79b4",
+      "bytes": 272
+    },
+    {
+      "path": "preview.jpg",
+      "source_path": "runs/pilot-v0.2-r2/qa/contact_00.jpg",
+      "sha256": "6b1ed199892ae46a3aef16220f2f79f1b0636d44adf9f9e0d1e84fef52136685",
+      "bytes": 695496
+    },
+    {
+      "path": "word-samples.png",
+      "source_path": "runs/pilot-v0.2-r2-word-samples/samples_00.png",
+      "sha256": "4cd509cd55c2a60423cbaf7cff1fd20d6d7fa9e7cd9bc83a56e2d38c5ad6127c",
+      "bytes": 64869
+    },
+    {
+      "path": "ruff.json",
+      "source_path": "runs/ruff-release-r2.json",
+      "sha256": "c91b56d8d29c65ba3a070a1ea58617ddc15a3cf757128261b719bd9948b931a3",
+      "bytes": 314
+    }
+  ],
+  "scope": "Copies inchangées des preuves, pas un lot exécutable. Les chemins absolus des rapports décrivent la machine de mesure ; données volumineuses conservées dans runs/. Le script d’audit indépendant est archivé tel qu’exécuté depuis runs/, à côté du lot et du journal de progression."
+}

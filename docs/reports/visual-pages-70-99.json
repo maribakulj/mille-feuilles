@@ -1,0 +1,316 @@
+{
+  "status": "pass",
+  "reviewer": "Codex agent validation_contrat",
+  "dataset_root": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2",
+  "scope": "Revue visuelle des miniatures de mise en page, pages 0070 à 0099.",
+  "files_opened": [
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2/qa/contact_07.jpg",
+      "sha256": "fe2d116c0ac32572b0782cc4d81a77c468692f93aa599364f3996169d3e39e97",
+      "view_method": "view_image",
+      "image_role": "contact_sheet",
+      "pages_actually_viewed": [
+        "mf_0070",
+        "mf_0071",
+        "mf_0072",
+        "mf_0073",
+        "mf_0074",
+        "mf_0075",
+        "mf_0076",
+        "mf_0077",
+        "mf_0078",
+        "mf_0079"
+      ]
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2/qa/contact_08.jpg",
+      "sha256": "18a7b0159a383b46f07bf4c0aef37795b8b9446decfdb055170d86cf793b440e",
+      "view_method": "view_image",
+      "image_role": "contact_sheet",
+      "pages_actually_viewed": [
+        "mf_0080",
+        "mf_0081",
+        "mf_0082",
+        "mf_0083",
+        "mf_0084",
+        "mf_0085",
+        "mf_0086",
+        "mf_0087",
+        "mf_0088",
+        "mf_0089"
+      ]
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2/qa/contact_09.jpg",
+      "sha256": "04e17d0e7d07db24e1a0f06cf2f8e3f1041d28352106440ad3a38ec3eae086ea",
+      "view_method": "view_image",
+      "image_role": "contact_sheet",
+      "pages_actually_viewed": [
+        "mf_0090",
+        "mf_0091",
+        "mf_0092",
+        "mf_0093",
+        "mf_0094",
+        "mf_0095",
+        "mf_0096",
+        "mf_0097",
+        "mf_0098",
+        "mf_0099"
+      ]
+    }
+  ],
+  "pages_actually_viewed": [
+    "mf_0070",
+    "mf_0071",
+    "mf_0072",
+    "mf_0073",
+    "mf_0074",
+    "mf_0075",
+    "mf_0076",
+    "mf_0077",
+    "mf_0078",
+    "mf_0079",
+    "mf_0080",
+    "mf_0081",
+    "mf_0082",
+    "mf_0083",
+    "mf_0084",
+    "mf_0085",
+    "mf_0086",
+    "mf_0087",
+    "mf_0088",
+    "mf_0089",
+    "mf_0090",
+    "mf_0091",
+    "mf_0092",
+    "mf_0093",
+    "mf_0094",
+    "mf_0095",
+    "mf_0096",
+    "mf_0097",
+    "mf_0098",
+    "mf_0099"
+  ],
+  "page_count": 30,
+  "anomalies_requiring_full_resolution": [],
+  "observations": [
+    {
+      "page_id": "mf_0070",
+      "columns_observed": 4,
+      "degradation_label": "faint",
+      "layout_status": "pass",
+      "observation": "Quatre colonnes distinctes ; fin de dernière colonne plus courte, sans débordement visible."
+    },
+    {
+      "page_id": "mf_0071",
+      "columns_observed": 4,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Bandeau séparé du corps ; colonnes régulières et marges latérales conservées."
+    },
+    {
+      "page_id": "mf_0072",
+      "columns_observed": 6,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Composition dense en six colonnes ; gouttières et marge basse restent visibles."
+    },
+    {
+      "page_id": "mf_0073",
+      "columns_observed": 5,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Titres et corps contenus dans cinq colonnes ; bas de colonnes variables sans collision majeure."
+    },
+    {
+      "page_id": "mf_0074",
+      "columns_observed": 5,
+      "degradation_label": "faint",
+      "layout_status": "pass",
+      "observation": "Rendu plus pâle, structure régulière ; aucune zone entière ne semble effacée à cette échelle."
+    },
+    {
+      "page_id": "mf_0075",
+      "columns_observed": 5,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Dernière colonne plus courte ; les autres colonnes restent alignées dans le cadre."
+    },
+    {
+      "page_id": "mf_0076",
+      "columns_observed": 6,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Six colonnes denses, filets séparateurs réguliers ; aucun débordement majeur visible."
+    },
+    {
+      "page_id": "mf_0077",
+      "columns_observed": 6,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Bandeau et filet horizontal dégagés ; composition complète avec marges visibles."
+    },
+    {
+      "page_id": "mf_0078",
+      "columns_observed": 6,
+      "degradation_label": "faint",
+      "layout_status": "pass",
+      "observation": "Contraste réduit homogène ; six colonnes séparées et aucun rognage majeur visible."
+    },
+    {
+      "page_id": "mf_0079",
+      "columns_observed": 6,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Densité élevée mais gouttières préservées ; extrémités de colonnes à différentes hauteurs."
+    },
+    {
+      "page_id": "mf_0080",
+      "columns_observed": 5,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Cinq colonnes nettes ; titres intégrés aux colonnes, marges hautes et basses dégagées."
+    },
+    {
+      "page_id": "mf_0081",
+      "columns_observed": 6,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Six colonnes remplies jusqu’en bas ; filet du bandeau séparé de la composition."
+    },
+    {
+      "page_id": "mf_0082",
+      "columns_observed": 5,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Répartition régulière des titres et articles ; aucune superposition majeure visible."
+    },
+    {
+      "page_id": "mf_0083",
+      "columns_observed": 5,
+      "degradation_label": "clean",
+      "layout_status": "pass",
+      "observation": "Fond clair et encre plus sombre ; cinq colonnes continues sans collision majeure."
+    },
+    {
+      "page_id": "mf_0084",
+      "columns_observed": 5,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Cinq colonnes équilibrées ; espaces entre articles et marges visibles."
+    },
+    {
+      "page_id": "mf_0085",
+      "columns_observed": 6,
+      "degradation_label": "clean",
+      "layout_status": "pass",
+      "observation": "Composition dense à six colonnes ; limites de colonnes et marge basse distinctes."
+    },
+    {
+      "page_id": "mf_0086",
+      "columns_observed": 6,
+      "degradation_label": "faint",
+      "layout_status": "pass",
+      "observation": "Mode pâle homogène ; pas de rupture de colonne ni rognage évident à la miniature."
+    },
+    {
+      "page_id": "mf_0087",
+      "columns_observed": 6,
+      "degradation_label": "clean",
+      "layout_status": "pass",
+      "observation": "Six colonnes de forte densité ; titres dans les limites des colonnes."
+    },
+    {
+      "page_id": "mf_0088",
+      "columns_observed": 5,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Bandeau dégagé, cinq colonnes régulières ; fins d’articles de hauteurs variables."
+    },
+    {
+      "page_id": "mf_0089",
+      "columns_observed": 5,
+      "degradation_label": "faint",
+      "layout_status": "pass",
+      "observation": "Dernière colonne termine plus haut ; espace final compatible avec des articles non tronqués."
+    },
+    {
+      "page_id": "mf_0090",
+      "columns_observed": 6,
+      "degradation_label": "clean",
+      "layout_status": "pass",
+      "observation": "Six colonnes denses ; bord inférieur encore séparé du texte par une marge."
+    },
+    {
+      "page_id": "mf_0091",
+      "columns_observed": 5,
+      "degradation_label": "faint",
+      "layout_status": "pass",
+      "observation": "Cinq colonnes pâles et distinctes ; aucune collision majeure ou grande zone manquante visible."
+    },
+    {
+      "page_id": "mf_0092",
+      "columns_observed": 5,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Titres réguliers dans cinq colonnes ; limites et marges préservées."
+    },
+    {
+      "page_id": "mf_0093",
+      "columns_observed": 4,
+      "degradation_label": "faint",
+      "layout_status": "pass",
+      "observation": "Quatre colonnes plus larges ; densité moindre cohérente avec ce format."
+    },
+    {
+      "page_id": "mf_0094",
+      "columns_observed": 4,
+      "degradation_label": "clean",
+      "layout_status": "pass",
+      "observation": "Quatre colonnes nettes ; espaces et petits filets séparateurs visibles, sans débordement."
+    },
+    {
+      "page_id": "mf_0095",
+      "columns_observed": 6,
+      "degradation_label": "clean",
+      "layout_status": "pass",
+      "observation": "Six colonnes denses ; bloc de titre du journal dégagé et gouttières régulières."
+    },
+    {
+      "page_id": "mf_0096",
+      "columns_observed": 6,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Six colonnes remplies, dernier bas de colonne plus haut ; aucune collision majeure visible."
+    },
+    {
+      "page_id": "mf_0097",
+      "columns_observed": 6,
+      "degradation_label": "faint",
+      "layout_status": "pass",
+      "observation": "Densité élevée avec contraste réduit ; marges et séparation des colonnes conservées."
+    },
+    {
+      "page_id": "mf_0098",
+      "columns_observed": 6,
+      "degradation_label": "aged",
+      "layout_status": "pass",
+      "observation": "Six colonnes et nombreux titres ; structure régulière, sans rognage majeur visible."
+    },
+    {
+      "page_id": "mf_0099",
+      "columns_observed": 6,
+      "degradation_label": "clean",
+      "layout_status": "pass",
+      "observation": "Six colonnes nettes ; marge basse variable mais visible et composition contenue."
+    }
+  ],
+  "summary": "Les 30 miniatures ont été examinées. Aucun rognage, débordement ou collision majeure visible. Le bandeau reste séparé du corps, les gouttières et marges restent visibles. Les fins de colonnes sont parfois inégales.",
+  "limitations": [
+    "Les miniatures ne permettent pas une lecture exhaustive des mots ni une vérification de chaque glyphe.",
+    "Aucun PNG individuel pleine résolution n’a été ouvert : aucune anomalie majeure des miniatures ne l’a nécessité.",
+    "Les modes faint paraissent plus pâles ; leur lisibilité doit être appréciée par l’audit des pixels et les échantillons de mots à résolution native.",
+    "Cette revue ne vérifie pas à elle seule les annotations, les exports, la reproductibilité ou la représentativité historique.",
+    "Le statut pass porte uniquement sur les critères de mise en page visibles dans ces trois planches."
+  ]
+}

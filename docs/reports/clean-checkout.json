@@ -1,0 +1,236 @@
+{
+  "status": "pass",
+  "verification_date": "2026-10-07",
+  "scope": "Fresh private corrected-version clone; locked Python 3.12 installation using uv hardlink mode; CLI help, one generated page, dataset validation and asset verification.",
+  "source_repository": "https://github.com/maribakulj/mille-feuilles.git",
+  "expected_commit": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+  "head_before": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+  "head_after": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+  "git_status_before": "",
+  "git_status_after": "",
+  "uv_version": "uv 0.11.19 (7b2cff1c3 2026-06-03 aarch64-apple-darwin)",
+  "clone": "/Users/marcel/heritage-synth/runs/clean-checkout-r2",
+  "dataset": "/Users/marcel/heritage-synth/runs/clean-checkout-r2/runs/installation-check",
+  "commands": [
+    {
+      "command": "git clone https://github.com/maribakulj/mille-feuilles.git /Users/marcel/heritage-synth/runs/clean-checkout-r2",
+      "exit_code": 0
+    },
+    {
+      "command": "uv sync --locked --python 3.12 --link-mode hardlink",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked mille-feuilles --help",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked mille-feuilles generate --output runs/installation-check --pages 1 --width 800 --height 1100 --dpi 45 --columns 4",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked mille-feuilles validate runs/installation-check",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked python assets/verify_assets.py",
+      "exit_code": 0
+    }
+  ],
+  "generator_provenance": {
+    "commit": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+    "dirty": false,
+    "environment_path": "environment.json",
+    "environment_sha256": "f6859dd2b3c01f0c19eaea650cbd01847cd2950246b10ab9f3bc38e208caed14"
+  },
+  "environment": {
+    "freetype": "2.14.3",
+    "generator": "0.2.0",
+    "implementation": "CPython",
+    "layout_engine": "pillow-freetype-basic",
+    "packages": {
+      "Pillow": "12.3.0",
+      "fonttools": "4.66.1",
+      "jsonschema": "4.26.0",
+      "lxml": "6.1.3",
+      "numpy": "2.5.3",
+      "shapely": "2.1.2"
+    },
+    "platform": "macOS-26.4.1-arm64-arm-64bit",
+    "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+    "sources": {
+      "pyproject.toml": "112cc2163f5786d49515eaae207cf5cefd14b084ebcb1fcb8505c85122c5683b",
+      "schemas/assets.schema.json": "66c7eb3198614230fc2e732e9c07cb121284b424ba3a9ec7253b8d2ee88f5dec",
+      "schemas/manifest.schema.json": "84e038691c1cf2ea09ec579c486238ac2380a2c522fd942a668cae4a2d873648",
+      "schemas/page.schema.json": "da0d058774d0307764b577173d4af232cea020c0d46d7fd5b9db876fab95b4b9",
+      "schemas/xml/alto-4-4.xsd": "5564fd29d2dd090d8102b8a0aa081906afd677cd5ecc632312e56f21ea14702b",
+      "schemas/xml/page-2019-07-15.xsd": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5",
+      "schemas/xml/provenance.json": "f2e8bb4dc146e90dd0aa39798f2081863ed5d258eeee14eaa875f5eb3ea5317c",
+      "schemas/xml/xlink.xsd": "f1f5bb6003165cdd8f6c1fcc32f8fd1f965e1681010f3b9806d9460bcffa8a3c",
+      "src/mille_feuilles/__init__.py": "2de4c52a27b47324860473e5018748680c8e455776259fba6508f79178ae2789",
+      "src/mille_feuilles/cli.py": "4c9921868c3f2c14d22fd8fa74f422d860b179b20e621a8a06c36b265afdc2ea",
+      "src/mille_feuilles/exports.py": "bb9b24de0f536558db4971ab38f3fe0956c45be3237902fc5b3539d6f729bf4a",
+      "src/mille_feuilles/io.py": "fa26d558c5582013dda07116c517fc1e87e624f66c5e4d434dca384a8f1aee84",
+      "src/mille_feuilles/pipeline.py": "219cebf38817a9d3b09bc1073eef8e1ab68352eafd29fb8146dafd5b60dc5e3e",
+      "src/mille_feuilles/render.py": "e8883009d2b44369b5682640302b79b33c4e80ad1e6e23f722696d95654d394f",
+      "src/mille_feuilles/validation.py": "fadf5074e25ad4f32ca861bb592de84bad212fd5a6526b1ff6a555a9db8f0dca",
+      "uv.lock": "baea2032a243aad372d0d2e035d15f250574b93080f40be00f0e0b4ff51fd4bc"
+    }
+  },
+  "validation": {
+    "status": "pass",
+    "errors": [],
+    "checks": [
+      {
+        "name": "manifest",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "file_hashes",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "strict_json_files",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "unique_manifest_entries",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "manifest_coverage",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "asset_registry",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "assets",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "page:mf_0000",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "page_files:mf_0000",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "export_inventory",
+        "status": "pass",
+        "detail": "verified"
+      },
+      {
+        "name": "exports",
+        "status": "pass",
+        "detail": "verified"
+      }
+    ]
+  },
+  "assets": {
+    "schema_version": "0.2.0",
+    "catalog_sha256": "15d6b6cb0528af01a74755c332481e8544c36d87ca53a93beb8c34f068851b20",
+    "checks": [
+      "asset_sha256",
+      "evidence_sha256",
+      "rights_verified",
+      "text_nfc",
+      "actual_cmap_nonzero_glyphs"
+    ],
+    "unique_demo_characters": 73,
+    "texts": [
+      {
+        "id": "text_demo_fr",
+        "codepoints": 13572,
+        "words": 2111
+      },
+      {
+        "id": "text_titres_fr",
+        "codepoints": 631,
+        "words": 96
+      },
+      {
+        "id": "text_annonces_fr",
+        "codepoints": 2518,
+        "words": 385
+      }
+    ],
+    "fonts": [
+      {
+        "id": "font_oldstandard_regular",
+        "glyph_codepoints": 888,
+        "missing_demo_characters": "",
+        "missing_french_diagnostic": "",
+        "long_s": false,
+        "unicode_ligatures_present": "ﬁﬂ"
+      },
+      {
+        "id": "font_oldstandard_bold",
+        "glyph_codepoints": 888,
+        "missing_demo_characters": "",
+        "missing_french_diagnostic": "",
+        "long_s": false,
+        "unicode_ligatures_present": "ﬁﬂ"
+      },
+      {
+        "id": "font_oldstandard_italic",
+        "glyph_codepoints": 887,
+        "missing_demo_characters": "",
+        "missing_french_diagnostic": "",
+        "long_s": false,
+        "unicode_ligatures_present": "ﬁﬂ"
+      },
+      {
+        "id": "font_gfsdidot_regular",
+        "glyph_codepoints": 1104,
+        "missing_demo_characters": "",
+        "missing_french_diagnostic": "",
+        "long_s": true,
+        "unicode_ligatures_present": "ﬀﬁﬂﬃﬄ"
+      }
+    ],
+    "errors": [],
+    "status": "pass",
+    "limitation": "Cmap coverage does not establish visual legibility or correct shaping; the renderer must verify those."
+  },
+  "statistics": {
+    "blocks": 70,
+    "categories": {
+      "annonce": 3,
+      "separateur": 28,
+      "texte": 25,
+      "titre": 14
+    },
+    "columns": {
+      "4": 1
+    },
+    "cross_block_articles": 14,
+    "degradations": {
+      "faint": 1
+    },
+    "hyphenation_groups": 26,
+    "lines": 296,
+    "pages": 1,
+    "scope": "synthetic demonstration / geometry QA; no evidence of OCR training gain",
+    "words": 1707
+  },
+  "render": {
+    "width": 800,
+    "height": 1100,
+    "dpi": 45,
+    "columns": 4
+  },
+  "previous_clone_preserved": "/Users/marcel/heritage-synth/runs/clean-checkout",
+  "errors": []
+}

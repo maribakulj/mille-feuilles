@@ -1,0 +1,2802 @@
+{
+  "audit_phase": "final",
+  "audit_time_utc": "2026-10-07T10:36:17.032292+00:00",
+  "audit_version": "2",
+  "coco_global": {
+    "blocks_checked": 17332,
+    "canonical_lines_counted": 65311,
+    "canonical_words_counted": 436490,
+    "categories": {
+      "annonce": 1489,
+      "separateur": 7056,
+      "texte": 5673,
+      "titre": 3114
+    },
+    "checks": [
+      "Unique integer IDs and exhaustive canonical mappings",
+      "Every image filename and dimensions",
+      "Every block parent image and category",
+      "Every polygon, bbox, area and crowd flag",
+      "Canonical totals and column/mode distribution against qa/statistics.json"
+    ],
+    "columns": {
+      "4": 7,
+      "5": 33,
+      "6": 60
+    },
+    "declared_category_table": [
+      "titre",
+      "texte",
+      "legende",
+      "annonce",
+      "tableau",
+      "illustration",
+      "separateur",
+      "autre"
+    ],
+    "degradations": {
+      "aged": 50,
+      "clean": 22,
+      "faint": 28
+    },
+    "images_checked": 100,
+    "limits": [
+      "COCO contains blocks only; text and reading order are covered by the independent seven-page XML sample.",
+      "No complete re-execution of the project validators or source corpus reads."
+    ],
+    "max_polygon_area_delta_px2": 3.259629011154175e-09,
+    "sha256": "29843060b8c88a8b4b72345ca263f0353935750767b3290d91612dccfd33c37d",
+    "status": "pass"
+  },
+  "completed_pages_at_snapshot": 100,
+  "coverage": {
+    "columns": [
+      4,
+      5,
+      6
+    ],
+    "degradations": [
+      "aged",
+      "clean",
+      "faint"
+    ],
+    "four_column_note": "included"
+  },
+  "failures": [],
+  "generation_commit_expected": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+  "input_sha256": {
+    "config.json": "b984106f76b09fb7b92539f1ec682f50a031d72c2f9e3d3b40ac9d339e28e4c7",
+    "environment.json": "f6859dd2b3c01f0c19eaea650cbd01847cd2950246b10ab9f3bc38e208caed14"
+  },
+  "lot": "runs/pilot-v0.2-r2",
+  "manifest_inventory": {
+    "artifact_bytes_checked": 1578679015,
+    "artifact_files_checked": 635,
+    "canonical_page_refs_checked": 100,
+    "dirty": false,
+    "exceptions": [
+      "manifest.json: cannot hash itself",
+      "qa/report.json: root validation writes it after the frozen inventory; independently excluded by contract"
+    ],
+    "expected_generation_commit": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+    "manifest_sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+    "sha256_of_sorted_path_hash_inventory": "078b3ad98df0362f8187bf44b52559c49aedfec05358eab088afa7c771142cc4",
+    "status": "pass",
+    "top_level_refs_checked": 5
+  },
+  "progress_log_snapshot_sha256": "16ee2ecb44c4ace9b01242e5e74480dace625815ef2c198ca9de2ce37c9b585b",
+  "sample": [
+    {
+      "angle_degrees": 0.0,
+      "categories": {
+        "annonce": 12,
+        "separateur": 77,
+        "texte": 66,
+        "titre": 30
+      },
+      "checked_all_block_polygons": true,
+      "checked_all_line_and_word_texts": true,
+      "checked_declared_and_serialized_reading_order": true,
+      "columns": 6,
+      "counts": {
+        "blocks": 185,
+        "cross_block_hyphenations": 2,
+        "hyphenation_groups": 75,
+        "lines": 745,
+        "sampled_line_geometries": 10,
+        "words": 4759
+      },
+      "cross_block_examples": [
+        {
+          "group_id": "mf_0004_h00013",
+          "members": [
+            {
+              "block_id": "mf_0004_b0038",
+              "line_id": "mf_0004_l00126",
+              "part": "start",
+              "reconstructed_text": "sciences",
+              "text": "scien-",
+              "word_id": "mf_0004_w000808"
+            },
+            {
+              "block_id": "mf_0004_b0039",
+              "line_id": "mf_0004_l00127",
+              "part": "end",
+              "reconstructed_text": "sciences",
+              "text": "ces",
+              "word_id": "mf_0004_w000809"
+            }
+          ]
+        },
+        {
+          "group_id": "mf_0004_h00062",
+          "members": [
+            {
+              "block_id": "mf_0004_b0154",
+              "line_id": "mf_0004_l00630",
+              "part": "start",
+              "reconstructed_text": "personnes",
+              "text": "person-",
+              "word_id": "mf_0004_w004033"
+            },
+            {
+              "block_id": "mf_0004_b0155",
+              "line_id": "mf_0004_l00631",
+              "part": "end",
+              "reconstructed_text": "personnes",
+              "text": "nes",
+              "word_id": "mf_0004_w004034"
+            }
+          ]
+        }
+      ],
+      "degradation": "clean",
+      "geometry_examples": [
+        {
+          "alto_baseline": [
+            [
+              864.0,
+              176.0
+            ],
+            [
+              1816.0,
+              176.0
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              864.0,
+              176
+            ],
+            [
+              1816.0,
+              176
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              864.0,
+              94
+            ],
+            [
+              1816.0,
+              94
+            ],
+            [
+              1816.0,
+              202
+            ],
+            [
+              864.0,
+              202
+            ]
+          ],
+          "line_id": "mf_0004_l00000",
+          "page_baseline": [
+            [
+              864.0,
+              176.0
+            ],
+            [
+              1816.0,
+              176.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              864.0,
+              94.0
+            ],
+            [
+              1816.0,
+              94.0
+            ],
+            [
+              1816.0,
+              202.0
+            ],
+            [
+              864.0,
+              202.0
+            ]
+          ],
+          "text": "MILLE FEUILLES"
+        },
+        {
+          "alto_baseline": [
+            [
+              1076.0,
+              216.0
+            ],
+            [
+              1604.0,
+              216.0
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              1076.0,
+              216
+            ],
+            [
+              1604.0,
+              216
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              1076.0,
+              192
+            ],
+            [
+              1604.0,
+              192
+            ],
+            [
+              1604.0,
+              222
+            ],
+            [
+              1076.0,
+              222
+            ]
+          ],
+          "line_id": "mf_0004_l00001",
+          "page_baseline": [
+            [
+              1076.0,
+              216.0
+            ],
+            [
+              1604.0,
+              216.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              1076.0,
+              192.0
+            ],
+            [
+              1604.0,
+              192.0
+            ],
+            [
+              1604.0,
+              222.0
+            ],
+            [
+              1076.0,
+              222.0
+            ]
+          ],
+          "text": "Journal de démonstration — Édition synthétique"
+        },
+        {
+          "alto_baseline": [
+            [
+              513.6666666666667,
+              1892.1999999999975
+            ],
+            [
+              682.6666666666667,
+              1892.1999999999975
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              513.6666666666667,
+              1892.1999999999975
+            ],
+            [
+              682.6666666666667,
+              1892.1999999999975
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              513.6666666666667,
+              1876.1999999999975
+            ],
+            [
+              682.6666666666667,
+              1876.1999999999975
+            ],
+            [
+              682.6666666666667,
+              1897.1999999999975
+            ],
+            [
+              513.6666666666667,
+              1897.1999999999975
+            ]
+          ],
+          "line_id": "mf_0004_l00186",
+          "page_baseline": [
+            [
+              514.0,
+              1892.0
+            ],
+            [
+              683.0,
+              1892.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              514.0,
+              1876.0
+            ],
+            [
+              683.0,
+              1876.0
+            ],
+            [
+              683.0,
+              1897.0
+            ],
+            [
+              514.0,
+              1897.0
+            ]
+          ],
+          "text": "et des jours de fête."
+        },
+        {
+          "alto_baseline": [
+            [
+              94.0,
+              3603.4800000000087
+            ],
+            [
+              487.66666666666663,
+              3603.4800000000087
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              94.0,
+              3603.4800000000087
+            ],
+            [
+              487.66666666666663,
+              3603.4800000000087
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              94.0,
+              3587.4800000000087
+            ],
+            [
+              487.66666666666663,
+              3587.4800000000087
+            ],
+            [
+              487.66666666666663,
+              3608.4800000000087
+            ],
+            [
+              94.0,
+              3608.4800000000087
+            ]
+          ],
+          "line_id": "mf_0004_l00126",
+          "page_baseline": [
+            [
+              94.0,
+              3603.0
+            ],
+            [
+              488.0,
+              3603.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              94.0,
+              3587.0
+            ],
+            [
+              488.0,
+              3587.0
+            ],
+            [
+              488.0,
+              3608.0
+            ],
+            [
+              94.0,
+              3608.0
+            ]
+          ],
+          "text": "un catalogue par matières : voyages, scien-"
+        },
+        {
+          "alto_baseline": [
+            [
+              513.6666666666667,
+              399.8
+            ],
+            [
+              907.3333333333335,
+              399.8
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              513.6666666666667,
+              399.8
+            ],
+            [
+              907.3333333333335,
+              399.8
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              513.6666666666667,
+              383.8
+            ],
+            [
+              907.3333333333335,
+              383.8
+            ],
+            [
+              907.3333333333335,
+              404.8
+            ],
+            [
+              513.6666666666667,
+              404.8
+            ]
+          ],
+          "line_id": "mf_0004_l00127",
+          "page_baseline": [
+            [
+              514.0,
+              400.0
+            ],
+            [
+              907.0,
+              400.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              514.0,
+              384.0
+            ],
+            [
+              907.0,
+              384.0
+            ],
+            [
+              907.0,
+              405.0
+            ],
+            [
+              514.0,
+              405.0
+            ]
+          ],
+          "text": "ces naturelles, histoire et arts usuels. Les"
+        },
+        {
+          "alto_baseline": [
+            [
+              1772.6666666666667,
+              3592.360000000008
+            ],
+            [
+              2166.3333333333335,
+              3592.360000000008
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              1772.6666666666667,
+              3592.360000000008
+            ],
+            [
+              2166.3333333333335,
+              3592.360000000008
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              1772.6666666666667,
+              3576.360000000008
+            ],
+            [
+              2166.3333333333335,
+              3576.360000000008
+            ],
+            [
+              2166.3333333333335,
+              3597.360000000008
+            ],
+            [
+              1772.6666666666667,
+              3597.360000000008
+            ]
+          ],
+          "line_id": "mf_0004_l00630",
+          "page_baseline": [
+            [
+              1773.0,
+              3592.0
+            ],
+            [
+              2166.0,
+              3592.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              1773.0,
+              3576.0
+            ],
+            [
+              2166.0,
+              3576.0
+            ],
+            [
+              2166.0,
+              3597.0
+            ],
+            [
+              1773.0,
+              3597.0
+            ]
+          ],
+          "text": "terre lorsqu’elle est trop humide. Les person-"
+        },
+        {
+          "alto_baseline": [
+            [
+              2192.3333333333335,
+              399.8
+            ],
+            [
+              2586.0000000000014,
+              399.8
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              2192.3333333333335,
+              399.8
+            ],
+            [
+              2586.0000000000014,
+              399.8
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              2192.3333333333335,
+              383.8
+            ],
+            [
+              2586.0000000000014,
+              383.8
+            ],
+            [
+              2586.0000000000014,
+              404.8
+            ],
+            [
+              2192.3333333333335,
+              404.8
+            ]
+          ],
+          "line_id": "mf_0004_l00631",
+          "page_baseline": [
+            [
+              2192.0,
+              400.0
+            ],
+            [
+              2586.0,
+              400.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              2192.0,
+              384.0
+            ],
+            [
+              2586.0,
+              384.0
+            ],
+            [
+              2586.0,
+              405.0
+            ],
+            [
+              2192.0,
+              405.0
+            ]
+          ],
+          "text": "nes qui désirent suivre la démonstration de"
+        }
+      ],
+      "input_sha256": {
+        "alto": "3eabfaf4ee0416c772972c477afd1d601647ba5540e93ca3096f271864d4d88e",
+        "canonical": "dde18ff45d3e73230b0915cd7a0a82b0f76a4f63372981e1bbdf3a5e10b36ed5",
+        "page": "9b30e956e936c05e685a7fe47ed08d13279d071faea7a7f60515217b931fe45a",
+        "sidecar": "a7554fc3c224de0f0f08f7881c7330c416c270c1efa4976a0a175db5d9096874"
+      },
+      "non_ascii_characters": {
+        "À": 6,
+        "Â": 1,
+        "Ç": 3,
+        "È": 3,
+        "É": 13,
+        "Ê": 3,
+        "à": 56,
+        "â": 6,
+        "ç": 15,
+        "è": 80,
+        "é": 705,
+        "ê": 58,
+        "î": 11,
+        "ô": 14,
+        "ù": 3,
+        "û": 3,
+        "œ": 5,
+        "—": 12,
+        "’": 176
+      },
+      "other_hyphenation_examples": [
+        [
+          {
+            "block_id": "mf_0004_b0010",
+            "line_id": "mf_0004_l00013",
+            "part": "start",
+            "reconstructed_text": "émoussées",
+            "text": "émouss-",
+            "word_id": "mf_0004_w000084"
+          },
+          {
+            "block_id": "mf_0004_b0010",
+            "line_id": "mf_0004_l00014",
+            "part": "end",
+            "reconstructed_text": "émoussées",
+            "text": "ées",
+            "word_id": "mf_0004_w000085"
+          }
+        ],
+        [
+          {
+            "block_id": "mf_0004_b0012",
+            "line_id": "mf_0004_l00020",
+            "part": "start",
+            "reconstructed_text": "observation",
+            "text": "observat-",
+            "word_id": "mf_0004_w000122"
+          },
+          {
+            "block_id": "mf_0004_b0012",
+            "line_id": "mf_0004_l00021",
+            "part": "end",
+            "reconstructed_text": "observation",
+            "text": "ion",
+            "word_id": "mf_0004_w000123"
+          }
+        ]
+      ],
+      "page_id": "mf_0004",
+      "status": "pass",
+      "transcription_sha256": "e00d4e9c415b12ff4b4719e377715ac0f05a1ef830047474105311c09dee9ebb"
+    },
+    {
+      "angle_degrees": -0.0003730245668501775,
+      "categories": {
+        "annonce": 12,
+        "separateur": 62,
+        "texte": 49,
+        "titre": 33
+      },
+      "checked_all_block_polygons": true,
+      "checked_all_line_and_word_texts": true,
+      "checked_declared_and_serialized_reading_order": true,
+      "columns": 5,
+      "counts": {
+        "blocks": 156,
+        "cross_block_hyphenations": 0,
+        "hyphenation_groups": 51,
+        "lines": 554,
+        "sampled_line_geometries": 6,
+        "words": 3857
+      },
+      "cross_block_examples": [],
+      "degradation": "aged",
+      "geometry_examples": [
+        {
+          "alto_baseline": [
+            [
+              864.010892,
+              175.996901
+            ],
+            [
+              1816.010892,
+              176.003099
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              864.010892,
+              175.996901
+            ],
+            [
+              1816.010892,
+              176.003099
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              864.011426,
+              93.996901
+            ],
+            [
+              1816.011426,
+              94.003099
+            ],
+            [
+              1816.010723,
+              202.003099
+            ],
+            [
+              864.010723,
+              201.996901
+            ]
+          ],
+          "line_id": "mf_0001_l00000",
+          "page_baseline": [
+            [
+              864.0,
+              176.0
+            ],
+            [
+              1816.0,
+              176.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              864.0,
+              94.0
+            ],
+            [
+              1816.0,
+              94.0
+            ],
+            [
+              1816.0,
+              202.0
+            ],
+            [
+              864.0,
+              202.0
+            ]
+          ],
+          "text": "MILLE FEUILLES"
+        },
+        {
+          "alto_baseline": [
+            [
+              1045.010606,
+              219.998079
+            ],
+            [
+              1635.010606,
+              220.001921
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              1045.010606,
+              219.998079
+            ],
+            [
+              1635.010606,
+              220.001921
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              1045.010775,
+              193.998079
+            ],
+            [
+              1635.010775,
+              194.001921
+            ],
+            [
+              1635.01056,
+              227.001921
+            ],
+            [
+              1045.01056,
+              226.998079
+            ]
+          ],
+          "line_id": "mf_0001_l00001",
+          "page_baseline": [
+            [
+              1045.0,
+              220.0
+            ],
+            [
+              1635.0,
+              220.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              1045.0,
+              194.0
+            ],
+            [
+              1635.0,
+              194.0
+            ],
+            [
+              1635.0,
+              227.0
+            ],
+            [
+              1045.0,
+              227.0
+            ]
+          ],
+          "text": "Journal de démonstration — Édition synthétique"
+        },
+        {
+          "alto_baseline": [
+            [
+              597.805163,
+              1055.963168
+            ],
+            [
+              1074.605163,
+              1055.966272
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              597.805163,
+              1055.963168
+            ],
+            [
+              1074.605163,
+              1055.966272
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              597.805274,
+              1038.963168
+            ],
+            [
+              1074.605274,
+              1038.966272
+            ],
+            [
+              1074.605124,
+              1061.966272
+            ],
+            [
+              597.805124,
+              1061.963168
+            ]
+          ],
+          "line_id": "mf_0001_l00138",
+          "page_baseline": [
+            [
+              598.0,
+              1056.0
+            ],
+            [
+              1075.0,
+              1056.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              598.0,
+              1039.0
+            ],
+            [
+              1075.0,
+              1039.0
+            ],
+            [
+              1075.0,
+              1062.0
+            ],
+            [
+              598.0,
+              1062.0
+            ]
+          ],
+          "text": "Une commission de la société d’agriculture a"
+        }
+      ],
+      "input_sha256": {
+        "alto": "c2f1d60108c4c72b15afc2eb5e5ce3460141b160764df48a86ed5394b65ffa46",
+        "canonical": "6bd1278c2fd61049735472a6e751972ec0530c984e8fa4d150413885d26c961c",
+        "page": "06434cdbd83f10054bd3d76569dbf54226229143e87c5b4265d804c099928d4d",
+        "sidecar": "8b593e68e638f41e70fc7c1ffccc86feced8c4edc18c183b6d5980b8a24639cd"
+      },
+      "non_ascii_characters": {
+        "À": 3,
+        "Â": 1,
+        "Ç": 1,
+        "È": 2,
+        "É": 17,
+        "Ê": 2,
+        "à": 43,
+        "â": 2,
+        "ç": 8,
+        "è": 82,
+        "é": 511,
+        "ê": 40,
+        "î": 13,
+        "ô": 11,
+        "û": 1,
+        "œ": 4,
+        "—": 11,
+        "’": 143
+      },
+      "other_hyphenation_examples": [
+        [
+          {
+            "block_id": "mf_0001_b0010",
+            "line_id": "mf_0001_l00013",
+            "part": "start",
+            "reconstructed_text": "remplaceront",
+            "text": "rempl-",
+            "word_id": "mf_0001_w000099"
+          },
+          {
+            "block_id": "mf_0001_b0010",
+            "line_id": "mf_0001_l00014",
+            "part": "end",
+            "reconstructed_text": "remplaceront",
+            "text": "aceront",
+            "word_id": "mf_0001_w000100"
+          }
+        ],
+        [
+          {
+            "block_id": "mf_0001_b0010",
+            "line_id": "mf_0001_l00018",
+            "part": "start",
+            "reconstructed_text": "changement",
+            "text": "chang-",
+            "word_id": "mf_0001_w000139"
+          },
+          {
+            "block_id": "mf_0001_b0010",
+            "line_id": "mf_0001_l00019",
+            "part": "end",
+            "reconstructed_text": "changement",
+            "text": "ement",
+            "word_id": "mf_0001_w000140"
+          }
+        ]
+      ],
+      "page_id": "mf_0001",
+      "status": "pass",
+      "transcription_sha256": "18066a6685645d9cb26c58061f84d5c97f755bad2b4549728439b9a61906e1e2"
+    },
+    {
+      "angle_degrees": -0.22217553701820578,
+      "categories": {
+        "annonce": 17,
+        "separateur": 76,
+        "texte": 60,
+        "titre": 35
+      },
+      "checked_all_block_polygons": true,
+      "checked_all_line_and_word_texts": true,
+      "checked_declared_and_serialized_reading_order": true,
+      "columns": 6,
+      "counts": {
+        "blocks": 188,
+        "cross_block_hyphenations": 0,
+        "hyphenation_groups": 71,
+        "lines": 737,
+        "sampled_line_geometries": 6,
+        "words": 4672
+      },
+      "cross_block_examples": [],
+      "degradation": "faint",
+      "geometry_examples": [
+        {
+          "alto_baseline": [
+            [
+              870.490946,
+              174.1668
+            ],
+            [
+              1822.483788,
+              177.858356
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              870.490946,
+              174.1668
+            ],
+            [
+              1822.483788,
+              177.858356
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              870.808916,
+              92.167417
+            ],
+            [
+              1822.801758,
+              95.858973
+            ],
+            [
+              1822.382968,
+              203.858161
+            ],
+            [
+              870.390126,
+              200.166605
+            ]
+          ],
+          "line_id": "mf_0005_l00000",
+          "page_baseline": [
+            [
+              870.0,
+              174.0
+            ],
+            [
+              1822.0,
+              178.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              871.0,
+              92.0
+            ],
+            [
+              1823.0,
+              96.0
+            ],
+            [
+              1822.0,
+              204.0
+            ],
+            [
+              870.0,
+              200.0
+            ]
+          ],
+          "text": "MILLE FEUILLES"
+        },
+        {
+          "alto_baseline": [
+            [
+              1082.334244,
+              214.988568
+            ],
+            [
+              1610.330275,
+              217.035986
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              1082.334244,
+              214.988568
+            ],
+            [
+              1610.330275,
+              217.035986
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              1082.427309,
+              190.988749
+            ],
+            [
+              1610.423339,
+              193.036167
+            ],
+            [
+              1610.307009,
+              223.035941
+            ],
+            [
+              1082.310978,
+              220.988523
+            ]
+          ],
+          "line_id": "mf_0005_l00001",
+          "page_baseline": [
+            [
+              1082.0,
+              215.0
+            ],
+            [
+              1610.0,
+              217.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              1082.0,
+              191.0
+            ],
+            [
+              1610.0,
+              193.0
+            ],
+            [
+              1610.0,
+              223.0
+            ],
+            [
+              1082.0,
+              221.0
+            ]
+          ],
+          "text": "Journal de démonstration — Édition synthétique"
+        },
+        {
+          "alto_baseline": [
+            [
+              513.328691,
+              1848.594426
+            ],
+            [
+              908.659052,
+              1850.127404
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              513.328691,
+              1848.594426
+            ],
+            [
+              908.659052,
+              1850.127404
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              513.390734,
+              1832.594546
+            ],
+            [
+              908.721095,
+              1834.127524
+            ],
+            [
+              908.639664,
+              1855.127367
+            ],
+            [
+              513.309302,
+              1853.594388
+            ]
+          ],
+          "line_id": "mf_0005_l00184",
+          "page_baseline": [
+            [
+              513.0,
+              1849.0
+            ],
+            [
+              909.0,
+              1850.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              513.0,
+              1833.0
+            ],
+            [
+              909.0,
+              1834.0
+            ],
+            [
+              909.0,
+              1855.0
+            ],
+            [
+              513.0,
+              1854.0
+            ]
+          ],
+          "text": "séparés. Un état comparatif indiquera les"
+        }
+      ],
+      "input_sha256": {
+        "alto": "81cc226597ed4ba9e8eb3907f8cb0e25dc54168fdb15f04f92743320a66067fe",
+        "canonical": "8fcaf9ce55e8bff36340eaf21f3ab72e565d65791d342c113088ef737ecb62c7",
+        "page": "f53101bb9cd72ff109f4ae9a55d6740295bc20ea303083a4ddaac5e459da4119",
+        "sidecar": "7ce965fc9b5a1c1bf9f36309061f2e8ad97b6a43ada5a819d84d444b9864d881"
+      },
+      "non_ascii_characters": {
+        "À": 8,
+        "Â": 2,
+        "È": 5,
+        "É": 29,
+        "Ê": 3,
+        "à": 54,
+        "â": 2,
+        "ç": 19,
+        "è": 81,
+        "é": 646,
+        "ê": 39,
+        "î": 17,
+        "ô": 8,
+        "ù": 1,
+        "û": 4,
+        "Œ": 1,
+        "œ": 8,
+        "—": 15,
+        "’": 207
+      },
+      "other_hyphenation_examples": [
+        [
+          {
+            "block_id": "mf_0005_b0012",
+            "line_id": "mf_0005_l00015",
+            "part": "start",
+            "reconstructed_text": "distribution",
+            "text": "distri-",
+            "word_id": "mf_0005_w000093"
+          },
+          {
+            "block_id": "mf_0005_b0012",
+            "line_id": "mf_0005_l00016",
+            "part": "end",
+            "reconstructed_text": "distribution",
+            "text": "bution",
+            "word_id": "mf_0005_w000094"
+          }
+        ],
+        [
+          {
+            "block_id": "mf_0005_b0012",
+            "line_id": "mf_0005_l00016",
+            "part": "start",
+            "reconstructed_text": "récompenses",
+            "text": "réco-",
+            "word_id": "mf_0005_w000102"
+          },
+          {
+            "block_id": "mf_0005_b0012",
+            "line_id": "mf_0005_l00017",
+            "part": "end",
+            "reconstructed_text": "récompenses",
+            "text": "mpenses",
+            "word_id": "mf_0005_w000103"
+          }
+        ]
+      ],
+      "page_id": "mf_0005",
+      "status": "pass",
+      "transcription_sha256": "b6e980e093c9bca7085fd7f71ea688e304008c8738529d49019c0e2cb081275f"
+    },
+    {
+      "angle_degrees": 0.22940372210564663,
+      "categories": {
+        "annonce": 20,
+        "separateur": 59,
+        "texte": 42,
+        "titre": 19
+      },
+      "checked_all_block_polygons": true,
+      "checked_all_line_and_word_texts": true,
+      "checked_declared_and_serialized_reading_order": true,
+      "columns": 5,
+      "counts": {
+        "blocks": 140,
+        "cross_block_hyphenations": 0,
+        "hyphenation_groups": 49,
+        "lines": 507,
+        "sampled_line_geometries": 6,
+        "words": 3420
+      },
+      "cross_block_examples": [],
+      "degradation": "faint",
+      "geometry_examples": [
+        {
+          "alto_baseline": [
+            [
+              857.305392,
+              177.919237
+            ],
+            [
+              1809.297761,
+              174.107582
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              857.305392,
+              177.919237
+            ],
+            [
+              1809.297761,
+              174.107582
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              856.977077,
+              95.919895
+            ],
+            [
+              1808.969446,
+              92.108239
+            ],
+            [
+              1809.401861,
+              200.107374
+            ],
+            [
+              857.409492,
+              203.919029
+            ]
+          ],
+          "line_id": "mf_0009_l00000",
+          "page_baseline": [
+            [
+              857.0,
+              178.0
+            ],
+            [
+              1809.0,
+              174.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              857.0,
+              96.0
+            ],
+            [
+              1809.0,
+              92.0
+            ],
+            [
+              1809.0,
+              200.0
+            ],
+            [
+              857.0,
+              204.0
+            ]
+          ],
+          "text": "MILLE FEUILLES"
+        },
+        {
+          "alto_baseline": [
+            [
+              1018.996282,
+              225.272233
+            ],
+            [
+              1647.99124,
+              222.753817
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              1018.996282,
+              225.272233
+            ],
+            [
+              1647.99124,
+              222.753817
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              1018.884174,
+              197.272457
+            ],
+            [
+              1647.879132,
+              194.754042
+            ],
+            [
+              1648.023271,
+              230.753753
+            ],
+            [
+              1019.028312,
+              233.272168
+            ]
+          ],
+          "line_id": "mf_0009_l00001",
+          "page_baseline": [
+            [
+              1019.0,
+              225.0
+            ],
+            [
+              1648.0,
+              223.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              1019.0,
+              197.0
+            ],
+            [
+              1648.0,
+              195.0
+            ],
+            [
+              1648.0,
+              231.0
+            ],
+            [
+              1019.0,
+              233.0
+            ]
+          ],
+          "text": "Journal de démonstration — Édition synthétique"
+        },
+        {
+          "alto_baseline": [
+            [
+              593.359008,
+              1140.927755
+            ],
+            [
+              1076.555135,
+              1138.9931
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              593.359008,
+              1140.927755
+            ],
+            [
+              1076.555135,
+              1138.9931
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              593.282935,
+              1121.927908
+            ],
+            [
+              1076.479062,
+              1119.993252
+            ],
+            [
+              1076.579158,
+              1144.993052
+            ],
+            [
+              593.383031,
+              1146.927707
+            ]
+          ],
+          "line_id": "mf_0009_l00126",
+          "page_baseline": [
+            [
+              593.0,
+              1141.0
+            ],
+            [
+              1077.0,
+              1139.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              593.0,
+              1122.0
+            ],
+            [
+              1076.0,
+              1120.0
+            ],
+            [
+              1077.0,
+              1145.0
+            ],
+            [
+              593.0,
+              1147.0
+            ]
+          ],
+          "text": "ce résultat à l’arrosage mesuré et à la protect-"
+        }
+      ],
+      "input_sha256": {
+        "alto": "7656c9ba749b937dab1027317eee6d57ee7a69a62eae7289111a4297027cf64e",
+        "canonical": "3583e07565b536d14dd7b38c07dca358c857efb46d532787eed4cb5bad94651c",
+        "page": "c110bf3c2c98e49598a8cff553245f2c485677ed0f9f166cf27b5b91fc7025ac",
+        "sidecar": "27b428a05212cd88cb190c37463039699c9620de65965fb46efca95b0311aa14"
+      },
+      "non_ascii_characters": {
+        "À": 9,
+        "Ç": 4,
+        "È": 1,
+        "É": 17,
+        "Ê": 2,
+        "à": 47,
+        "â": 3,
+        "ç": 11,
+        "è": 79,
+        "é": 457,
+        "ê": 25,
+        "î": 12,
+        "ô": 2,
+        "ù": 2,
+        "Œ": 1,
+        "œ": 4,
+        "—": 15,
+        "’": 126
+      },
+      "other_hyphenation_examples": [
+        [
+          {
+            "block_id": "mf_0009_b0016",
+            "line_id": "mf_0009_l00040",
+            "part": "start",
+            "reconstructed_text": "habitants",
+            "text": "habita-",
+            "word_id": "mf_0009_w000273"
+          },
+          {
+            "block_id": "mf_0009_b0016",
+            "line_id": "mf_0009_l00041",
+            "part": "end",
+            "reconstructed_text": "habitants",
+            "text": "nts",
+            "word_id": "mf_0009_w000274"
+          }
+        ],
+        [
+          {
+            "block_id": "mf_0009_b0022",
+            "line_id": "mf_0009_l00068",
+            "part": "start",
+            "reconstructed_text": "ordinaire",
+            "text": "ordin-",
+            "word_id": "mf_0009_w000466"
+          },
+          {
+            "block_id": "mf_0009_b0022",
+            "line_id": "mf_0009_l00069",
+            "part": "end",
+            "reconstructed_text": "ordinaire",
+            "text": "aire",
+            "word_id": "mf_0009_w000467"
+          }
+        ]
+      ],
+      "page_id": "mf_0009",
+      "status": "pass",
+      "transcription_sha256": "1c97a69089a155709938975d738bd64b6f69b2d92ccbd4453f98f37703a986cf"
+    },
+    {
+      "angle_degrees": -0.008960853960189141,
+      "categories": {
+        "annonce": 14,
+        "separateur": 82,
+        "texte": 69,
+        "titre": 43
+      },
+      "checked_all_block_polygons": true,
+      "checked_all_line_and_word_texts": true,
+      "checked_declared_and_serialized_reading_order": true,
+      "columns": 6,
+      "counts": {
+        "blocks": 208,
+        "cross_block_hyphenations": 0,
+        "hyphenation_groups": 100,
+        "lines": 780,
+        "sampled_line_geometries": 6,
+        "words": 5311
+      },
+      "cross_block_examples": [],
+      "degradation": "aged",
+      "geometry_examples": [
+        {
+          "alto_baseline": [
+            [
+              864.261657,
+              175.925576
+            ],
+            [
+              1816.261645,
+              176.074465
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              864.261657,
+              175.925576
+            ],
+            [
+              1816.261645,
+              176.074465
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              864.274482,
+              93.925577
+            ],
+            [
+              1816.27447,
+              94.074466
+            ],
+            [
+              1816.257579,
+              202.074465
+            ],
+            [
+              864.257591,
+              201.925575
+            ]
+          ],
+          "line_id": "mf_0013_l00000",
+          "page_baseline": [
+            [
+              864.0,
+              176.0
+            ],
+            [
+              1816.0,
+              176.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              864.0,
+              94.0
+            ],
+            [
+              1816.0,
+              94.0
+            ],
+            [
+              1816.0,
+              202.0
+            ],
+            [
+              864.0,
+              202.0
+            ]
+          ],
+          "text": "MILLE FEUILLES"
+        },
+        {
+          "alto_baseline": [
+            [
+              1089.255711,
+              213.960764
+            ],
+            [
+              1591.255705,
+              214.039275
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              1089.255711,
+              213.960764
+            ],
+            [
+              1591.255705,
+              214.039275
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              1089.259152,
+              191.960765
+            ],
+            [
+              1591.259146,
+              192.039276
+            ],
+            [
+              1591.254767,
+              220.039275
+            ],
+            [
+              1089.254773,
+              219.960764
+            ]
+          ],
+          "line_id": "mf_0013_l00001",
+          "page_baseline": [
+            [
+              1089.0,
+              214.0
+            ],
+            [
+              1591.0,
+              214.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              1089.0,
+              192.0
+            ],
+            [
+              1591.0,
+              192.0
+            ],
+            [
+              1591.0,
+              220.0
+            ],
+            [
+              1089.0,
+              220.0
+            ]
+          ],
+          "text": "Journal de démonstration — Édition synthétique"
+        },
+        {
+          "alto_baseline": [
+            [
+              512.98272,
+              1959.422659
+            ],
+            [
+              827.982716,
+              1959.471924
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              512.98272,
+              1959.422659
+            ],
+            [
+              827.982716,
+              1959.471924
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              512.986474,
+              1935.422659
+            ],
+            [
+              827.98647,
+              1935.471924
+            ],
+            [
+              827.981778,
+              1965.471924
+            ],
+            [
+              512.981782,
+              1965.422659
+            ]
+          ],
+          "line_id": "mf_0013_l00195",
+          "page_baseline": [
+            [
+              513.0,
+              1959.0
+            ],
+            [
+              828.0,
+              1959.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              513.0,
+              1935.0
+            ],
+            [
+              828.0,
+              1935.0
+            ],
+            [
+              828.0,
+              1965.0
+            ],
+            [
+              513.0,
+              1965.0
+            ]
+          ],
+          "text": "LES OBJETS RETROUVÉS"
+        }
+      ],
+      "input_sha256": {
+        "alto": "efdba91e4d41f469753bc61a0f8c3cdd526c8a11bf305d313768d21b3c79178b",
+        "canonical": "2be8a098874b9a0a48b2ef13aac54db2303f89944af8dc50b448ea2b7d0b6241",
+        "page": "4689be067b7d3e39e7fa2fc88a78d34a5e59775dba43ca78f5f4d4e712777a6e",
+        "sidecar": "3ca7be11431cfce7599ae5ff544a66840ead0b3bbd868331c8acca267269b1c2"
+      },
+      "non_ascii_characters": {
+        "À": 7,
+        "Â": 1,
+        "È": 3,
+        "É": 20,
+        "Ê": 2,
+        "à": 69,
+        "â": 3,
+        "ç": 22,
+        "è": 101,
+        "é": 747,
+        "ê": 52,
+        "î": 17,
+        "ô": 12,
+        "ù": 5,
+        "û": 11,
+        "Œ": 2,
+        "œ": 3,
+        "—": 10,
+        "’": 223
+      },
+      "other_hyphenation_examples": [
+        [
+          {
+            "block_id": "mf_0013_b0009",
+            "line_id": "mf_0013_l00010",
+            "part": "start",
+            "reconstructed_text": "porteront",
+            "text": "porter-",
+            "word_id": "mf_0013_w000072"
+          },
+          {
+            "block_id": "mf_0013_b0009",
+            "line_id": "mf_0013_l00011",
+            "part": "end",
+            "reconstructed_text": "porteront",
+            "text": "ont",
+            "word_id": "mf_0013_w000073"
+          }
+        ],
+        [
+          {
+            "block_id": "mf_0013_b0012",
+            "line_id": "mf_0013_l00021",
+            "part": "start",
+            "reconstructed_text": "observations",
+            "text": "observati-",
+            "word_id": "mf_0013_w000149"
+          },
+          {
+            "block_id": "mf_0013_b0012",
+            "line_id": "mf_0013_l00022",
+            "part": "end",
+            "reconstructed_text": "observations",
+            "text": "ons",
+            "word_id": "mf_0013_w000150"
+          }
+        ]
+      ],
+      "page_id": "mf_0013",
+      "status": "pass",
+      "transcription_sha256": "dda96ddf488b4152a03fbcab373e6902e14c6d05ce2fa139a9e5b55580976536"
+    },
+    {
+      "angle_degrees": -0.274346926746879,
+      "categories": {
+        "annonce": 5,
+        "separateur": 34,
+        "texte": 30,
+        "titre": 15
+      },
+      "checked_all_block_polygons": true,
+      "checked_all_line_and_word_texts": true,
+      "checked_declared_and_serialized_reading_order": true,
+      "columns": 4,
+      "counts": {
+        "blocks": 84,
+        "cross_block_hyphenations": 1,
+        "hyphenation_groups": 32,
+        "lines": 321,
+        "sampled_line_geometries": 8,
+        "words": 2016
+      },
+      "cross_block_examples": [
+        {
+          "group_id": "mf_0036_h00016",
+          "members": [
+            {
+              "block_id": "mf_0036_b0046",
+              "line_id": "mf_0036_l00163",
+              "part": "start",
+              "reconstructed_text": "émoussées",
+              "text": "émouss-",
+              "word_id": "mf_0036_w001010"
+            },
+            {
+              "block_id": "mf_0036_b0047",
+              "line_id": "mf_0036_l00164",
+              "part": "end",
+              "reconstructed_text": "émoussées",
+              "text": "ées",
+              "word_id": "mf_0036_w001011"
+            }
+          ]
+        }
+      ],
+      "degradation": "faint",
+      "geometry_examples": [
+        {
+          "alto_baseline": [
+            [
+              872.01618,
+              173.739977
+            ],
+            [
+              1824.005267,
+              178.29838
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              872.01618,
+              173.739977
+            ],
+            [
+              1824.005267,
+              178.29838
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              872.408816,
+              91.740917
+            ],
+            [
+              1824.397902,
+              96.29932
+            ],
+            [
+              1823.880773,
+              204.298082
+            ],
+            [
+              871.891686,
+              199.739679
+            ]
+          ],
+          "line_id": "mf_0036_l00000",
+          "page_baseline": [
+            [
+              872.0,
+              174.0
+            ],
+            [
+              1824.0,
+              178.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              872.0,
+              92.0
+            ],
+            [
+              1824.0,
+              96.0
+            ],
+            [
+              1824.0,
+              204.0
+            ],
+            [
+              872.0,
+              200.0
+            ]
+          ],
+          "text": "MILLE FEUILLES"
+        },
+        {
+          "alto_baseline": [
+            [
+              938.218547,
+              236.057684
+            ],
+            [
+              1757.209158,
+              239.979252
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              938.218547,
+              236.057684
+            ],
+            [
+              1757.209158,
+              239.979252
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              938.390924,
+              200.058097
+            ],
+            [
+              1757.381535,
+              203.979664
+            ],
+            [
+              1757.161276,
+              249.979137
+            ],
+            [
+              938.170665,
+              246.05757
+            ]
+          ],
+          "line_id": "mf_0036_l00001",
+          "page_baseline": [
+            [
+              938.0,
+              236.0
+            ],
+            [
+              1757.0,
+              240.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              938.0,
+              200.0
+            ],
+            [
+              1757.0,
+              204.0
+            ],
+            [
+              1757.0,
+              250.0
+            ],
+            [
+              938.0,
+              246.0
+            ]
+          ],
+          "text": "Journal de démonstration — Édition synthétique"
+        },
+        {
+          "alto_baseline": [
+            [
+              86.145503,
+              3486.371015
+            ],
+            [
+              693.388541,
+              3489.278674
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              86.145503,
+              3486.371015
+            ],
+            [
+              693.388541,
+              3489.278674
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              86.26042,
+              3462.371291
+            ],
+            [
+              693.503459,
+              3465.278949
+            ],
+            [
+              693.350235,
+              3497.278582
+            ],
+            [
+              86.107197,
+              3494.370924
+            ]
+          ],
+          "line_id": "mf_0036_l00080",
+          "page_baseline": [
+            [
+              86.0,
+              3486.0
+            ],
+            [
+              693.0,
+              3489.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              86.0,
+              3462.0
+            ],
+            [
+              694.0,
+              3465.0
+            ],
+            [
+              693.0,
+              3497.0
+            ],
+            [
+              86.0,
+              3494.0
+            ]
+          ],
+          "text": "brouettes et les paniers. Les maçons ont"
+        },
+        {
+          "alto_baseline": [
+            [
+              713.984135,
+              3573.786259
+            ],
+            [
+              1321.227174,
+              3576.693917
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              713.984135,
+              3573.786259
+            ],
+            [
+              1321.227174,
+              3576.693917
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              714.099053,
+              3549.786534
+            ],
+            [
+              1321.342091,
+              3552.694192
+            ],
+            [
+              1321.188868,
+              3584.693825
+            ],
+            [
+              713.945829,
+              3581.786167
+            ]
+          ],
+          "line_id": "mf_0036_l00163",
+          "page_baseline": [
+            [
+              714.0,
+              3574.0
+            ],
+            [
+              1321.0,
+              3577.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              714.0,
+              3550.0
+            ],
+            [
+              1321.0,
+              3553.0
+            ],
+            [
+              1321.0,
+              3585.0
+            ],
+            [
+              714.0,
+              3582.0
+            ]
+          ],
+          "text": "fendus seront remplacés ; les lames émouss-"
+        },
+        {
+          "alto_baseline": [
+            [
+              1357.378951,
+              412.406746
+            ],
+            [
+              1964.62199,
+              415.314404
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              1357.378951,
+              412.406746
+            ],
+            [
+              1964.62199,
+              415.314404
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              1357.493869,
+              388.407021
+            ],
+            [
+              1964.736907,
+              391.314679
+            ],
+            [
+              1964.583684,
+              423.314312
+            ],
+            [
+              1357.340645,
+              420.406654
+            ]
+          ],
+          "line_id": "mf_0036_l00164",
+          "page_baseline": [
+            [
+              1357.0,
+              412.0
+            ],
+            [
+              1965.0,
+              415.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              1357.0,
+              388.0
+            ],
+            [
+              1965.0,
+              391.0
+            ],
+            [
+              1965.0,
+              423.0
+            ],
+            [
+              1357.0,
+              420.0
+            ]
+          ],
+          "text": "ées seront affûtées ensemble pour réduire les"
+        }
+      ],
+      "input_sha256": {
+        "alto": "5b6c13f01016f07400a40fbe874c5a32dcde71aec63f1adcfafa53807db66922",
+        "canonical": "e24fba8d5bb72443e09c68323c58ab8b59941ce883d411190832d7238835301d",
+        "page": "8503782e8e3edf013d260c4eb4e5c7fee32008ca9fc5cdbaa2f1550e33df25ab",
+        "sidecar": "84153f174f782840f78fe644dd04bebc2659a97e6f98409efa9c93f852bde45a"
+      },
+      "non_ascii_characters": {
+        "À": 6,
+        "Ç": 2,
+        "È": 1,
+        "É": 8,
+        "à": 24,
+        "â": 1,
+        "ç": 11,
+        "è": 45,
+        "é": 281,
+        "ê": 13,
+        "î": 5,
+        "ô": 6,
+        "ù": 4,
+        "û": 3,
+        "Œ": 1,
+        "—": 5,
+        "’": 97
+      },
+      "other_hyphenation_examples": [
+        [
+          {
+            "block_id": "mf_0036_b0006",
+            "line_id": "mf_0036_l00004",
+            "part": "start",
+            "reconstructed_text": "boulangers",
+            "text": "boulan-",
+            "word_id": "mf_0036_w000029"
+          },
+          {
+            "block_id": "mf_0036_b0006",
+            "line_id": "mf_0036_l00005",
+            "part": "end",
+            "reconstructed_text": "boulangers",
+            "text": "gers",
+            "word_id": "mf_0036_w000030"
+          }
+        ],
+        [
+          {
+            "block_id": "mf_0036_b0009",
+            "line_id": "mf_0036_l00014",
+            "part": "start",
+            "reconstructed_text": "quelques",
+            "text": "quelq-",
+            "word_id": "mf_0036_w000094"
+          },
+          {
+            "block_id": "mf_0036_b0009",
+            "line_id": "mf_0036_l00015",
+            "part": "end",
+            "reconstructed_text": "quelques",
+            "text": "ues",
+            "word_id": "mf_0036_w000095"
+          }
+        ]
+      ],
+      "page_id": "mf_0036",
+      "status": "pass",
+      "transcription_sha256": "ec8f6f130185e303ac508e2556cbadc07998f70196fddc8d4cdf479e331eb15b"
+    },
+    {
+      "angle_degrees": -0.218143520849005,
+      "categories": {
+        "annonce": 16,
+        "separateur": 86,
+        "texte": 70,
+        "titre": 32
+      },
+      "checked_all_block_polygons": true,
+      "checked_all_line_and_word_texts": true,
+      "checked_declared_and_serialized_reading_order": true,
+      "columns": 6,
+      "counts": {
+        "blocks": 204,
+        "cross_block_hyphenations": 0,
+        "hyphenation_groups": 85,
+        "lines": 775,
+        "sampled_line_geometries": 6,
+        "words": 5330
+      },
+      "cross_block_examples": [],
+      "degradation": "aged",
+      "geometry_examples": [
+        {
+          "alto_baseline": [
+            [
+              870.373085,
+              174.199844
+            ],
+            [
+              1822.366185,
+              177.824407
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              870.373085,
+              174.199844
+            ],
+            [
+              1822.366185,
+              177.824407
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              870.685285,
+              92.200439
+            ],
+            [
+              1822.678385,
+              95.825001
+            ],
+            [
+              1822.267195,
+              203.824218
+            ],
+            [
+              870.274095,
+              200.199656
+            ]
+          ],
+          "line_id": "mf_0029_l00000",
+          "page_baseline": [
+            [
+              870.0,
+              174.0
+            ],
+            [
+              1822.0,
+              178.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              871.0,
+              92.0
+            ],
+            [
+              1823.0,
+              96.0
+            ],
+            [
+              1822.0,
+              204.0
+            ],
+            [
+              870.0,
+              200.0
+            ]
+          ],
+          "text": "MILLE FEUILLES"
+        },
+        {
+          "alto_baseline": [
+            [
+              1095.226777,
+              213.056215
+            ],
+            [
+              1597.223138,
+              214.967486
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              1095.226777,
+              213.056215
+            ],
+            [
+              1597.223138,
+              214.967486
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              1095.310538,
+              191.056374
+            ],
+            [
+              1597.306899,
+              192.967645
+            ],
+            [
+              1597.200294,
+              220.967442
+            ],
+            [
+              1095.203933,
+              219.056171
+            ]
+          ],
+          "line_id": "mf_0029_l00001",
+          "page_baseline": [
+            [
+              1095.0,
+              213.0
+            ],
+            [
+              1597.0,
+              215.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              1095.0,
+              191.0
+            ],
+            [
+              1597.0,
+              193.0
+            ],
+            [
+              1597.0,
+              221.0
+            ],
+            [
+              1095.0,
+              219.0
+            ]
+          ],
+          "text": "Journal de démonstration — Édition synthétique"
+        },
+        {
+          "alto_baseline": [
+            [
+              513.260221,
+              1910.404788
+            ],
+            [
+              907.757361,
+              1911.906773
+            ]
+          ],
+          "canonical_baseline": [
+            [
+              513.260221,
+              1910.404788
+            ],
+            [
+              907.757361,
+              1911.906773
+            ]
+          ],
+          "canonical_polygon": [
+            [
+              513.31733,
+              1895.404896
+            ],
+            [
+              907.814471,
+              1896.906881
+            ],
+            [
+              907.738325,
+              1916.906736
+            ],
+            [
+              513.241184,
+              1915.404751
+            ]
+          ],
+          "line_id": "mf_0029_l00193",
+          "page_baseline": [
+            [
+              513.0,
+              1910.0
+            ],
+            [
+              908.0,
+              1912.0
+            ]
+          ],
+          "page_polygon": [
+            [
+              513.0,
+              1895.0
+            ],
+            [
+              908.0,
+              1897.0
+            ],
+            [
+              908.0,
+              1917.0
+            ],
+            [
+              513.0,
+              1915.0
+            ]
+          ],
+          "text": "dos de vieux dictionnaires et préparent les couv-"
+        }
+      ],
+      "input_sha256": {
+        "alto": "bca05d754b3ff52a82e86cf04f3cce51ff47eb274e64d39039d77d116e9b645f",
+        "canonical": "82514eb2773f0e1b09bd4738d9c9a3041fe19885034d613b6bb2b67f501fea66",
+        "page": "d86487e70555820e42b840288bebf86f6fd5f25ee10a50f142c7e95ba4937490",
+        "sidecar": "59b72935f30799a78d43ad1fe5ee26c7a4ddf73456664f431db7c836544b9375"
+      },
+      "non_ascii_characters": {
+        "À": 10,
+        "Ç": 2,
+        "È": 3,
+        "É": 20,
+        "Ê": 5,
+        "à": 68,
+        "â": 1,
+        "ç": 24,
+        "è": 99,
+        "é": 839,
+        "ê": 59,
+        "î": 14,
+        "ô": 13,
+        "ù": 1,
+        "û": 9,
+        "œ": 4,
+        "—": 15,
+        "’": 235
+      },
+      "other_hyphenation_examples": [
+        [
+          {
+            "block_id": "mf_0029_b0015",
+            "line_id": "mf_0029_l00024",
+            "part": "start",
+            "reconstructed_text": "améliorations",
+            "text": "améliorati-",
+            "word_id": "mf_0029_w000156"
+          },
+          {
+            "block_id": "mf_0029_b0015",
+            "line_id": "mf_0029_l00025",
+            "part": "end",
+            "reconstructed_text": "améliorations",
+            "text": "ons",
+            "word_id": "mf_0029_w000157"
+          }
+        ],
+        [
+          {
+            "block_id": "mf_0029_b0015",
+            "line_id": "mf_0029_l00025",
+            "part": "start",
+            "reconstructed_text": "matériaux",
+            "text": "matéri-",
+            "word_id": "mf_0029_w000163"
+          },
+          {
+            "block_id": "mf_0029_b0015",
+            "line_id": "mf_0029_l00026",
+            "part": "end",
+            "reconstructed_text": "matériaux",
+            "text": "aux",
+            "word_id": "mf_0029_w000164"
+          }
+        ]
+      ],
+      "page_id": "mf_0029",
+      "status": "pass",
+      "transcription_sha256": "765463e7992ae3634eafe57add1b2802ac08e503cd45ee6d3167fae3218cb4cf"
+    }
+  ],
+  "sample_page_ids": [
+    "mf_0004",
+    "mf_0001",
+    "mf_0005",
+    "mf_0009",
+    "mf_0013",
+    "mf_0036",
+    "mf_0029"
+  ],
+  "scope": "Fresh independent audit of corrected r2 only, stdlib + lxml. No prior audit status reused, no Mille Feuilles validator/reader used; generated lot read-only.",
+  "script_sha256": "00a6b232cf5e9a99064627380e4ede45a26e1421de449af1ee9f1580ac3ef1b6",
+  "separator_regression": {
+    "block_id": "mf_0029_b0126",
+    "canonical_polygon": [
+      [
+        1460.877606,
+        2233.500006
+      ],
+      [
+        1635.695055,
+        2234.165595
+      ],
+      [
+        1635.68744,
+        2236.165581
+      ],
+      [
+        1460.869992,
+        2235.499991
+      ]
+    ],
+    "canonical_thickness_px": 1.9999994933051104,
+    "page_area_px2": 262.5,
+    "page_distinct_vertices": 4,
+    "page_id": "mf_0029",
+    "page_polygon": [
+      [
+        1461.0,
+        2234.0
+      ],
+      [
+        1636.0,
+        2234.0
+      ],
+      [
+        1636.0,
+        2236.0
+      ],
+      [
+        1461.0,
+        2235.0
+      ]
+    ],
+    "rotation_matrix": [
+      [
+        0.9999927521557577,
+        -0.0038073134824096657,
+        7.049434740260143
+      ],
+      [
+        0.0038073134824096657,
+        0.9999927521557577,
+        -5.08839880242499
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "status": "pass"
+  },
+  "separator_sample_checks": [
+    {
+      "page_id": "mf_0004",
+      "separators_checked": 77
+    },
+    {
+      "page_id": "mf_0001",
+      "separators_checked": 62
+    },
+    {
+      "page_id": "mf_0005",
+      "separators_checked": 76
+    },
+    {
+      "page_id": "mf_0009",
+      "separators_checked": 59
+    },
+    {
+      "page_id": "mf_0013",
+      "separators_checked": 82
+    },
+    {
+      "page_id": "mf_0036",
+      "separators_checked": 34
+    },
+    {
+      "page_id": "mf_0029",
+      "separators_checked": 86
+    }
+  ],
+  "status": "pass",
+  "totals": {
+    "blocks": 1165,
+    "cross_block_hyphenations": 3,
+    "hyphenation_groups": 463,
+    "lines": 4419,
+    "sampled_line_geometries": 48,
+    "words": 29365
+  }
+}

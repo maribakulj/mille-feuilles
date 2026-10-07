@@ -1,0 +1,1076 @@
+{
+  "checks": [
+    {
+      "detail": "verified",
+      "name": "manifest",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "file_hashes",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "strict_json_files",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "unique_manifest_entries",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "manifest_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "asset_registry",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "assets",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0001",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0001",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0002",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0002",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0003",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0003",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0004",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0004",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0005",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0005",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0006",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0006",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0007",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0007",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0008",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0008",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0009",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0009",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0010",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0010",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0011",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0011",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0012",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0012",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0013",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0013",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0014",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0014",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0015",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0015",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0016",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0016",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0017",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0017",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0018",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0018",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0019",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0019",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0020",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0020",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0021",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0021",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0022",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0022",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0023",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0023",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0024",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0024",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0025",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0025",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0026",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0026",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0027",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0027",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0028",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0028",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0029",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0029",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0030",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0030",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0031",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0031",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0032",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0032",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0033",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0033",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0034",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0034",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0035",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0035",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0036",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0036",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0037",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0037",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0038",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0038",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0039",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0039",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0040",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0040",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0041",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0041",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0042",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0042",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0043",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0043",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0044",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0044",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0045",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0045",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0046",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0046",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0047",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0047",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0048",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0048",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0049",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0049",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0050",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0050",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0051",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0051",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0052",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0052",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0053",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0053",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0054",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0054",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0055",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0055",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0056",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0056",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0057",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0057",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0058",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0058",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0059",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0059",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0060",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0060",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0061",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0061",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0062",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0062",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0063",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0063",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0064",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0064",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0065",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0065",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0066",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0066",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0067",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0067",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0068",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0068",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0069",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0069",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0070",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0070",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0071",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0071",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0072",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0072",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0073",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0073",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0074",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0074",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0075",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0075",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0076",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0076",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0077",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0077",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0078",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0078",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0079",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0079",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0080",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0080",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0081",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0081",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0082",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0082",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0083",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0083",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0084",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0084",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0085",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0085",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0086",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0086",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0087",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0087",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0088",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0088",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0089",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0089",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0090",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0090",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0091",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0091",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0092",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0092",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0093",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0093",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0094",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0094",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0095",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0095",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0096",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0096",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0097",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0097",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0098",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0098",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0099",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0099",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "export_inventory",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "exports",
+      "status": "pass"
+    }
+  ],
+  "errors": [],
+  "statistics": {
+    "blocks": 17332,
+    "categories": {
+      "annonce": 1489,
+      "separateur": 7056,
+      "texte": 5673,
+      "titre": 3114
+    },
+    "columns": {
+      "4": 7,
+      "5": 33,
+      "6": 60
+    },
+    "cross_block_articles": 3499,
+    "degradations": {
+      "aged": 50,
+      "clean": 22,
+      "faint": 28
+    },
+    "hyphenation_groups": 6808,
+    "lines": 65311,
+    "pages": 100,
+    "scope": "synthetic demonstration / geometry QA; no evidence of OCR training gain",
+    "words": 436490
+  },
+  "status": "pass"
+}

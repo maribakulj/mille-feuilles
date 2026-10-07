@@ -1,0 +1,682 @@
+{
+  "source_commit": "0d1e2b701e9f6ba4d571a5f4894bd40071792225",
+  "reviewer": "Codex coordinateur Mille Feuilles",
+  "contact_sheets": [
+    {
+      "path": "runs/pilot-v0.2-r2/qa/contact_00.jpg",
+      "sha256": "6b1ed199892ae46a3aef16220f2f79f1b0636d44adf9f9e0d1e84fef52136685",
+      "page_ids": [
+        "mf_0000",
+        "mf_0001",
+        "mf_0002",
+        "mf_0003",
+        "mf_0004",
+        "mf_0005",
+        "mf_0006",
+        "mf_0007",
+        "mf_0008",
+        "mf_0009"
+      ],
+      "status": "pass",
+      "observations": "Chaque miniature examinée : bandeau distinct, colonnes et gouttières conservées, pas de rognage ni collision majeure visible. Densité variable et pieds de colonnes inégaux ; contraste plus faible en mode faint."
+    },
+    {
+      "path": "runs/pilot-v0.2-r2/qa/contact_01.jpg",
+      "sha256": "40c9d0d58fe21e4b86f2cdee93c84a9fc696df9af0347006f255968f657efc0f",
+      "page_ids": [
+        "mf_0010",
+        "mf_0011",
+        "mf_0012",
+        "mf_0013",
+        "mf_0014",
+        "mf_0015",
+        "mf_0016",
+        "mf_0017",
+        "mf_0018",
+        "mf_0019"
+      ],
+      "status": "pass",
+      "observations": "Chaque miniature examinée : bandeau distinct, colonnes et gouttières conservées, pas de rognage ni collision majeure visible. Densité variable et pieds de colonnes inégaux ; contraste plus faible en mode faint."
+    },
+    {
+      "path": "runs/pilot-v0.2-r2/qa/contact_02.jpg",
+      "sha256": "768ee85bce08404cae5626ac1ac2462cae4dc55e628b94bd2cdad0019322c1a2",
+      "page_ids": [
+        "mf_0020",
+        "mf_0021",
+        "mf_0022",
+        "mf_0023",
+        "mf_0024",
+        "mf_0025",
+        "mf_0026",
+        "mf_0027",
+        "mf_0028",
+        "mf_0029"
+      ],
+      "status": "pass",
+      "observations": "Chaque miniature examinée : bandeau distinct, colonnes et gouttières conservées, pas de rognage ni collision majeure visible. Densité variable et pieds de colonnes inégaux ; contraste plus faible en mode faint."
+    },
+    {
+      "path": "runs/pilot-v0.2-r2/qa/contact_03.jpg",
+      "sha256": "c83d4f7731c5921d4fd2fab27855c941722118db776c2e5f564e08aa6b8d738c",
+      "page_ids": [
+        "mf_0030",
+        "mf_0031",
+        "mf_0032",
+        "mf_0033",
+        "mf_0034",
+        "mf_0035",
+        "mf_0036",
+        "mf_0037",
+        "mf_0038",
+        "mf_0039"
+      ],
+      "status": "pass",
+      "observations": "Chaque miniature examinée : bandeau distinct, colonnes et gouttières conservées, pas de rognage ni collision majeure visible. Densité variable et pieds de colonnes inégaux ; contraste plus faible en mode faint."
+    }
+  ],
+  "overlays": [
+    {
+      "page_id": "mf_0029",
+      "observations": "Six colonnes aged ; filets et contours visibles après rotation, titres/corps/annonces séparés, coordonnées des enveloppes alignées, marges conservées. Les identifiants des blocs sont denses à l’échelle de la planche."
+    }
+  ],
+  "raw_pages": [
+    {
+      "page_id": "mf_0036",
+      "observations": "Quatre colonnes, texte plus grand ; accents et césures visibles, corps et annonces lisibles dans les passages examinés, filets présents et aucune coupure de bord constatée."
+    }
+  ],
+  "word_sheets": [
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_00.png",
+      "sha256": "4cd509cd55c2a60423cbaf7cff1fd20d6d7fa9e7cd9bc83a56e2d38c5ad6127c",
+      "crops": [
+        {
+          "card_index": 0,
+          "page_id": "mf_0000",
+          "tile_index": 0,
+          "word_id": "mf_0000_w001112"
+        },
+        {
+          "card_index": 1,
+          "page_id": "mf_0001",
+          "tile_index": 0,
+          "word_id": "mf_0001_w000079"
+        },
+        {
+          "card_index": 2,
+          "page_id": "mf_0001",
+          "tile_index": 0,
+          "word_id": "mf_0001_w000252"
+        },
+        {
+          "card_index": 3,
+          "page_id": "mf_0001",
+          "tile_index": 0,
+          "word_id": "mf_0001_w001555"
+        },
+        {
+          "card_index": 4,
+          "page_id": "mf_0002",
+          "tile_index": 0,
+          "word_id": "mf_0002_w001923"
+        },
+        {
+          "card_index": 5,
+          "page_id": "mf_0003",
+          "tile_index": 0,
+          "word_id": "mf_0003_w000238"
+        },
+        {
+          "card_index": 6,
+          "page_id": "mf_0004",
+          "tile_index": 0,
+          "word_id": "mf_0004_w000945"
+        },
+        {
+          "card_index": 7,
+          "page_id": "mf_0005",
+          "tile_index": 0,
+          "word_id": "mf_0005_w000236"
+        },
+        {
+          "card_index": 8,
+          "page_id": "mf_0005",
+          "tile_index": 0,
+          "word_id": "mf_0005_w004017"
+        },
+        {
+          "card_index": 9,
+          "page_id": "mf_0006",
+          "tile_index": 0,
+          "word_id": "mf_0006_w001445"
+        }
+      ],
+      "status": "pass",
+      "observations": "Dix cibles lues et concordantes : accent de À, suffixe tif et césure bibli- visibles ; tiret faible présent. Quelques fragments périphériques hors cible."
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_01.png",
+      "sha256": "fcd998e81f5070df119990dd35e447a35052868167986050fa46afcd782bb4d4",
+      "crops": [
+        {
+          "card_index": 0,
+          "page_id": "mf_0006",
+          "tile_index": 0,
+          "word_id": "mf_0006_w004360"
+        },
+        {
+          "card_index": 1,
+          "page_id": "mf_0007",
+          "tile_index": 0,
+          "word_id": "mf_0007_w001398"
+        },
+        {
+          "card_index": 2,
+          "page_id": "mf_0008",
+          "tile_index": 0,
+          "word_id": "mf_0008_w000005"
+        },
+        {
+          "card_index": 3,
+          "page_id": "mf_0008",
+          "tile_index": 0,
+          "word_id": "mf_0008_w001716"
+        },
+        {
+          "card_index": 4,
+          "page_id": "mf_0008",
+          "tile_index": 0,
+          "word_id": "mf_0008_w001730"
+        },
+        {
+          "card_index": 5,
+          "page_id": "mf_0008",
+          "tile_index": 0,
+          "word_id": "mf_0008_w001912"
+        },
+        {
+          "card_index": 6,
+          "page_id": "mf_0008",
+          "tile_index": 0,
+          "word_id": "mf_0008_w002023"
+        },
+        {
+          "card_index": 7,
+          "page_id": "mf_0009",
+          "tile_index": 0,
+          "word_id": "mf_0009_w000965"
+        },
+        {
+          "card_index": 8,
+          "page_id": "mf_0010",
+          "tile_index": 0,
+          "word_id": "mf_0010_w002443"
+        },
+        {
+          "card_index": 9,
+          "page_id": "mf_0011",
+          "tile_index": 0,
+          "word_id": "mf_0011_w003866"
+        }
+      ],
+      "status": "pass",
+      "observations": "Dix cibles lues et concordantes : tirets cadratins, suffixe rer, titre LE et césure acco- intacts ; pas de rognage cible."
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_02.png",
+      "sha256": "85d66c1de0f8c9ad37d209deae854838c94fe7e8c8cb81fc7ae9f03c84455323",
+      "crops": [
+        {
+          "card_index": 0,
+          "page_id": "mf_0012",
+          "tile_index": 0,
+          "word_id": "mf_0012_w000385"
+        },
+        {
+          "card_index": 1,
+          "page_id": "mf_0012",
+          "tile_index": 0,
+          "word_id": "mf_0012_w000783"
+        },
+        {
+          "card_index": 2,
+          "page_id": "mf_0013",
+          "tile_index": 0,
+          "word_id": "mf_0013_w001083"
+        },
+        {
+          "card_index": 3,
+          "page_id": "mf_0014",
+          "tile_index": 0,
+          "word_id": "mf_0014_w000378"
+        },
+        {
+          "card_index": 4,
+          "page_id": "mf_0014",
+          "tile_index": 0,
+          "word_id": "mf_0014_w001136"
+        },
+        {
+          "card_index": 5,
+          "page_id": "mf_0015",
+          "tile_index": 0,
+          "word_id": "mf_0015_w002569"
+        },
+        {
+          "card_index": 6,
+          "page_id": "mf_0015",
+          "tile_index": 0,
+          "word_id": "mf_0015_w005777"
+        },
+        {
+          "card_index": 7,
+          "page_id": "mf_0016",
+          "tile_index": 0,
+          "word_id": "mf_0016_w001738"
+        },
+        {
+          "card_index": 8,
+          "page_id": "mf_0016",
+          "tile_index": 0,
+          "word_id": "mf_0016_w003175"
+        },
+        {
+          "card_index": 9,
+          "page_id": "mf_0017",
+          "tile_index": 0,
+          "word_id": "mf_0017_w001738"
+        }
+      ],
+      "status": "pass",
+      "observations": "Dix cibles lues et concordantes, dont plusieurs tirets fins à contraste réduit ; pas de caractère cible masqué."
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_03.png",
+      "sha256": "12e7e8f5d22852ec9d512413e45aa036ffc6e0655659af4a64b167e77ad67145",
+      "crops": [
+        {
+          "card_index": 0,
+          "page_id": "mf_0018",
+          "tile_index": 0,
+          "word_id": "mf_0018_w002514"
+        },
+        {
+          "card_index": 1,
+          "page_id": "mf_0019",
+          "tile_index": 0,
+          "word_id": "mf_0019_w000907"
+        },
+        {
+          "card_index": 2,
+          "page_id": "mf_0019",
+          "tile_index": 0,
+          "word_id": "mf_0019_w001476"
+        },
+        {
+          "card_index": 3,
+          "page_id": "mf_0020",
+          "tile_index": 0,
+          "word_id": "mf_0020_w000710"
+        },
+        {
+          "card_index": 4,
+          "page_id": "mf_0021",
+          "tile_index": 0,
+          "word_id": "mf_0021_w001831"
+        },
+        {
+          "card_index": 5,
+          "page_id": "mf_0022",
+          "tile_index": 0,
+          "word_id": "mf_0022_w000988"
+        },
+        {
+          "card_index": 6,
+          "page_id": "mf_0023",
+          "tile_index": 0,
+          "word_id": "mf_0023_w000105"
+        },
+        {
+          "card_index": 7,
+          "page_id": "mf_0023",
+          "tile_index": 0,
+          "word_id": "mf_0023_w000300"
+        },
+        {
+          "card_index": 8,
+          "page_id": "mf_0024",
+          "tile_index": 0,
+          "word_id": "mf_0024_w000111"
+        },
+        {
+          "card_index": 9,
+          "page_id": "mf_0024",
+          "tile_index": 0,
+          "word_id": "mf_0024_w000397"
+        }
+      ],
+      "status": "pass",
+      "observations": "Dix cibles lues et concordantes : À accentué en faint et ponctuation isolée visibles ; cibles distinctes des petits fragments voisins."
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2-word-samples/samples_04.png",
+      "sha256": "322d85e0ed341b317a4a6762305ccd552918697c09beff51bf0df2909883bff2",
+      "crops": [
+        {
+          "card_index": 0,
+          "page_id": "mf_0024",
+          "tile_index": 0,
+          "word_id": "mf_0024_w001286"
+        },
+        {
+          "card_index": 1,
+          "page_id": "mf_0025",
+          "tile_index": 0,
+          "word_id": "mf_0025_w000742"
+        },
+        {
+          "card_index": 2,
+          "page_id": "mf_0026",
+          "tile_index": 0,
+          "word_id": "mf_0026_w001786"
+        },
+        {
+          "card_index": 3,
+          "page_id": "mf_0027",
+          "tile_index": 0,
+          "word_id": "mf_0027_w002297"
+        },
+        {
+          "card_index": 4,
+          "page_id": "mf_0028",
+          "tile_index": 0,
+          "word_id": "mf_0028_w001473"
+        },
+        {
+          "card_index": 5,
+          "page_id": "mf_0028",
+          "tile_index": 0,
+          "word_id": "mf_0028_w001897"
+        },
+        {
+          "card_index": 6,
+          "page_id": "mf_0029",
+          "tile_index": 0,
+          "word_id": "mf_0029_w002561"
+        },
+        {
+          "card_index": 7,
+          "page_id": "mf_0030",
+          "tile_index": 0,
+          "word_id": "mf_0030_w001590"
+        },
+        {
+          "card_index": 8,
+          "page_id": "mf_0031",
+          "tile_index": 0,
+          "word_id": "mf_0031_w002093"
+        },
+        {
+          "card_index": 9,
+          "page_id": "mf_0032",
+          "tile_index": 0,
+          "word_id": "mf_0032_w001338"
+        }
+      ],
+      "status": "pass",
+      "observations": "Dix cibles lues et concordantes, dont tirets faint à contraste réduit ; pas de masquage ou rognage des mots cibles."
+    }
+  ],
+  "status": "pass",
+  "limitations": [
+    "Revue visuelle de mise en page et échantillons ; aucune lecture exhaustive des textes des 100 pages."
+  ],
+  "manifest_sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+  "layout_pages_reviewed": [
+    "mf_0000",
+    "mf_0001",
+    "mf_0002",
+    "mf_0003",
+    "mf_0004",
+    "mf_0005",
+    "mf_0006",
+    "mf_0007",
+    "mf_0008",
+    "mf_0009",
+    "mf_0010",
+    "mf_0011",
+    "mf_0012",
+    "mf_0013",
+    "mf_0014",
+    "mf_0015",
+    "mf_0016",
+    "mf_0017",
+    "mf_0018",
+    "mf_0019",
+    "mf_0020",
+    "mf_0021",
+    "mf_0022",
+    "mf_0023",
+    "mf_0024",
+    "mf_0025",
+    "mf_0026",
+    "mf_0027",
+    "mf_0028",
+    "mf_0029",
+    "mf_0030",
+    "mf_0031",
+    "mf_0032",
+    "mf_0033",
+    "mf_0034",
+    "mf_0035",
+    "mf_0036",
+    "mf_0037",
+    "mf_0038",
+    "mf_0039"
+  ],
+  "words_reviewed": [
+    {
+      "page_id": "mf_0000",
+      "word_id": "mf_0000_w001112"
+    },
+    {
+      "page_id": "mf_0001",
+      "word_id": "mf_0001_w000079"
+    },
+    {
+      "page_id": "mf_0001",
+      "word_id": "mf_0001_w000252"
+    },
+    {
+      "page_id": "mf_0001",
+      "word_id": "mf_0001_w001555"
+    },
+    {
+      "page_id": "mf_0002",
+      "word_id": "mf_0002_w001923"
+    },
+    {
+      "page_id": "mf_0003",
+      "word_id": "mf_0003_w000238"
+    },
+    {
+      "page_id": "mf_0004",
+      "word_id": "mf_0004_w000945"
+    },
+    {
+      "page_id": "mf_0005",
+      "word_id": "mf_0005_w000236"
+    },
+    {
+      "page_id": "mf_0005",
+      "word_id": "mf_0005_w004017"
+    },
+    {
+      "page_id": "mf_0006",
+      "word_id": "mf_0006_w001445"
+    },
+    {
+      "page_id": "mf_0006",
+      "word_id": "mf_0006_w004360"
+    },
+    {
+      "page_id": "mf_0007",
+      "word_id": "mf_0007_w001398"
+    },
+    {
+      "page_id": "mf_0008",
+      "word_id": "mf_0008_w000005"
+    },
+    {
+      "page_id": "mf_0008",
+      "word_id": "mf_0008_w001716"
+    },
+    {
+      "page_id": "mf_0008",
+      "word_id": "mf_0008_w001730"
+    },
+    {
+      "page_id": "mf_0008",
+      "word_id": "mf_0008_w001912"
+    },
+    {
+      "page_id": "mf_0008",
+      "word_id": "mf_0008_w002023"
+    },
+    {
+      "page_id": "mf_0009",
+      "word_id": "mf_0009_w000965"
+    },
+    {
+      "page_id": "mf_0010",
+      "word_id": "mf_0010_w002443"
+    },
+    {
+      "page_id": "mf_0011",
+      "word_id": "mf_0011_w003866"
+    },
+    {
+      "page_id": "mf_0012",
+      "word_id": "mf_0012_w000385"
+    },
+    {
+      "page_id": "mf_0012",
+      "word_id": "mf_0012_w000783"
+    },
+    {
+      "page_id": "mf_0013",
+      "word_id": "mf_0013_w001083"
+    },
+    {
+      "page_id": "mf_0014",
+      "word_id": "mf_0014_w000378"
+    },
+    {
+      "page_id": "mf_0014",
+      "word_id": "mf_0014_w001136"
+    },
+    {
+      "page_id": "mf_0015",
+      "word_id": "mf_0015_w002569"
+    },
+    {
+      "page_id": "mf_0015",
+      "word_id": "mf_0015_w005777"
+    },
+    {
+      "page_id": "mf_0016",
+      "word_id": "mf_0016_w001738"
+    },
+    {
+      "page_id": "mf_0016",
+      "word_id": "mf_0016_w003175"
+    },
+    {
+      "page_id": "mf_0017",
+      "word_id": "mf_0017_w001738"
+    },
+    {
+      "page_id": "mf_0018",
+      "word_id": "mf_0018_w002514"
+    },
+    {
+      "page_id": "mf_0019",
+      "word_id": "mf_0019_w000907"
+    },
+    {
+      "page_id": "mf_0019",
+      "word_id": "mf_0019_w001476"
+    },
+    {
+      "page_id": "mf_0020",
+      "word_id": "mf_0020_w000710"
+    },
+    {
+      "page_id": "mf_0021",
+      "word_id": "mf_0021_w001831"
+    },
+    {
+      "page_id": "mf_0022",
+      "word_id": "mf_0022_w000988"
+    },
+    {
+      "page_id": "mf_0023",
+      "word_id": "mf_0023_w000105"
+    },
+    {
+      "page_id": "mf_0023",
+      "word_id": "mf_0023_w000300"
+    },
+    {
+      "page_id": "mf_0024",
+      "word_id": "mf_0024_w000111"
+    },
+    {
+      "page_id": "mf_0024",
+      "word_id": "mf_0024_w000397"
+    },
+    {
+      "page_id": "mf_0024",
+      "word_id": "mf_0024_w001286"
+    },
+    {
+      "page_id": "mf_0025",
+      "word_id": "mf_0025_w000742"
+    },
+    {
+      "page_id": "mf_0026",
+      "word_id": "mf_0026_w001786"
+    },
+    {
+      "page_id": "mf_0027",
+      "word_id": "mf_0027_w002297"
+    },
+    {
+      "page_id": "mf_0028",
+      "word_id": "mf_0028_w001473"
+    },
+    {
+      "page_id": "mf_0028",
+      "word_id": "mf_0028_w001897"
+    },
+    {
+      "page_id": "mf_0029",
+      "word_id": "mf_0029_w002561"
+    },
+    {
+      "page_id": "mf_0030",
+      "word_id": "mf_0030_w001590"
+    },
+    {
+      "page_id": "mf_0031",
+      "word_id": "mf_0031_w002093"
+    },
+    {
+      "page_id": "mf_0032",
+      "word_id": "mf_0032_w001338"
+    }
+  ],
+  "scope": "40 pages à l’échelle des planches, une planche de contours, une page brute et 50 crops ; les autres pages/crops sont couverts par les rapports des deux relecteurs."
+}

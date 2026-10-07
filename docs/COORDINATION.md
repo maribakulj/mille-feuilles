@@ -90,3 +90,39 @@ résolvent les conventions et objections : profil 4–6 colonnes, actifs vérifi
 JSON canonique, rendu et exports exécutables. Le [journal](JOURNAL.md) suit
 l'implémentation et les preuves de validation. Les agents de cette réalisation
 sont dédiés à Mille Feuilles ; les deux agents Axel ne sont plus sollicités.
+
+Le pilote corrigé de 100 pages est accepté avec 202 tests passants, validation
+complète des exports, revue visuelle et reproduction des 100 images/annotations.
+Les [preuves de livraison](VALIDATION.md) et les limites du démonstrateur sont
+versionnées. La consommation et l'évaluation sur données réelles restent côté Axel.
+
+## Binôme Codex / Claude dédié à Mille Feuilles
+
+Le 7 octobre 2026, Marcel ajoute un onglet Claude au projet et demande une
+répartition des tâches avec revues réciproques. Il s'agit d'un nouvel agent
+Mille Feuilles, distinct de Claude Axel dont la passation reste close.
+
+| Agent | Session et contact Herdr | Première attribution |
+|---|---|---|
+| Codex, coordination | `01a11578-05cf-7b23-91c2-bd17c54923f3`, `w8:p1` | Synchronisation de la livraison et des preuves ; traitement des constats ; revue des contributions de Claude. |
+| Claude, dédié au projet | `99660c03-830a-4e8e-be3c-f4fdedd08762`, `w8:p2` | Revue critique indépendante du code et des preuves du pilote ; recherche ciblée de défauts et retour avec sévérité, localisation et reproduction. |
+
+Claude a reçu l'état du dépôt et commencé sa revue. Le code source évalué est
+`0d1e2b701e9f6ba4d571a5f4894bd40071792225` ; les preuves sont dans
+`docs/reports/`. Cette nouvelle revue ne remplace pas les validations archivées.
+
+Règles de travail communes :
+
+- Annoncer le périmètre avant les modifications et attribuer des fichiers
+  disjoints ; signaler les dépendances au binôme avant de toucher son périmètre.
+- Faire relire une contribution par l'autre agent et traiter ses constats
+  avant de l'intégrer. Codex assure initialement les opérations Git partagées.
+- Laisser terminer les processus actifs ; échanger les résultats et les
+  limitations, sans compter une simple prise en charge comme une validation.
+- Limiter cette première revue aux contrôles ciblés : les campagnes acceptées
+  sont conservées, le disque dispose de moins de 1 Gio libre. Ne déplacer ni
+  supprimer aucun fichier, conformément à l'inventaire demandé par Marcel.
+- Garder les expériences et la coordination Axel dans leur projet.
+
+La revue Claude est en cours ; ses conclusions et les actions convenues seront
+ajoutées au journal après réception.

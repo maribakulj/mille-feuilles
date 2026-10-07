@@ -1,0 +1,25 @@
+{
+  "blocks": 17332,
+  "categories": {
+    "annonce": 1489,
+    "separateur": 7056,
+    "texte": 5673,
+    "titre": 3114
+  },
+  "columns": {
+    "4": 7,
+    "5": 33,
+    "6": 60
+  },
+  "cross_block_articles": 3499,
+  "degradations": {
+    "aged": 50,
+    "clean": 22,
+    "faint": 28
+  },
+  "hyphenation_groups": 6808,
+  "lines": 65311,
+  "pages": 100,
+  "scope": "synthetic demonstration / geometry QA; no evidence of OCR training gain",
+  "words": 436490
+}

@@ -1,0 +1,359 @@
+{
+  "status": "pass",
+  "date": "2026-10-07",
+  "reviewer": "Codex / repere_passation",
+  "scope": "Revue visuelle de composition sur les miniatures des pages 0040–0069 ; pas une lecture exhaustive des mots.",
+  "lot": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2",
+  "opened_files": [
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2/qa/contact_04.jpg",
+      "relative_to_lot": "qa/contact_04.jpg",
+      "sha256": "6d23163ad88fe390d1f6b376e402d1b4ed7c100ad054a43f150ecd4fcf159a6c",
+      "bytes": 694577,
+      "inspection_tool": "view_image",
+      "detail": "original",
+      "pages_displayed": [
+        "mf_0040",
+        "mf_0041",
+        "mf_0042",
+        "mf_0043",
+        "mf_0044",
+        "mf_0045",
+        "mf_0046",
+        "mf_0047",
+        "mf_0048",
+        "mf_0049"
+      ]
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2/qa/contact_05.jpg",
+      "relative_to_lot": "qa/contact_05.jpg",
+      "sha256": "496d48a5cd70fedcddc87e4eda80939794fffbed2f7f1b5e5753584d17c57d2f",
+      "bytes": 693987,
+      "inspection_tool": "view_image",
+      "detail": "original",
+      "pages_displayed": [
+        "mf_0050",
+        "mf_0051",
+        "mf_0052",
+        "mf_0053",
+        "mf_0054",
+        "mf_0055",
+        "mf_0056",
+        "mf_0057",
+        "mf_0058",
+        "mf_0059"
+      ]
+    },
+    {
+      "path": "/Users/marcel/heritage-synth/runs/pilot-v0.2-r2/qa/contact_06.jpg",
+      "relative_to_lot": "qa/contact_06.jpg",
+      "sha256": "480b7ba5b466cc746d1375263b4e77779d9b108bafdec93fc4a4946e7b31e28a",
+      "bytes": 681474,
+      "inspection_tool": "view_image",
+      "detail": "original",
+      "pages_displayed": [
+        "mf_0060",
+        "mf_0061",
+        "mf_0062",
+        "mf_0063",
+        "mf_0064",
+        "mf_0065",
+        "mf_0066",
+        "mf_0067",
+        "mf_0068",
+        "mf_0069"
+      ]
+    }
+  ],
+  "full_resolution_page_pngs_opened": [],
+  "pages_actually_viewed": [
+    "mf_0040",
+    "mf_0041",
+    "mf_0042",
+    "mf_0043",
+    "mf_0044",
+    "mf_0045",
+    "mf_0046",
+    "mf_0047",
+    "mf_0048",
+    "mf_0049",
+    "mf_0050",
+    "mf_0051",
+    "mf_0052",
+    "mf_0053",
+    "mf_0054",
+    "mf_0055",
+    "mf_0056",
+    "mf_0057",
+    "mf_0058",
+    "mf_0059",
+    "mf_0060",
+    "mf_0061",
+    "mf_0062",
+    "mf_0063",
+    "mf_0064",
+    "mf_0065",
+    "mf_0066",
+    "mf_0067",
+    "mf_0068",
+    "mf_0069"
+  ],
+  "page_observations": [
+    {
+      "page_id": "mf_0040",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 4,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Quatre colonnes nettement séparées ; bandeau et marges dégagés."
+    },
+    {
+      "page_id": "mf_0041",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Page dense à six colonnes ; aucune collision majeure visible."
+    },
+    {
+      "page_id": "mf_0042",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 4,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Contraste réduit ; quatre colonnes distinctes et marges préservées."
+    },
+    {
+      "page_id": "mf_0043",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "clean",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Composition dense et régulière ; bandeau séparé du corps."
+    },
+    {
+      "page_id": "mf_0044",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 5,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Cinq colonnes continues ; fins de colonnes variables sans rognage apparent."
+    },
+    {
+      "page_id": "mf_0045",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Corps dense ; marges latérales et inférieure visibles."
+    },
+    {
+      "page_id": "mf_0046",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 5,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Cinq colonnes moins contrastées ; gouttières encore distinctes à cette échelle."
+    },
+    {
+      "page_id": "mf_0047",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 5,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Répartition régulière ; bas de colonnes inégaux, sans rupture apparente."
+    },
+    {
+      "page_id": "mf_0048",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Six colonnes bien séparées et bandeau centré."
+    },
+    {
+      "page_id": "mf_0049",
+      "contact_sheet": "qa/contact_04.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Page dense ; dernière colonne légèrement plus courte, sans collision visible."
+    },
+    {
+      "page_id": "mf_0050",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Densité soutenue ; titres et filets structurent les colonnes."
+    },
+    {
+      "page_id": "mf_0051",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Faible contraste cohérent avec le mode ; cadre et marges visibles."
+    },
+    {
+      "page_id": "mf_0052",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "clean",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Six colonnes régulières ; titres dégagés, aucune lacune de colonne."
+    },
+    {
+      "page_id": "mf_0053",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Corps dense ; espaces de fin de colonnes variables sans débordement apparent."
+    },
+    {
+      "page_id": "mf_0054",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "clean",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Colonnes étroites distinctes ; aucune collision de bandeau ou de marge."
+    },
+    {
+      "page_id": "mf_0055",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "clean",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Page chargée mais structurée ; bord inférieur préservé."
+    },
+    {
+      "page_id": "mf_0056",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Composition cohérente ; dernière colonne plus courte, espace de fin plausible."
+    },
+    {
+      "page_id": "mf_0057",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 5,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Cinq colonnes à faible contraste ; marges et séparation conservées."
+    },
+    {
+      "page_id": "mf_0058",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 5,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Titres bien détachés dans cinq colonnes ; pas de chevauchement majeur visible."
+    },
+    {
+      "page_id": "mf_0059",
+      "contact_sheet": "qa/contact_05.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "clean",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Page dense jusqu’au bas ; marge inférieure reste visible."
+    },
+    {
+      "page_id": "mf_0060",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Six colonnes pâles mais séparées ; pas de rognage apparent."
+    },
+    {
+      "page_id": "mf_0061",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Bandeau centré ; fin de dernière colonne plus haute, sans anomalie majeure."
+    },
+    {
+      "page_id": "mf_0062",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 5,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Cinq colonnes régulières ; espaces terminaux variables."
+    },
+    {
+      "page_id": "mf_0063",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Faible contraste général ; structure de page intacte à cette échelle."
+    },
+    {
+      "page_id": "mf_0064",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Forte densité ; gouttières distinctes et cadre dégagé."
+    },
+    {
+      "page_id": "mf_0065",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "clean",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Titres et paragraphes restent dans leurs colonnes ; marges régulières."
+    },
+    {
+      "page_id": "mf_0066",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "aged",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Composition dense ; aucune zone de collision majeure détectée."
+    },
+    {
+      "page_id": "mf_0067",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Corps pâle à six colonnes ; filets et marges restent perceptibles."
+    },
+    {
+      "page_id": "mf_0068",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "clean",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Bandeau et corps bien séparés ; six colonnes alignées."
+    },
+    {
+      "page_id": "mf_0069",
+      "contact_sheet": "qa/contact_06.jpg",
+      "columns_visible": 6,
+      "mode_from_contact_label": "faint",
+      "status": "pass_at_thumbnail_scale",
+      "observation": "Faible contraste ; fins de colonnes inégales sans dépassement visible."
+    }
+  ],
+  "major_anomalies": [],
+  "observations": [
+    "Aucun rognage apparent des colonnes, chevauchement majeur, colonne manquante ou collision du bandeau observé sur ces trente miniatures.",
+    "Mise en page dense, gouttières distinctes, marges externes et séparation entre bandeau et texte visibles.",
+    "Les pages faint présentent un contraste sensiblement réduit ; aucune conclusion de lisibilité mot à mot ne peut être tirée de ces planches.",
+    "Les fins de colonnes sont volontairement inégales ; des espaces terminaux existent sans colonne entièrement vide.",
+    "Les titres et contenus de démonstration se répètent ; cette revue ne constitue pas une validation de réalisme historique ou de diversité textuelle."
+  ],
+  "limits": [
+    "Seuls les trois fichiers contact_04.jpg, contact_05.jpg et contact_06.jpg ont été ouverts avec view_image.",
+    "Les trente pages ont été examinées comme miniatures sur les planches ; aucun PNG de page entière ni crop n’a été ouvert, faute d’anomalie de composition nécessitant une levée de doute.",
+    "Les mots, césures, accents, glyphes, fines collisions locales et alignements exacts des annotations ne sont pas contrôlés exhaustivement à cette résolution.",
+    "Le statut pass porte sur la composition visible à cette échelle, pas sur la lisibilité de tous les mots, les métriques OCR, les exports ou une validation personnelle de Marcel."
+  ],
+  "source_or_dataset_files_modified": false
+}

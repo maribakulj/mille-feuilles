@@ -9,6 +9,11 @@ Dépôt privé : [maribakulj/mille-feuilles](https://github.com/maribakulj/mille
 Dossier de travail actuel : `~/heritage-synth`. Axel/ebortz/babaorum reste un
 consommateur indépendant, sous sa propre coordination.
 
+La version 0.2.0 est éprouvée sur **100 pages** : 202 tests passent, les exports
+sont validés et les 100 images/annotations ont été reproduites à l'identique.
+Les [preuves et limites](docs/VALIDATION.md) distinguent cette validation
+technique d'une évaluation sur des documents historiques réels.
+
 ## Démarrer
 
 Prérequis : Git et [uv](https://docs.astral.sh/uv/). L'exécution se fait depuis
