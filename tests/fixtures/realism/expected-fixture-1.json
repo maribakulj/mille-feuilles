@@ -1,0 +1,242 @@
+{
+  "format": "mille-feuilles-realism-expected",
+  "version": "1",
+  "note": "Hand-computed per-page values of calibrer.mesurer for tests/fixtures/newseye/fixture-1-order.json (W=400, H=300), from the definitions of SPEC-A1 §1 only. Floats to be compared at 1e-9; lists in calibrer order (article insertion order follows the reading order). mesurer is called with dpi=None (SPEC-A1 r2), so physical-unit metrics are absent. Column widths use the order statistic widths[floor(0.75*(n-1))]; surfaces are shoelace areas; baseline y is the mean of all baseline points (flat here).",
+  "page": "tests/fixtures/newseye/fixture-1-order.json",
+  "with_template": {
+    "counts": {
+      "blocs_nombre": {
+        "titre": 2,
+        "texte": 2,
+        "annonce": 1,
+        "separateur": 1
+      },
+      "blocs_surface": {
+        "titre": 0.048333333333,
+        "texte": 0.04475,
+        "annonce": 0.01275,
+        "separateur": 0.001666666667
+      },
+      "ordre_transitions": {
+        "dessous_meme_colonne": 3,
+        "haut_colonne_suivante": 1
+      }
+    },
+    "values": {
+      "filets_par_page": [
+        1
+      ],
+      "filets_verticaux_par_page": [
+        1
+      ],
+      "filets_horizontaux_par_page": [
+        0
+      ],
+      "filet_vertical_longueur_rel_H": [
+        0.333333333333
+      ],
+      "marge_gauche_rel_W": [
+        0.025
+      ],
+      "marge_droite_rel_W": [
+        0.22
+      ],
+      "marge_haut_rel_H": [
+        0.033333333333
+      ],
+      "marge_bas_rel_H": [
+        0.533333333333
+      ],
+      "zone_imprimee_largeur_rel_W": [
+        0.755
+      ],
+      "page_rapport_H_sur_W": [
+        0.75
+      ],
+      "colonnes": [
+        2
+      ],
+      "colonne_largeur_rel_W": [
+        0.3,
+        0.105
+      ],
+      "gouttiere_rel_W": [
+        0.2
+      ],
+      "gouttieres_avec_filet_part": [
+        1.0
+      ],
+      "ligne_hauteur_px_med_page": [
+        15
+      ],
+      "ligne_hauteur_rel_H_med_page": [
+        0.05
+      ],
+      "interligne_px_med_page": [
+        20
+      ],
+      "interligne_rel_H_med_page": [
+        0.066666666667
+      ],
+      "largeur_colonne_sur_interligne": [
+        4.05
+      ],
+      "caracteres_par_ligne_med_page": [
+        12
+      ],
+      "cesure_fin_de_ligne_part": [
+        0.0
+      ],
+      "titre_sur_texte_hauteur_ligne": [
+        1.333333333333
+      ],
+      "titre_ligne_sur_corps_texte": [
+        1.333333333333,
+        1.333333333333
+      ],
+      "articles_par_page": [
+        4
+      ],
+      "article_lignes": [
+        1,
+        1,
+        3
+      ],
+      "article_caracteres": [
+        14,
+        16,
+        26
+      ],
+      "article_blocs": [
+        1,
+        1,
+        2
+      ],
+      "article_colonnes_occupees": [
+        0,
+        1,
+        1
+      ],
+      "article_contigu_dans_ordre": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "article_avec_titre": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "annonce_lignes": [
+        1
+      ],
+      "annonce_caracteres": [
+        13
+      ],
+      "annonce_blocs": [
+        1
+      ],
+      "annonce_colonnes_occupees": [
+        1
+      ],
+      "annonce_contigu_dans_ordre": [
+        1.0
+      ],
+      "annonce_avec_titre": [
+        0.0
+      ],
+      "titre_largeur_en_colonnes": [
+        2.345679012346,
+        1.234567901235
+      ],
+      "titre_sur_plusieurs_colonnes": [
+        1.0,
+        0.0
+      ]
+    },
+    "absent": [
+      "printspace_gauche_rel_W",
+      "page_largeur_cm",
+      "colonne_largeur_cm",
+      "gouttiere_mm",
+      "interligne_pt_med_page",
+      "ligne_hauteur_mm_med_page",
+      "interligne_estime_rel_H_med_page"
+    ],
+    "derivation": {
+      "colonnes": "texte lines narrow (<= 0.45 x 302): left edges 10 (w 15) and 210, 210 (w 30); groups kept (>= 4 %), not merged (200 > 0.06 W); widths: col0 [120] -> 120; col1 [42, 102] -> widths[int(0.75*1)] = 42",
+      "interligne": "b0002 baselines 92 -> 112, same x0: pitch 20; b0004 has a single line",
+      "articles": "order without separator: b0000, b0004, b0003, b0001, b0002 -> a0000, a0003, a0002 (annonce), a0001 (2 blocs)",
+      "colonnes_occupees": "mcw = median(120, 42) = 81; b0000 (190 >= 121.5) ignored, so a0000 occupies 0 columns",
+      "titre_largeur": "190 / 81 and 100 / 81",
+      "transitions": "b0000->b0004 below; b0004->b0003 below; b0003->b0001 next column top; b0001->b0002 below"
+    }
+  },
+  "without_template": {
+    "note": "Blocks of mf:template_article_ids (p_a0000: block p_b0000) removed from the adapter.",
+    "counts": {
+      "blocs_nombre": {
+        "titre": 1,
+        "texte": 2,
+        "annonce": 1,
+        "separateur": 1
+      },
+      "ordre_transitions": {
+        "dessous_meme_colonne": 2,
+        "haut_colonne_suivante": 1
+      }
+    },
+    "values": {
+      "marge_haut_rel_H": [
+        0.133333333333
+      ],
+      "marge_droite_rel_W": [
+        0.22
+      ],
+      "zone_imprimee_largeur_rel_W": [
+        0.755
+      ],
+      "articles_par_page": [
+        3
+      ],
+      "article_lignes": [
+        1,
+        3
+      ],
+      "article_caracteres": [
+        16,
+        26
+      ],
+      "article_colonnes_occupees": [
+        1,
+        1
+      ],
+      "article_avec_titre": [
+        0.0,
+        1.0
+      ],
+      "titre_largeur_en_colonnes": [
+        1.234567901235
+      ],
+      "titre_sur_plusieurs_colonnes": [
+        0.0
+      ],
+      "titre_sur_texte_hauteur_ligne": [
+        1.333333333333
+      ],
+      "titre_ligne_sur_corps_texte": [
+        1.333333333333
+      ],
+      "caracteres_par_ligne_med_page": [
+        12
+      ],
+      "cesure_fin_de_ligne_part": [
+        0.0
+      ],
+      "colonnes": [
+        2
+      ]
+    }
+  },
+  "dpi": null
+}

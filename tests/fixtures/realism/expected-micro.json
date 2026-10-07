@@ -1,0 +1,84 @@
+{
+  "format": "mille-feuilles-realism-expected-micro",
+  "version": "1",
+  "note": "Hand-written inputs and hand-derived outputs for threshold cases of the pinned calibrer engine (SPEC-A1 r2 §1). Not computed by any code. Floats at 1e-9 unless a tolerance is given.",
+  "q": [
+    {"input": [], "expected": {"n": 0}},
+    {"input": [7], "expected": {"n": 1, "p50": 7}},
+    {"input": [0, 10], "expected": {"n": 2, "moy": 5.0, "p10": 1.0, "p25": 2.5, "p50": 5.0, "p75": 7.5, "p90": 9.0, "min": 0, "max": 10}}
+  ],
+  "columns": [
+    {"case": "order statistic, not interpolated quartile", "W": 1000,
+     "items": [[10, 11, 1], [10, 12, 1], [10, 13, 1], [10, 110, 1]], "expected": [[10, 13]]},
+    {"case": "x0 gap exactly 0.015 W: same group", "W": 1000,
+     "items": [[0, 100, 1], [15, 100, 1]], "expected": [[7.5, 92.5]]},
+    {"case": "gap just above 0.015 W: two groups, merged because 16 < 0.06 W", "W": 1000,
+     "items": [[0, 100, 1], [16, 100, 1]], "expected": [[8, 92]]},
+    {"case": "first-x0 distance exactly 0.06 W: not merged", "W": 1000,
+     "items": [[0, 50, 1], [60, 110, 1]], "expected": [[0, 50], [60, 110]]},
+    {"case": "group weight exactly 4 %: kept", "W": 1000,
+     "items": [[0, 50, 96], [500, 550, 4]], "expected": [[0, 50], [500, 550]]},
+    {"case": "group weight 3.9 % (< 4 %): dropped", "W": 1000,
+     "items": [[0, 50, 96.1], [500, 550, 3.9]], "expected": [[0, 50]]}
+  ],
+  "rotation": {
+    "case": "300 x 18 rectangle rotated by 0.35 degree about the origin: shoelace area stable, AABB not",
+    "native": [[0, 0], [300, 0], [300, 18], [0, 18]],
+    "rotate": "(x, y) -> (x cos t - y sin t, x sin t + y cos t), t = 0.35 degree",
+    "expected": {"area_native": 5400.0, "area_rotated": 5400.0, "area_tolerance": 1e-6,
+                 "aabb_height_rotated": 19.83224845, "aabb_width_rotated": 300.10435772, "aabb_tolerance": 1e-6}
+  },
+  "baseline_y": [
+    {"case": "mean of ALL baseline points, not AABB bottom, not mean of endpoints",
+     "line": {"poly": [[0, 0], [20, 0], [20, 45], [0, 45]], "baseline": [[0, 10], [10, 10], [20, 40]]},
+     "expected": 20.0},
+    {"case": "no baseline: AABB bottom of the line polygon",
+     "line": {"poly": [[0, 0], [20, 0], [20, 45], [0, 45]], "baseline": []},
+     "expected": 45}
+  ],
+  "pages": [
+    {
+      "case": "pitch exactly 4 x initial median is excluded; no narrow line gives one full-envelope column",
+      "dpi": null,
+      "pg": {"width": 1000, "height": 1000, "printspace": null, "groups": [["T"]], "order": ["T"],
+             "regions": [{"id": "T", "kind": "TextRegion", "struct": null, "text": "",
+                          "poly": [[0, 0], [100, 0], [100, 100], [0, 100]],
+                          "lines": [
+                            {"poly": [[0, 2], [100, 2], [100, 12], [0, 12]], "baseline": [[0, 10], [100, 10]], "text": "a", "article": null},
+                            {"poly": [[0, 12], [100, 12], [100, 22], [0, 22]], "baseline": [[0, 20], [100, 20]], "text": "a", "article": null},
+                            {"poly": [[0, 22], [100, 22], [100, 32], [0, 32]], "baseline": [[0, 30], [100, 30]], "text": "a", "article": null},
+                            {"poly": [[0, 32], [100, 32], [100, 42], [0, 42]], "baseline": [[0, 40], [100, 40]], "text": "a", "article": null},
+                            {"poly": [[0, 72], [100, 72], [100, 82], [0, 82]], "baseline": [[0, 80], [100, 80]], "text": "a", "article": null}]}]},
+      "expected_values": {"interligne_px_med_page": [10], "colonnes": [1], "largeur_colonne_sur_interligne": [10.0],
+                          "ligne_hauteur_px_med_page": [10], "caracteres_par_ligne_med_page": [1],
+                          "cesure_fin_de_ligne_part": [0.0]},
+      "expected_absent": ["articles_par_page"],
+      "derivation": "pitches 10, 10, 10, 40; initial median 10; keep p < 40 -> median 10. pw = 100, so no line <= 45: fallback column (0, 100)."
+    },
+    {
+      "case": "title at exactly 1.5 columns is not multi-column, 1.51 is; advert heading typed annonce gives annonce_avec_titre 0",
+      "dpi": null,
+      "pg": {"width": 1000, "height": 1000, "printspace": null,
+             "order": ["H1", "T1", "H2", "T2", "AD1", "AD2"], "groups": [["H1", "T1", "H2", "T2", "AD1", "AD2"]],
+             "regions": [
+               {"id": "H1", "kind": "TextRegion", "struct": "heading", "text": "", "poly": [[0, 100], [150, 100], [150, 130], [0, 130]],
+                "lines": [{"poly": [[0, 100], [150, 100], [150, 130], [0, 130]], "baseline": [[0, 125], [150, 125]], "text": "Titre", "article": "A1"}]},
+               {"id": "T1", "kind": "TextRegion", "struct": null, "text": "", "poly": [[0, 200], [100, 200], [100, 400], [0, 400]],
+                "lines": [{"poly": [[0, 200], [100, 200], [100, 210], [0, 210]], "baseline": [[0, 208], [100, 208]], "text": "x", "article": "A1"},
+                          {"poly": [[0, 220], [100, 220], [100, 230], [0, 230]], "baseline": [[0, 228], [100, 228]], "text": "x", "article": "A1"}]},
+               {"id": "H2", "kind": "TextRegion", "struct": "heading", "text": "", "poly": [[300, 100], [451, 100], [451, 130], [300, 130]],
+                "lines": [{"poly": [[300, 100], [451, 100], [451, 130], [300, 130]], "baseline": [[300, 125], [451, 125]], "text": "Titre", "article": "A2"}]},
+               {"id": "T2", "kind": "TextRegion", "struct": null, "text": "", "poly": [[300, 200], [400, 200], [400, 400], [300, 400]],
+                "lines": [{"poly": [[300, 200], [400, 200], [400, 210], [300, 210]], "baseline": [[300, 208], [400, 208]], "text": "x", "article": "A2"},
+                          {"poly": [[300, 220], [400, 220], [400, 230], [300, 230]], "baseline": [[300, 228], [400, 228]], "text": "x", "article": "A2"}]},
+               {"id": "AD1", "kind": "TextRegion", "struct": "heading", "text": "", "poly": [[600, 100], [700, 100], [700, 130], [600, 130]],
+                "lines": [{"poly": [[600, 100], [700, 100], [700, 130], [600, 130]], "baseline": [[600, 125], [700, 125]], "text": "AVIS", "article": "A3"}]},
+               {"id": "AD2", "kind": "TextRegion", "struct": null, "text": "", "poly": [[600, 140], [700, 140], [700, 170], [600, 170]],
+                "lines": [{"poly": [[600, 140], [700, 140], [700, 170], [600, 170]], "baseline": [[600, 165], [700, 165]], "text": "Vente", "article": "A3"}]},
+               {"id": "ADV", "kind": "AdvertRegion", "struct": null, "text": "", "poly": [[590, 90], [710, 90], [710, 180], [590, 180]], "lines": []}]},
+      "expected_values": {"colonnes": [2], "titre_largeur_en_colonnes": [1.5, 1.51], "titre_sur_plusieurs_colonnes": [0.0, 1.0],
+                          "articles_par_page": [3], "annonce_avec_titre": [0.0], "article_avec_titre": [1.0, 1.0]},
+      "derivation": "texte lines x0 0, 0, 300, 300 (pw 400, widths 100 <= 180): columns (0, 100) and (300, 400), mcw 100. Titles 150 / 100 = 1.5 (not > 1.5) and 151 / 100. AD1 and AD2 are at least half covered by ADV, so annonce despite struct heading: article A3 is an annonce without a titre-category block."
+    }
+  ]
+}

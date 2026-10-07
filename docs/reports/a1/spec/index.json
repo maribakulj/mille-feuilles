@@ -1,0 +1,28 @@
+{
+  "format": "mille-feuilles-a1-frozen-expectations",
+  "version": "1",
+  "status": "archived",
+  "scope": "Manual expectations frozen in the scratchpad before realism.py was written; repository archive performed after scratch implementation. The implementation review adds documented corrections without changing these expected values.",
+  "files": [
+    {
+      "path": "docs/reports/a1/spec/SPEC-A1.md",
+      "sha256": "f735a615525d21afd1f7c7a969a67b533b53e949a94762c59642cbbfa1659013",
+      "size_bytes": 17657
+    },
+    {
+      "path": "docs/reports/a1/spec/AMENDEMENT-r2.1.md",
+      "sha256": "d325f44033c4da14b98fb35428b204ed23aee44ab44988195704492d5bad7b9c",
+      "size_bytes": 1478
+    },
+    {
+      "path": "tests/fixtures/realism/expected-fixture-1.json",
+      "sha256": "c69c19bf613a27d7313c893fbc20475cb5cd614e857c92ed3d0222d9cc3a0ffd",
+      "size_bytes": 5738
+    },
+    {
+      "path": "tests/fixtures/realism/expected-micro.json",
+      "sha256": "0088db05c2b419e8d91c6c6d267dded9b9162715cf6fa45046311a8c085c05a4",
+      "size_bytes": 7062
+    }
+  ]
+}
