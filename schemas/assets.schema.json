@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mille-feuilles.invalid/schemas/assets-0.2.0.schema.json",
+  "title": "Mille Feuilles assets 0.2.0",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "kind": {
+            "enum": [
+              "text",
+              "font",
+              "texture",
+              "illustration",
+              "template"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*(?:^|/)\\.(?:/|$))[^\\x00]+(?![\\s\\S])"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+          },
+          "source_uri": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rights": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "enum": [
+                  "verified",
+                  "unresolved"
+                ]
+              },
+              "license": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_uri": {
+                "type": "string",
+                "minLength": 1
+              },
+              "attribution": {
+                "type": "string",
+                "minLength": 1
+              },
+              "redistribution_allowed": {
+                "type": "boolean"
+              },
+              "extensions": {
+                "type": "object",
+                "propertyNames": {
+                  "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+                }
+              }
+            },
+            "required": [
+              "status",
+              "license",
+              "evidence_uri",
+              "attribution",
+              "redistribution_allowed"
+            ],
+            "additionalProperties": false
+          },
+          "metadata": {
+            "type": "object"
+          },
+          "extensions": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "path",
+          "sha256",
+          "source_uri",
+          "rights",
+          "metadata"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "assets"
+  ],
+  "additionalProperties": false
+}

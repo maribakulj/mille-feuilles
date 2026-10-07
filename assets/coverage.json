@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.2.0",
+  "catalog_sha256": "15d6b6cb0528af01a74755c332481e8544c36d87ca53a93beb8c34f068851b20",
+  "checks": [
+    "asset_sha256",
+    "evidence_sha256",
+    "rights_verified",
+    "text_nfc",
+    "actual_cmap_nonzero_glyphs"
+  ],
+  "unique_demo_characters": 73,
+  "texts": [
+    {
+      "id": "text_demo_fr",
+      "codepoints": 13572,
+      "words": 2111
+    },
+    {
+      "id": "text_titres_fr",
+      "codepoints": 631,
+      "words": 96
+    },
+    {
+      "id": "text_annonces_fr",
+      "codepoints": 2518,
+      "words": 385
+    }
+  ],
+  "fonts": [
+    {
+      "id": "font_oldstandard_regular",
+      "glyph_codepoints": 888,
+      "missing_demo_characters": "",
+      "missing_french_diagnostic": "",
+      "long_s": false,
+      "unicode_ligatures_present": "ﬁﬂ"
+    },
+    {
+      "id": "font_oldstandard_bold",
+      "glyph_codepoints": 888,
+      "missing_demo_characters": "",
+      "missing_french_diagnostic": "",
+      "long_s": false,
+      "unicode_ligatures_present": "ﬁﬂ"
+    },
+    {
+      "id": "font_oldstandard_italic",
+      "glyph_codepoints": 887,
+      "missing_demo_characters": "",
+      "missing_french_diagnostic": "",
+      "long_s": false,
+      "unicode_ligatures_present": "ﬁﬂ"
+    },
+    {
+      "id": "font_gfsdidot_regular",
+      "glyph_codepoints": 1104,
+      "missing_demo_characters": "",
+      "missing_french_diagnostic": "",
+      "long_s": true,
+      "unicode_ligatures_present": "ﬀﬁﬂﬃﬄ"
+    }
+  ],
+  "errors": [],
+  "status": "pass",
+  "limitation": "Cmap coverage does not establish visual legibility or correct shaping; the renderer must verify those."
+}

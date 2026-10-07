@@ -1,0 +1,573 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mille-feuilles.invalid/schemas/page-0.2.0.schema.json",
+  "title": "Mille Feuilles page 0.2.0",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "page_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+    },
+    "profile": {
+      "const": "fr_press_19c_columns_4_6"
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*(?:^|/)\\.(?:/|$))[^\\x00]+(?![\\s\\S])"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "color_mode": {
+          "enum": [
+            "L",
+            "RGB"
+          ]
+        },
+        "dpi": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "extensions": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+          }
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "width",
+        "height",
+        "color_mode",
+        "dpi"
+      ],
+      "additionalProperties": false
+    },
+    "language": {
+      "const": "fr"
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "template_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+        },
+        "asset_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "text_spans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+              },
+              "start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "end": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "source_document_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "extensions": {
+                "type": "object",
+                "propertyNames": {
+                  "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+                }
+              }
+            },
+            "required": [
+              "asset_id",
+              "start",
+              "end",
+              "source_document_id"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "render_dpi": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "columns": {
+              "type": "integer",
+              "minimum": 4,
+              "maximum": 6
+            }
+          },
+          "required": [
+            "render_dpi",
+            "columns"
+          ]
+        },
+        "extensions": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+          }
+        }
+      },
+      "required": [
+        "seed",
+        "template_id",
+        "asset_ids",
+        "text_spans",
+        "parameters"
+      ],
+      "additionalProperties": false
+    },
+    "transforms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "geometry": {
+            "oneOf": [
+              {
+                "const": "identity"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "matrix": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "propertyNames": {
+                      "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+                    }
+                  }
+                },
+                "required": [
+                  "matrix"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "extensions": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+            }
+          }
+        },
+        "required": [
+          "kind",
+          "parameters",
+          "geometry"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "articles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "block_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "extensions": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "block_ids"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "category": {
+            "enum": [
+              "titre",
+              "texte",
+              "legende",
+              "annonce",
+              "tableau",
+              "illustration",
+              "separateur",
+              "autre"
+            ]
+          },
+          "polygon": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3
+          },
+          "article_id": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "line_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "extensions": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "polygon",
+          "article_id",
+          "line_ids"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "block_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "polygon": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3
+          },
+          "baseline": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "word_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "legibility": {
+            "enum": [
+              "readable",
+              "uncertain",
+              "illegible"
+            ]
+          },
+          "extensions": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "block_id",
+          "polygon",
+          "baseline",
+          "text",
+          "word_ids",
+          "legibility"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "words": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "line_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "polygon": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "char_span": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "legibility": {
+            "enum": [
+              "readable",
+              "uncertain",
+              "illegible"
+            ]
+          },
+          "hyphenation": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "group_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+                  },
+                  "part": {
+                    "enum": [
+                      "start",
+                      "end"
+                    ]
+                  },
+                  "reconstructed_text": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "propertyNames": {
+                      "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+                    }
+                  }
+                },
+                "required": [
+                  "group_id",
+                  "part",
+                  "reconstructed_text"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "extensions": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "line_id",
+          "polygon",
+          "text",
+          "char_span",
+          "legibility",
+          "hyphenation"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "reading_order": {
+      "type": "object",
+      "properties": {
+        "block_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "unordered_block_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "line_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+          }
+        }
+      },
+      "required": [
+        "block_ids",
+        "unordered_block_ids",
+        "line_ids"
+      ],
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*:"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "page_id",
+    "profile",
+    "image",
+    "language",
+    "provenance",
+    "transforms",
+    "articles",
+    "blocks",
+    "lines",
+    "words",
+    "reading_order"
+  ],
+  "additionalProperties": false
+}

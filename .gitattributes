@@ -1,0 +1,5 @@
+# These files retain the exact upstream bytes recorded by SHA-256.
+assets/fonts/** -text
+assets/texts/CC0-1.0.txt -text
+schemas/xml/*.xsd -text
+schemas/xml/PAGE-LICENSE -text

@@ -1,0 +1,44 @@
+{
+  "retrieved_date": "2026-10-07",
+  "files": [
+    {
+      "path": "page-2019-07-15.xsd",
+      "version": "PAGE 2019-07-15",
+      "source_url": "https://www.primaresearch.org/schema/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd",
+      "sha256": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5",
+      "dependencies": [],
+      "license_note": "Apache-2.0; upstream LICENSE archived as PAGE-LICENSE"
+    },
+    {
+      "path": "alto-4-4.xsd",
+      "version": "ALTO 4.4",
+      "source_url": "https://www.loc.gov/standards/alto/v4/alto-4-4.xsd",
+      "sha256": "5564fd29d2dd090d8102b8a0aa081906afd677cd5ecc632312e56f21ea14702b",
+      "dependencies": [
+        "xlink.xsd"
+      ],
+      "license_note": "CC BY-SA 4.0 (license in original schema header)"
+    },
+    {
+      "path": "xlink.xsd",
+      "version": "METS XLink Schema v2, 2004-11-15",
+      "source_url": "http://www.loc.gov/standards/xlink/xlink.xsd",
+      "sha256": "f1f5bb6003165cdd8f6c1fcc32f8fd1f965e1681010f3b9806d9460bcffa8a3c",
+      "dependencies": [],
+      "license_note": "Copyright and licensing as distributed by Library of Congress; upstream file retained verbatim."
+    },
+    {
+      "path": "PAGE-LICENSE",
+      "version": "Apache-2.0",
+      "source_url": "https://raw.githubusercontent.com/PRImA-Research-Lab/PAGE-XML/master/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "dependencies": [],
+      "license_note": "Verbatim upstream PAGE-XML license text"
+    }
+  ],
+  "notes": [
+    "All schema files are archived byte-for-byte; original schemaLocation is not changed.",
+    "The original HTTP XLink URL serves the schema; its HTTPS variant returned HTTP 404 at retrieval. A local resolver maps both variants to the archived file.",
+    "PAGE has no external dependencies. ALTO imports only the archived LOC XLink schema; XLink has no dependencies."
+  ]
+}

@@ -26,7 +26,7 @@ Les expériences et calculs propres à Axel restent gérés par ses agents.
 Leur achèvement n'est pas une condition de cette passation Mille Feuilles.
 La réception a été confirmée aux deux interlocuteurs. La passation est close.
 
-## Acquis et limites
+## État reçu à la passation
 
 - Dépôt initial : branche `main`, commit `f829bd0` ;
   [contrat de données proposé v0.1.0](CONTRAT_DONNEES.md).
@@ -43,7 +43,7 @@ Les attributions personnelles du contrat v0.1.0 décrivent l'accord initial ;
 la présente note et le mandat de Marcel fixent la coordination actuelle.
 Les responsabilités techniques et frontières entre dépôts restent applicables.
 
-## Résultat du cadrage et réserves ouvertes
+## Résultat du cadrage reçu
 
 - 1 253 pages train/dev mesurées ; relevés dans `tools/cadrage/sortie/`,
   avec inventaire de 64 fichiers Google Fonts et d'une copie BBVLM identique
@@ -84,5 +84,9 @@ Références à consulter côté Axel, sans modifier ses expériences :
 4. Organiser les validations visuelles et, ultérieurement, la consommation
    des données par Axel avec son coordinateur.
 
-Ces suites sont consignées pour la reprise ; elles ne sont pas lancées dans
-le cadre de la passation.
+Ces suites ont été engagées ensuite, sous le mandat d'autonomie de Marcel.
+Le [contrat 0.2.0](CONTRAT_DONNEES.md) et les [décisions](DECISIONS.md)
+résolvent les conventions et objections : profil 4–6 colonnes, actifs vérifiés,
+JSON canonique, rendu et exports exécutables. Le [journal](JOURNAL.md) suit
+l'implémentation et les preuves de validation. Les agents de cette réalisation
+sont dédiés à Mille Feuilles ; les deux agents Axel ne sont plus sollicités.
