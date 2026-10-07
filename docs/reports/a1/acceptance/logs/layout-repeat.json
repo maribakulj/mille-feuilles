@@ -1,0 +1,32 @@
+{
+  "status": "pass",
+  "errors": [],
+  "checks": [
+    {
+      "name": "selected_canonicals",
+      "status": "pass"
+    },
+    {
+      "name": "pinned_measurement",
+      "status": "pass"
+    },
+    {
+      "name": "report_schema",
+      "status": "pass"
+    },
+    {
+      "name": "source_stability",
+      "status": "pass"
+    },
+    {
+      "name": "output_hash",
+      "status": "pass"
+    }
+  ],
+  "report_path": "/Users/marcel/heritage-synth/runs/accept-structure-a1/reports/layout-repeat/report.json",
+  "report_sha256": "57543536f43acb68d7aa8796a90d126f5158434f390ad329b1c2175220bc27a8",
+  "selected_page_ids": [
+    "mf_0000",
+    "mf_0001"
+  ]
+}

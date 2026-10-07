@@ -1,0 +1,4 @@
+usage: mille-feuilles report-structure [-h] --from SOURCE --output OUTPUT
+                                       (--page PAGE_IDS | --all-pages)
+                                       [--reference REFERENCE]
+mille-feuilles report-structure: error: one of the arguments --page --all-pages is required

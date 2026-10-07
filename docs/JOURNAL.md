@@ -304,3 +304,12 @@ pendant la suite. Les sondes de 23 annotations existantes donnent 23 mesures
 avec gabarit ; sans gabarit, trois mesures et 20 exclusions documentées, aucun
 refus inattendu. Les preuves sont dans `reports/a1/tests-index.json`. La
 campagne CLI ancrée sur commit propre suit, sans génération d'images.
+
+Au commit `5ad97b4`, la campagne A1 passe 670 contrôles : rapports sur deux
+pages v2 et deux anciennes, répétition compacte identique, quatre refus CLI,
+sources surveillées intactes. Elle écrit 511 712 octets et ses 21 fichiers
+sont archivés dans `reports/a1/acceptance/`. La variante sans gabarit des
+anciennes pages reste ND. Ces quatre pages prouvent le fonctionnement de
+la commande et non une distribution représentative ni une utilité de modèle.
+Le cadrage suivant examine des articles composés d'unités consécutives d'un
+même document ; aucun réglage n'est appris de cette petite campagne.

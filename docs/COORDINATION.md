@@ -252,3 +252,11 @@ son scratchpad intact et lui réserve la reprise de la revue en lecture seule.
 Les fichiers sont attribués explicitement pour éviter une double écriture à
 son retour. La campagne A1 reste limitée aux annotations synthétiques déjà
 produites et aux relevés agrégés ; aucune image ni corpus n'est nécessaire.
+
+A1 est accepté sur `5ad97b4` : 108 tests ciblés, puis 670 contrôles CLI,
+quatre pages et répétition identique. Les fichiers de Claude, complétés par
+deux correctifs Codex relus, sont intégrés ; sa reprise de revue reste à
+organiser après sa limite de session. Les preuves sont archivées dans
+`reports/a1/`. Le travail continue sur le cadrage des articles à plusieurs
+unités consécutives, avec préservation des profils existants et sans nouveau
+corpus ni calibration automatique sur les pages d'acceptation.

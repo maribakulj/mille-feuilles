@@ -1,0 +1,119 @@
+{
+  "format": "mille-feuilles-a1-acceptance-archive",
+  "version": "1",
+  "status": "pass",
+  "source_commit": "5ad97b41ce568514c144d07fa3919365ff9d8219",
+  "checks": 670,
+  "commands": 7,
+  "distinct_pages": 4,
+  "source_monitoring": "Two native manifests and four selected canonical JSON files only",
+  "scope": "Structural report execution and independent reaggregation; no realism verdict, no model gain, no corpus or image access",
+  "files": [
+    {
+      "path": "acceptance.json",
+      "sha256": "69ec98e894efc493b7bf9511bee817592c90b96f83d38651e6c34cbf3b89d968",
+      "size_bytes": 73775
+    },
+    {
+      "path": "logs/layout-repeat.json",
+      "sha256": "ea440a1046fd9d47d95135b6c564fce900cb023d867c2230252f216aed861700",
+      "size_bytes": 658
+    },
+    {
+      "path": "logs/layout-repeat.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/layout.json",
+      "sha256": "5d282c120c442ebc14258e9c174b4c31fd138daabad0117feca2854fd714b7ca",
+      "size_bytes": 651
+    },
+    {
+      "path": "logs/layout.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/legacy.json",
+      "sha256": "73d944c995368d29a00f9b1c604f956f563286a6d3d5a8dfca9b3be09d0b4f65",
+      "size_bytes": 651
+    },
+    {
+      "path": "logs/legacy.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-duplicate.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-duplicate.stderr.log",
+      "sha256": "9d0abb7da7a473b05357c7d4057f04692ec8f23828a49dc81d9b8afe4f3dd1ca",
+      "size_bytes": 52
+    },
+    {
+      "path": "logs/reject-nested.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-nested.stderr.log",
+      "sha256": "fd185c5996f4d2bbe790cb34d536c102a9e47704390f27114f22775a0b54320c",
+      "size_bytes": 56
+    },
+    {
+      "path": "logs/reject-no-selection.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-no-selection.stderr.log",
+      "sha256": "894d2f159e7726dafd96a618f439c35164a48b6e0f2373bd5e956a6b8c515604",
+      "size_bytes": 300
+    },
+    {
+      "path": "logs/reject-unknown.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-unknown.stderr.log",
+      "sha256": "9d0abb7da7a473b05357c7d4057f04692ec8f23828a49dc81d9b8afe4f3dd1ca",
+      "size_bytes": 52
+    },
+    {
+      "path": "reports/layout/report.json",
+      "sha256": "57543536f43acb68d7aa8796a90d126f5158434f390ad329b1c2175220bc27a8",
+      "size_bytes": 167059
+    },
+    {
+      "path": "reports/layout/report.sha256",
+      "sha256": "16478e34d4bd560349dc663d4e03bc9543f5cf2065c4a284c6b836f277d36982",
+      "size_bytes": 78
+    },
+    {
+      "path": "reports/layout-repeat/report.json",
+      "sha256": "57543536f43acb68d7aa8796a90d126f5158434f390ad329b1c2175220bc27a8",
+      "size_bytes": 167059
+    },
+    {
+      "path": "reports/layout-repeat/report.sha256",
+      "sha256": "16478e34d4bd560349dc663d4e03bc9543f5cf2065c4a284c6b836f277d36982",
+      "size_bytes": 78
+    },
+    {
+      "path": "reports/legacy/report.json",
+      "sha256": "579443429f1c941ab0a51470d7bf1a6ec73559af8cd09fc9289794dd48102201",
+      "size_bytes": 101165
+    },
+    {
+      "path": "reports/legacy/report.sha256",
+      "sha256": "296d1eb94017dfeadf5949d81546914721b64eaf8c3f291cd4a57a823e16240a",
+      "size_bytes": 78
+    }
+  ],
+  "total_bytes": 511712
+}

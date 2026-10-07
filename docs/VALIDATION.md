@@ -582,3 +582,23 @@ le rapport compact à l'identique et exerce quatre refus sans destination.
 Cette réagrégation ne constitue pas un second moteur de mesure. La surveillance
 des sources porte seulement sur les deux manifestes et les quatre annotations.
 Un succès technique ne juge ni le réalisme ni l'utilité pour l'apprentissage.
+
+La campagne passe **670 contrôles** au commit propre **`5ad97b4`** : sept
+commandes, quatre pages distinctes, répétition compacte identique et quatre
+refus sans destination. Les deux manifestes et quatre annotations surveillés
+sont inchangés. Elle écrit 511 712 octets ; ses 21 fichiers, dont les rapports
+complets et leurs empreintes, sont [archivés](reports/a1/acceptance/index.json).
+
+Quelques observations de la variante principale, pour **deux pages seulement
+par lot**, illustrent la lecture du rapport ; ce ne sont pas des cibles :
+
+| Médiane par page | Compact v2 ×2 | Pilote ancien | Référence AS XIXe (65 pages) |
+|---|---:|---:|---:|
+| Articles (A) | 39 | 68,5 | 33 |
+| Part de lignes terminant par une césure (C) | 0,0943 | 0,1062 | 0,2099 |
+| Interligne / hauteur de page (C) | 0,0089 | 0,0065 | 0,0048 |
+
+Les deux pages anciennes n'identifient pas leur bandeau : leur cohorte
+`sans_gabarit` est ND, sans comparaison. Les deux pages v2 permettent les
+deux variantes. La taille et la sélection de ces échantillons ne justifient
+aucun réglage statistique du générateur.

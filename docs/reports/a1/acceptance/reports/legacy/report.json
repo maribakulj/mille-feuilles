@@ -1,0 +1,4139 @@
+{
+  "format": "mille-feuilles-structural-report",
+  "generator": {
+    "commit": "5ad97b41ce568514c144d07fa3919365ff9d8219",
+    "dirty": false,
+    "environment": {
+      "modules": {
+        "io.py": "fa26d558c5582013dda07116c517fc1e87e624f66c5e4d434dca384a8f1aee84",
+        "realism.py": "8037a41ebc3fff3211b969363150c3b8aeca3d631022020c34bfbceb1741e9c3",
+        "structure_report.py": "68bee9aed118f4df99c373ad69bcfb12b84240f984feb779f71b4b35ddecf7bf",
+        "validation.py": "d0f1bed2d994100a488d9fdd3cfb53a4ad5628dd494d87a2d39c81c2d248440b"
+      },
+      "packages": {
+        "Pillow": "12.3.0",
+        "fonttools": "4.66.1",
+        "jsonschema": "4.26.0",
+        "lxml": "6.1.3",
+        "numpy": "2.5.3",
+        "shapely": "2.1.2"
+      },
+      "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+      "schemas": {
+        "manifest.schema.json": "9312c2337501a7085c77297f2c1cbab233828c8b261b65e027f81c47fe3b4baf",
+        "page.schema.json": "ea63ea01a57319a53b3a66fe83e29c859e82ca7a0ff197e2e2737708da3e9e19",
+        "structure-report.schema.json": "3172d4d4917c34f4bb0a11d393e3bc528bcb34873ecc4f0f446d4cadcb4bdda7"
+      }
+    }
+  },
+  "inputs": {
+    "calibration": {
+      "path": "tools/cadrage/sortie/calibration.json",
+      "sha256": "6349af2f15c39f0203ffdf873b07d07454a8a3671bab9ee28b5b637ecf731c08",
+      "size_bytes": 263536
+    },
+    "calibrer": {
+      "path": "tools/cadrage/calibrer.py",
+      "sha256": "8b72e367424b6f8825539c46e349e2d948b942ff5412fd61a884fd4804ef820d",
+      "size_bytes": 30410
+    },
+    "source": {
+      "dataset_id": "mf_demo_20261007_100",
+      "manifest": {
+        "path": "manifest.json",
+        "sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+        "size_bytes": 135566
+      },
+      "profile": "fr_press_19c_columns_4_6",
+      "schema_version": "0.2.0",
+      "total_pages": 100
+    }
+  },
+  "method": "cadrage-calibrer-a1-v1",
+  "reference": {
+    "calibration_sha256": "6349af2f15c39f0203ffdf873b07d07454a8a3671bab9ee28b5b637ecf731c08",
+    "cohort": "as:XIXe",
+    "columns_by_split": {
+      "dev": {
+        "5": 1,
+        "6": 8,
+        "7": 3
+      },
+      "train": {
+        "2": 1,
+        "3": 1,
+        "4": 2,
+        "5": 13,
+        "6": 33,
+        "7": 2,
+        "8": 1
+      }
+    },
+    "note": "Distributions de stats regroupent train et dev ; seul l'histogramme des colonnes est séparable.",
+    "pages": 65,
+    "pages_by_split": {
+      "dev": 12,
+      "train": 53
+    },
+    "stats": {
+      "annonce_avec_titre": {
+        "max": 1.0,
+        "min": 0.0,
+        "moy": 0.1745,
+        "n": 533,
+        "p10": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p90": 1.0
+      },
+      "annonce_blocs": {
+        "max": 228,
+        "min": 1,
+        "moy": 8.1107,
+        "n": 533,
+        "p10": 1.0,
+        "p25": 2.0,
+        "p50": 3.0,
+        "p75": 7.0,
+        "p90": 18.0
+      },
+      "annonce_caracteres": {
+        "max": 11310,
+        "min": 10,
+        "moy": 551.2233,
+        "n": 533,
+        "p10": 62.0,
+        "p25": 109.0,
+        "p50": 200.0,
+        "p75": 464.0,
+        "p90": 1199.2
+      },
+      "annonce_colonnes_occupees": {
+        "max": 6,
+        "min": 0,
+        "moy": 1.1538,
+        "n": 533,
+        "p10": 1.0,
+        "p25": 1.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p90": 2.0
+      },
+      "annonce_contigu_dans_ordre": {
+        "max": 1.0,
+        "min": 0.0,
+        "moy": 0.9625,
+        "n": 533,
+        "p10": 1.0,
+        "p25": 1.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      },
+      "annonce_lignes": {
+        "max": 613,
+        "min": 1,
+        "moy": 17.9193,
+        "n": 533,
+        "p10": 2.0,
+        "p25": 4.0,
+        "p50": 6.0,
+        "p75": 14.0,
+        "p90": 33.8
+      },
+      "article_avec_titre": {
+        "max": 1.0,
+        "min": 0.0,
+        "moy": 0.5005,
+        "n": 1834,
+        "p10": 0.0,
+        "p25": 0.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      },
+      "article_blocs": {
+        "max": 403,
+        "min": 1,
+        "moy": 9.2475,
+        "n": 1834,
+        "p10": 1.0,
+        "p25": 2.0,
+        "p50": 5.0,
+        "p75": 9.0,
+        "p90": 18.0
+      },
+      "article_caracteres": {
+        "max": 16894,
+        "min": 1,
+        "moy": 1110.6647,
+        "n": 1834,
+        "p10": 125.0,
+        "p25": 248.0,
+        "p50": 539.0,
+        "p75": 1254.5,
+        "p90": 2442.4
+      },
+      "article_colonnes_occupees": {
+        "max": 6,
+        "min": 0,
+        "moy": 1.2448,
+        "n": 1834,
+        "p10": 1.0,
+        "p25": 1.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p90": 2.0
+      },
+      "article_contigu_dans_ordre": {
+        "max": 1.0,
+        "min": 0.0,
+        "moy": 0.9444,
+        "n": 1834,
+        "p10": 1.0,
+        "p25": 1.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      },
+      "article_lignes": {
+        "max": 836,
+        "min": 1,
+        "moy": 30.6063,
+        "n": 1834,
+        "p10": 4.0,
+        "p25": 7.0,
+        "p50": 15.0,
+        "p75": 33.0,
+        "p90": 65.0
+      },
+      "articles_par_page": {
+        "max": 85,
+        "min": 5,
+        "moy": 36.4154,
+        "n": 65,
+        "p10": 18.0,
+        "p25": 25.0,
+        "p50": 33.0,
+        "p75": 47.0,
+        "p90": 57.0
+      },
+      "blocs_nombre": {
+        "annonce": {
+          "part": 0.1364,
+          "valeur": 4194.0
+        },
+        "illustration": {
+          "part": 0.0232,
+          "valeur": 712.0
+        },
+        "legende": {
+          "part": 0.0003,
+          "valeur": 8.0
+        },
+        "separateur": {
+          "part": 0.2839,
+          "valeur": 8728.0
+        },
+        "tableau": {
+          "part": 0.0998,
+          "valeur": 3068.0
+        },
+        "texte": {
+          "part": 0.4166,
+          "valeur": 12808.0
+        },
+        "titre": {
+          "part": 0.0398,
+          "valeur": 1225.0
+        }
+      },
+      "blocs_surface": {
+        "annonce": {
+          "part": 0.1115,
+          "valeur": 5.5193
+        },
+        "illustration": {
+          "part": 0.0497,
+          "valeur": 2.4588
+        },
+        "legende": {
+          "part": 0.0002,
+          "valeur": 0.0085
+        },
+        "separateur": {
+          "part": 0.0371,
+          "valeur": 1.8375
+        },
+        "tableau": {
+          "part": 0.0398,
+          "valeur": 1.9711
+        },
+        "texte": {
+          "part": 0.7433,
+          "valeur": 36.7877
+        },
+        "titre": {
+          "part": 0.0183,
+          "valeur": 0.9062
+        }
+      },
+      "caracteres_par_ligne_med_page": {
+        "max": 52.0,
+        "min": 29,
+        "moy": 43.3385,
+        "n": 65,
+        "p10": 39.0,
+        "p25": 40.0,
+        "p50": 42.0,
+        "p75": 47.0,
+        "p90": 48.0
+      },
+      "cesure_fin_de_ligne_part": {
+        "max": 0.2738,
+        "min": 0.0811,
+        "moy": 0.1996,
+        "n": 65,
+        "p10": 0.1369,
+        "p25": 0.1842,
+        "p50": 0.2099,
+        "p75": 0.2281,
+        "p90": 0.2369
+      },
+      "colonne_largeur_cm": {
+        "max": 7.874,
+        "min": 0.3895,
+        "moy": 6.8175,
+        "n": 210,
+        "p10": 6.3991,
+        "p25": 6.4855,
+        "p50": 6.6463,
+        "p75": 7.62,
+        "p90": 7.697
+      },
+      "colonne_largeur_rel_W": {
+        "max": 0.2257,
+        "min": 0.0087,
+        "moy": 0.1538,
+        "n": 372,
+        "p10": 0.1424,
+        "p25": 0.1458,
+        "p50": 0.1486,
+        "p75": 0.1554,
+        "p90": 0.1827
+      },
+      "colonnes": {
+        "max": 8,
+        "min": 2,
+        "moy": 5.7231,
+        "n": 65,
+        "p10": 5.0,
+        "p25": 5.0,
+        "p50": 6.0,
+        "p75": 6.0,
+        "p90": 6.0
+      },
+      "filet_vertical_longueur_rel_H": {
+        "max": 0.9477,
+        "min": 0.0037,
+        "moy": 0.1095,
+        "n": 2431,
+        "p10": 0.0139,
+        "p25": 0.0232,
+        "p50": 0.0533,
+        "p75": 0.1416,
+        "p90": 0.2661
+      },
+      "filets_horizontaux_par_page": {
+        "max": 439,
+        "min": 9,
+        "moy": 96.8769,
+        "n": 65,
+        "p10": 19.4,
+        "p25": 36.0,
+        "p50": 60.0,
+        "p75": 113.0,
+        "p90": 242.0
+      },
+      "filets_par_page": {
+        "max": 613,
+        "min": 22,
+        "moy": 134.2769,
+        "n": 65,
+        "p10": 36.4,
+        "p25": 54.0,
+        "p50": 94.0,
+        "p75": 163.0,
+        "p90": 302.0
+      },
+      "filets_verticaux_par_page": {
+        "max": 194,
+        "min": 6,
+        "moy": 37.4,
+        "n": 65,
+        "p10": 13.4,
+        "p25": 17.0,
+        "p50": 27.0,
+        "p75": 38.0,
+        "p90": 76.6
+      },
+      "gouttiere_mm": {
+        "max": 141.5627,
+        "min": -33.3587,
+        "moy": 5.1845,
+        "n": 175,
+        "p10": 2.7093,
+        "p25": 3.4713,
+        "p50": 4.1487,
+        "p75": 5.0377,
+        "p90": 5.588
+      },
+      "gouttiere_rel_W": {
+        "max": 0.6352,
+        "min": -0.1497,
+        "moy": 0.0088,
+        "n": 307,
+        "p10": 0.0021,
+        "p25": 0.0054,
+        "p50": 0.008,
+        "p75": 0.0096,
+        "p90": 0.0121
+      },
+      "gouttieres_avec_filet_part": {
+        "max": 1.0,
+        "min": 0.0,
+        "moy": 0.8804,
+        "n": 65,
+        "p10": 0.6,
+        "p25": 0.8333,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      },
+      "interligne_pt_med_page": {
+        "max": 10.5943,
+        "min": 7.3029,
+        "moy": 9.0508,
+        "n": 35,
+        "p10": 8.176,
+        "p25": 8.5714,
+        "p50": 9.3943,
+        "p75": 9.5429,
+        "p90": 9.6206
+      },
+      "interligne_px_med_page": {
+        "max": 44.1429,
+        "min": 26.1429,
+        "moy": 35.7696,
+        "n": 65,
+        "p10": 30.6,
+        "p25": 34.2381,
+        "p50": 35.5238,
+        "p75": 39.619,
+        "p90": 39.9048
+      },
+      "interligne_rel_H_med_page": {
+        "max": 0.0068,
+        "min": 0.0035,
+        "moy": 0.0049,
+        "n": 65,
+        "p10": 0.0042,
+        "p25": 0.0046,
+        "p50": 0.0048,
+        "p75": 0.0054,
+        "p90": 0.0055
+      },
+      "largeur_colonne_sur_interligne": {
+        "max": 35.459,
+        "min": 17.4434,
+        "moy": 23.1824,
+        "n": 65,
+        "p10": 19.2003,
+        "p25": 20.7292,
+        "p50": 22.548,
+        "p75": 25.944,
+        "p90": 27.0809
+      },
+      "ligne_hauteur_mm_med_page": {
+        "max": 5.334,
+        "min": 3.048,
+        "moy": 4.1777,
+        "n": 35,
+        "p10": 3.048,
+        "p25": 3.683,
+        "p50": 4.318,
+        "p75": 4.699,
+        "p90": 4.8768
+      },
+      "ligne_hauteur_px_med_page": {
+        "max": 67.0,
+        "min": 36.0,
+        "moy": 50.5385,
+        "n": 65,
+        "p10": 37.1,
+        "p25": 47.0,
+        "p50": 50.0,
+        "p75": 55.0,
+        "p90": 60.0
+      },
+      "ligne_hauteur_rel_H_med_page": {
+        "max": 0.0098,
+        "min": 0.0049,
+        "moy": 0.0069,
+        "n": 65,
+        "p10": 0.0051,
+        "p25": 0.0063,
+        "p50": 0.0067,
+        "p75": 0.0076,
+        "p90": 0.0085
+      },
+      "marge_bas_rel_H": {
+        "max": 0.0619,
+        "min": 0.0004,
+        "moy": 0.0295,
+        "n": 65,
+        "p10": 0.0142,
+        "p25": 0.0198,
+        "p50": 0.0277,
+        "p75": 0.0379,
+        "p90": 0.0493
+      },
+      "marge_droite_rel_W": {
+        "max": 0.0517,
+        "min": 0.0,
+        "moy": 0.0306,
+        "n": 65,
+        "p10": 0.0184,
+        "p25": 0.024,
+        "p50": 0.0299,
+        "p75": 0.0384,
+        "p90": 0.0457
+      },
+      "marge_gauche_rel_W": {
+        "max": 0.0525,
+        "min": 0.0,
+        "moy": 0.0286,
+        "n": 65,
+        "p10": 0.0118,
+        "p25": 0.0222,
+        "p50": 0.0283,
+        "p75": 0.0377,
+        "p90": 0.0441
+      },
+      "marge_haut_rel_H": {
+        "max": 0.0427,
+        "min": 0.0,
+        "moy": 0.0205,
+        "n": 65,
+        "p10": 0.002,
+        "p25": 0.0173,
+        "p50": 0.0213,
+        "p75": 0.0268,
+        "p90": 0.0306
+      },
+      "ordre_transitions": {
+        "a_droite_plus_bas": {
+          "part": 0.0104,
+          "valeur": 220.0
+        },
+        "autre": {
+          "part": 0.0039,
+          "valeur": 83.0
+        },
+        "dessous_meme_colonne": {
+          "part": 0.8889,
+          "valeur": 18860.0
+        },
+        "haut_colonne_suivante": {
+          "part": 0.0576,
+          "valeur": 1222.0
+        },
+        "remonte_meme_colonne": {
+          "part": 0.0077,
+          "valeur": 164.0
+        },
+        "retour_a_gauche": {
+          "part": 0.0315,
+          "valeur": 669.0
+        }
+      },
+      "page_hauteur_cm": {
+        "max": 69.6722,
+        "min": 61.3664,
+        "moy": 64.2772,
+        "n": 35,
+        "p10": 61.8134,
+        "p25": 62.0141,
+        "p50": 62.3401,
+        "p75": 68.3853,
+        "p90": 69.1998
+      },
+      "page_largeur_cm": {
+        "max": 52.4849,
+        "min": 44.6701,
+        "moy": 47.2418,
+        "n": 35,
+        "p10": 44.8242,
+        "p25": 44.9665,
+        "p50": 45.3644,
+        "p75": 51.5874,
+        "p90": 51.8566
+      },
+      "page_rapport_H_sur_W": {
+        "max": 1.4868,
+        "min": 1.316,
+        "moy": 1.3894,
+        "n": 65,
+        "p10": 1.3273,
+        "p25": 1.3591,
+        "p50": 1.3807,
+        "p75": 1.4212,
+        "p90": 1.4476
+      },
+      "printspace_bas_rel_H": {
+        "max": 0.0619,
+        "min": 0.0,
+        "moy": 0.0243,
+        "n": 65,
+        "p10": 0.0011,
+        "p25": 0.0142,
+        "p50": 0.0232,
+        "p75": 0.033,
+        "p90": 0.0485
+      },
+      "printspace_droite_rel_W": {
+        "max": 0.0495,
+        "min": 0.0,
+        "moy": 0.026,
+        "n": 65,
+        "p10": 0.0033,
+        "p25": 0.0196,
+        "p50": 0.0268,
+        "p75": 0.035,
+        "p90": 0.0417
+      },
+      "printspace_gauche_rel_W": {
+        "max": 0.0523,
+        "min": 0.0,
+        "moy": 0.0244,
+        "n": 65,
+        "p10": 0.0027,
+        "p25": 0.0165,
+        "p50": 0.0237,
+        "p75": 0.0363,
+        "p90": 0.0429
+      },
+      "printspace_haut_rel_H": {
+        "max": 0.0375,
+        "min": 0.0,
+        "moy": 0.0146,
+        "n": 65,
+        "p10": 0.0,
+        "p25": 0.0011,
+        "p50": 0.0163,
+        "p75": 0.0234,
+        "p90": 0.0289
+      },
+      "titre_largeur_en_colonnes": {
+        "max": 4.9765,
+        "min": 0.0574,
+        "moy": 0.6256,
+        "n": 1225,
+        "p10": 0.2875,
+        "p25": 0.4379,
+        "p50": 0.5912,
+        "p75": 0.8,
+        "p90": 0.965
+      },
+      "titre_ligne_sur_corps_texte": {
+        "max": 4.5,
+        "min": 0.7091,
+        "moy": 1.6186,
+        "n": 1298,
+        "p10": 1.0833,
+        "p25": 1.234,
+        "p50": 1.4255,
+        "p75": 1.625,
+        "p90": 2.3922
+      },
+      "titre_sur_plusieurs_colonnes": {
+        "max": 1.0,
+        "min": 0.0,
+        "moy": 0.0131,
+        "n": 1225,
+        "p10": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p90": 0.0
+      },
+      "titre_sur_texte_hauteur_ligne": {
+        "max": 4.3333,
+        "min": 1.0746,
+        "moy": 1.8245,
+        "n": 65,
+        "p10": 1.2358,
+        "p25": 1.3298,
+        "p50": 1.4688,
+        "p75": 1.6154,
+        "p90": 4.1421
+      },
+      "zone_imprimee_largeur_rel_W": {
+        "max": 1.0,
+        "min": 0.9187,
+        "moy": 0.9409,
+        "n": 65,
+        "p10": 0.9223,
+        "p25": 0.9272,
+        "p50": 0.9381,
+        "p75": 0.9519,
+        "p90": 0.9646
+      }
+    }
+  },
+  "scope": {
+    "canonical_only": true,
+    "limits": {
+      "max_canonical_bytes": 200000000,
+      "max_output_bytes": 20000000,
+      "max_pages": 100,
+      "reserve_bytes": 500000000
+    },
+    "physical_units": "not_measured_dpi_none",
+    "real_corpus_access": "not_performed",
+    "realism_verdict": "not_evaluated",
+    "recalculation_from_canonical": "requires selected source files with recorded hashes",
+    "reference_exclusions": "not_revalidated",
+    "source_dataset_validation": "not_performed",
+    "source_images_assets_exports_rights": "not_checked",
+    "source_text_provenance": "not_revalidated"
+  },
+  "selection": {
+    "mode": "explicit",
+    "page_ids": [
+      "mf_0000",
+      "mf_0003"
+    ],
+    "pages": [
+      {
+        "angle_degrees": 0.0,
+        "canonical": {
+          "path": "pages/mf_0000.json",
+          "sha256": "cb459d15af24f61ed08b927e4700acc52fcee99d9b4cb4ddb33c17c2a773e758",
+          "size_bytes": 3867926
+        },
+        "columns_declared": 6,
+        "declared_dpi": 150,
+        "height": 3698,
+        "id": "mf_0000",
+        "layout_columns_declared": null,
+        "oversampling": null,
+        "partition": null,
+        "profile": "fr_press_19c_columns_4_6",
+        "schema_version": "0.2.0",
+        "source_index": 0,
+        "template_article_ids": null,
+        "width": 2680
+      },
+      {
+        "angle_degrees": -0.11544588493016594,
+        "canonical": {
+          "path": "pages/mf_0003.json",
+          "sha256": "2252a97743ec95f8906fa121f2322ad08192577b182e8dda51f104d8727850e0",
+          "size_bytes": 2533895
+        },
+        "columns_declared": 5,
+        "declared_dpi": 150,
+        "height": 3698,
+        "id": "mf_0003",
+        "layout_columns_declared": null,
+        "oversampling": null,
+        "partition": null,
+        "profile": "fr_press_19c_columns_4_6",
+        "schema_version": "0.2.0",
+        "source_index": 3,
+        "template_article_ids": null,
+        "width": 2680
+      }
+    ]
+  },
+  "variants": {
+    "avec_gabarit": {
+      "cohort_reason": null,
+      "cohort_status": "complete",
+      "comparison": {
+        "annonce_avec_titre": {
+          "comparison_allowed": false,
+          "definition_status": "NC",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.0,
+            "min": 0.0,
+            "moy": 0.0,
+            "n": 23,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0
+          },
+          "position": "non comparé",
+          "real": {
+            "max": 1.0,
+            "min": 0.0,
+            "moy": 0.1745,
+            "n": 533,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 1.0
+          },
+          "reason": "l'en-tête d'annonce MF est catégorisé annonce et non titre : 0 structurel",
+          "sample_unit": "annonce",
+          "status": "NC"
+        },
+        "annonce_blocs": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 2,
+            "min": 1,
+            "moy": 1.1304,
+            "n": 23,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.8
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 228,
+            "min": 1,
+            "moy": 8.1107,
+            "n": 533,
+            "p10": 1.0,
+            "p25": 2.0,
+            "p50": 3.0,
+            "p75": 7.0,
+            "p90": 18.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "annonce",
+          "status": "A"
+        },
+        "annonce_caracteres": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 242,
+            "min": 179,
+            "moy": 207.4783,
+            "n": 23,
+            "p10": 189.0,
+            "p25": 193.0,
+            "p50": 203.0,
+            "p75": 220.0,
+            "p90": 234.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 11310,
+            "min": 10,
+            "moy": 551.2233,
+            "n": 533,
+            "p10": 62.0,
+            "p25": 109.0,
+            "p50": 200.0,
+            "p75": 464.0,
+            "p90": 1199.2
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "annonce",
+          "status": "A"
+        },
+        "annonce_colonnes_occupees": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 1,
+            "min": 1,
+            "moy": 1.0,
+            "n": 23,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 6,
+            "min": 0,
+            "moy": 1.1538,
+            "n": 533,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 2.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "annonce",
+          "status": "A"
+        },
+        "annonce_contigu_dans_ordre": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 1.0,
+            "min": 1.0,
+            "moy": 1.0,
+            "n": 23,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 1.0,
+            "min": 0.0,
+            "moy": 0.9625,
+            "n": 533,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "annonce",
+          "status": "A"
+        },
+        "annonce_lignes": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 7,
+            "min": 5,
+            "moy": 5.3478,
+            "n": 23,
+            "p10": 5.0,
+            "p25": 5.0,
+            "p50": 5.0,
+            "p75": 6.0,
+            "p90": 6.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 613,
+            "min": 1,
+            "moy": 17.9193,
+            "n": 533,
+            "p10": 2.0,
+            "p25": 4.0,
+            "p50": 6.0,
+            "p75": 14.0,
+            "p90": 33.8
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "annonce",
+          "status": "A"
+        },
+        "article_avec_titre": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 1.0,
+            "min": 0.0,
+            "moy": 0.5614,
+            "n": 114,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 1.0,
+            "min": 0.0,
+            "moy": 0.5005,
+            "n": 1834,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "article",
+          "status": "A"
+        },
+        "article_blocs": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 3,
+            "min": 1,
+            "moy": 1.614,
+            "n": 114,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 2.0,
+            "p75": 2.0,
+            "p90": 2.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 403,
+            "min": 1,
+            "moy": 9.2475,
+            "n": 1834,
+            "p10": 1.0,
+            "p25": 2.0,
+            "p50": 5.0,
+            "p75": 9.0,
+            "p90": 18.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "article",
+          "status": "A"
+        },
+        "article_caracteres": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 502,
+            "min": 60,
+            "moy": 446.2193,
+            "n": 114,
+            "p10": 421.9,
+            "p25": 438.0,
+            "p50": 455.0,
+            "p75": 466.0,
+            "p90": 478.7
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 16894,
+            "min": 1,
+            "moy": 1110.6647,
+            "n": 1834,
+            "p10": 125.0,
+            "p25": 248.0,
+            "p50": 539.0,
+            "p75": 1254.5,
+            "p90": 2442.4
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "article",
+          "status": "A"
+        },
+        "article_colonnes_occupees": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 2,
+            "min": 1,
+            "moy": 1.0526,
+            "n": 114,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 6,
+            "min": 0,
+            "moy": 1.2448,
+            "n": 1834,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 2.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "article",
+          "status": "A"
+        },
+        "article_contigu_dans_ordre": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 1.0,
+            "min": 1.0,
+            "moy": 1.0,
+            "n": 114,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 1.0,
+            "min": 0.0,
+            "moy": 0.9444,
+            "n": 1834,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "article",
+          "status": "A"
+        },
+        "article_lignes": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 12,
+            "min": 2,
+            "moy": 10.4123,
+            "n": 114,
+            "p10": 10.0,
+            "p25": 10.0,
+            "p50": 11.0,
+            "p75": 11.0,
+            "p90": 11.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 836,
+            "min": 1,
+            "moy": 30.6063,
+            "n": 1834,
+            "p10": 4.0,
+            "p25": 7.0,
+            "p50": 15.0,
+            "p75": 33.0,
+            "p90": 65.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "article",
+          "status": "A"
+        },
+        "articles_par_page": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 79,
+            "min": 58,
+            "moy": 68.5,
+            "n": 2,
+            "p10": 60.1,
+            "p25": 63.25,
+            "p50": 68.5,
+            "p75": 73.75,
+            "p90": 76.9
+          },
+          "position": "> p90",
+          "real": {
+            "max": 85,
+            "min": 5,
+            "moy": 36.4154,
+            "n": 65,
+            "p10": 18.0,
+            "p25": 25.0,
+            "p50": 33.0,
+            "p75": 47.0,
+            "p90": 57.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "page",
+          "status": "A"
+        },
+        "blocs_nombre": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "counts",
+          "mf": {
+            "annonce": {
+              "part": 0.073,
+              "valeur": 26.0
+            },
+            "separateur": {
+              "part": 0.4101,
+              "valeur": 146.0
+            },
+            "texte": {
+              "part": 0.3371,
+              "valeur": 120.0
+            },
+            "titre": {
+              "part": 0.1798,
+              "valeur": 64.0
+            }
+          },
+          "position": "parts rapportées (comptes par catégorie, pas de quantiles)",
+          "real": {
+            "annonce": {
+              "part": 0.1364,
+              "valeur": 4194.0
+            },
+            "illustration": {
+              "part": 0.0232,
+              "valeur": 712.0
+            },
+            "legende": {
+              "part": 0.0003,
+              "valeur": 8.0
+            },
+            "separateur": {
+              "part": 0.2839,
+              "valeur": 8728.0
+            },
+            "tableau": {
+              "part": 0.0998,
+              "valeur": 3068.0
+            },
+            "texte": {
+              "part": 0.4166,
+              "valeur": 12808.0
+            },
+            "titre": {
+              "part": 0.0398,
+              "valeur": 1225.0
+            }
+          },
+          "reason": "catégories canoniques retypées par D-231 ; réel annoté à la main",
+          "sample_unit": "compte de blocs par catégorie",
+          "status": "A"
+        },
+        "blocs_surface": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "counts",
+          "mf": {
+            "annonce": {
+              "part": 0.0969,
+              "valeur": 0.1322
+            },
+            "separateur": {
+              "part": 0.0078,
+              "valeur": 0.0106
+            },
+            "texte": {
+              "part": 0.8328,
+              "valeur": 1.1363
+            },
+            "titre": {
+              "part": 0.0625,
+              "valeur": 0.0853
+            }
+          },
+          "position": "parts rapportées (comptes par catégorie, pas de quantiles)",
+          "real": {
+            "annonce": {
+              "part": 0.1115,
+              "valeur": 5.5193
+            },
+            "illustration": {
+              "part": 0.0497,
+              "valeur": 2.4588
+            },
+            "legende": {
+              "part": 0.0002,
+              "valeur": 0.0085
+            },
+            "separateur": {
+              "part": 0.0371,
+              "valeur": 1.8375
+            },
+            "tableau": {
+              "part": 0.0398,
+              "valeur": 1.9711
+            },
+            "texte": {
+              "part": 0.7433,
+              "valeur": 36.7877
+            },
+            "titre": {
+              "part": 0.0183,
+              "valeur": 0.9062
+            }
+          },
+          "reason": "catégories canoniques retypées par D-231 ; recouvrements comptés plusieurs fois",
+          "sample_unit": "surface de blocs par catégorie",
+          "status": "A"
+        },
+        "caracteres_par_ligne_med_page": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 47,
+            "min": 46.0,
+            "moy": 46.5,
+            "n": 2,
+            "p10": 46.1,
+            "p25": 46.25,
+            "p50": 46.5,
+            "p75": 46.75,
+            "p90": 46.9
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 52.0,
+            "min": 29,
+            "moy": 43.3385,
+            "n": 65,
+            "p10": 39.0,
+            "p25": 40.0,
+            "p50": 42.0,
+            "p75": 47.0,
+            "p90": 48.0
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "cesure_fin_de_ligne_part": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.1151,
+            "min": 0.0973,
+            "moy": 0.1062,
+            "n": 2,
+            "p10": 0.0991,
+            "p25": 0.1018,
+            "p50": 0.1062,
+            "p75": 0.1107,
+            "p90": 0.1133
+          },
+          "position": "< p10",
+          "real": {
+            "max": 0.2738,
+            "min": 0.0811,
+            "moy": 0.1996,
+            "n": 65,
+            "p10": 0.1369,
+            "p25": 0.1842,
+            "p50": 0.2099,
+            "p75": 0.2281,
+            "p90": 0.2369
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "colonne_largeur_cm": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 7.874,
+            "min": 0.3895,
+            "moy": 6.8175,
+            "n": 210,
+            "p10": 6.3991,
+            "p25": 6.4855,
+            "p50": 6.6463,
+            "p75": 7.62,
+            "p90": 7.697
+          },
+          "reason": "dpi=None en v1 (unités physiques non mesurées)",
+          "sample_unit": "colonne",
+          "status": "ND"
+        },
+        "colonne_largeur_rel_W": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.1782,
+            "min": 0.1469,
+            "moy": 0.1611,
+            "n": 11,
+            "p10": 0.1469,
+            "p25": 0.1469,
+            "p50": 0.1469,
+            "p75": 0.1782,
+            "p90": 0.1782
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 0.2257,
+            "min": 0.0087,
+            "moy": 0.1538,
+            "n": 372,
+            "p10": 0.1424,
+            "p25": 0.1458,
+            "p50": 0.1486,
+            "p75": 0.1554,
+            "p90": 0.1827
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "colonne",
+          "status": "C"
+        },
+        "colonnes": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 6,
+            "min": 5,
+            "moy": 5.5,
+            "n": 2,
+            "p10": 5.1,
+            "p25": 5.25,
+            "p50": 5.5,
+            "p75": 5.75,
+            "p90": 5.9
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 8,
+            "min": 2,
+            "moy": 5.7231,
+            "n": 65,
+            "p10": 5.0,
+            "p25": 5.0,
+            "p50": 6.0,
+            "p75": 6.0,
+            "p90": 6.0
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "filet_vertical_longueur_rel_H": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.8687,
+            "min": 0.8679,
+            "moy": 0.8684,
+            "n": 9,
+            "p10": 0.8679,
+            "p25": 0.8679,
+            "p50": 0.8687,
+            "p75": 0.8687,
+            "p90": 0.8687
+          },
+          "position": "> p90",
+          "real": {
+            "max": 0.9477,
+            "min": 0.0037,
+            "moy": 0.1095,
+            "n": 2431,
+            "p10": 0.0139,
+            "p25": 0.0232,
+            "p50": 0.0533,
+            "p75": 0.1416,
+            "p90": 0.2661
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "filet vertical",
+          "status": "C"
+        },
+        "filets_horizontaux_par_page": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 79,
+            "min": 58,
+            "moy": 68.5,
+            "n": 2,
+            "p10": 60.1,
+            "p25": 63.25,
+            "p50": 68.5,
+            "p75": 73.75,
+            "p90": 76.9
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 439,
+            "min": 9,
+            "moy": 96.8769,
+            "n": 65,
+            "p10": 19.4,
+            "p25": 36.0,
+            "p50": 60.0,
+            "p75": 113.0,
+            "p90": 242.0
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "filets_par_page": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 84,
+            "min": 62,
+            "moy": 73.0,
+            "n": 2,
+            "p10": 64.2,
+            "p25": 67.5,
+            "p50": 73.0,
+            "p75": 78.5,
+            "p90": 81.8
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 613,
+            "min": 22,
+            "moy": 134.2769,
+            "n": 65,
+            "p10": 36.4,
+            "p25": 54.0,
+            "p50": 94.0,
+            "p75": 163.0,
+            "p90": 302.0
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "filets_verticaux_par_page": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 5,
+            "min": 4,
+            "moy": 4.5,
+            "n": 2,
+            "p10": 4.1,
+            "p25": 4.25,
+            "p50": 4.5,
+            "p75": 4.75,
+            "p90": 4.9
+          },
+          "position": "< p10",
+          "real": {
+            "max": 194,
+            "min": 6,
+            "moy": 37.4,
+            "n": 65,
+            "p10": 13.4,
+            "p25": 17.0,
+            "p50": 27.0,
+            "p75": 38.0,
+            "p90": 76.6
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "gouttiere_mm": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 141.5627,
+            "min": -33.3587,
+            "moy": 5.1845,
+            "n": 175,
+            "p10": 2.7093,
+            "p25": 3.4713,
+            "p50": 4.1487,
+            "p75": 5.0377,
+            "p90": 5.588
+          },
+          "reason": "dpi=None en v1 (unités physiques non mesurées)",
+          "sample_unit": "gouttière",
+          "status": "ND"
+        },
+        "gouttiere_rel_W": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.0101,
+            "min": 0.0093,
+            "moy": 0.0097,
+            "n": 9,
+            "p10": 0.0094,
+            "p25": 0.0097,
+            "p50": 0.0097,
+            "p75": 0.0097,
+            "p90": 0.0099
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 0.6352,
+            "min": -0.1497,
+            "moy": 0.0088,
+            "n": 307,
+            "p10": 0.0021,
+            "p25": 0.0054,
+            "p50": 0.008,
+            "p75": 0.0096,
+            "p90": 0.0121
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "gouttière",
+          "status": "C"
+        },
+        "gouttieres_avec_filet_part": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 1.0,
+            "min": 1.0,
+            "moy": 1.0,
+            "n": 2,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 1.0,
+            "min": 0.0,
+            "moy": 0.8804,
+            "n": 65,
+            "p10": 0.6,
+            "p25": 0.8333,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "interligne_estime_rel_H_med_page": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": null,
+          "reason": "chemin des pages sans lignes (KB/BnF)",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "interligne_pt_med_page": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 10.5943,
+            "min": 7.3029,
+            "moy": 9.0508,
+            "n": 35,
+            "p10": 8.176,
+            "p25": 8.5714,
+            "p50": 9.3943,
+            "p75": 9.5429,
+            "p90": 9.6206
+          },
+          "reason": "dpi=None en v1 (unités physiques non mesurées)",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "interligne_px_med_page": {
+          "comparison_allowed": false,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 26.2199,
+            "min": 21.66,
+            "moy": 23.94,
+            "n": 2,
+            "p10": 22.116,
+            "p25": 22.8,
+            "p50": 23.94,
+            "p75": 25.08,
+            "p90": 25.764
+          },
+          "position": "non comparé",
+          "real": {
+            "max": 44.1429,
+            "min": 26.1429,
+            "moy": 35.7696,
+            "n": 65,
+            "p10": 30.6,
+            "p25": 34.2381,
+            "p50": 35.5238,
+            "p75": 39.619,
+            "p90": 39.9048
+          },
+          "reason": "pixels non comparables entre résolutions : rapporté, comparaison interdite",
+          "sample_unit": "page",
+          "status": "A"
+        },
+        "interligne_rel_H_med_page": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.0071,
+            "min": 0.0059,
+            "moy": 0.0065,
+            "n": 2,
+            "p10": 0.006,
+            "p25": 0.0062,
+            "p50": 0.0065,
+            "p75": 0.0068,
+            "p90": 0.007
+          },
+          "position": "> p90",
+          "real": {
+            "max": 0.0068,
+            "min": 0.0035,
+            "moy": 0.0049,
+            "n": 65,
+            "p10": 0.0042,
+            "p25": 0.0046,
+            "p50": 0.0048,
+            "p75": 0.0054,
+            "p90": 0.0055
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "kb_blocs_par_groupe": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": null,
+          "reason": "chemin des pages sans lignes (KB/BnF)",
+          "sample_unit": "groupe ordonné KB",
+          "status": "ND"
+        },
+        "kb_groupes_ordonnes_par_page": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": null,
+          "reason": "chemin des pages sans lignes (KB/BnF)",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "largeur_colonne_sur_interligne": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 18.2169,
+            "min": 18.1748,
+            "moy": 18.1959,
+            "n": 2,
+            "p10": 18.179,
+            "p25": 18.1854,
+            "p50": 18.1959,
+            "p75": 18.2064,
+            "p90": 18.2127
+          },
+          "position": "< p10",
+          "real": {
+            "max": 35.459,
+            "min": 17.4434,
+            "moy": 23.1824,
+            "n": 65,
+            "p10": 19.2003,
+            "p25": 20.7292,
+            "p50": 22.548,
+            "p75": 25.944,
+            "p90": 27.0809
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "ligne_hauteur_mm_med_page": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 5.334,
+            "min": 3.048,
+            "moy": 4.1777,
+            "n": 35,
+            "p10": 3.048,
+            "p25": 3.683,
+            "p50": 4.318,
+            "p75": 4.699,
+            "p90": 4.8768
+          },
+          "reason": "dpi=None en v1 (unités physiques non mesurées)",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "ligne_hauteur_px_med_page": {
+          "comparison_allowed": false,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 24.9623,
+            "min": 20.0,
+            "moy": 22.4811,
+            "n": 2,
+            "p10": 20.4962,
+            "p25": 21.2406,
+            "p50": 22.4811,
+            "p75": 23.7217,
+            "p90": 24.466
+          },
+          "position": "non comparé",
+          "real": {
+            "max": 67.0,
+            "min": 36.0,
+            "moy": 50.5385,
+            "n": 65,
+            "p10": 37.1,
+            "p25": 47.0,
+            "p50": 50.0,
+            "p75": 55.0,
+            "p90": 60.0
+          },
+          "reason": "pixels non comparables entre résolutions : rapporté, comparaison interdite",
+          "sample_unit": "page",
+          "status": "A"
+        },
+        "ligne_hauteur_rel_H_med_page": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.0068,
+            "min": 0.0054,
+            "moy": 0.0061,
+            "n": 2,
+            "p10": 0.0055,
+            "p25": 0.0057,
+            "p50": 0.0061,
+            "p75": 0.0064,
+            "p90": 0.0066
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 0.0098,
+            "min": 0.0049,
+            "moy": 0.0069,
+            "n": 65,
+            "p10": 0.0051,
+            "p25": 0.0063,
+            "p50": 0.0067,
+            "p75": 0.0076,
+            "p90": 0.0085
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "marge_bas_rel_H": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.0268,
+            "min": 0.0249,
+            "moy": 0.0258,
+            "n": 2,
+            "p10": 0.025,
+            "p25": 0.0253,
+            "p50": 0.0258,
+            "p75": 0.0263,
+            "p90": 0.0266
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 0.0619,
+            "min": 0.0004,
+            "moy": 0.0295,
+            "n": 65,
+            "p10": 0.0142,
+            "p25": 0.0198,
+            "p50": 0.0277,
+            "p75": 0.0379,
+            "p90": 0.0493
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "marge_droite_rel_W": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.0347,
+            "min": 0.0339,
+            "moy": 0.0343,
+            "n": 2,
+            "p10": 0.034,
+            "p25": 0.0341,
+            "p50": 0.0343,
+            "p75": 0.0345,
+            "p90": 0.0346
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 0.0517,
+            "min": 0.0,
+            "moy": 0.0306,
+            "n": 65,
+            "p10": 0.0184,
+            "p25": 0.024,
+            "p50": 0.0299,
+            "p75": 0.0384,
+            "p90": 0.0457
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "marge_gauche_rel_W": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.0351,
+            "min": 0.0338,
+            "moy": 0.0344,
+            "n": 2,
+            "p10": 0.0339,
+            "p25": 0.0341,
+            "p50": 0.0344,
+            "p75": 0.0347,
+            "p90": 0.0349
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 0.0525,
+            "min": 0.0,
+            "moy": 0.0286,
+            "n": 65,
+            "p10": 0.0118,
+            "p25": 0.0222,
+            "p50": 0.0283,
+            "p75": 0.0377,
+            "p90": 0.0441
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "marge_haut_rel_H": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.0254,
+            "min": 0.0252,
+            "moy": 0.0253,
+            "n": 2,
+            "p10": 0.0252,
+            "p25": 0.0252,
+            "p50": 0.0253,
+            "p75": 0.0254,
+            "p90": 0.0254
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 0.0427,
+            "min": 0.0,
+            "moy": 0.0205,
+            "n": 65,
+            "p10": 0.002,
+            "p25": 0.0173,
+            "p50": 0.0213,
+            "p75": 0.0268,
+            "p90": 0.0306
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "ordre_transitions": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "counts",
+          "mf": {
+            "dessous_meme_colonne": {
+              "part": 0.9471,
+              "valeur": 197.0
+            },
+            "haut_colonne_suivante": {
+              "part": 0.0433,
+              "valeur": 9.0
+            },
+            "retour_a_gauche": {
+              "part": 0.0096,
+              "valeur": 2.0
+            }
+          },
+          "position": "parts rapportées (comptes par catégorie, pas de quantiles)",
+          "real": {
+            "a_droite_plus_bas": {
+              "part": 0.0104,
+              "valeur": 220.0
+            },
+            "autre": {
+              "part": 0.0039,
+              "valeur": 83.0
+            },
+            "dessous_meme_colonne": {
+              "part": 0.8889,
+              "valeur": 18860.0
+            },
+            "haut_colonne_suivante": {
+              "part": 0.0576,
+              "valeur": 1222.0
+            },
+            "remonte_meme_colonne": {
+              "part": 0.0077,
+              "valeur": 164.0
+            },
+            "retour_a_gauche": {
+              "part": 0.0315,
+              "valeur": 669.0
+            }
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "compte de transitions d'ordre",
+          "status": "C"
+        },
+        "page_hauteur_cm": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 69.6722,
+            "min": 61.3664,
+            "moy": 64.2772,
+            "n": 35,
+            "p10": 61.8134,
+            "p25": 62.0141,
+            "p50": 62.3401,
+            "p75": 68.3853,
+            "p90": 69.1998
+          },
+          "reason": "dpi=None en v1 (unités physiques non mesurées)",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "page_largeur_cm": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 52.4849,
+            "min": 44.6701,
+            "moy": 47.2418,
+            "n": 35,
+            "p10": 44.8242,
+            "p25": 44.9665,
+            "p50": 45.3644,
+            "p75": 51.5874,
+            "p90": 51.8566
+          },
+          "reason": "dpi=None en v1 (unités physiques non mesurées)",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "page_rapport_H_sur_W": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 1.3799,
+            "min": 1.3799,
+            "moy": 1.3799,
+            "n": 2,
+            "p10": 1.3799,
+            "p25": 1.3799,
+            "p50": 1.3799,
+            "p75": 1.3799,
+            "p90": 1.3799
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 1.4868,
+            "min": 1.316,
+            "moy": 1.3894,
+            "n": 65,
+            "p10": 1.3273,
+            "p25": 1.3591,
+            "p50": 1.3807,
+            "p75": 1.4212,
+            "p90": 1.4476
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "printspace_bas_rel_H": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 0.0619,
+            "min": 0.0,
+            "moy": 0.0243,
+            "n": 65,
+            "p10": 0.0011,
+            "p25": 0.0142,
+            "p50": 0.0232,
+            "p75": 0.033,
+            "p90": 0.0485
+          },
+          "reason": "PrintSpace absent du canonique",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "printspace_droite_rel_W": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 0.0495,
+            "min": 0.0,
+            "moy": 0.026,
+            "n": 65,
+            "p10": 0.0033,
+            "p25": 0.0196,
+            "p50": 0.0268,
+            "p75": 0.035,
+            "p90": 0.0417
+          },
+          "reason": "PrintSpace absent du canonique",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "printspace_gauche_rel_W": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 0.0523,
+            "min": 0.0,
+            "moy": 0.0244,
+            "n": 65,
+            "p10": 0.0027,
+            "p25": 0.0165,
+            "p50": 0.0237,
+            "p75": 0.0363,
+            "p90": 0.0429
+          },
+          "reason": "PrintSpace absent du canonique",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "printspace_haut_rel_H": {
+          "comparison_allowed": false,
+          "definition_status": "ND",
+          "kind": "distribution",
+          "mf": null,
+          "position": "non comparé",
+          "real": {
+            "max": 0.0375,
+            "min": 0.0,
+            "moy": 0.0146,
+            "n": 65,
+            "p10": 0.0,
+            "p25": 0.0011,
+            "p50": 0.0163,
+            "p75": 0.0234,
+            "p90": 0.0289
+          },
+          "reason": "PrintSpace absent du canonique",
+          "sample_unit": "page",
+          "status": "ND"
+        },
+        "titre_largeur_en_colonnes": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 2.4183,
+            "min": 0.5385,
+            "moy": 0.8418,
+            "n": 64,
+            "p10": 0.6485,
+            "p25": 0.7341,
+            "p50": 0.8282,
+            "p75": 0.8983,
+            "p90": 0.9348
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 4.9765,
+            "min": 0.0574,
+            "moy": 0.6256,
+            "n": 1225,
+            "p10": 0.2875,
+            "p25": 0.4379,
+            "p50": 0.5912,
+            "p75": 0.8,
+            "p90": 0.965
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "titre rattaché à un article",
+          "status": "A"
+        },
+        "titre_ligne_sur_corps_texte": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 5.4,
+            "min": 1.2266,
+            "moy": 1.4467,
+            "n": 66,
+            "p10": 1.2348,
+            "p25": 1.25,
+            "p50": 1.25,
+            "p75": 1.4371,
+            "p90": 1.5
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 4.5,
+            "min": 0.7091,
+            "moy": 1.6186,
+            "n": 1298,
+            "p10": 1.0833,
+            "p25": 1.234,
+            "p50": 1.4255,
+            "p75": 1.625,
+            "p90": 2.3922
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "ligne de titre",
+          "status": "C"
+        },
+        "titre_sur_plusieurs_colonnes": {
+          "comparison_allowed": true,
+          "definition_status": "A",
+          "kind": "distribution",
+          "mf": {
+            "max": 1.0,
+            "min": 0.0,
+            "moy": 0.0312,
+            "n": 64,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 1.0,
+            "min": 0.0,
+            "moy": 0.0131,
+            "n": 1225,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0
+          },
+          "reason": "le bandeau Mille Feuilles est un article de gabarit ; inconnu côté AS (variante avec gabarit = protocole historique)",
+          "sample_unit": "titre rattaché à un article",
+          "status": "A"
+        },
+        "titre_sur_texte_hauteur_ligne": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 1.4258,
+            "min": 1.25,
+            "moy": 1.3379,
+            "n": 2,
+            "p10": 1.2676,
+            "p25": 1.294,
+            "p50": 1.3379,
+            "p75": 1.3819,
+            "p90": 1.4083
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 4.3333,
+            "min": 1.0746,
+            "moy": 1.8245,
+            "n": 65,
+            "p10": 1.2358,
+            "p25": 1.3298,
+            "p50": 1.4688,
+            "p75": 1.6154,
+            "p90": 4.1421
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        },
+        "zone_imprimee_largeur_rel_W": {
+          "comparison_allowed": true,
+          "definition_status": "C",
+          "kind": "distribution",
+          "mf": {
+            "max": 0.9323,
+            "min": 0.9302,
+            "moy": 0.9313,
+            "n": 2,
+            "p10": 0.9304,
+            "p25": 0.9307,
+            "p50": 0.9313,
+            "p75": 0.9318,
+            "p90": 0.9321
+          },
+          "position": "p10–p90",
+          "real": {
+            "max": 1.0,
+            "min": 0.9187,
+            "moy": 0.9409,
+            "n": 65,
+            "p10": 0.9223,
+            "p25": 0.9272,
+            "p50": 0.9381,
+            "p75": 0.9519,
+            "p90": 0.9646
+          },
+          "reason": "même code, entrée équivalente",
+          "sample_unit": "page",
+          "status": "C"
+        }
+      },
+      "excluded": [],
+      "partial_stats": null,
+      "per_page": [
+        {
+          "counts": {
+            "blocs_nombre": {
+              "annonce": 12.0,
+              "separateur": 84.0,
+              "texte": 71.0,
+              "titre": 38.0
+            },
+            "blocs_surface": {
+              "annonce": 0.04923679466378216,
+              "separateur": 0.005724110138729583,
+              "texte": 0.5797493871906008,
+              "titre": 0.04328095864646482
+            },
+            "ordre_transitions": {
+              "dessous_meme_colonne": 114.0,
+              "haut_colonne_suivante": 5.0,
+              "retour_a_gauche": 1.0
+            }
+          },
+          "has_autre": false,
+          "page_id": "mf_0000",
+          "removed_article_ids": [],
+          "removed_block_ids": [],
+          "values": {
+            "annonce_avec_titre": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "annonce_blocs": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "annonce_caracteres": [
+              179,
+              215,
+              184,
+              209,
+              203,
+              226,
+              210,
+              200,
+              203,
+              234,
+              193
+            ],
+            "annonce_colonnes_occupees": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "annonce_contigu_dans_ordre": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "annonce_lignes": [
+              5,
+              5,
+              5,
+              5,
+              5,
+              6,
+              5,
+              5,
+              5,
+              6,
+              5
+            ],
+            "article_avec_titre": [
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              0.0,
+              1.0,
+              0.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            "article_blocs": [
+              2,
+              2,
+              1,
+              2,
+              2,
+              1,
+              2,
+              1,
+              2,
+              1,
+              2,
+              1,
+              2,
+              2,
+              2,
+              1,
+              2,
+              1,
+              1,
+              2,
+              2,
+              2,
+              2,
+              1,
+              2,
+              2,
+              1,
+              2,
+              2,
+              2,
+              1,
+              2,
+              2,
+              1,
+              1,
+              3,
+              1,
+              1,
+              1,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              3,
+              2,
+              2,
+              1,
+              1,
+              2,
+              2,
+              1,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              2,
+              2,
+              1,
+              1
+            ],
+            "article_caracteres": [
+              60,
+              474,
+              416,
+              443,
+              447,
+              441,
+              472,
+              438,
+              455,
+              436,
+              460,
+              430,
+              467,
+              450,
+              437,
+              445,
+              463,
+              478,
+              421,
+              502,
+              487,
+              477,
+              449,
+              436,
+              445,
+              468,
+              428,
+              447,
+              447,
+              462,
+              445,
+              476,
+              439,
+              438,
+              416,
+              460,
+              434,
+              434,
+              421,
+              479,
+              464,
+              488,
+              461,
+              461,
+              430,
+              467,
+              438,
+              456,
+              460,
+              455,
+              478,
+              502,
+              466,
+              416,
+              462,
+              480,
+              466,
+              460,
+              482,
+              490,
+              478,
+              458,
+              416,
+              421,
+              440,
+              435,
+              424,
+              441
+            ],
+            "article_colonnes_occupees": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "article_contigu_dans_ordre": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "article_lignes": [
+              2,
+              11,
+              10,
+              11,
+              11,
+              10,
+              11,
+              10,
+              11,
+              10,
+              11,
+              10,
+              12,
+              11,
+              10,
+              10,
+              11,
+              11,
+              10,
+              12,
+              11,
+              11,
+              11,
+              10,
+              10,
+              11,
+              10,
+              11,
+              11,
+              11,
+              10,
+              11,
+              11,
+              10,
+              10,
+              11,
+              10,
+              10,
+              10,
+              11,
+              11,
+              11,
+              11,
+              11,
+              10,
+              10,
+              11,
+              11,
+              11,
+              10,
+              11,
+              12,
+              11,
+              10,
+              12,
+              12,
+              11,
+              11,
+              12,
+              11,
+              11,
+              10,
+              10,
+              10,
+              11,
+              10,
+              10,
+              10
+            ],
+            "articles_par_page": [
+              79
+            ],
+            "caracteres_par_ligne_med_page": [
+              46.0
+            ],
+            "cesure_fin_de_ligne_part": [
+              0.09734513274336283
+            ],
+            "colonne_largeur_rel_W": [
+              0.1468905472636816,
+              0.14689054726368167,
+              0.1468905472636816,
+              0.14689054726368153,
+              0.14689054726368161,
+              0.14689054726368203
+            ],
+            "colonnes": [
+              6
+            ],
+            "filet_vertical_longueur_rel_H": [
+              0.8687290427257979,
+              0.8687290427257979,
+              0.8687290427257979,
+              0.8687290427257979,
+              0.8687290427257979
+            ],
+            "filets_horizontaux_par_page": [
+              79
+            ],
+            "filets_par_page": [
+              84
+            ],
+            "filets_verticaux_par_page": [
+              5
+            ],
+            "gouttiere_rel_W": [
+              0.009701492537313453,
+              0.009701492537313347,
+              0.009701492537313432,
+              0.009701492537313517,
+              0.009701492537313432
+            ],
+            "gouttieres_avec_filet_part": [
+              1.0
+            ],
+            "interligne_px_med_page": [
+              21.659999999999968
+            ],
+            "interligne_rel_H_med_page": [
+              0.005857220118983226
+            ],
+            "largeur_colonne_sur_interligne": [
+              18.17482302246848
+            ],
+            "ligne_hauteur_px_med_page": [
+              20.0
+            ],
+            "ligne_hauteur_rel_H_med_page": [
+              0.005408328826392645
+            ],
+            "marge_bas_rel_H": [
+              0.026752839372635274
+            ],
+            "marge_droite_rel_W": [
+              0.034701492537312924
+            ],
+            "marge_gauche_rel_W": [
+              0.03507462686567164
+            ],
+            "marge_haut_rel_H": [
+              0.02541914548404543
+            ],
+            "page_rapport_H_sur_W": [
+              1.3798507462686567
+            ],
+            "titre_largeur_en_colonnes": [
+              2.4182895850973747,
+              0.6782387806943267,
+              0.7696867061812023,
+              0.6655376799322607,
+              0.6248941574936493,
+              0.7341236240474173,
+              0.7696867061812023,
+              0.7595258255715494,
+              0.5385266723116002,
+              0.8585944115156645,
+              0.8865368331922098,
+              0.9170194750211683,
+              0.8357324301439456,
+              0.8001693480101607,
+              0.7696867061812023,
+              0.9348010160880611,
+              0.6248941574936496,
+              0.8027095681625742,
+              0.665537679932261,
+              0.8585944115156648,
+              0.9475021168501271,
+              0.9348010160880611,
+              0.9348010160880608,
+              0.8001693480101607,
+              0.8433530906011852,
+              0.6248941574936493,
+              0.5817104149026248,
+              0.7341236240474179,
+              0.9170194750211689,
+              0.8865368331922104,
+              0.75952582557155,
+              0.7341236240474179,
+              0.8433530906011859,
+              0.7696867061812023,
+              0.8585944115156645,
+              0.9348010160880608,
+              0.9271803556308211,
+              0.7696867061812023
+            ],
+            "titre_ligne_sur_corps_texte": [
+              5.4,
+              1.25,
+              1.25,
+              1.5,
+              1.25,
+              1.5,
+              1.25,
+              1.25,
+              1.25,
+              1.25,
+              1.25,
+              1.25,
+              1.5,
+              1.5,
+              1.25,
+              1.25,
+              1.25,
+              1.25,
+              1.5,
+              1.5,
+              1.25,
+              1.25,
+              1.25,
+              1.25,
+              1.5,
+              1.5,
+              1.25,
+              1.5,
+              1.5,
+              1.5,
+              1.25,
+              1.25,
+              1.25,
+              1.5,
+              1.5,
+              1.25,
+              1.25,
+              1.25,
+              1.5,
+              1.25
+            ],
+            "titre_sur_plusieurs_colonnes": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "titre_sur_texte_hauteur_ligne": [
+              1.25
+            ],
+            "zone_imprimee_largeur_rel_W": [
+              0.9302238805970154
+            ]
+          }
+        },
+        {
+          "counts": {
+            "blocs_nombre": {
+              "annonce": 14.0,
+              "separateur": 62.0,
+              "texte": 49.0,
+              "titre": 26.0
+            },
+            "blocs_surface": {
+              "annonce": 0.08293919915197545,
+              "separateur": 0.004900116226249261,
+              "texte": 0.5565865221306017,
+              "titre": 0.04201353295773261
+            },
+            "ordre_transitions": {
+              "dessous_meme_colonne": 83.0,
+              "haut_colonne_suivante": 4.0,
+              "retour_a_gauche": 1.0
+            }
+          },
+          "has_autre": false,
+          "page_id": "mf_0003",
+          "removed_article_ids": [],
+          "removed_block_ids": [],
+          "values": {
+            "annonce_avec_titre": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "annonce_blocs": [
+              2,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "annonce_caracteres": [
+              201,
+              210,
+              234,
+              234,
+              242,
+              225,
+              193,
+              189,
+              200,
+              189,
+              189,
+              210
+            ],
+            "annonce_colonnes_occupees": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "annonce_contigu_dans_ordre": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "annonce_lignes": [
+              6,
+              5,
+              6,
+              6,
+              7,
+              6,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            "article_avec_titre": [
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "article_blocs": [
+              2,
+              1,
+              2,
+              2,
+              2,
+              2,
+              2,
+              1,
+              2,
+              2,
+              3,
+              1,
+              1,
+              1,
+              1,
+              2,
+              2,
+              2,
+              2,
+              2,
+              1,
+              1,
+              2,
+              2,
+              1,
+              2,
+              1,
+              3,
+              2,
+              2,
+              2,
+              2,
+              2,
+              1,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2
+            ],
+            "article_caracteres": [
+              60,
+              459,
+              469,
+              460,
+              461,
+              468,
+              452,
+              441,
+              455,
+              440,
+              476,
+              459,
+              419,
+              416,
+              460,
+              451,
+              483,
+              448,
+              465,
+              450,
+              424,
+              424,
+              440,
+              448,
+              461,
+              464,
+              449,
+              460,
+              461,
+              470,
+              489,
+              461,
+              466,
+              428,
+              443,
+              416,
+              431,
+              441,
+              462,
+              491,
+              466,
+              459,
+              424,
+              449,
+              445,
+              487
+            ],
+            "article_colonnes_occupees": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "article_contigu_dans_ordre": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "article_lignes": [
+              2,
+              10,
+              11,
+              11,
+              11,
+              11,
+              11,
+              10,
+              11,
+              10,
+              11,
+              10,
+              9,
+              9,
+              10,
+              11,
+              12,
+              10,
+              11,
+              11,
+              9,
+              9,
+              10,
+              10,
+              11,
+              11,
+              10,
+              11,
+              11,
+              11,
+              11,
+              11,
+              11,
+              10,
+              11,
+              9,
+              9,
+              10,
+              11,
+              11,
+              10,
+              10,
+              9,
+              10,
+              10,
+              11
+            ],
+            "articles_par_page": [
+              58
+            ],
+            "caracteres_par_ligne_med_page": [
+              47
+            ],
+            "cesure_fin_de_ligne_part": [
+              0.11512415349887133
+            ],
+            "colonne_largeur_rel_W": [
+              0.17822663768656716,
+              0.1782266373134329,
+              0.17822663768656716,
+              0.17822663768656716,
+              0.17822663768656707
+            ],
+            "colonnes": [
+              5
+            ],
+            "filet_vertical_longueur_rel_H": [
+              0.8679063047593293,
+              0.8679063044889129,
+              0.8679063047593294,
+              0.8679063047593294
+            ],
+            "filets_horizontaux_par_page": [
+              58
+            ],
+            "filets_par_page": [
+              62
+            ],
+            "filets_verticaux_par_page": [
+              4
+            ],
+            "gouttiere_rel_W": [
+              0.01005999141791045,
+              0.009311614925373071,
+              0.00980681473880597,
+              0.009442167350746263
+            ],
+            "gouttieres_avec_filet_part": [
+              1.0
+            ],
+            "interligne_px_med_page": [
+              26.219946500000333
+            ],
+            "interligne_rel_H_med_page": [
+              0.007090304624121237
+            ],
+            "largeur_colonne_sur_interligne": [
+              18.2169475059758
+            ],
+            "ligne_hauteur_px_med_page": [
+              24.962271999999984
+            ],
+            "ligne_hauteur_rel_H_med_page": [
+              0.006750208761492694
+            ],
+            "marge_bas_rel_H": [
+              0.024854468902109253
+            ],
+            "marge_droite_rel_W": [
+              0.033945218283582025
+            ],
+            "marge_gauche_rel_W": [
+              0.033753369029850745
+            ],
+            "marge_haut_rel_H": [
+              0.025160753380205517
+            ],
+            "page_rapport_H_sur_W": [
+              1.3798507462686567
+            ],
+            "titre_largeur_en_colonnes": [
+              1.9935536128304892,
+              0.898297909464758,
+              0.8271158371180797,
+              0.66172219775287,
+              0.9087658615883276,
+              0.8982979094647578,
+              0.7621934430798282,
+              0.915025541990349,
+              0.8291883345770787,
+              0.6617221998464646,
+              0.9401486249933214,
+              0.9087658594947332,
+              0.8689665526466427,
+              0.6428587930583248,
+              0.898297909464758,
+              0.7580062643239946,
+              0.7224363179759784,
+              0.6679818781548914,
+              0.8689665505530484,
+              0.9401486249933207,
+              0.8417498771253622,
+              0.829188336670673,
+              0.5696042232526473,
+              0.66172219775287,
+              0.8982979094647575,
+              0.7894312115668243
+            ],
+            "titre_ligne_sur_corps_texte": [
+              4.403364164928579,
+              1.4367412149022345,
+              1.4339967932406184,
+              1.427620049969809,
+              1.4371447839363365,
+              1.4367412149022345,
+              1.231192657463229,
+              1.2370851098810238,
+              1.2337756755474716,
+              1.427620049969809,
+              1.2380537316475042,
+              1.4371448239967923,
+              1.2353092699254276,
+              1.2265917140875646,
+              1.4367412149022345,
+              1.231031213825404,
+              1.4299609025973232,
+              1.2275603759145008,
+              1.235309309985888,
+              1.2380537316475042,
+              1.2342599664004952,
+              1.2337756354870293,
+              1.4240684501795284,
+              1.4276200499698135,
+              1.436741254962686,
+              1.4325438806211144
+            ],
+            "titre_sur_plusieurs_colonnes": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "titre_sur_texte_hauteur_ligne": [
+              1.4258442500746686
+            ],
+            "zone_imprimee_largeur_rel_W": [
+              0.9323014126865672
+            ]
+          }
+        }
+      ],
+      "role": "primary",
+      "stats": {
+        "annonce_avec_titre": {
+          "max": 0.0,
+          "min": 0.0,
+          "moy": 0.0,
+          "n": 23,
+          "p10": 0.0,
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 0.0,
+          "p90": 0.0
+        },
+        "annonce_blocs": {
+          "max": 2,
+          "min": 1,
+          "moy": 1.1304,
+          "n": 23,
+          "p10": 1.0,
+          "p25": 1.0,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p90": 1.8
+        },
+        "annonce_caracteres": {
+          "max": 242,
+          "min": 179,
+          "moy": 207.4783,
+          "n": 23,
+          "p10": 189.0,
+          "p25": 193.0,
+          "p50": 203.0,
+          "p75": 220.0,
+          "p90": 234.0
+        },
+        "annonce_colonnes_occupees": {
+          "max": 1,
+          "min": 1,
+          "moy": 1.0,
+          "n": 23,
+          "p10": 1.0,
+          "p25": 1.0,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p90": 1.0
+        },
+        "annonce_contigu_dans_ordre": {
+          "max": 1.0,
+          "min": 1.0,
+          "moy": 1.0,
+          "n": 23,
+          "p10": 1.0,
+          "p25": 1.0,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p90": 1.0
+        },
+        "annonce_lignes": {
+          "max": 7,
+          "min": 5,
+          "moy": 5.3478,
+          "n": 23,
+          "p10": 5.0,
+          "p25": 5.0,
+          "p50": 5.0,
+          "p75": 6.0,
+          "p90": 6.0
+        },
+        "article_avec_titre": {
+          "max": 1.0,
+          "min": 0.0,
+          "moy": 0.5614,
+          "n": 114,
+          "p10": 0.0,
+          "p25": 0.0,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p90": 1.0
+        },
+        "article_blocs": {
+          "max": 3,
+          "min": 1,
+          "moy": 1.614,
+          "n": 114,
+          "p10": 1.0,
+          "p25": 1.0,
+          "p50": 2.0,
+          "p75": 2.0,
+          "p90": 2.0
+        },
+        "article_caracteres": {
+          "max": 502,
+          "min": 60,
+          "moy": 446.2193,
+          "n": 114,
+          "p10": 421.9,
+          "p25": 438.0,
+          "p50": 455.0,
+          "p75": 466.0,
+          "p90": 478.7
+        },
+        "article_colonnes_occupees": {
+          "max": 2,
+          "min": 1,
+          "moy": 1.0526,
+          "n": 114,
+          "p10": 1.0,
+          "p25": 1.0,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p90": 1.0
+        },
+        "article_contigu_dans_ordre": {
+          "max": 1.0,
+          "min": 1.0,
+          "moy": 1.0,
+          "n": 114,
+          "p10": 1.0,
+          "p25": 1.0,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p90": 1.0
+        },
+        "article_lignes": {
+          "max": 12,
+          "min": 2,
+          "moy": 10.4123,
+          "n": 114,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p50": 11.0,
+          "p75": 11.0,
+          "p90": 11.0
+        },
+        "articles_par_page": {
+          "max": 79,
+          "min": 58,
+          "moy": 68.5,
+          "n": 2,
+          "p10": 60.1,
+          "p25": 63.25,
+          "p50": 68.5,
+          "p75": 73.75,
+          "p90": 76.9
+        },
+        "blocs_nombre": {
+          "annonce": {
+            "part": 0.073,
+            "valeur": 26.0
+          },
+          "separateur": {
+            "part": 0.4101,
+            "valeur": 146.0
+          },
+          "texte": {
+            "part": 0.3371,
+            "valeur": 120.0
+          },
+          "titre": {
+            "part": 0.1798,
+            "valeur": 64.0
+          }
+        },
+        "blocs_surface": {
+          "annonce": {
+            "part": 0.0969,
+            "valeur": 0.1322
+          },
+          "separateur": {
+            "part": 0.0078,
+            "valeur": 0.0106
+          },
+          "texte": {
+            "part": 0.8328,
+            "valeur": 1.1363
+          },
+          "titre": {
+            "part": 0.0625,
+            "valeur": 0.0853
+          }
+        },
+        "caracteres_par_ligne_med_page": {
+          "max": 47,
+          "min": 46.0,
+          "moy": 46.5,
+          "n": 2,
+          "p10": 46.1,
+          "p25": 46.25,
+          "p50": 46.5,
+          "p75": 46.75,
+          "p90": 46.9
+        },
+        "cesure_fin_de_ligne_part": {
+          "max": 0.1151,
+          "min": 0.0973,
+          "moy": 0.1062,
+          "n": 2,
+          "p10": 0.0991,
+          "p25": 0.1018,
+          "p50": 0.1062,
+          "p75": 0.1107,
+          "p90": 0.1133
+        },
+        "colonne_largeur_rel_W": {
+          "max": 0.1782,
+          "min": 0.1469,
+          "moy": 0.1611,
+          "n": 11,
+          "p10": 0.1469,
+          "p25": 0.1469,
+          "p50": 0.1469,
+          "p75": 0.1782,
+          "p90": 0.1782
+        },
+        "colonnes": {
+          "max": 6,
+          "min": 5,
+          "moy": 5.5,
+          "n": 2,
+          "p10": 5.1,
+          "p25": 5.25,
+          "p50": 5.5,
+          "p75": 5.75,
+          "p90": 5.9
+        },
+        "filet_vertical_longueur_rel_H": {
+          "max": 0.8687,
+          "min": 0.8679,
+          "moy": 0.8684,
+          "n": 9,
+          "p10": 0.8679,
+          "p25": 0.8679,
+          "p50": 0.8687,
+          "p75": 0.8687,
+          "p90": 0.8687
+        },
+        "filets_horizontaux_par_page": {
+          "max": 79,
+          "min": 58,
+          "moy": 68.5,
+          "n": 2,
+          "p10": 60.1,
+          "p25": 63.25,
+          "p50": 68.5,
+          "p75": 73.75,
+          "p90": 76.9
+        },
+        "filets_par_page": {
+          "max": 84,
+          "min": 62,
+          "moy": 73.0,
+          "n": 2,
+          "p10": 64.2,
+          "p25": 67.5,
+          "p50": 73.0,
+          "p75": 78.5,
+          "p90": 81.8
+        },
+        "filets_verticaux_par_page": {
+          "max": 5,
+          "min": 4,
+          "moy": 4.5,
+          "n": 2,
+          "p10": 4.1,
+          "p25": 4.25,
+          "p50": 4.5,
+          "p75": 4.75,
+          "p90": 4.9
+        },
+        "gouttiere_rel_W": {
+          "max": 0.0101,
+          "min": 0.0093,
+          "moy": 0.0097,
+          "n": 9,
+          "p10": 0.0094,
+          "p25": 0.0097,
+          "p50": 0.0097,
+          "p75": 0.0097,
+          "p90": 0.0099
+        },
+        "gouttieres_avec_filet_part": {
+          "max": 1.0,
+          "min": 1.0,
+          "moy": 1.0,
+          "n": 2,
+          "p10": 1.0,
+          "p25": 1.0,
+          "p50": 1.0,
+          "p75": 1.0,
+          "p90": 1.0
+        },
+        "interligne_px_med_page": {
+          "max": 26.2199,
+          "min": 21.66,
+          "moy": 23.94,
+          "n": 2,
+          "p10": 22.116,
+          "p25": 22.8,
+          "p50": 23.94,
+          "p75": 25.08,
+          "p90": 25.764
+        },
+        "interligne_rel_H_med_page": {
+          "max": 0.0071,
+          "min": 0.0059,
+          "moy": 0.0065,
+          "n": 2,
+          "p10": 0.006,
+          "p25": 0.0062,
+          "p50": 0.0065,
+          "p75": 0.0068,
+          "p90": 0.007
+        },
+        "largeur_colonne_sur_interligne": {
+          "max": 18.2169,
+          "min": 18.1748,
+          "moy": 18.1959,
+          "n": 2,
+          "p10": 18.179,
+          "p25": 18.1854,
+          "p50": 18.1959,
+          "p75": 18.2064,
+          "p90": 18.2127
+        },
+        "ligne_hauteur_px_med_page": {
+          "max": 24.9623,
+          "min": 20.0,
+          "moy": 22.4811,
+          "n": 2,
+          "p10": 20.4962,
+          "p25": 21.2406,
+          "p50": 22.4811,
+          "p75": 23.7217,
+          "p90": 24.466
+        },
+        "ligne_hauteur_rel_H_med_page": {
+          "max": 0.0068,
+          "min": 0.0054,
+          "moy": 0.0061,
+          "n": 2,
+          "p10": 0.0055,
+          "p25": 0.0057,
+          "p50": 0.0061,
+          "p75": 0.0064,
+          "p90": 0.0066
+        },
+        "marge_bas_rel_H": {
+          "max": 0.0268,
+          "min": 0.0249,
+          "moy": 0.0258,
+          "n": 2,
+          "p10": 0.025,
+          "p25": 0.0253,
+          "p50": 0.0258,
+          "p75": 0.0263,
+          "p90": 0.0266
+        },
+        "marge_droite_rel_W": {
+          "max": 0.0347,
+          "min": 0.0339,
+          "moy": 0.0343,
+          "n": 2,
+          "p10": 0.034,
+          "p25": 0.0341,
+          "p50": 0.0343,
+          "p75": 0.0345,
+          "p90": 0.0346
+        },
+        "marge_gauche_rel_W": {
+          "max": 0.0351,
+          "min": 0.0338,
+          "moy": 0.0344,
+          "n": 2,
+          "p10": 0.0339,
+          "p25": 0.0341,
+          "p50": 0.0344,
+          "p75": 0.0347,
+          "p90": 0.0349
+        },
+        "marge_haut_rel_H": {
+          "max": 0.0254,
+          "min": 0.0252,
+          "moy": 0.0253,
+          "n": 2,
+          "p10": 0.0252,
+          "p25": 0.0252,
+          "p50": 0.0253,
+          "p75": 0.0254,
+          "p90": 0.0254
+        },
+        "ordre_transitions": {
+          "dessous_meme_colonne": {
+            "part": 0.9471,
+            "valeur": 197.0
+          },
+          "haut_colonne_suivante": {
+            "part": 0.0433,
+            "valeur": 9.0
+          },
+          "retour_a_gauche": {
+            "part": 0.0096,
+            "valeur": 2.0
+          }
+        },
+        "page_rapport_H_sur_W": {
+          "max": 1.3799,
+          "min": 1.3799,
+          "moy": 1.3799,
+          "n": 2,
+          "p10": 1.3799,
+          "p25": 1.3799,
+          "p50": 1.3799,
+          "p75": 1.3799,
+          "p90": 1.3799
+        },
+        "titre_largeur_en_colonnes": {
+          "max": 2.4183,
+          "min": 0.5385,
+          "moy": 0.8418,
+          "n": 64,
+          "p10": 0.6485,
+          "p25": 0.7341,
+          "p50": 0.8282,
+          "p75": 0.8983,
+          "p90": 0.9348
+        },
+        "titre_ligne_sur_corps_texte": {
+          "max": 5.4,
+          "min": 1.2266,
+          "moy": 1.4467,
+          "n": 66,
+          "p10": 1.2348,
+          "p25": 1.25,
+          "p50": 1.25,
+          "p75": 1.4371,
+          "p90": 1.5
+        },
+        "titre_sur_plusieurs_colonnes": {
+          "max": 1.0,
+          "min": 0.0,
+          "moy": 0.0312,
+          "n": 64,
+          "p10": 0.0,
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 0.0,
+          "p90": 0.0
+        },
+        "titre_sur_texte_hauteur_ligne": {
+          "max": 1.4258,
+          "min": 1.25,
+          "moy": 1.3379,
+          "n": 2,
+          "p10": 1.2676,
+          "p25": 1.294,
+          "p50": 1.3379,
+          "p75": 1.3819,
+          "p90": 1.4083
+        },
+        "zone_imprimee_largeur_rel_W": {
+          "max": 0.9323,
+          "min": 0.9302,
+          "moy": 0.9313,
+          "n": 2,
+          "p10": 0.9304,
+          "p25": 0.9307,
+          "p50": 0.9313,
+          "p75": 0.9318,
+          "p90": 0.9321
+        }
+      }
+    },
+    "sans_gabarit": {
+      "cohort_reason": "template identification unavailable for part of the selected cohort",
+      "cohort_status": "ND",
+      "comparison": null,
+      "excluded": [
+        {
+          "page_id": "mf_0000",
+          "reason": "template_identification_unavailable"
+        },
+        {
+          "page_id": "mf_0003",
+          "reason": "template_identification_unavailable"
+        }
+      ],
+      "partial_stats": {},
+      "per_page": [],
+      "role": "sensitivity",
+      "stats": null
+    }
+  },
+  "version": "1"
+}

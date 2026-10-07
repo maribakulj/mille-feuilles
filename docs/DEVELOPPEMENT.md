@@ -99,3 +99,11 @@ de non-régression CLI passent 108 tests ; l'acceptation sur quatre annotations
 existantes, la répétition déterministe et les refus CLI suivent sur un commit
 propre. Les résultats serviront à cadrer la suite, sans déduire une utilité
 d'entraînement de ces seuls écarts structurels.
+
+La campagne sur `5ad97b4` passe 670 contrôles et conserve les rapports complets
+de quatre pages, avec répétition identique et sources intactes. A1 est donc
+éprouvé comme outil descriptif. Le cadrage A2 examine maintenant la possibilité
+d'articles comprenant plusieurs unités consécutives d'un même document, sous
+un profil distinct ; ce mécanisme ne suffirait pas à diversifier le corpus ni
+à démontrer une utilité d'entraînement. Aucun paramètre n'est ajusté à partir
+des seules quatre pages d'acceptation.

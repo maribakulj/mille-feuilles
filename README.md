@@ -260,6 +260,8 @@ et absence de mesure. Les pixels ne sont pas comparés entre résolutions et les
 unités physiques ne sont pas mesurées. Un calcul réussi ne constitue ni un
 verdict de réalisme ni une preuve de gain OCR. Les
 [définitions et limites](docs/REALISME_STRUCTUREL.md) précisent cette portée.
+La [campagne A1](docs/VALIDATION.md#rapport-structurel-a1) passe 670 contrôles
+sur quatre annotations existantes, après 108 tests ciblés.
 
 ## Utiliser d'autres textes
 
