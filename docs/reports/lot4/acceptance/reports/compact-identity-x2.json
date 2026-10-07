@@ -1,0 +1,196 @@
+{
+  "checks": [
+    {
+      "detail": "verified",
+      "name": "manifest",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "file_hashes",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "strict_json_files",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "unique_manifest_entries",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "manifest_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "asset_registry",
+      "status": "pass"
+    },
+    {
+      "detail": "unpartitioned dataset; no partition isolation claim",
+      "name": "partition_receipt",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "assets",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "degradation_profile",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "layout_profile",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0001",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0001",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "export_inventory",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "exports",
+      "status": "pass"
+    }
+  ],
+  "errors": [],
+  "statistics": {
+    "blocks": 143,
+    "categories": {
+      "annonce": 22,
+      "separateur": 19,
+      "texte": 67,
+      "titre": 35
+    },
+    "columns": {
+      "4": 2
+    },
+    "cross_block_articles": 43,
+    "degradations": {
+      "measured": 2
+    },
+    "hyphenation_groups": 60,
+    "layout": {
+      "body_sizes": {
+        "11": 14,
+        "13": 62
+      },
+      "boxed_ads": 2,
+      "calibrated": false,
+      "line_height_bin_px": 1,
+      "line_heights_px": {
+        "main": {
+          "12": 50,
+          "13": 7,
+          "14": 529,
+          "15": 3,
+          "16": 6,
+          "17": 13,
+          "20": 14,
+          "33": 1
+        },
+        "rez_de_chaussee": {
+          "12": 19,
+          "14": 46,
+          "15": 1,
+          "17": 2,
+          "18": 1,
+          "20": 2
+        }
+      },
+      "profile": "fr_press_19c_layout_v2",
+      "small_body_articles": 14,
+      "small_body_clamped": 0,
+      "small_body_inactive": 0,
+      "small_body_requests": 14,
+      "wide_headlines": 1,
+      "zone_columns": {
+        "main:4": 2,
+        "rez_de_chaussee:3": 1
+      },
+      "zones": {
+        "main": 2,
+        "rez_de_chaussee": 1
+      }
+    },
+    "lines": 698,
+    "measured_degradations": {
+      "calibrated": false,
+      "legibility": {
+        "illegible": 20,
+        "readable": 4769,
+        "uncertain": 0
+      },
+      "legibility_method": "heuristic-v1",
+      "pages": [
+        {
+          "contrast": 187.0,
+          "edge_contrast_proxy": 0.335093,
+          "ink_loss_fraction": 0.0,
+          "ink_median": 68.0,
+          "ink_pixels": 154243,
+          "legibility": {
+            "illegible": 10,
+            "readable": 2377,
+            "uncertain": 0
+          },
+          "noise_mad_sigma": 0.0,
+          "otsu_threshold": 177,
+          "page_id": "mf_0000",
+          "paper_median": 255.0,
+          "spurious_ink_fraction": 0.001239
+        },
+        {
+          "contrast": 186.0,
+          "edge_contrast_proxy": 0.339115,
+          "ink_loss_fraction": 0.0,
+          "ink_median": 69.0,
+          "ink_pixels": 154203,
+          "legibility": {
+            "illegible": 10,
+            "readable": 2392,
+            "uncertain": 0
+          },
+          "noise_mad_sigma": 0.0,
+          "otsu_threshold": 175,
+          "page_id": "mf_0001",
+          "paper_median": 255.0,
+          "spurious_ink_fraction": 0.001158
+        }
+      ],
+      "profile": "identity"
+    },
+    "pages": 2,
+    "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+    "words": 4789
+  },
+  "status": "pass"
+}

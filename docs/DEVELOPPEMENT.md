@@ -55,7 +55,7 @@ Son acceptation au commit `cb24e39` passe 652 tests, 224 contrôles CLI, six pag
 de référence et un rejeu complet. La revue visuelle et les limites sont archivées
 dans [VALIDATION](VALIDATION.md). Cette clôture porte sur le lot, pas sur le projet.
 
-Le lot 4 en cours d'acceptation est `fr_press_19c_layout_v2` : un rez-de-chaussée à
+Le lot 4 accepté est `fr_press_19c_layout_v2` : un rez-de-chaussée à
 colonnage distinct, un titre large en tête de zone principale, des corps par
 article et des annonces encadrées. Il exige un profil de dégradation explicite,
 dont `identity`, et conserve les chemins antérieurs. Claude possède le
@@ -64,5 +64,15 @@ possèdent le rendu, les schémas, la validation, le CLI et les preuves d'intég
 Les signatures sont reportées faute de texte source approprié. Les probabilités
 de tirage restent déclarées et non calibrées ; aucun nouveau corpus n'est ouvert.
 La revue de pages réelles a ajouté une bande équilibrée sous le titre large et
-un corps normal commun aux zones. La diversité produite et les refus contrôlés
-restent à mesurer par la campagne ; ils ne constituent pas une calibration.
+un corps normal commun aux zones. La campagne au commit `69f0e50` passe 284
+contrôles sur sept pages et reproduit les deux pages de rejeu à l'identique.
+Cette observation ne constitue pas une calibration ni un taux de réussite général.
+
+Le prochain lot est un export optionnel `page-newseye-v1`, appliqué à la demande
+à un lot existant dans une destination neuve. Il vise les trois pertes décrites
+dans EXPORTS : titres, appartenance des lignes aux articles et ordre des annonces.
+La projection reste PAGE 2019, conserve les mots, et possède une fixture XML
+originale écrite à la main avant le producteur. Un lecteur de conformité
+indépendant doit éprouver les règles et leurs mutations. La compatibilité avec
+le lecteur réel d'Axel reste une preuve externe sous sa propre coordination.
+La préparation se fait dans les scratchpads avant attribution des fichiers.

@@ -1,0 +1,1386 @@
+{
+  "bands": [
+    {
+      "article_id": "mf_0001_a0001",
+      "body_preparation_bottom": 280.467,
+      "gap_to_preparation_px": -4.912154736302909e-07,
+      "line_counts": [
+        5,
+        5
+      ],
+      "lot": "compact-identity-x1",
+      "page_id": "mf_0001",
+      "preparation_derivation": "band bottom minus 0.6 times recorded body line spacing",
+      "real_polygon_bottom": 280.46700049121546,
+      "scope": "Measured difference, no acceptance threshold imposed"
+    },
+    {
+      "article_id": "mf_0001_a0001",
+      "body_preparation_bottom": 280.467,
+      "gap_to_preparation_px": 1.4028614714334253e-07,
+      "line_counts": [
+        5,
+        5
+      ],
+      "lot": "compact-identity-x2",
+      "page_id": "mf_0001",
+      "preparation_derivation": "band bottom minus 0.6 times recorded body line spacing",
+      "real_polygon_bottom": 280.46699985971384,
+      "scope": "Measured difference, no acceptance threshold imposed"
+    },
+    {
+      "article_id": "mf_0001_a0001",
+      "body_preparation_bottom": 280.467,
+      "gap_to_preparation_px": 1.4028614714334253e-07,
+      "line_counts": [
+        5,
+        5
+      ],
+      "lot": "compact-controlled-x2",
+      "page_id": "mf_0001",
+      "preparation_derivation": "band bottom minus 0.6 times recorded body line spacing",
+      "real_polygon_bottom": 280.46699985971384,
+      "scope": "Measured difference, no acceptance threshold imposed"
+    },
+    {
+      "article_id": "mf_0001_a0001",
+      "body_preparation_bottom": 280.467,
+      "gap_to_preparation_px": 1.4028614714334253e-07,
+      "line_counts": [
+        5,
+        5
+      ],
+      "lot": "replay-workers2",
+      "page_id": "mf_0001",
+      "preparation_derivation": "band bottom minus 0.6 times recorded body line spacing",
+      "real_polygon_bottom": 280.46699985971384,
+      "scope": "Measured difference, no acceptance threshold imposed"
+    }
+  ],
+  "checks": [
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 0 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 74 bytes below 200000000 (between commands)",
+    "reject-missing-photometric-profile: CLI exit code 2",
+    "reject-missing-photometric-profile: no success JSON emitted",
+    "Missing photometric profile refused before destination creation",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 74 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 5594069 bytes below 200000000 (between commands)",
+    "legacy-compatible: CLI exit code 0",
+    "legacy-compatible: report passed",
+    "Legacy replay uses measured non-v2 profile",
+    "Legacy measured non-v2 remains byte-identical: images/mf_0000.png",
+    "Legacy measured non-v2 remains byte-identical: pages/mf_0000.json",
+    "Legacy measured non-v2 remains byte-identical: qa/masks/mf_0000.png",
+    "Legacy measured non-v2 remains byte-identical: qa/diagnostics/mf_0000.json",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 5598389 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 20000160 bytes below 200000000 (between commands)",
+    "compact-identity-x1: CLI exit code 0",
+    "compact-identity-x1: report passed",
+    "compact-identity-x1: all dataset checks passed",
+    "compact-identity-x1: layout v2 manifest",
+    "compact-identity-x1: recorded clean production commit",
+    "compact-identity-x1: recorded frozen environment",
+    "compact-identity-x1: declared uncalibrated template",
+    "compact-identity-x1: exact page count",
+    "compact-identity-x1: named profile, page, file and export checks present",
+    "compact-identity-x1/mf_0000: shared normal body size",
+    "compact-identity-x1/mf_0000: independent plan check",
+    "compact-identity-x1/mf_0001: shared normal body size",
+    "compact-identity-x1/mf_0001: independent plan check",
+    "compact-identity-x1/mf_0001_a0001: one balanced body block per covered column",
+    "compact-identity-x1/mf_0001_b0004: correct covered column",
+    "compact-identity-x1/mf_0001_b0004: body confined vertically to its band",
+    "compact-identity-x1/mf_0001_b0005: correct covered column",
+    "compact-identity-x1/mf_0001_b0005: body confined vertically to its band",
+    "compact-identity-x1/mf_0001_b0006: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0007: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0008: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0009: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0010: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0011: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0012: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0013: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0014: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0015: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0016: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0017: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0018: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0019: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0020: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0021: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0022: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0023: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0024: ordinary article begins below reserved band",
+    "compact-identity-x1/mf_0001_b0025: ordinary article begins below reserved band",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 20004401 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 34276262 bytes below 200000000 (between commands)",
+    "compact-identity-x2: CLI exit code 0",
+    "compact-identity-x2: report passed",
+    "compact-identity-x2: all dataset checks passed",
+    "compact-identity-x2: layout v2 manifest",
+    "compact-identity-x2: recorded clean production commit",
+    "compact-identity-x2: recorded frozen environment",
+    "compact-identity-x2: declared uncalibrated template",
+    "compact-identity-x2: exact page count",
+    "compact-identity-x2: named profile, page, file and export checks present",
+    "compact-identity-x2/mf_0000: shared normal body size",
+    "compact-identity-x2/mf_0000: independent plan check",
+    "compact-identity-x2/mf_0001: shared normal body size",
+    "compact-identity-x2/mf_0001: independent plan check",
+    "compact-identity-x2/mf_0001_a0001: one balanced body block per covered column",
+    "compact-identity-x2/mf_0001_b0004: correct covered column",
+    "compact-identity-x2/mf_0001_b0004: body confined vertically to its band",
+    "compact-identity-x2/mf_0001_b0005: correct covered column",
+    "compact-identity-x2/mf_0001_b0005: body confined vertically to its band",
+    "compact-identity-x2/mf_0001_b0006: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0007: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0008: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0009: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0010: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0011: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0012: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0013: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0014: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0015: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0016: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0017: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0018: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0019: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0020: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0021: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0022: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0023: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0024: ordinary article begins below reserved band",
+    "compact-identity-x2/mf_0001_b0025: ordinary article begins below reserved band",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 34280506 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 50187902 bytes below 200000000 (between commands)",
+    "compact-controlled-x2: CLI exit code 0",
+    "compact-controlled-x2: report passed",
+    "compact-controlled-x2: all dataset checks passed",
+    "compact-controlled-x2: layout v2 manifest",
+    "compact-controlled-x2: recorded clean production commit",
+    "compact-controlled-x2: recorded frozen environment",
+    "compact-controlled-x2: declared uncalibrated template",
+    "compact-controlled-x2: exact page count",
+    "compact-controlled-x2: named profile, page, file and export checks present",
+    "compact-controlled-x2/mf_0000: shared normal body size",
+    "compact-controlled-x2/mf_0000: independent plan check",
+    "compact-controlled-x2/mf_0001: shared normal body size",
+    "compact-controlled-x2/mf_0001: independent plan check",
+    "compact-controlled-x2/mf_0001_a0001: one balanced body block per covered column",
+    "compact-controlled-x2/mf_0001_b0004: correct covered column",
+    "compact-controlled-x2/mf_0001_b0004: body confined vertically to its band",
+    "compact-controlled-x2/mf_0001_b0005: correct covered column",
+    "compact-controlled-x2/mf_0001_b0005: body confined vertically to its band",
+    "compact-controlled-x2/mf_0001_b0006: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0007: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0008: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0009: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0010: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0011: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0012: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0013: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0014: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0015: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0016: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0017: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0018: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0019: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0020: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0021: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0022: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0023: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0024: ordinary article begins below reserved band",
+    "compact-controlled-x2/mf_0001_b0025: ordinary article begins below reserved band",
+    "Observed feature: wide_headlines",
+    "Observed feature: boxed_ads",
+    "Observed feature: small_body_articles",
+    "Observed lower column zone",
+    "mf_0000: same reading order across factors",
+    "mf_0000: same lines identities and content across factors",
+    "mf_0000: same blocks identities and content across factors",
+    "mf_0000: same baseline heights before rotation (1e-5 px)",
+    "mf_0000: photometric pair has identical composition",
+    "mf_0000: same layout plan at x1 and x2",
+    "mf_0000: same words at x1 and x2",
+    "mf_0000: ideal mask independent of photometry",
+    "mf_0000: decoded photometric pixels differ",
+    "mf_0001: same reading order across factors",
+    "mf_0001: same lines identities and content across factors",
+    "mf_0001: same blocks identities and content across factors",
+    "mf_0001: same baseline heights before rotation (1e-5 px)",
+    "mf_0001: photometric pair has identical composition",
+    "mf_0001: same layout plan at x1 and x2",
+    "mf_0001: same words at x1 and x2",
+    "mf_0001: ideal mask independent of photometry",
+    "mf_0001: decoded photometric pixels differ",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 50192172 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 73186408 bytes below 200000000 (between commands)",
+    "pilot-controlled-x2: CLI exit code 0",
+    "pilot-controlled-x2: report passed",
+    "pilot-controlled-x2: all dataset checks passed",
+    "pilot-controlled-x2: layout v2 manifest",
+    "pilot-controlled-x2: recorded clean production commit",
+    "pilot-controlled-x2: recorded frozen environment",
+    "pilot-controlled-x2: declared uncalibrated template",
+    "pilot-controlled-x2: exact page count",
+    "pilot-controlled-x2: named profile, page, file and export checks present",
+    "pilot-controlled-x2/mf_0000: shared normal body size",
+    "pilot-controlled-x2/mf_0000: independent plan check",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 73189732 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 89097128 bytes below 200000000 (between commands)",
+    "replay-workers2: CLI exit code 0",
+    "replay-workers2: report passed",
+    "replay-workers2: all dataset checks passed",
+    "replay-workers2: layout v2 manifest",
+    "replay-workers2: recorded clean production commit",
+    "replay-workers2: recorded frozen environment",
+    "replay-workers2: declared uncalibrated template",
+    "replay-workers2: exact page count",
+    "replay-workers2: named profile, page, file and export checks present",
+    "replay-workers2/mf_0000: shared normal body size",
+    "replay-workers2/mf_0000: independent plan check",
+    "replay-workers2/mf_0001: shared normal body size",
+    "replay-workers2/mf_0001: independent plan check",
+    "replay-workers2/mf_0001_a0001: one balanced body block per covered column",
+    "replay-workers2/mf_0001_b0004: correct covered column",
+    "replay-workers2/mf_0001_b0004: body confined vertically to its band",
+    "replay-workers2/mf_0001_b0005: correct covered column",
+    "replay-workers2/mf_0001_b0005: body confined vertically to its band",
+    "replay-workers2/mf_0001_b0006: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0007: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0008: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0009: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0010: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0011: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0012: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0013: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0014: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0015: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0016: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0017: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0018: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0019: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0020: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0021: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0022: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0023: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0024: ordinary article begins below reserved band",
+    "replay-workers2/mf_0001_b0025: ordinary article begins below reserved band",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 89101398 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 89101465 bytes below 200000000 (between commands)",
+    "compare-replay: CLI exit code 0",
+    "compare-replay: report passed",
+    "Every source and two-worker replay file byte-identical",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 89101532 bytes below 200000000 (between commands)",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 96813556 bytes below 200000000 (between commands)",
+    "reproduce: CLI exit code 0",
+    "reproduce: report passed",
+    "Reproduction byte-identical: images/mf_0000.png",
+    "Reproduction byte-identical: pages/mf_0000.json",
+    "Reproduction byte-identical: qa/masks/mf_0000.png",
+    "Reproduction byte-identical: qa/diagnostics/mf_0000.json",
+    "Reproduction byte-identical: images/mf_0001.png",
+    "Reproduction byte-identical: pages/mf_0001.json",
+    "Reproduction byte-identical: qa/masks/mf_0001.png",
+    "Reproduction byte-identical: qa/diagnostics/mf_0001.json",
+    "Clean source revision and environment unchanged",
+    "Original inputs unchanged",
+    "Legacy reference remains unchanged",
+    "Volume 96820080 bytes below 200000000 (between commands)"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/must-not-exist",
+        "--layout-profile",
+        "fr_press_19c_layout_v2"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 0.14634212499368005,
+      "exit_code": 2,
+      "name": "reject-missing-photometric-profile",
+      "stderr": "logs/reject-missing-photometric-profile.stderr.log",
+      "stdout": "logs/reject-missing-photometric-profile.json"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/legacy-compatible",
+        "--pages",
+        "1",
+        "--assets-root",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--dpi",
+        "150",
+        "--columns",
+        "4",
+        "--seed",
+        "20261009",
+        "--jobs",
+        "1",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1/provenance/degradation-profile.json"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 4.673653917001502,
+      "exit_code": 0,
+      "name": "legacy-compatible",
+      "stderr": "logs/legacy-compatible.stderr.log",
+      "stdout": "logs/legacy-compatible.json"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/compact-identity-x1",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "2",
+        "--width",
+        "1200",
+        "--height",
+        "1656",
+        "--dpi",
+        "67",
+        "--seed",
+        "20261007",
+        "--jobs",
+        "1",
+        "--layout-profile",
+        "fr_press_19c_layout_v2",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/sources/identity-x1.json",
+        "--columns",
+        "4"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 22.419806749996496,
+      "exit_code": 0,
+      "name": "compact-identity-x1",
+      "stderr": "logs/compact-identity-x1.stderr.log",
+      "stdout": "logs/compact-identity-x1.json"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/compact-identity-x2",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "2",
+        "--width",
+        "1200",
+        "--height",
+        "1656",
+        "--dpi",
+        "67",
+        "--seed",
+        "20261007",
+        "--jobs",
+        "1",
+        "--layout-profile",
+        "fr_press_19c_layout_v2",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/sources/identity-x2.json",
+        "--columns",
+        "4"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 28.87258799999836,
+      "exit_code": 0,
+      "name": "compact-identity-x2",
+      "stderr": "logs/compact-identity-x2.stderr.log",
+      "stdout": "logs/compact-identity-x2.json"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/compact-controlled-x2",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "2",
+        "--width",
+        "1200",
+        "--height",
+        "1656",
+        "--dpi",
+        "67",
+        "--seed",
+        "20261007",
+        "--jobs",
+        "1",
+        "--layout-profile",
+        "fr_press_19c_layout_v2",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/sources/controlled-v1-x2.json",
+        "--columns",
+        "4"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 27.120735916993,
+      "exit_code": 0,
+      "name": "compact-controlled-x2",
+      "stderr": "logs/compact-controlled-x2.stderr.log",
+      "stdout": "logs/compact-controlled-x2.json"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/pilot-controlled-x2",
+        "--assets-root",
+        "/Users/marcel/heritage-synth",
+        "--pages",
+        "1",
+        "--width",
+        "2680",
+        "--height",
+        "3698",
+        "--dpi",
+        "67",
+        "--seed",
+        "20261007",
+        "--jobs",
+        "1",
+        "--layout-profile",
+        "fr_press_19c_layout_v2",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/sources/controlled-v1-x2.json"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 31.40906087499752,
+      "exit_code": 0,
+      "name": "pilot-controlled-x2",
+      "stderr": "logs/pilot-controlled-x2.stderr.log",
+      "stdout": "logs/pilot-controlled-x2.json"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/replay-workers2",
+        "--assets-root",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/compact-controlled-x2",
+        "--pages",
+        "2",
+        "--width",
+        "1200",
+        "--height",
+        "1656",
+        "--dpi",
+        "67",
+        "--seed",
+        "20261007",
+        "--jobs",
+        "2",
+        "--layout-profile",
+        "fr_press_19c_layout_v2",
+        "--degradation-profile",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/compact-controlled-x2/provenance/degradation-profile.json",
+        "--columns",
+        "4"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 23.63771891700162,
+      "exit_code": 0,
+      "name": "replay-workers2",
+      "stderr": "logs/replay-workers2.stderr.log",
+      "stdout": "logs/replay-workers2.json"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "compare",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/compact-controlled-x2",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/replay-workers2"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 4.313374958997883,
+      "exit_code": 0,
+      "name": "compare-replay",
+      "stderr": "logs/compare-replay.stderr.log",
+      "stdout": "logs/compare-replay.json"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "/Users/marcel/heritage-synth/tools/reproduce_pilot.py",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/lots/compact-controlled-x2",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/reproduced",
+        "--report",
+        "/Users/marcel/heritage-synth/runs/accept-layout-v2/reports/reproduction.json"
+      ],
+      "cwd": "/Users/marcel/heritage-synth",
+      "elapsed_seconds": 22.518381499998213,
+      "exit_code": 0,
+      "name": "reproduce",
+      "stderr": "logs/reproduce.stderr.log",
+      "stdout": "logs/reproduce.json"
+    }
+  ],
+  "errors": [],
+  "format": "mille-feuilles-layout-acceptance",
+  "inputs": {
+    "assets/catalog.json": "15d6b6cb0528af01a74755c332481e8544c36d87ca53a93beb8c34f068851b20",
+    "assets/fonts/gfsdidot/DESCRIPTION.en_us.html": "9aa61fa5d8872f9cab53be3ff1e040abbd0af0931207bd6ea9d297ef89506223",
+    "assets/fonts/gfsdidot/GFSDidot-Regular.ttf": "4fc784ab824e8866eeef8ad55976b93e7e170fb1b8237fd4f8781b5b4dd297f9",
+    "assets/fonts/gfsdidot/METADATA.pb": "aa07c9c90cea6cc13577262558cd366c2fdee90b57e6f75d752f010ff0f6b751",
+    "assets/fonts/gfsdidot/OFL.txt": "9e19c0d2e7e7adcbe9dfd0749e34dda41e7e356e0f2cc082d61d2fc9b6e0cef7",
+    "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57",
+    "assets/fonts/oldstandardtt/METADATA.pb": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d",
+    "assets/fonts/oldstandardtt/OFL.txt": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd",
+    "assets/fonts/oldstandardtt/OldStandard-Bold.ttf": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db",
+    "assets/fonts/oldstandardtt/OldStandard-Italic.ttf": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564",
+    "assets/fonts/oldstandardtt/OldStandard-Regular.ttf": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac",
+    "assets/texts/CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "assets/texts/NOTICE.md": "b2ce6e45a24ee9c034039d18450ec8c6d2611319bfb7a7b8801f8139926dd014",
+    "assets/texts/annonces-fr.txt": "7881bb7fca96af44c294f8a6603f924eee958ab5b6394bc7c8b47cf2734af4fc",
+    "assets/texts/demo-fr.txt": "1025138a6e80735785d415c157a91cb856a34a86659ca7a5215193197e992895",
+    "assets/texts/titres-fr.txt": "30f846cdeec76617013e7891dd4c5695c11358b652cceefba20755255d6e0c72",
+    "profiles/controlled-v1.json": "1a508d5ff96019828ea603daa4143d435048773e46fa0243211f5e02db1d9ace",
+    "profiles/identity.json": "f2d8d1f86f512a3c4d44f3227382df530495c7982214c49d2f10ba41efa3bb8b"
+  },
+  "legacy_reference": {
+    "commit": "cb24e39e42d6c7519a32f6b70bcbccced6e13f36",
+    "manifest_sha256": "261cd68605e4850751371ef55576545e505eba07ce2639102efaa3ce964755f9",
+    "path": "/Users/marcel/heritage-synth/runs/accept-measured-lot3/lots/compact-identity-x1",
+    "scope": "Measured non-v2 path only; manifest/environment may change"
+  },
+  "lots": {
+    "compact-controlled-x2": {
+      "features_by_page": [
+        {
+          "boxed_ads": [
+            "mf_0000_a0022"
+          ],
+          "headlines": [],
+          "page_id": "mf_0000",
+          "zones": [
+            "main"
+          ]
+        },
+        {
+          "boxed_ads": [
+            "mf_0001_a0025"
+          ],
+          "headlines": [
+            "mf_0001_a0001"
+          ],
+          "page_id": "mf_0001",
+          "zones": [
+            "main",
+            "rez_de_chaussee"
+          ]
+        }
+      ],
+      "manifest_sha256": "b5bb22afdcf99b2772d06fc7632273cb48a3788c9387adb8ed4a313a038a44d5",
+      "pages": 2,
+      "path": "lots/compact-controlled-x2",
+      "statistics": {
+        "blocks": 143,
+        "categories": {
+          "annonce": 22,
+          "separateur": 19,
+          "texte": 67,
+          "titre": 35
+        },
+        "columns": {
+          "4": 2
+        },
+        "cross_block_articles": 43,
+        "degradations": {
+          "measured": 2
+        },
+        "hyphenation_groups": 60,
+        "layout": {
+          "body_sizes": {
+            "11": 14,
+            "13": 62
+          },
+          "boxed_ads": 2,
+          "calibrated": false,
+          "line_height_bin_px": 1,
+          "line_heights_px": {
+            "main": {
+              "12": 50,
+              "13": 7,
+              "14": 529,
+              "15": 3,
+              "16": 6,
+              "17": 13,
+              "20": 14,
+              "33": 1
+            },
+            "rez_de_chaussee": {
+              "12": 19,
+              "14": 46,
+              "15": 1,
+              "17": 2,
+              "18": 1,
+              "20": 2
+            }
+          },
+          "profile": "fr_press_19c_layout_v2",
+          "small_body_articles": 14,
+          "small_body_clamped": 0,
+          "small_body_inactive": 0,
+          "small_body_requests": 14,
+          "wide_headlines": 1,
+          "zone_columns": {
+            "main:4": 2,
+            "rez_de_chaussee:3": 1
+          },
+          "zones": {
+            "main": 2,
+            "rez_de_chaussee": 1
+          }
+        },
+        "lines": 698,
+        "measured_degradations": {
+          "calibrated": false,
+          "legibility": {
+            "illegible": 4490,
+            "readable": 115,
+            "uncertain": 184
+          },
+          "legibility_method": "heuristic-v1",
+          "pages": [
+            {
+              "contrast": 44.0,
+              "edge_contrast_proxy": 0.261686,
+              "ink_loss_fraction": 0.006587,
+              "ink_median": 205.0,
+              "ink_pixels": 154243,
+              "legibility": {
+                "illegible": 2256,
+                "readable": 58,
+                "uncertain": 73
+              },
+              "noise_mad_sigma": 2.9652,
+              "otsu_threshold": 229,
+              "page_id": "mf_0000",
+              "paper_median": 249.0,
+              "spurious_ink_fraction": 0.001058
+            },
+            {
+              "contrast": 50.0,
+              "edge_contrast_proxy": 0.242066,
+              "ink_loss_fraction": 0.00965,
+              "ink_median": 189.0,
+              "ink_pixels": 154203,
+              "legibility": {
+                "illegible": 2234,
+                "readable": 57,
+                "uncertain": 111
+              },
+              "noise_mad_sigma": 4.4478,
+              "otsu_threshold": 214,
+              "page_id": "mf_0001",
+              "paper_median": 239.0,
+              "spurious_ink_fraction": 0.000891
+            }
+          ],
+          "profile": "controlled-v1"
+        },
+        "pages": 2,
+        "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+        "words": 4789
+      },
+      "words": 4789
+    },
+    "compact-identity-x1": {
+      "features_by_page": [
+        {
+          "boxed_ads": [
+            "mf_0000_a0022"
+          ],
+          "headlines": [],
+          "page_id": "mf_0000",
+          "zones": [
+            "main"
+          ]
+        },
+        {
+          "boxed_ads": [
+            "mf_0001_a0025"
+          ],
+          "headlines": [
+            "mf_0001_a0001"
+          ],
+          "page_id": "mf_0001",
+          "zones": [
+            "main",
+            "rez_de_chaussee"
+          ]
+        }
+      ],
+      "manifest_sha256": "d6d527b9ec125bfc618231a8a94f5d7caf4332002ef48cf64b5feecd4e2f534f",
+      "pages": 2,
+      "path": "lots/compact-identity-x1",
+      "statistics": {
+        "blocks": 143,
+        "categories": {
+          "annonce": 22,
+          "separateur": 19,
+          "texte": 67,
+          "titre": 35
+        },
+        "columns": {
+          "4": 2
+        },
+        "cross_block_articles": 43,
+        "degradations": {
+          "measured": 2
+        },
+        "hyphenation_groups": 60,
+        "layout": {
+          "body_sizes": {
+            "11": 14,
+            "13": 62
+          },
+          "boxed_ads": 2,
+          "calibrated": false,
+          "line_height_bin_px": 1,
+          "line_heights_px": {
+            "main": {
+              "12": 50,
+              "13": 7,
+              "14": 529,
+              "15": 3,
+              "16": 6,
+              "17": 13,
+              "20": 14,
+              "33": 1
+            },
+            "rez_de_chaussee": {
+              "12": 19,
+              "14": 46,
+              "15": 1,
+              "17": 2,
+              "18": 1,
+              "20": 2
+            }
+          },
+          "profile": "fr_press_19c_layout_v2",
+          "small_body_articles": 14,
+          "small_body_clamped": 0,
+          "small_body_inactive": 0,
+          "small_body_requests": 14,
+          "wide_headlines": 1,
+          "zone_columns": {
+            "main:4": 2,
+            "rez_de_chaussee:3": 1
+          },
+          "zones": {
+            "main": 2,
+            "rez_de_chaussee": 1
+          }
+        },
+        "lines": 698,
+        "measured_degradations": {
+          "calibrated": false,
+          "legibility": {
+            "illegible": 16,
+            "readable": 4771,
+            "uncertain": 2
+          },
+          "legibility_method": "heuristic-v1",
+          "pages": [
+            {
+              "contrast": 188.0,
+              "edge_contrast_proxy": 0.336964,
+              "ink_loss_fraction": 0.0,
+              "ink_median": 67.0,
+              "ink_pixels": 158199,
+              "legibility": {
+                "illegible": 7,
+                "readable": 2378,
+                "uncertain": 2
+              },
+              "noise_mad_sigma": 0.0,
+              "otsu_threshold": 172,
+              "page_id": "mf_0000",
+              "paper_median": 255.0,
+              "spurious_ink_fraction": 0.00057
+            },
+            {
+              "contrast": 176.0,
+              "edge_contrast_proxy": 0.367694,
+              "ink_loss_fraction": 0.0,
+              "ink_median": 79.0,
+              "ink_pixels": 153385,
+              "legibility": {
+                "illegible": 9,
+                "readable": 2393,
+                "uncertain": 0
+              },
+              "noise_mad_sigma": 0.0,
+              "otsu_threshold": 177,
+              "page_id": "mf_0001",
+              "paper_median": 255.0,
+              "spurious_ink_fraction": 0.000962
+            }
+          ],
+          "profile": "identity"
+        },
+        "pages": 2,
+        "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+        "words": 4789
+      },
+      "words": 4789
+    },
+    "compact-identity-x2": {
+      "features_by_page": [
+        {
+          "boxed_ads": [
+            "mf_0000_a0022"
+          ],
+          "headlines": [],
+          "page_id": "mf_0000",
+          "zones": [
+            "main"
+          ]
+        },
+        {
+          "boxed_ads": [
+            "mf_0001_a0025"
+          ],
+          "headlines": [
+            "mf_0001_a0001"
+          ],
+          "page_id": "mf_0001",
+          "zones": [
+            "main",
+            "rez_de_chaussee"
+          ]
+        }
+      ],
+      "manifest_sha256": "960c3aa38aa6073eccf12553caf33e4c266c538d6a98be5d645b03be82fe977a",
+      "pages": 2,
+      "path": "lots/compact-identity-x2",
+      "statistics": {
+        "blocks": 143,
+        "categories": {
+          "annonce": 22,
+          "separateur": 19,
+          "texte": 67,
+          "titre": 35
+        },
+        "columns": {
+          "4": 2
+        },
+        "cross_block_articles": 43,
+        "degradations": {
+          "measured": 2
+        },
+        "hyphenation_groups": 60,
+        "layout": {
+          "body_sizes": {
+            "11": 14,
+            "13": 62
+          },
+          "boxed_ads": 2,
+          "calibrated": false,
+          "line_height_bin_px": 1,
+          "line_heights_px": {
+            "main": {
+              "12": 50,
+              "13": 7,
+              "14": 529,
+              "15": 3,
+              "16": 6,
+              "17": 13,
+              "20": 14,
+              "33": 1
+            },
+            "rez_de_chaussee": {
+              "12": 19,
+              "14": 46,
+              "15": 1,
+              "17": 2,
+              "18": 1,
+              "20": 2
+            }
+          },
+          "profile": "fr_press_19c_layout_v2",
+          "small_body_articles": 14,
+          "small_body_clamped": 0,
+          "small_body_inactive": 0,
+          "small_body_requests": 14,
+          "wide_headlines": 1,
+          "zone_columns": {
+            "main:4": 2,
+            "rez_de_chaussee:3": 1
+          },
+          "zones": {
+            "main": 2,
+            "rez_de_chaussee": 1
+          }
+        },
+        "lines": 698,
+        "measured_degradations": {
+          "calibrated": false,
+          "legibility": {
+            "illegible": 20,
+            "readable": 4769,
+            "uncertain": 0
+          },
+          "legibility_method": "heuristic-v1",
+          "pages": [
+            {
+              "contrast": 187.0,
+              "edge_contrast_proxy": 0.335093,
+              "ink_loss_fraction": 0.0,
+              "ink_median": 68.0,
+              "ink_pixels": 154243,
+              "legibility": {
+                "illegible": 10,
+                "readable": 2377,
+                "uncertain": 0
+              },
+              "noise_mad_sigma": 0.0,
+              "otsu_threshold": 177,
+              "page_id": "mf_0000",
+              "paper_median": 255.0,
+              "spurious_ink_fraction": 0.001239
+            },
+            {
+              "contrast": 186.0,
+              "edge_contrast_proxy": 0.339115,
+              "ink_loss_fraction": 0.0,
+              "ink_median": 69.0,
+              "ink_pixels": 154203,
+              "legibility": {
+                "illegible": 10,
+                "readable": 2392,
+                "uncertain": 0
+              },
+              "noise_mad_sigma": 0.0,
+              "otsu_threshold": 175,
+              "page_id": "mf_0001",
+              "paper_median": 255.0,
+              "spurious_ink_fraction": 0.001158
+            }
+          ],
+          "profile": "identity"
+        },
+        "pages": 2,
+        "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+        "words": 4789
+      },
+      "words": 4789
+    },
+    "pilot-controlled-x2": {
+      "features_by_page": [
+        {
+          "boxed_ads": [
+            "mf_0000_a0022",
+            "mf_0000_a0043"
+          ],
+          "headlines": [],
+          "page_id": "mf_0000",
+          "zones": [
+            "main"
+          ]
+        }
+      ],
+      "manifest_sha256": "d60d3aff843d7104e13852825b17419478e4f18b7823c3fee63e3a5ab11351cd",
+      "pages": 1,
+      "path": "lots/pilot-controlled-x2",
+      "statistics": {
+        "blocks": 154,
+        "categories": {
+          "annonce": 27,
+          "separateur": 14,
+          "texte": 75,
+          "titre": 38
+        },
+        "columns": {
+          "6": 1
+        },
+        "cross_block_articles": 46,
+        "degradations": {
+          "measured": 1
+        },
+        "hyphenation_groups": 69,
+        "layout": {
+          "body_sizes": {
+            "16": 23,
+            "19": 70
+          },
+          "boxed_ads": 2,
+          "calibrated": false,
+          "line_height_bin_px": 1,
+          "line_heights_px": {
+            "main": {
+              "17": 146,
+              "20": 653,
+              "21": 9,
+              "23": 9,
+              "25": 20,
+              "30": 15
+            }
+          },
+          "profile": "fr_press_19c_layout_v2",
+          "small_body_articles": 23,
+          "small_body_clamped": 0,
+          "small_body_inactive": 0,
+          "small_body_requests": 23,
+          "wide_headlines": 0,
+          "zone_columns": {
+            "main:6": 1
+          },
+          "zones": {
+            "main": 1
+          }
+        },
+        "lines": 854,
+        "measured_degradations": {
+          "calibrated": false,
+          "legibility": {
+            "illegible": 233,
+            "readable": 2003,
+            "uncertain": 3714
+          },
+          "legibility_method": "heuristic-v1",
+          "pages": [
+            {
+              "contrast": 54.0,
+              "edge_contrast_proxy": 0.270733,
+              "ink_loss_fraction": 0.017143,
+              "ink_median": 195.0,
+              "ink_pixels": 827625,
+              "legibility": {
+                "illegible": 233,
+                "readable": 2003,
+                "uncertain": 3714
+              },
+              "noise_mad_sigma": 2.9652,
+              "otsu_threshold": 224,
+              "page_id": "mf_0000",
+              "paper_median": 249.0,
+              "spurious_ink_fraction": 0.00016
+            }
+          ],
+          "profile": "controlled-v1"
+        },
+        "pages": 1,
+        "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+        "words": 5950
+      },
+      "words": 5950
+    },
+    "replay-workers2": {
+      "features_by_page": [
+        {
+          "boxed_ads": [
+            "mf_0000_a0022"
+          ],
+          "headlines": [],
+          "page_id": "mf_0000",
+          "zones": [
+            "main"
+          ]
+        },
+        {
+          "boxed_ads": [
+            "mf_0001_a0025"
+          ],
+          "headlines": [
+            "mf_0001_a0001"
+          ],
+          "page_id": "mf_0001",
+          "zones": [
+            "main",
+            "rez_de_chaussee"
+          ]
+        }
+      ],
+      "manifest_sha256": "b5bb22afdcf99b2772d06fc7632273cb48a3788c9387adb8ed4a313a038a44d5",
+      "pages": 2,
+      "path": "lots/replay-workers2",
+      "statistics": {
+        "blocks": 143,
+        "categories": {
+          "annonce": 22,
+          "separateur": 19,
+          "texte": 67,
+          "titre": 35
+        },
+        "columns": {
+          "4": 2
+        },
+        "cross_block_articles": 43,
+        "degradations": {
+          "measured": 2
+        },
+        "hyphenation_groups": 60,
+        "layout": {
+          "body_sizes": {
+            "11": 14,
+            "13": 62
+          },
+          "boxed_ads": 2,
+          "calibrated": false,
+          "line_height_bin_px": 1,
+          "line_heights_px": {
+            "main": {
+              "12": 50,
+              "13": 7,
+              "14": 529,
+              "15": 3,
+              "16": 6,
+              "17": 13,
+              "20": 14,
+              "33": 1
+            },
+            "rez_de_chaussee": {
+              "12": 19,
+              "14": 46,
+              "15": 1,
+              "17": 2,
+              "18": 1,
+              "20": 2
+            }
+          },
+          "profile": "fr_press_19c_layout_v2",
+          "small_body_articles": 14,
+          "small_body_clamped": 0,
+          "small_body_inactive": 0,
+          "small_body_requests": 14,
+          "wide_headlines": 1,
+          "zone_columns": {
+            "main:4": 2,
+            "rez_de_chaussee:3": 1
+          },
+          "zones": {
+            "main": 2,
+            "rez_de_chaussee": 1
+          }
+        },
+        "lines": 698,
+        "measured_degradations": {
+          "calibrated": false,
+          "legibility": {
+            "illegible": 4490,
+            "readable": 115,
+            "uncertain": 184
+          },
+          "legibility_method": "heuristic-v1",
+          "pages": [
+            {
+              "contrast": 44.0,
+              "edge_contrast_proxy": 0.261686,
+              "ink_loss_fraction": 0.006587,
+              "ink_median": 205.0,
+              "ink_pixels": 154243,
+              "legibility": {
+                "illegible": 2256,
+                "readable": 58,
+                "uncertain": 73
+              },
+              "noise_mad_sigma": 2.9652,
+              "otsu_threshold": 229,
+              "page_id": "mf_0000",
+              "paper_median": 249.0,
+              "spurious_ink_fraction": 0.001058
+            },
+            {
+              "contrast": 50.0,
+              "edge_contrast_proxy": 0.242066,
+              "ink_loss_fraction": 0.00965,
+              "ink_median": 189.0,
+              "ink_pixels": 154203,
+              "legibility": {
+                "illegible": 2234,
+                "readable": 57,
+                "uncertain": 111
+              },
+              "noise_mad_sigma": 4.4478,
+              "otsu_threshold": 214,
+              "page_id": "mf_0001",
+              "paper_median": 239.0,
+              "spurious_ink_fraction": 0.000891
+            }
+          ],
+          "profile": "controlled-v1"
+        },
+        "pages": 2,
+        "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+        "words": 4789
+      },
+      "words": 4789
+    }
+  },
+  "resource_note": "Command times include exports/validation; child RSS is a cumulative maximum",
+  "resources": {
+    "child_maxrss_raw": 1265090560,
+    "child_maxrss_unit": "bytes",
+    "limit_bytes": 200000000,
+    "volume_scope": "Between commands; not an atomic subprocess quota",
+    "written_bytes_before_final_report": 96820080
+  },
+  "sampling_comparisons": [
+    {
+      "max_baseline_endpoint_difference_px": 2.5,
+      "max_baseline_height_difference_px": 8.723363862372935e-07,
+      "max_word_coordinate_difference_px": 2.5,
+      "page_id": "mf_0000",
+      "polygon_difference_threshold": null
+    },
+    {
+      "max_baseline_endpoint_difference_px": 2.499988999999914,
+      "max_baseline_height_difference_px": 6.746993221895536e-07,
+      "max_word_coordinate_difference_px": 2.4999900000000252,
+      "page_id": "mf_0001",
+      "polygon_difference_threshold": null
+    }
+  ],
+  "scope": "Bundled original demonstration texts; no real corpus or model evaluation",
+  "seed": 20261007,
+  "source": {
+    "commit": "69f0e50834e06d9f501411ada2b36f9677ee2a22",
+    "dirty": false,
+    "environment": {
+      "freetype": "2.14.3",
+      "generator": "0.3.0",
+      "implementation": "CPython",
+      "layout_engine": "pillow-freetype-basic",
+      "packages": {
+        "Pillow": "12.3.0",
+        "fonttools": "4.66.1",
+        "jsonschema": "4.26.0",
+        "lxml": "6.1.3",
+        "numpy": "2.5.3",
+        "shapely": "2.1.2"
+      },
+      "platform": "macOS-26.4.1-arm64-arm-64bit",
+      "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+      "sources": {
+        "pyproject.toml": "fd9109a78f69a3fac32fa5feab02dd6586d5ebf72caa126dabbad79be2ee9859",
+        "schemas/assets.schema.json": "7de8b38999e53502da7162d7ff148304de5dc22aacecb6a23d7602f982e98648",
+        "schemas/degradation-profile.schema.json": "6f9df6ecc8e3cf70b6e769db6566d8c101619d771ff9e4aa5186e8758708d617",
+        "schemas/manifest.schema.json": "9312c2337501a7085c77297f2c1cbab233828c8b261b65e027f81c47fe3b4baf",
+        "schemas/page.schema.json": "ea63ea01a57319a53b3a66fe83e29c859e82ca7a0ff197e2e2737708da3e9e19",
+        "schemas/xml/alto-4-4.xsd": "5564fd29d2dd090d8102b8a0aa081906afd677cd5ecc632312e56f21ea14702b",
+        "schemas/xml/page-2019-07-15.xsd": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5",
+        "schemas/xml/provenance.json": "f2e8bb4dc146e90dd0aa39798f2081863ed5d258eeee14eaa875f5eb3ea5317c",
+        "schemas/xml/xlink.xsd": "f1f5bb6003165cdd8f6c1fcc32f8fd1f965e1681010f3b9806d9460bcffa8a3c",
+        "src/mille_feuilles/__init__.py": "31b3d4495cbf00993b369306a1b5740783eb845b76a4d92612881ebe1b9dd493",
+        "src/mille_feuilles/catalog.py": "9ed1ebf69f61fcd304a0443c1ba1cab56286bb3ed4079ecaed17cd691d5d7fd2",
+        "src/mille_feuilles/cli.py": "2ea57343da493260e49586b21a67cbe2aeb5edf4ef2594179304167fcc4e2dfe",
+        "src/mille_feuilles/degrade.py": "834f3e7ce1583f4f6c403a2e5d8231f962be20a12f85a23b538c2f1983a66e9d",
+        "src/mille_feuilles/diagnostics.py": "b86eb29959d621b3b0da509f61f5d4f179ee085980727c60a4e831b0090e3ccd",
+        "src/mille_feuilles/exports.py": "279030f33aa76381f9fb7c8086d48f53c110fb030de8b18b17e683b47b6c6f05",
+        "src/mille_feuilles/io.py": "fa26d558c5582013dda07116c517fc1e87e624f66c5e4d434dca384a8f1aee84",
+        "src/mille_feuilles/layout.py": "c75919f4d219c56adfdbd0ffdf143a1568a2e3c0367878b023ea1e953cff638b",
+        "src/mille_feuilles/partition.py": "c5fa133fe262c70f0e1abd519e6a3e98363ef55a0d115e6a66a8ee23f9984bc9",
+        "src/mille_feuilles/pipeline.py": "b6d65e8759a3bc58851e99bd79a51b463518e38886e2a467e46a8ca2ffc41839",
+        "src/mille_feuilles/render.py": "38149df7fb76ec5792cc6c524733a5d3855934e991088807a632a5abddb4cf10",
+        "src/mille_feuilles/validation.py": "d0f1bed2d994100a488d9fdd3cfb53a4ad5628dd494d87a2d39c81c2d248440b",
+        "uv.lock": "0c46dec6a1cf38ac326946382e1da143655a4c72204aaf406ee91714b96cac45"
+      }
+    },
+    "scripts": {
+      "tools/accept_layout.py": "c56337bb794a9fa3011fc3bb7ed4a48979d123c5d920254f682dc0abe3791552",
+      "tools/reproduce_pilot.py": "51b9d575c29933a5cc5e7e870b331502f87aa020777edaab6f271dd4bb775e44"
+    }
+  },
+  "started_at_utc": "2026-10-07T17:00:06.940240+00:00",
+  "status": "pass",
+  "version": "1",
+  "visual_review": {
+    "note": "Inspect final pages and native crops separately",
+    "status": "not_run"
+  }
+}

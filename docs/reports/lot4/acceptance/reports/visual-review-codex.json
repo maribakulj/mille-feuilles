@@ -1,0 +1,26 @@
+{
+  "acceptance_sha256": "225243e6024fec7a3301a1aee404fd43c6528acb0e289c4fb52ada878c9d67c3",
+  "automatic_visual_status": "The original acceptance.json retains not_run; this separate note records the actual visual review.",
+  "limits": [
+    "Seven base pages use one seed and three repeatedly composed original documents; no historical or model performance claim.",
+    "Titles and advertisement content can be unrelated because existing role selection is independent (library heading above clock repairs).",
+    "Loose justified lines and orphan lines remain typography limitations.",
+    "No blind transcription, no estimated human reading accuracy, and no guarantee that heuristic readable labels are valid OCR supervision.",
+    "No thresholds, profiles or seeds were adjusted after this visual review."
+  ],
+  "observations": [
+    "Wide heading and balanced five-line body columns remain visibly grouped; ordinary articles resume below the band.",
+    "Lower zone has three wider columns using the same body size as main; column and zone rules separate the content.",
+    "Boxed advertisements have visible four-sided enclosures with padding; masks and geometry are validated independently from degraded pixels.",
+    "Identity x1/x2 share composition; visible glyph support differs slightly as expected from FreeType sampling.",
+    "Controlled compact small body and pilot crops are markedly blurred and faded; erosion also breaks rule strokes. This is a declared photometric effect, not a missing canonical rule."
+  ],
+  "reviewed": {
+    "base_page_thumbnails": 7,
+    "native_feature_crops": 14
+  },
+  "reviewer": "Codex coordinator",
+  "selection_sha256": "11575a8986cce72853dfee8790b31ebd100b121b49e721894764eff8fe4c221d",
+  "source_commit": "69f0e50834e06d9f501411ada2b36f9677ee2a22",
+  "status": "pass_with_documented_limits"
+}

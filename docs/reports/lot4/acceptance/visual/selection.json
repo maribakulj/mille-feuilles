@@ -1,0 +1,213 @@
+{
+  "crops": [
+    {
+      "crop_box": [
+        599,
+        581,
+        881,
+        718
+      ],
+      "feature": "box",
+      "path": "visual/compact-controlled-x2-mf_0000-box.png",
+      "scale": 1,
+      "sha256": "d72fec1724d300950e16230807967606ebb9070a752316fbef4684d6bc099f86",
+      "source": "lots/compact-controlled-x2/images/mf_0000.png",
+      "source_sha256": "c5f7cdb9cdb968172a0d6a0f937166d7f7d4b5dc78ea048ba823e84c4f4b26c5"
+    },
+    {
+      "crop_box": [
+        311,
+        253,
+        606,
+        341
+      ],
+      "feature": "small_body",
+      "path": "visual/compact-controlled-x2-mf_0000-small_body.png",
+      "scale": 1,
+      "sha256": "53148bb93f5cece10c92f8d51da4ebbd594940bc56aeb7083ab6165020a566d2",
+      "source": "lots/compact-controlled-x2/images/mf_0000.png",
+      "source_sha256": "c5f7cdb9cdb968172a0d6a0f937166d7f7d4b5dc78ea048ba823e84c4f4b26c5"
+    },
+    {
+      "crop_box": [
+        31,
+        155,
+        609,
+        293
+      ],
+      "feature": "headline",
+      "path": "visual/compact-controlled-x2-mf_0001-headline.png",
+      "scale": 1,
+      "sha256": "79982cd13c066a7872492e8a373530e1a4bc4d5b08018903033bd6a037934e22",
+      "source": "lots/compact-controlled-x2/images/mf_0001.png",
+      "source_sha256": "2f7e64f24712ef1e6cb19391719225143d841ef3382dcaeac6df626f0be5989c"
+    },
+    {
+      "crop_box": [
+        882,
+        359,
+        1163,
+        448
+      ],
+      "feature": "box",
+      "path": "visual/compact-controlled-x2-mf_0001-box.png",
+      "scale": 1,
+      "sha256": "e775fc6a2c07552f687170dd97b41b6a8551ca126b17e707a6b5863dcfa3b455",
+      "source": "lots/compact-controlled-x2/images/mf_0001.png",
+      "source_sha256": "2f7e64f24712ef1e6cb19391719225143d841ef3382dcaeac6df626f0be5989c"
+    },
+    {
+      "crop_box": [
+        30,
+        514,
+        326,
+        603
+      ],
+      "feature": "small_body",
+      "path": "visual/compact-controlled-x2-mf_0001-small_body.png",
+      "scale": 1,
+      "sha256": "ea8b411a7aa22f4dcc2a033753332dc6d9677020a587a167ac6613727bc7b5a2",
+      "source": "lots/compact-controlled-x2/images/mf_0001.png",
+      "source_sha256": "2f7e64f24712ef1e6cb19391719225143d841ef3382dcaeac6df626f0be5989c"
+    },
+    {
+      "crop_box": [
+        28,
+        1218,
+        418,
+        1362
+      ],
+      "feature": "lower_zone",
+      "path": "visual/compact-controlled-x2-mf_0001-lower_zone.png",
+      "scale": 1,
+      "sha256": "edc2a7233d164a2c2737b48b93acfc3e35dab61f3236b253da429e29e72c874d",
+      "source": "lots/compact-controlled-x2/images/mf_0001.png",
+      "source_sha256": "2f7e64f24712ef1e6cb19391719225143d841ef3382dcaeac6df626f0be5989c"
+    },
+    {
+      "crop_box": [
+        599,
+        581,
+        881,
+        718
+      ],
+      "feature": "box",
+      "path": "visual/compact-identity-x2-mf_0000-box.png",
+      "scale": 1,
+      "sha256": "7fd236c3edc70342f88edb1474c4aa673318340c7c4a517fb5e70cb022ddf1a0",
+      "source": "lots/compact-identity-x2/images/mf_0000.png",
+      "source_sha256": "b5089346482b26d9409e500bc77f4846d60113ea7bd873848464ff6a6b7b7fe1"
+    },
+    {
+      "crop_box": [
+        311,
+        253,
+        606,
+        341
+      ],
+      "feature": "small_body",
+      "path": "visual/compact-identity-x2-mf_0000-small_body.png",
+      "scale": 1,
+      "sha256": "4cfb51693991fd85bab4f4264f9fc4685716666f3e2971ad214ae563e42d62dc",
+      "source": "lots/compact-identity-x2/images/mf_0000.png",
+      "source_sha256": "b5089346482b26d9409e500bc77f4846d60113ea7bd873848464ff6a6b7b7fe1"
+    },
+    {
+      "crop_box": [
+        31,
+        155,
+        609,
+        293
+      ],
+      "feature": "headline",
+      "path": "visual/compact-identity-x2-mf_0001-headline.png",
+      "scale": 1,
+      "sha256": "0c1b68c0eb3aae146c33a4379e2200501fdd3ba72e4d9bf2c48983cc9e04b00f",
+      "source": "lots/compact-identity-x2/images/mf_0001.png",
+      "source_sha256": "fe14b5b8cacef064d4f48704de579e0893da672238c16004039c07067219d699"
+    },
+    {
+      "crop_box": [
+        882,
+        359,
+        1163,
+        448
+      ],
+      "feature": "box",
+      "path": "visual/compact-identity-x2-mf_0001-box.png",
+      "scale": 1,
+      "sha256": "668eb91f90a2f9791675cd9f9bc00fac10dc36dbca1d88c457634094bda2a41c",
+      "source": "lots/compact-identity-x2/images/mf_0001.png",
+      "source_sha256": "fe14b5b8cacef064d4f48704de579e0893da672238c16004039c07067219d699"
+    },
+    {
+      "crop_box": [
+        30,
+        514,
+        326,
+        603
+      ],
+      "feature": "small_body",
+      "path": "visual/compact-identity-x2-mf_0001-small_body.png",
+      "scale": 1,
+      "sha256": "2a2f03b31042cf5e9b57075d5867cfee76b712659f58a05d320c370b3530a732",
+      "source": "lots/compact-identity-x2/images/mf_0001.png",
+      "source_sha256": "fe14b5b8cacef064d4f48704de579e0893da672238c16004039c07067219d699"
+    },
+    {
+      "crop_box": [
+        28,
+        1218,
+        418,
+        1362
+      ],
+      "feature": "lower_zone",
+      "path": "visual/compact-identity-x2-mf_0001-lower_zone.png",
+      "scale": 1,
+      "sha256": "f9cba2e596f299dcd9d81cdac4f5f3f8134ab73a62e53871c73643ee301a5091",
+      "source": "lots/compact-identity-x2/images/mf_0001.png",
+      "source_sha256": "fe14b5b8cacef064d4f48704de579e0893da672238c16004039c07067219d699"
+    },
+    {
+      "crop_box": [
+        507,
+        1860,
+        914,
+        2027
+      ],
+      "feature": "box",
+      "path": "visual/pilot-controlled-x2-mf_0000-box.png",
+      "scale": 1,
+      "sha256": "03955f0217c33650ccc26eadaed108dc8b9362a5008522d215e60c229d1d7683",
+      "source": "lots/pilot-controlled-x2/images/mf_0000.png",
+      "source_sha256": "07653f02dade59d19f090fcfc9be26004b18956c7a9b06a20826c38636549c43"
+    },
+    {
+      "crop_box": [
+        82,
+        2562,
+        502,
+        2659
+      ],
+      "feature": "small_body",
+      "path": "visual/pilot-controlled-x2-mf_0000-small_body.png",
+      "scale": 1,
+      "sha256": "d54df72f899ea89b1b945532ec25e39c201ca1bc1b7bc6c1d729674a3e033121",
+      "source": "lots/pilot-controlled-x2/images/mf_0000.png",
+      "source_sha256": "07653f02dade59d19f090fcfc9be26004b18956c7a9b06a20826c38636549c43"
+    }
+  ],
+  "overview": {
+    "pages": [
+      "compact-controlled-x2/mf_0000",
+      "compact-controlled-x2/mf_0001",
+      "compact-identity-x1/mf_0000",
+      "compact-identity-x1/mf_0001",
+      "compact-identity-x2/mf_0000",
+      "compact-identity-x2/mf_0001",
+      "pilot-controlled-x2/mf_0000"
+    ],
+    "path": "visual/overview.jpg"
+  },
+  "scope": "Seven base-page thumbnails and native-size feature crops; no transcription or label accuracy estimate"
+}

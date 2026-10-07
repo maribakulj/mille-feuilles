@@ -24,7 +24,7 @@ effets d'un profil de dégradation déclaré. Son acceptation passe 652 tests et
 224 contrôles CLI, sur six pages de référence ; les preuves et les limites des
 étiquettes heuristiques sont dans [VALIDATION](VALIDATION.md).
 
-Le lot 4 en développement ajoute **`fr_press_19c_layout_v2`**, également en 0.3.0,
+Le lot 4 ajoute **`fr_press_19c_layout_v2`**, également en 0.3.0,
 avec `template_press_v2`. Il combine une mise en page par zones et les mêmes
 diagnostics mesurés ; les garanties des lots précédents ne valent pas à elles
 seules acceptation de ce nouveau profil.

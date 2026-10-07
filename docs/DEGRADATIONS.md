@@ -108,6 +108,21 @@ planches de fixtures synthétiques :
   [note visuelle](reports/lot3/acceptance/reports/visual-review.json). Les identifiants et rectangles
   exacts des extraits sont dans [la sélection](reports/lot3/acceptance/visual/selection.json).
   **Les seuils de `heuristic-v1` restent figés** : aucune retouche après inspection.
+- **Mot lisible à l'œil classé illisible.** Constaté à l'acceptation du lot 4 (`69f0e50`) ; c'est le
+  pendant inverse de la limite précédente. Sous `controlled-v1` ×2, sur les deux pages compactes
+  (corps 11–13 px), les **étiquettes mesurées** sont `illegible` pour 2 256 et 2 234 mots sur environ
+  2 390. Paramètres résolus : encre 49 et 16, flou 1,00 et 1,23 px, érosion 0,39 et 0,26. À la taille
+  pilote, avec les mêmes paramètres que la première page compacte, on compte 2 003 `readable`,
+  3 714 `uncertain` et 233 `illegible`.
+  - Un **sondage visuel** (8 extraits natifs, un relecteur, sans transcription à l'aveugle) trouve ces
+    passages compacts flous et parfois amputés, mais déchiffrables à l'œil.
+  - Cause **supposée, non mesurée mot par mot** : un flou d'environ 1 px éclaircirait les pixels du
+    masque au-delà du seuil de rétention (25 % du contraste idéal), ce qui ferait passer la rétention
+    sous 0,3.
+  - Les étiquettes `heuristic-v1` ne sont donc pas des jugements de lisibilité humaine. Aucun usage de
+    `heuristic-v1` seul comme filtre de supervision n'est recommandé.
+  - Preuves : `docs/reports/lot4/acceptance/claude/NOTE-VISUELLE-LOT4.md` et `visual/selection.json`
+    de la même archive. **Les seuils restent figés.**
 - **Lettres cassées.** Une lettre partiellement effacée par les cassures (« m·nicipal ») laisse le mot
   `readable`, car sa rétention globale reste haute. L'heuristique ne détecte pas les substitutions
   plausibles de lettres.

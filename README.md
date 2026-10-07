@@ -24,7 +24,10 @@ pages de référence, avec rejeu et reproduction identiques. Il ajoute des
 dégradations déclarées, un masque d'encre idéale et une lisibilité mesurée par
 heuristique. La revue de six miniatures et 17 extraits confirme aussi les
 limites de ces étiquettes ; les [preuves](docs/VALIDATION.md) les détaillent.
-Le binôme poursuit le lot 4, consacré à la diversité des mises en page.
+Le **lot 4 est éprouvé** : 941 tests distincts réussis et 284 contrôles CLI sur
+sept pages de référence, avec rejeu de deux pages et 45 fichiers identiques.
+Il ajoute des zones, une bande équilibrée sous les titres larges et des annonces
+encadrées. Ces résultats ne valident pas l'heuristique comme filtre OCR.
 
 ## Démarrer
 
@@ -133,7 +136,7 @@ reconstruit pas les glyphes ; un masque falsifié puis réempreinté peut rester
 compatible avec ces zones. La relecture visuelle et la reproduction conservent
 donc leur rôle dans l'acceptation.
 
-## Mise en page par zones — lot 4 en développement
+## Mise en page par zones — lot 4
 
 Le profil `fr_press_19c_layout_v2` ajoute un rez-de-chaussée à colonnage distinct,
 un titre large avec son article réparti sur les colonnes couvertes, des corps
@@ -151,8 +154,11 @@ uv run --locked mille-feuilles generate --output runs/mise-en-page-v2 \
 réservations des articles sont conservés dans le canonique. Les statistiques
 rapportent les structures effectivement produites, les corps et les hauteurs
 de ligne. Les [règles de mise en page](docs/MISE_EN_PAGE.md) précisent les rejets
-contrôlés quand les textes ne tiennent pas ; la campagne finale de ce profil
-reste à effectuer.
+contrôlés quand les textes ne tiennent pas. La [campagne finale](docs/VALIDATION.md)
+couvre les facteurs ×1/×2, les exports, le rejeu et les profils antérieurs.
+Les probabilités de tirage ne sont pas une calibration historique ; les petits
+corps dégradés montrent aussi que `heuristic-v1` ne convient pas comme seul
+filtre de supervision OCR.
 
 ## Lire et vérifier le résultat
 

@@ -1,0 +1,40 @@
+{
+  "freetype": "2.14.3",
+  "generator": "0.3.0",
+  "implementation": "CPython",
+  "layout_engine": "pillow-freetype-basic",
+  "packages": {
+    "Pillow": "12.3.0",
+    "fonttools": "4.66.1",
+    "jsonschema": "4.26.0",
+    "lxml": "6.1.3",
+    "numpy": "2.5.3",
+    "shapely": "2.1.2"
+  },
+  "platform": "macOS-26.4.1-arm64-arm-64bit",
+  "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+  "sources": {
+    "pyproject.toml": "fd9109a78f69a3fac32fa5feab02dd6586d5ebf72caa126dabbad79be2ee9859",
+    "schemas/assets.schema.json": "7de8b38999e53502da7162d7ff148304de5dc22aacecb6a23d7602f982e98648",
+    "schemas/degradation-profile.schema.json": "6f9df6ecc8e3cf70b6e769db6566d8c101619d771ff9e4aa5186e8758708d617",
+    "schemas/manifest.schema.json": "9312c2337501a7085c77297f2c1cbab233828c8b261b65e027f81c47fe3b4baf",
+    "schemas/page.schema.json": "ea63ea01a57319a53b3a66fe83e29c859e82ca7a0ff197e2e2737708da3e9e19",
+    "schemas/xml/alto-4-4.xsd": "5564fd29d2dd090d8102b8a0aa081906afd677cd5ecc632312e56f21ea14702b",
+    "schemas/xml/page-2019-07-15.xsd": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5",
+    "schemas/xml/provenance.json": "f2e8bb4dc146e90dd0aa39798f2081863ed5d258eeee14eaa875f5eb3ea5317c",
+    "schemas/xml/xlink.xsd": "f1f5bb6003165cdd8f6c1fcc32f8fd1f965e1681010f3b9806d9460bcffa8a3c",
+    "src/mille_feuilles/__init__.py": "31b3d4495cbf00993b369306a1b5740783eb845b76a4d92612881ebe1b9dd493",
+    "src/mille_feuilles/catalog.py": "9ed1ebf69f61fcd304a0443c1ba1cab56286bb3ed4079ecaed17cd691d5d7fd2",
+    "src/mille_feuilles/cli.py": "2ea57343da493260e49586b21a67cbe2aeb5edf4ef2594179304167fcc4e2dfe",
+    "src/mille_feuilles/degrade.py": "834f3e7ce1583f4f6c403a2e5d8231f962be20a12f85a23b538c2f1983a66e9d",
+    "src/mille_feuilles/diagnostics.py": "b86eb29959d621b3b0da509f61f5d4f179ee085980727c60a4e831b0090e3ccd",
+    "src/mille_feuilles/exports.py": "279030f33aa76381f9fb7c8086d48f53c110fb030de8b18b17e683b47b6c6f05",
+    "src/mille_feuilles/io.py": "fa26d558c5582013dda07116c517fc1e87e624f66c5e4d434dca384a8f1aee84",
+    "src/mille_feuilles/layout.py": "c75919f4d219c56adfdbd0ffdf143a1568a2e3c0367878b023ea1e953cff638b",
+    "src/mille_feuilles/partition.py": "c5fa133fe262c70f0e1abd519e6a3e98363ef55a0d115e6a66a8ee23f9984bc9",
+    "src/mille_feuilles/pipeline.py": "b6d65e8759a3bc58851e99bd79a51b463518e38886e2a467e46a8ca2ffc41839",
+    "src/mille_feuilles/render.py": "38149df7fb76ec5792cc6c524733a5d3855934e991088807a632a5abddb4cf10",
+    "src/mille_feuilles/validation.py": "d0f1bed2d994100a488d9fdd3cfb53a4ad5628dd494d87a2d39c81c2d248440b",
+    "uv.lock": "0c46dec6a1cf38ac326946382e1da143655a4c72204aaf406ee91714b96cac45"
+  }
+}

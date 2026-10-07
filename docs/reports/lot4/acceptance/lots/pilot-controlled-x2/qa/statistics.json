@@ -1,0 +1,81 @@
+{
+  "blocks": 154,
+  "categories": {
+    "annonce": 27,
+    "separateur": 14,
+    "texte": 75,
+    "titre": 38
+  },
+  "columns": {
+    "6": 1
+  },
+  "cross_block_articles": 46,
+  "degradations": {
+    "measured": 1
+  },
+  "hyphenation_groups": 69,
+  "layout": {
+    "body_sizes": {
+      "16": 23,
+      "19": 70
+    },
+    "boxed_ads": 2,
+    "calibrated": false,
+    "line_height_bin_px": 1,
+    "line_heights_px": {
+      "main": {
+        "17": 146,
+        "20": 653,
+        "21": 9,
+        "23": 9,
+        "25": 20,
+        "30": 15
+      }
+    },
+    "profile": "fr_press_19c_layout_v2",
+    "small_body_articles": 23,
+    "small_body_clamped": 0,
+    "small_body_inactive": 0,
+    "small_body_requests": 23,
+    "wide_headlines": 0,
+    "zone_columns": {
+      "main:6": 1
+    },
+    "zones": {
+      "main": 1
+    }
+  },
+  "lines": 854,
+  "measured_degradations": {
+    "calibrated": false,
+    "legibility": {
+      "illegible": 233,
+      "readable": 2003,
+      "uncertain": 3714
+    },
+    "legibility_method": "heuristic-v1",
+    "pages": [
+      {
+        "contrast": 54.0,
+        "edge_contrast_proxy": 0.270733,
+        "ink_loss_fraction": 0.017143,
+        "ink_median": 195.0,
+        "ink_pixels": 827625,
+        "legibility": {
+          "illegible": 233,
+          "readable": 2003,
+          "uncertain": 3714
+        },
+        "noise_mad_sigma": 2.9652,
+        "otsu_threshold": 224,
+        "page_id": "mf_0000",
+        "paper_median": 249.0,
+        "spurious_ink_fraction": 0.00016
+      }
+    ],
+    "profile": "controlled-v1"
+  },
+  "pages": 1,
+  "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+  "words": 5950
+}

@@ -1,0 +1,88 @@
+{
+  "pages": 2,
+  "render": {
+    "columns": 4,
+    "degradation": "mixed",
+    "degradation_profile": {
+      "calibrated": false,
+      "description": "Perte d'encre, contraste, éclairage, flou et bruit contrôlés ; intervalles déclarés, non calibrés sur des pages réelles.",
+      "families": {
+        "blur": {
+          "sigma_px": {
+            "uniform": [
+              0.0,
+              1.4
+            ]
+          }
+        },
+        "contrast": {
+          "ink_level": {
+            "uniform": [
+              15,
+              130
+            ]
+          },
+          "paper_level": {
+            "uniform": [
+              222,
+              250
+            ]
+          }
+        },
+        "illumination": {
+          "amplitude": {
+            "uniform": [
+              0,
+              20
+            ]
+          },
+          "direction_degrees": {
+            "uniform": [
+              0,
+              360
+            ]
+          }
+        },
+        "ink_loss": {
+          "break_density": {
+            "uniform": [
+              0.0,
+              0.06
+            ]
+          },
+          "break_scale_px": {
+            "uniform": [
+              1.0,
+              3.0
+            ]
+          },
+          "erosion": {
+            "uniform": [
+              0.0,
+              0.5
+            ]
+          }
+        },
+        "noise": {
+          "sigma": {
+            "uniform": [
+              0.0,
+              5.0
+            ]
+          }
+        }
+      },
+      "format": "mille-feuilles-degradation-profile",
+      "name": "controlled-v1",
+      "oversampling": 2,
+      "version": "1"
+    },
+    "dpi": 67,
+    "height": 1656,
+    "layout_profile": "fr_press_19c_layout_v2",
+    "partition": null,
+    "seed": 20261007,
+    "width": 1200
+  },
+  "schema_version": "0.3.0"
+}

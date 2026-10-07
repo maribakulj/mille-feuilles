@@ -228,3 +228,15 @@ disque transitoire, puis reprise des huit cas et deux régressions nouvelles
 n'est nécessaire à cette reprise. Ruff et les actifs passent. Les commandes,
 les deux sorties et la revue sont archivées dans `reports/lot4/tests-index.json`.
 La campagne CLI sur commit propre et sa revue visuelle suivent séparément.
+
+La campagne au commit propre `69f0e50` passe ensuite **284 contrôles** sur sept
+pages, 20 317 mots. Le rejeu de deux pages compare 45 fichiers identiques ; la
+reproduction retrouve les images, pages JSON, masques et diagnostics. Les
+anciens chemins mesuré et sans profil sont prouvés séparément inchangés.
+Les sept miniatures et 14 extraits sont relus par Codex, la planche et huit
+extraits par Claude. La mise en page est conforme, avec limites typographiques
+et heuristiques : presque tout le texte compact controlled est étiqueté illisible,
+alors que des extraits restent déchiffrables à l'œil. Aucun seuil n'est retouché.
+87 preuves légères sont copiées et vérifiées ; les lots complets restent locaux.
+L'export NewsEye est ensuite cadré sur des fixtures originales, sans lire Axel
+ni ses corpus et sans modifier les exports génériques.

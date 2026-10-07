@@ -89,7 +89,7 @@ détecteur général de quasi-doublons. La génération tire uniformément les u
 d'un rôle : les documents contenant plus d'unités ont davantage de poids. Le
 nombre de pages ne mesure donc ni la diversité des documents ni leur équilibre.
 
-## Lot 4 — mise en page par zones, protocole d'acceptation
+## Lot 4 — mise en page par zones, acceptation technique réussie
 
 Le profil `fr_press_19c_layout_v2` exige un profil photométrique explicite et
 ajoute un plan géométrique vérifié : zones à colonnages distincts, titre large
@@ -126,6 +126,50 @@ non-v2** ; le chemin historique sans profil fait l'objet d'une comparaison
 distincte par Claude après le commit source. Les manifestes et environnements
 continuent de désigner le code exécuté et ne sont pas promis identiques entre
 deux révisions. La revue visuelle et ses limites sont consignées séparément.
+
+### Résultats sur le commit propre `69f0e50`
+
+La [campagne](reports/lot4/acceptance/acceptance.json) passe **284 contrôles** :
+sept pages de base, **20 317 occurrences de mots**, graine 20261007, textes
+originaux embarqués. Six pages compactes (1200 × 1656) couvrent identity ×1,
+identity ×2 et controlled ×2 ; une page pilote (2680 × 3698) tire automatiquement
+six colonnes. Le titre large, sa bande de cinq lignes par colonne et le
+rez-de-chaussée à trois colonnes sont présents dans les pages compactes,
+pas dans la page pilote de cette graine. Les petits corps et cadres sont
+observés aux deux tailles. Aucun refus de composition dans cette campagne ;
+ce petit échantillon ne mesure pas un taux général d'échec.
+
+Le [rejeu de deux pages avec deux workers](reports/lot4/acceptance/reports/compare-replay.json)
+compare **45 fichiers identiques**, complété par l'égalité du snapshot intégral.
+La reproduction séquentielle retrouve les deux PNG, JSON, masques et diagnostics.
+Les paires identity/controlled partagent exactement composition et masques.
+Entre ×1 et ×2, l'écart maximal observé des coordonnées de mots et extrémités
+de baseline est **2,5 px**, sans seuil imposé ; l'écart d'ordonnée avant rotation
+reste inférieur à 0,000001 px. La référence mesurée non-v2 garde ses quatre
+sorties identiques. La [comparaison distincte de Claude](reports/lot4/acceptance/claude/legacy/NOTE-COMPARAISON-HISTORIQUE.md)
+retrouve aussi six cas clean/mixed/faint identiques entre `cb24e39`, le commit
+source v2 et son checkout propre, dans le même environnement.
+
+Les commandes de deux pages compactes prennent 22,42–28,87 s ; la page pilote
+31,41 s, exports et validation compris. Le maximum RSS cumulé des enfants vaut
+1 265 090 560 octets, sans attribution à un seul profil. La production occupe
+environ 98,3 Mo après ajout des vues. Les [preuves légères](reports/lot4/acceptance/index.json)
+sont copiées sans les lots complets, conservés localement.
+
+La [revue Codex](reports/lot4/acceptance/reports/visual-review-codex.json) couvre
+sept miniatures et 14 extraits natifs ; [Claude](reports/lot4/acceptance/claude/NOTE-VISUELLE-LOT4.md)
+relit la planche et huit extraits. Bande, cadres et corps commun sont conformes.
+Les titres et contenus tirés indépendamment peuvent être sans rapport ; lignes
+orphelines et justification lâche restent des limites typographiques.
+
+Sous controlled ×2, **4 490 des 4 789 mots compacts** sont étiquetés `illegible`,
+alors que plusieurs extraits restent lisibles à l'œil malgré leur flou. Le pilote
+compte 2 003 `readable`, 3 714 `uncertain` et 233 `illegible`. La dépendance à la
+rétention et au petit corps est une explication plausible, non une étude par mot.
+Ce sondage sans transcription aveugle ne mesure aucune précision de lecture.
+Il confirme que `heuristic-v1` ne doit pas servir seul de filtre de supervision.
+Les seuils, profils et graines restent inchangés après examen ; le rapport
+automatique conserve `visual_review: not_run`, les notes séparées attestant la revue.
 
 ## Lot 3 — dégradations mesurées, acceptation technique réussie
 

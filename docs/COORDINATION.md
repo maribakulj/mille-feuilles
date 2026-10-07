@@ -207,3 +207,11 @@ Claude adapte le planificateur et relit les pages ainsi que le protocole CLI.
 Les agents Codex se répartissent rendu, validation et intégration partitionnée,
 avec fichiers exclusifs ; Codex coordonne exports, pipeline, campagnes et
 preuves. Le gel précède la suite complète puis le commit source et l'acceptation.
+
+Le commit source `69f0e50` est accepté : 941 tests distincts réussis, 284 contrôles
+CLI, sept pages et rejeu complet de deux pages. Claude vérifie séparément six cas
+historiques sans profil, inchangés face à `cb24e39`, puis relit les vues finales.
+La limite des étiquettes de lisibilité en petit corps est documentée sans changer
+les seuils. Les preuves sont archivées dans `reports/lot4/acceptance/`.
+Le binôme poursuit le cadrage d'un export PAGE NewsEye autonome, avec des
+fixtures originales et un lecteur indépendant avant l'écriture du producteur.

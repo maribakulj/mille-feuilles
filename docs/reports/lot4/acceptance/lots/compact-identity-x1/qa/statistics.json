@@ -1,0 +1,110 @@
+{
+  "blocks": 143,
+  "categories": {
+    "annonce": 22,
+    "separateur": 19,
+    "texte": 67,
+    "titre": 35
+  },
+  "columns": {
+    "4": 2
+  },
+  "cross_block_articles": 43,
+  "degradations": {
+    "measured": 2
+  },
+  "hyphenation_groups": 60,
+  "layout": {
+    "body_sizes": {
+      "11": 14,
+      "13": 62
+    },
+    "boxed_ads": 2,
+    "calibrated": false,
+    "line_height_bin_px": 1,
+    "line_heights_px": {
+      "main": {
+        "12": 50,
+        "13": 7,
+        "14": 529,
+        "15": 3,
+        "16": 6,
+        "17": 13,
+        "20": 14,
+        "33": 1
+      },
+      "rez_de_chaussee": {
+        "12": 19,
+        "14": 46,
+        "15": 1,
+        "17": 2,
+        "18": 1,
+        "20": 2
+      }
+    },
+    "profile": "fr_press_19c_layout_v2",
+    "small_body_articles": 14,
+    "small_body_clamped": 0,
+    "small_body_inactive": 0,
+    "small_body_requests": 14,
+    "wide_headlines": 1,
+    "zone_columns": {
+      "main:4": 2,
+      "rez_de_chaussee:3": 1
+    },
+    "zones": {
+      "main": 2,
+      "rez_de_chaussee": 1
+    }
+  },
+  "lines": 698,
+  "measured_degradations": {
+    "calibrated": false,
+    "legibility": {
+      "illegible": 16,
+      "readable": 4771,
+      "uncertain": 2
+    },
+    "legibility_method": "heuristic-v1",
+    "pages": [
+      {
+        "contrast": 188.0,
+        "edge_contrast_proxy": 0.336964,
+        "ink_loss_fraction": 0.0,
+        "ink_median": 67.0,
+        "ink_pixels": 158199,
+        "legibility": {
+          "illegible": 7,
+          "readable": 2378,
+          "uncertain": 2
+        },
+        "noise_mad_sigma": 0.0,
+        "otsu_threshold": 172,
+        "page_id": "mf_0000",
+        "paper_median": 255.0,
+        "spurious_ink_fraction": 0.00057
+      },
+      {
+        "contrast": 176.0,
+        "edge_contrast_proxy": 0.367694,
+        "ink_loss_fraction": 0.0,
+        "ink_median": 79.0,
+        "ink_pixels": 153385,
+        "legibility": {
+          "illegible": 9,
+          "readable": 2393,
+          "uncertain": 0
+        },
+        "noise_mad_sigma": 0.0,
+        "otsu_threshold": 177,
+        "page_id": "mf_0001",
+        "paper_median": 255.0,
+        "spurious_ink_fraction": 0.000962
+      }
+    ],
+    "profile": "identity"
+  },
+  "pages": 2,
+  "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+  "words": 4789
+}
