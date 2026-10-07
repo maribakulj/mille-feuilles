@@ -1,0 +1,86 @@
+{
+  "checks": [
+    {
+      "detail": "verified",
+      "name": "manifest",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "file_hashes",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "strict_json_files",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "unique_manifest_entries",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "manifest_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "asset_registry",
+      "status": "pass"
+    },
+    {
+      "detail": "unpartitioned dataset; no partition isolation claim",
+      "name": "partition_receipt",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "assets",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "degradation_profile",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "layout_profile",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0001",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0001",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "export_inventory",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "exports",
+      "status": "pass"
+    }
+  ],
+  "errors": [],
+  "status": "pass"
+}

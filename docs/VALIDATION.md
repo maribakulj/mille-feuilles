@@ -152,6 +152,30 @@ atomique. Le lecteur réel d'Axel et une évaluation de modèle restent
 `not_evaluated`. Le reçu source témoigne d'un contrôle à l'export ; il ne
 réauthentifie pas les données ni les droits absents du bundle autonome.
 
+### Résultats sur le commit propre `324f60f`
+
+La [campagne finale](reports/lot5/acceptance/acceptance.json) passe **376
+contrôles** et ses dix commandes : trois exports, trois validations autonomes
+et quatre refus. Les trois pages distinctes contiennent 8 521 mots et 1 233
+lignes. Sur `mf_0003`, les 14 rangs d'annonces retrouvés sont
+`[3, 4, 24, 32, 33, 34, 35, 36, 37, 40, 73, 75, 78, 81]`, avec 26 titres,
+535 lignes rattachées à un article et 3 732 mots. Les deux pages v2 ×2 conservent
+leurs 698 lignes et 4 789 mots. Tous les textes et points sont égaux aux
+attendus calculés depuis le canonique, sans retouche de géométrie.
+
+Le réexport v2 retrouve tout l'inventaire et chaque octet identiques. Les trois
+validations CLI sont en lecture seule, et les sources complètes gardent leurs
+snapshots initiaux. Les refus ne créent aucune destination et préservent celle
+qui existe déjà. Aucun rendu d'image n'est effectué.
+
+Le premier export prend 298,84 s, dont la validation complète des 100 pages
+sources ; les exports des deux pages v2 prennent 14,82 et 15,06 s. Le maximum
+RSS cumulé des processus enfants est 958 365 696 octets. La campagne complète
+occupe 21 258 146 octets après le rapport final. Les [38 preuves légères](reports/lot5/acceptance/index.json)
+totalisent 1 085 173 octets, copiés avec contrôle de SHA ; les PNG, pages
+canoniques et XML complets restent dans le lot local. Le lecteur réel d'Axel
+et le gain d'apprentissage ne sont toujours pas évalués.
+
 ## Lot 4 — mise en page par zones, acceptation technique réussie
 
 Le profil `fr_press_19c_layout_v2` exige un profil photométrique explicite et

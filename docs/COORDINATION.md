@@ -226,6 +226,11 @@ Les 249 tests NewsEye passent, dont trois sondes locales facultatives. Un premie
 export CLI des deux pages v2 ×2 passe, sans nouveau rendu. Le gel est maintenu
 pour la suite complète et la campagne sur commit propre.
 
+La suite complète passe 1 190 tests. La source `324f60f` est poussée, puis
+acceptée par 376 contrôles CLI : trois pages distinctes, réexport v2 identique,
+sources intactes et quatre refus avant écriture. Les preuves de campagne sont
+archivées séparément ; cette clôture porte sur le lot 5, pas sur le projet.
+
 Le lot suivant convenu est A1 : rapport structurel autonome face aux relevés
 agrégés archivés. Claude prépare spécification et attendus manuels dans son
 scratchpad ; Codex fait auditer les définitions et prépare l'orchestration.

@@ -263,3 +263,19 @@ La suite complète passe ensuite 1 190 tests en 719,42 s, avec Ruff et la
 vérification des actifs réussis. Les empreintes du code sont inchangées pendant
 les tests. Les sorties sont archivées dans `reports/lot5/tests-index.json` ;
 l'acceptation ancrée sur commit propre suit séparément.
+
+Au commit propre `324f60f`, la campagne NewsEye passe 376 contrôles et dix
+commandes. Le pilote entier est validé avant la projection de `mf_0003` ; deux
+pages v2 ×2 sont ensuite projetées et réexportées à l'identique. Les trois pages
+distinctes contiennent 8 521 mots et 1 233 lignes. Les quatre refus n'écrivent
+aucune destination indue ; les sources et destinations existantes sont
+préservées. La campagne occupe 21 258 146 octets, sans nouveau rendu. Les 38
+preuves légères sont archivées dans `reports/lot5/acceptance/`, sans les PNG,
+XML ni canoniques complets. La portée reste celle du profil écrit, pas une
+lecture réelle par Axel ni une preuve d'utilité pour l'apprentissage.
+
+Le binôme poursuit A1 : rapport structurel autonome fondé sur les mesures
+historiques agrégées. La revue impose les mêmes définitions, les unités
+d'observation explicites, les cohortes train/dev regroupées déclarées et les
+indicateurs non comparables signalés. Spécification et attendus manuels sont
+figés avant le code, qui reste en scratchpad pendant l'archivage du lot 5.

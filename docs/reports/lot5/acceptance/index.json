@@ -1,0 +1,237 @@
+{
+  "status": "pass",
+  "source_commit": "324f60fb8c3ea37226e79c99e9ef8177d70559ba",
+  "checks": 376,
+  "archive_scope": "Exact lightweight reports, manifests and environment receipts; no canonical pages, XML projections or PNG copied. Complete bundles remain local.",
+  "source_bytes": 21258146,
+  "files": [
+    {
+      "path": "acceptance.json",
+      "source": "runs/accept-newseye-v1/acceptance.json",
+      "sha256": "8bd3d57a1f7975f1a3fab94b891be7690f0bea5bb8572511b0295ee7931963f6",
+      "size_bytes": 177223
+    },
+    {
+      "path": "logs/export-layout-repeat.json",
+      "source": "runs/accept-newseye-v1/logs/export-layout-repeat.json",
+      "sha256": "8c07b8a6a9838fcaa295b715df2816352afa2fdcf6d0379da9e662e3229f4e21",
+      "size_bytes": 1552
+    },
+    {
+      "path": "logs/export-layout-repeat.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/export-layout-repeat.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/export-layout.json",
+      "source": "runs/accept-newseye-v1/logs/export-layout.json",
+      "sha256": "1f7e01c59e1bd6ff30c4194a41867722cb795c94e9f383c49665482a0faedadb",
+      "size_bytes": 1552
+    },
+    {
+      "path": "logs/export-layout.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/export-layout.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/export-legacy.json",
+      "source": "runs/accept-newseye-v1/logs/export-legacy.json",
+      "sha256": "11ed2382c2a982197b72cef40933b61749325054dfefd8ba37388922b566ecb2",
+      "size_bytes": 1466
+    },
+    {
+      "path": "logs/export-legacy.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/export-legacy.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-duplicate-page.json",
+      "source": "runs/accept-newseye-v1/logs/reject-duplicate-page.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-duplicate-page.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/reject-duplicate-page.stderr.log",
+      "sha256": "14bcf079a51cdccb757ffc1825500f5eba4188ee7ea98cdd72fd1e1b070256bf",
+      "size_bytes": 50
+    },
+    {
+      "path": "logs/reject-existing-output.json",
+      "source": "runs/accept-newseye-v1/logs/reject-existing-output.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-existing-output.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/reject-existing-output.stderr.log",
+      "sha256": "7160188a07816da970bc2df4707c1a5314d305a4d719225ceb0981d09b5a2e7a",
+      "size_bytes": 54
+    },
+    {
+      "path": "logs/reject-nested-output.json",
+      "source": "runs/accept-newseye-v1/logs/reject-nested-output.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-nested-output.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/reject-nested-output.stderr.log",
+      "sha256": "f889263d4f0cad15b0b9b03289086c6a533e9761b3cd9b1af8f06ad9f1b61bbf",
+      "size_bytes": 59
+    },
+    {
+      "path": "logs/reject-unknown-page.json",
+      "source": "runs/accept-newseye-v1/logs/reject-unknown-page.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/reject-unknown-page.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/reject-unknown-page.stderr.log",
+      "sha256": "87ed47f4b0e7d3cdcd45db9a7b2fb136a2ee4dc8e98b863858bbc4f8c575a375",
+      "size_bytes": 42
+    },
+    {
+      "path": "logs/validate-layout-repeat.json",
+      "source": "runs/accept-newseye-v1/logs/validate-layout-repeat.json",
+      "sha256": "da242c9c7ef311069f9c1d6ac3d03a9200ea1d8762e8e2db7b629899db054e37",
+      "size_bytes": 1275
+    },
+    {
+      "path": "logs/validate-layout-repeat.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/validate-layout-repeat.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/validate-layout.json",
+      "source": "runs/accept-newseye-v1/logs/validate-layout.json",
+      "sha256": "da242c9c7ef311069f9c1d6ac3d03a9200ea1d8762e8e2db7b629899db054e37",
+      "size_bytes": 1275
+    },
+    {
+      "path": "logs/validate-layout.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/validate-layout.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "logs/validate-legacy.json",
+      "source": "runs/accept-newseye-v1/logs/validate-legacy.json",
+      "sha256": "141d6d3a17b7bf390eff19ac16e3e0b2bcf76efb8195d17ab23ad742c0b66fee",
+      "size_bytes": 1189
+    },
+    {
+      "path": "logs/validate-legacy.stderr.log",
+      "source": "runs/accept-newseye-v1/logs/validate-legacy.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "bundles/layout/manifest.json",
+      "source": "runs/accept-newseye-v1/bundles/layout/manifest.json",
+      "sha256": "33794413b7cc7c949729d820cf75be7860ff08137a7dd579f891a8ee35a5b9c5",
+      "size_bytes": 5807
+    },
+    {
+      "path": "bundles/layout/reports/mf_0000.json",
+      "source": "runs/accept-newseye-v1/bundles/layout/reports/mf_0000.json",
+      "sha256": "e29bdef8786bfe12dcc8fd2b6d1eb6de01f6b278f98f8d4d340c1c91ad9344a6",
+      "size_bytes": 125328
+    },
+    {
+      "path": "bundles/layout/reports/mf_0001.json",
+      "source": "runs/accept-newseye-v1/bundles/layout/reports/mf_0001.json",
+      "sha256": "98a339f2d3cc5371cc7298433c886b9536dc7f3f14be8b48876c39c37836c1ca",
+      "size_bytes": 124844
+    },
+    {
+      "path": "bundles/layout/provenance/environment.json",
+      "source": "runs/accept-newseye-v1/bundles/layout/provenance/environment.json",
+      "sha256": "04cb50fe4f6fbf63732227e26c8c7fa9d967f2f47ecee23ea0f225921020ef6b",
+      "size_bytes": 3556
+    },
+    {
+      "path": "bundles/layout/provenance/source-manifest.json",
+      "source": "runs/accept-newseye-v1/bundles/layout/provenance/source-manifest.json",
+      "sha256": "960c3aa38aa6073eccf12553caf33e4c266c538d6a98be5d645b03be82fe977a",
+      "size_bytes": 9075
+    },
+    {
+      "path": "bundles/layout/provenance/source-validation.json",
+      "source": "runs/accept-newseye-v1/bundles/layout/provenance/source-validation.json",
+      "sha256": "86d84877d8e5984cdf99c529e67daae5106faae69261878b305d6a6857a02876",
+      "size_bytes": 1641
+    },
+    {
+      "path": "bundles/layout-repeat/manifest.json",
+      "source": "runs/accept-newseye-v1/bundles/layout-repeat/manifest.json",
+      "sha256": "33794413b7cc7c949729d820cf75be7860ff08137a7dd579f891a8ee35a5b9c5",
+      "size_bytes": 5807
+    },
+    {
+      "path": "bundles/layout-repeat/reports/mf_0000.json",
+      "source": "runs/accept-newseye-v1/bundles/layout-repeat/reports/mf_0000.json",
+      "sha256": "e29bdef8786bfe12dcc8fd2b6d1eb6de01f6b278f98f8d4d340c1c91ad9344a6",
+      "size_bytes": 125328
+    },
+    {
+      "path": "bundles/layout-repeat/reports/mf_0001.json",
+      "source": "runs/accept-newseye-v1/bundles/layout-repeat/reports/mf_0001.json",
+      "sha256": "98a339f2d3cc5371cc7298433c886b9536dc7f3f14be8b48876c39c37836c1ca",
+      "size_bytes": 124844
+    },
+    {
+      "path": "bundles/layout-repeat/provenance/environment.json",
+      "source": "runs/accept-newseye-v1/bundles/layout-repeat/provenance/environment.json",
+      "sha256": "04cb50fe4f6fbf63732227e26c8c7fa9d967f2f47ecee23ea0f225921020ef6b",
+      "size_bytes": 3556
+    },
+    {
+      "path": "bundles/layout-repeat/provenance/source-manifest.json",
+      "source": "runs/accept-newseye-v1/bundles/layout-repeat/provenance/source-manifest.json",
+      "sha256": "960c3aa38aa6073eccf12553caf33e4c266c538d6a98be5d645b03be82fe977a",
+      "size_bytes": 9075
+    },
+    {
+      "path": "bundles/layout-repeat/provenance/source-validation.json",
+      "source": "runs/accept-newseye-v1/bundles/layout-repeat/provenance/source-validation.json",
+      "sha256": "86d84877d8e5984cdf99c529e67daae5106faae69261878b305d6a6857a02876",
+      "size_bytes": 1641
+    },
+    {
+      "path": "bundles/legacy/manifest.json",
+      "source": "runs/accept-newseye-v1/bundles/legacy/manifest.json",
+      "sha256": "360d50b7f6a2b7f97465703ab4e43a24972d1aa7ba723c110dab81fe5214890b",
+      "size_bytes": 4308
+    },
+    {
+      "path": "bundles/legacy/reports/mf_0003.json",
+      "source": "runs/accept-newseye-v1/bundles/legacy/reports/mf_0003.json",
+      "sha256": "815995549a1e6c92d0b8e3b17625312e8a78fbca03d00d349d37c547e70b3668",
+      "size_bytes": 195048
+    },
+    {
+      "path": "bundles/legacy/provenance/environment.json",
+      "source": "runs/accept-newseye-v1/bundles/legacy/provenance/environment.json",
+      "sha256": "04cb50fe4f6fbf63732227e26c8c7fa9d967f2f47ecee23ea0f225921020ef6b",
+      "size_bytes": 3556
+    },
+    {
+      "path": "bundles/legacy/provenance/source-manifest.json",
+      "source": "runs/accept-newseye-v1/bundles/legacy/provenance/source-manifest.json",
+      "sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+      "size_bytes": 135566
+    },
+    {
+      "path": "bundles/legacy/provenance/source-validation.json",
+      "source": "runs/accept-newseye-v1/bundles/legacy/provenance/source-validation.json",
+      "sha256": "8caaf752f31a4979c724252c5fea4a1a81ed32038af4435140099d1ac57ea153",
+      "size_bytes": 20456
+    }
+  ]
+}

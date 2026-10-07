@@ -78,5 +78,17 @@ le lecteur réel d'Axel reste une preuve externe sous sa propre coordination.
 Claude écrit le producteur et ses tests ; Codex et ses agents écrivent le lecteur,
 le bundle autonome, le CLI, les schémas et l'acceptation. La revue corrige les
 chemins d'image, complète les pertes du rapport version 2 et exige le décodage
-réel des PNG copiés. La campagne CLI finale doit ensuite ancrer les sources
-historiques, comparer tous les éléments au canonique et éprouver les refus.
+réel des PNG copiés. La campagne CLI finale ancre les sources historiques,
+compare tous les éléments au canonique et éprouve les refus : 376 contrôles
+passent au commit `324f60f`, après 1 190 tests intégrés. Trois pages distinctes
+sont projetées et les deux pages v2 sont réexportées à l'identique, sans nouvelle
+image générée.
+
+La prochaine capacité convenue est A1 : un rapport structurel autonome comparant
+des pages canoniques aux relevés agrégés déjà archivés. Les définitions du
+calibrateur sont réutilisées en mémoire après vérification de leurs empreintes,
+sans lancer son programme ni ouvrir ses corpus. Les distributions historiques
+AS regroupent train et dev ; les différences d'annotation et les mesures
+indisponibles sont explicites. Aucun score global de réalisme ni gain de modèle
+n'est revendiqué. Un éventuel ajustement de rendu attend ces résultats et leur
+revue ; aucune nouvelle extension d'export n'est prioritaire.

@@ -1,0 +1,62 @@
+{
+  "format": "mille-feuilles-newseye-bundle-validation",
+  "version": "1",
+  "status": "pass",
+  "errors": [],
+  "checks": [
+    {
+      "name": "manifest",
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "name": "inventory",
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "name": "source_manifest_structure_only",
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "name": "source_validation_record_only",
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "name": "projection_environment_record_only",
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "name": "pinned_offline_schema",
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "name": "selection",
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "name": "page:mf_0000",
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "name": "page:mf_0001",
+      "status": "pass",
+      "errors": []
+    }
+  ],
+  "scope": {
+    "source_validation": "recorded pass at export",
+    "source_rights_revalidated": false,
+    "external_reader": "not_evaluated",
+    "model_evaluation": "not_evaluated",
+    "byte_budget": "preflight estimate and post-copy check; not an atomic quota"
+  },
+  "pages": 2,
+  "written_bytes": 6121725
+}

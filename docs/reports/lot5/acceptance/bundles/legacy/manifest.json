@@ -1,0 +1,136 @@
+{
+  "artifacts": [
+    {
+      "path": "images/mf_0003.png",
+      "role": "image",
+      "sha256": "cd3a5914388b16743e7d65b10a168be5cfd46b2d3c9cdc708f0618b9ced83723",
+      "size_bytes": 4820193
+    },
+    {
+      "path": "mf_0003.xml",
+      "role": "xml",
+      "sha256": "f041ef31cd722dd88154b2e629a4d0e05b9a070943fdd2824f9c6247badedb24",
+      "size_bytes": 1016834
+    },
+    {
+      "path": "provenance/environment.json",
+      "role": "environment",
+      "sha256": "04cb50fe4f6fbf63732227e26c8c7fa9d967f2f47ecee23ea0f225921020ef6b",
+      "size_bytes": 3556
+    },
+    {
+      "path": "provenance/pages/mf_0003.json",
+      "role": "canonical",
+      "sha256": "2252a97743ec95f8906fa121f2322ad08192577b182e8dda51f104d8727850e0",
+      "size_bytes": 2533895
+    },
+    {
+      "path": "provenance/source-manifest.json",
+      "role": "source_manifest",
+      "sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71",
+      "size_bytes": 135566
+    },
+    {
+      "path": "provenance/source-validation.json",
+      "role": "source_validation",
+      "sha256": "8caaf752f31a4979c724252c5fea4a1a81ed32038af4435140099d1ac57ea153",
+      "size_bytes": 20456
+    },
+    {
+      "path": "reports/mf_0003.json",
+      "role": "page_report",
+      "sha256": "815995549a1e6c92d0b8e3b17625312e8a78fbca03d00d349d37c547e70b3668",
+      "size_bytes": 195048
+    },
+    {
+      "path": "schemas/PAGE-LICENSE",
+      "role": "schema_license",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size_bytes": 11357
+    },
+    {
+      "path": "schemas/page-2019-07-15.xsd",
+      "role": "schema",
+      "sha256": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5",
+      "size_bytes": 85826
+    },
+    {
+      "path": "schemas/provenance.json",
+      "role": "schema_provenance",
+      "sha256": "f2e8bb4dc146e90dd0aa39798f2081863ed5d258eeee14eaa875f5eb3ea5317c",
+      "size_bytes": 1920
+    }
+  ],
+  "format": "mille-feuilles-newseye-bundle",
+  "generator": {
+    "commit": "324f60fb8c3ea37226e79c99e9ef8177d70559ba",
+    "dirty": false,
+    "environment": {
+      "path": "provenance/environment.json",
+      "sha256": "04cb50fe4f6fbf63732227e26c8c7fa9d967f2f47ecee23ea0f225921020ef6b"
+    }
+  },
+  "page_ids": [
+    "mf_0003"
+  ],
+  "pages": [
+    {
+      "canonical": {
+        "path": "provenance/pages/mf_0003.json",
+        "sha256": "2252a97743ec95f8906fa121f2322ad08192577b182e8dda51f104d8727850e0"
+      },
+      "id": "mf_0003",
+      "image": {
+        "height": 3698,
+        "path": "images/mf_0003.png",
+        "sha256": "cd3a5914388b16743e7d65b10a168be5cfd46b2d3c9cdc708f0618b9ced83723",
+        "width": 2680
+      },
+      "report": {
+        "path": "reports/mf_0003.json",
+        "sha256": "815995549a1e6c92d0b8e3b17625312e8a78fbca03d00d349d37c547e70b3668"
+      },
+      "source_index": 3,
+      "xml": {
+        "path": "mf_0003.xml",
+        "sha256": "f041ef31cd722dd88154b2e629a4d0e05b9a070943fdd2824f9c6247badedb24"
+      }
+    }
+  ],
+  "profile": "page-newseye-v1",
+  "schema": {
+    "license": {
+      "path": "schemas/PAGE-LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "name": "PAGE 2019-07-15",
+    "namespace": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15",
+    "provenance": {
+      "path": "schemas/provenance.json",
+      "sha256": "f2e8bb4dc146e90dd0aa39798f2081863ed5d258eeee14eaa875f5eb3ea5317c"
+    },
+    "xsd": {
+      "path": "schemas/page-2019-07-15.xsd",
+      "sha256": "5d7da5af5f5e06d3b9cd1e78b407ffca1862f78ad9823ed89c302fb6409932d5"
+    }
+  },
+  "scope": {
+    "byte_budget": "preflight estimate and post-copy check; not an atomic quota",
+    "external_reader": "not_evaluated",
+    "model_evaluation": "not_evaluated",
+    "source_rights_revalidated": false,
+    "source_validation": "recorded pass at export"
+  },
+  "source": {
+    "dataset_id": "mf_demo_20261007_100",
+    "manifest": {
+      "path": "provenance/source-manifest.json",
+      "sha256": "7c512bdeec4ffa71cc2346f69a073f7f2e4be3f30dafbf6ee7445602d0e6eb71"
+    },
+    "validation": {
+      "path": "provenance/source-validation.json",
+      "sha256": "8caaf752f31a4979c724252c5fea4a1a81ed32038af4435140099d1ac57ea153"
+    }
+  },
+  "version": "1"
+}
