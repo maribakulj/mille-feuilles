@@ -1,0 +1,97 @@
+{
+  "status": "pass",
+  "errors": [],
+  "checks": [
+    {
+      "name": "manifest",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "file_hashes",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "strict_json_files",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "unique_manifest_entries",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "manifest_coverage",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "import_receipt",
+      "status": "pass",
+      "detail": "import/catalog metadata consistency verified; exclusions not re-evaluated"
+    },
+    {
+      "name": "asset_registry",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "partition_receipt",
+      "status": "pass",
+      "detail": "metadata consistency verified; full graph replay requires the complete source bundle"
+    },
+    {
+      "name": "assets",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "partition_characters",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "page:mf_0000",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "page_files:mf_0000",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "export_inventory",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "exports",
+      "status": "pass",
+      "detail": "verified"
+    }
+  ],
+  "statistics": {
+    "pages": 1,
+    "words": 1393,
+    "lines": 260,
+    "blocks": 118,
+    "columns": {
+      "4": 1
+    },
+    "degradations": {
+      "clean": 1
+    },
+    "categories": {
+      "annonce": 6,
+      "separateur": 47,
+      "texte": 39,
+      "titre": 26
+    },
+    "hyphenation_groups": 38,
+    "cross_block_articles": 26,
+    "scope": "synthetic demonstration / geometry QA; no evidence of OCR training gain"
+  }
+}

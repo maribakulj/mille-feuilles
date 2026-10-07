@@ -1,0 +1,73 @@
+{
+  "status": "pass",
+  "path": "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/bundle/assets/partition.json",
+  "plan": {
+    "format": "mille-feuilles-partition",
+    "version": "1",
+    "method": "components-sha256-greedy-v1",
+    "seed": 20261009,
+    "ratios": {
+      "dev": 1.0,
+      "test": 1.0,
+      "train": 1.0
+    },
+    "catalog_sha256": "0af9f08f1c197400510a47f690c77d76d92d3038cf8bb5e301a1ebb3f217083a",
+    "partitions": {
+      "dev": [
+        "text_10fb3e250a878720dcff",
+        "text_1a91fe98843f71c9ebe3",
+        "text_4211937d2c1a1cab20b0",
+        "text_734c63c359bd7e23b7ab",
+        "text_8067a90e3312a0117474",
+        "text_fe701dd8847b6daf84b7"
+      ],
+      "test": [
+        "text_06cfc118afc868c398fe",
+        "text_381d5e11f0a74b844f66",
+        "text_4844f092d4c6054171c2",
+        "text_4cfafda421b7999ebb1b",
+        "text_a7307bd189109df3dd23",
+        "text_ae65b949d99da22794ec"
+      ],
+      "train": [
+        "text_229995e574036f4ef216",
+        "text_57520b83872a96f9b0ab",
+        "text_9ebbdec4f8a6b068ed5f",
+        "text_9fd495788e7fff7eb8ac",
+        "text_ac0a7893da41a1f748c7",
+        "text_c0d4d9a88a1984124b92"
+      ]
+    },
+    "components": [
+      {
+        "key": "1813d403ac1f723e5fe3de9c118678ef73740e5dd97391f09f9427db62d0757c",
+        "partition": "dev",
+        "groups": [
+          "group-azur"
+        ],
+        "chars": 648
+      },
+      {
+        "key": "2c28f1b906c1608f62cb9528a9e1bb028ac628c0c5bd7b75bdeed0be07229d06",
+        "partition": "test",
+        "groups": [
+          "group-ambre"
+        ],
+        "chars": 660
+      },
+      {
+        "key": "b8c9c52601df5d22bd34155d68e50c113143e9c69929c1e730753c031acb4996",
+        "partition": "train",
+        "groups": [
+          "group-cedre"
+        ],
+        "chars": 666
+      }
+    ],
+    "characters": {
+      "dev": 648,
+      "test": 660,
+      "train": 666
+    }
+  }
+}

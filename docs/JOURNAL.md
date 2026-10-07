@@ -139,3 +139,18 @@ Les seuils de pixels sont inchangés. La dernière revue Claude accepte aussi
 `import_receipt`, qui relie le rapport d'import au catalogue par une bijection
 exacte des documents acceptés. Ruff et le contrôle des actifs passent ; les
 sorties sont conservées dans `reports/lot2/`. L'acceptation CLI suit sur commit propre.
+
+L'acceptation CLI au commit propre `4153d99` passe : 18 documents originaux
+importés et deux exclus, trois partitions à groupes disjoints, une page par
+partition et les deux documents de chaque rôle réellement utilisés. Les trois
+pages totalisent 4 179 mots. Le rejeu train depuis son lot filtré compare
+38 fichiers identiques ; la reproduction séquentielle indépendante retrouve
+exactement le PNG et le JSON. L'environnement et le code restent identiques
+au début, dans chaque lot et en fin de campagne.
+
+L'audit des 4 179 mots ne trouve aucun suspect ; trois pages, 18 crops et une
+planche géométrique sont inspectés. La campagne occupe environ 20 Mo, conservés
+dans `runs/accept-partitioned-v03` ; ses preuves légères sont dans
+`reports/lot2/acceptance/`. Aucun corpus réel n'a été ouvert, déplacé ou supprimé.
+Le lot 2 est éprouvé ; le binôme poursuit avec l'intégration du lot 3 déjà préparé
+par Claude, en commençant à résolution native.

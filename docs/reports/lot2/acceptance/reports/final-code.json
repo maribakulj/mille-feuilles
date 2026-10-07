@@ -1,0 +1,8 @@
+{
+  "commit": "4153d99b5f1d59eccab8a1cb1afd6aa8a99a9d1a",
+  "dirty": false,
+  "executable": "/Users/marcel/heritage-synth/.venv/bin/python3",
+  "python": "3.12.13 (main, Jun  2 2026, 22:42:28) [Clang 22.1.3 ]",
+  "reproduce_script_sha256": "2f9c39581a119002ec3fd8fa522deca4fb6ad3f50ac7732ce80b404467793bc4",
+  "script_sha256": "6d9faf851bf9d28e985bdf177ba9de7c287cbec05d3d5f94165031423aeedff4"
+}

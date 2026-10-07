@@ -2,18 +2,34 @@
 
 ## État de la version 0.3.0
 
-**Acceptation finale 0.3 en attente.** Le développement ajoute l'import local
-multi-document, les liens exacts entre segments et blocs, et la génération
-partitionnée. Les campagnes historiques ci-dessous ne valident pas à elles
-seules ces changements. Le nombre final de tests, le commit de livraison et
-les rapports 0.3 seront consignés après la suite intégrée et sa revue ; aucun
-nouveau pilote de 100 pages n'est annoncé ici.
+**Lot 2 accepté**, sur le commit propre `4153d99` : import local multi-document,
+liens exacts entre segments et blocs, génération partitionnée et rejeu filtré.
+Les [preuves CLI et visuelles](reports/lot2/acceptance/index.json) complètent
+la suite intégrée. Il s'agit de trois pages compactes originales, pas d'un
+nouveau pilote de 100 pages ni d'une validation historique.
 
 La suite intégrée du lot 2 passe **483 tests en 176,85 s**, Ruff et la vérification
 des actifs passent. Les [sorties figées](reports/lot2/tests-index.json) conservent
 aussi le premier passage (419 succès, deux échecs dus au filtre de version de
 l'audit de lisibilité), corrigé sans changer les seuils de pixels. L'acceptation
-CLI depuis le commit propre suit cette étape.
+CLI depuis le commit propre a passé les contrôles suivants.
+
+- 18 documents originaux acceptés, deux documents volontairement protégés
+  refusés (identifiant et 8-gramme salé). Les octets d'entrée restent inchangés.
+- Trois partitions sans groupe commun, deux documents par rôle et par partition,
+  tous effectivement utilisés. Une page de 800 × 1100 par partition, 4 179 mots.
+- Omission de `--partition` refusée avant création de destination ; les contenus
+  des autres partitions sont absents des lots filtrés.
+- Rejeu de train depuis son seul lot filtré : **38 fichiers comparés identiques**,
+  ainsi que le rapport QA ; une seconde reproduction séquentielle donne le PNG
+  et le JSON canonique identiques. Workers 1 puis 2, environnement et code gelés.
+- Les exports passent. Les 4 179 mots passent l'audit de pixels, avec contraste
+  minimal 106, au moins 8 pixels d'encre, corps minimal 10 px et aucun suspect.
+  Les trois pages, 18 crops et une planche géométrique sont relus visuellement.
+
+La campagne complète occupe environ 20 Mo et reste dans
+`runs/accept-partitioned-v03`. Les [résultats détaillés](reports/lot2/acceptance/acceptance.json)
+et le [compte rendu visuel](reports/lot2/acceptance/visual-review.json) sont archivés.
 
 Le [contrat 0.3](CONTRAT_DONNEES.md) conserve le profil visuel et les exigences
 géométriques du pilote, et ajoute les contrôles suivants :
@@ -29,10 +45,9 @@ géométriques du pilote, et ajoute les contrôles suivants :
 | Reproduction et exports | Petits lots multi-documents identiques avec un et deux workers ; validation des projections PAGE/ALTO/COCO et des annotations finales |
 | Compatibilité | Anciens fichiers 0.2 validés selon leur contrat ; aucune conversion implicite de leurs spans ni revendication rétroactive d'isolation |
 
-Ces critères complètent les tests ciblés ; leur tableau final de résultats et
-leurs preuves archivées restent **à renseigner**. Ils ne remplacent pas les
-contrôles visuels et de pixels lorsqu'une nouvelle campagne de rendu est
-présentée comme éprouvée.
+Ces critères sont couverts par la suite et l'acceptation décrites ci-dessus.
+Les fixtures restent petites et répétitives : elles éprouvent les interfaces,
+l'isolation déclarée et la reproduction, sans établir la représentativité du texte.
 
 ### Portée du contrôle de partition
 

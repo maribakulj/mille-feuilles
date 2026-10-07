@@ -1,0 +1,11 @@
+{
+  "digest": "sha256-128",
+  "format": "mille-feuilles-ngram-exclusions",
+  "hashes": [
+    "c862d1a951884ff3abae9fee1463b3e8"
+  ],
+  "n": 8,
+  "normalization": "nfc-casefold-word-v1",
+  "salt_hex": "102132435465768798a9bacbdcedfe0f",
+  "version": "1"
+}

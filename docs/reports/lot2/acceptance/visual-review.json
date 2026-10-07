@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "reviewer": "Codex",
+  "scope": "Three compact original synthetic pages, 18 native word crops in three sheets, train geometry overlay. No historical realism claim.",
+  "inspected": [
+    "lots/train/images/mf_0000.png",
+    "train-word-samples/samples_00.png",
+    "lots/dev/images/mf_0000.png",
+    "dev-word-samples/samples_00.png",
+    "lots/test/images/mf_0000.png",
+    "test-word-samples/samples_00.png",
+    "lots/train/qa/mf_0000.png"
+  ],
+  "findings": [
+    "The three partition pages have distinct source village identities and legible title/body/ad text.",
+    "No visible overlap or cropped content in inspected pages; hyphenated continuation remains within columns.",
+    "Small words and punctuation are present in sampled native pixels; body size is 10 px.",
+    "Repeated text/layout is expected in these compact fixtures; this is not evidence of corpus diversity."
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "assets": [
+    {
+      "id": "font_oldstandard_regular",
+      "kind": "font",
+      "metadata": {
+        "axes": {},
+        "evidence_files": [
+          {
+            "path": "assets/fonts/oldstandardtt/OFL.txt",
+            "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/METADATA.pb",
+            "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+            "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+          }
+        ],
+        "face_index": 0,
+        "family": "Old Standard TT",
+        "modified": false,
+        "style": "Regular",
+        "upstream_commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+        "version": "Version 3.000"
+      },
+      "path": "assets/fonts/oldstandardtt/OldStandard-Regular.ttf",
+      "rights": {
+        "attribution": "Copyright 2011 The Old Standard Project Authors (amkryukov@gmail.com)",
+        "evidence_uri": "https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OFL.txt",
+        "license": "OFL-1.1",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac",
+      "source_uri": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OldStandard-Regular.ttf"
+    },
+    {
+      "id": "font_oldstandard_bold",
+      "kind": "font",
+      "metadata": {
+        "axes": {},
+        "evidence_files": [
+          {
+            "path": "assets/fonts/oldstandardtt/OFL.txt",
+            "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/METADATA.pb",
+            "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+            "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+          }
+        ],
+        "face_index": 0,
+        "family": "Old Standard TT",
+        "modified": false,
+        "style": "Bold",
+        "upstream_commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+        "version": "Version 3.000"
+      },
+      "path": "assets/fonts/oldstandardtt/OldStandard-Bold.ttf",
+      "rights": {
+        "attribution": "Copyright 2011 The Old Standard Project Authors (amkryukov@gmail.com)",
+        "evidence_uri": "https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OFL.txt",
+        "license": "OFL-1.1",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db",
+      "source_uri": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OldStandard-Bold.ttf"
+    },
+    {
+      "id": "font_oldstandard_italic",
+      "kind": "font",
+      "metadata": {
+        "axes": {},
+        "evidence_files": [
+          {
+            "path": "assets/fonts/oldstandardtt/OFL.txt",
+            "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/METADATA.pb",
+            "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+          },
+          {
+            "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+            "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+          }
+        ],
+        "face_index": 0,
+        "family": "Old Standard TT",
+        "modified": false,
+        "style": "Italic",
+        "upstream_commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+        "version": "Version 3.000"
+      },
+      "path": "assets/fonts/oldstandardtt/OldStandard-Italic.ttf",
+      "rights": {
+        "attribution": "Copyright 2011 The Old Standard Project Authors (amkryukov@gmail.com)",
+        "evidence_uri": "https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OFL.txt",
+        "license": "OFL-1.1",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564",
+      "source_uri": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/oldstandardtt/OldStandard-Italic.ttf"
+    },
+    {
+      "id": "font_gfsdidot_regular",
+      "kind": "font",
+      "metadata": {
+        "axes": {},
+        "evidence_files": [
+          {
+            "path": "assets/fonts/gfsdidot/OFL.txt",
+            "sha256": "9e19c0d2e7e7adcbe9dfd0749e34dda41e7e356e0f2cc082d61d2fc9b6e0cef7"
+          },
+          {
+            "path": "assets/fonts/gfsdidot/METADATA.pb",
+            "sha256": "aa07c9c90cea6cc13577262558cd366c2fdee90b57e6f75d752f010ff0f6b751"
+          },
+          {
+            "path": "assets/fonts/gfsdidot/DESCRIPTION.en_us.html",
+            "sha256": "9aa61fa5d8872f9cab53be3ff1e040abbd0af0931207bd6ea9d297ef89506223"
+          }
+        ],
+        "face_index": 0,
+        "family": "GFS Didot",
+        "modified": false,
+        "style": "Regular",
+        "upstream_commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+        "version": "Version 1.0 "
+      },
+      "path": "assets/fonts/gfsdidot/GFSDidot-Regular.ttf",
+      "rights": {
+        "attribution": "Copyright (c) Takis Katsoulidis and George D. Matthiopoulos, 2001. All rights reserved.",
+        "evidence_uri": "https://github.com/google/fonts/blob/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/gfsdidot/OFL.txt",
+        "license": "OFL-1.1",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "4fc784ab824e8866eeef8ad55976b93e7e170fb1b8237fd4f8781b5b4dd297f9",
+      "source_uri": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/gfsdidot/GFSDidot-Regular.ttf"
+    },
+    {
+      "id": "text_ae65b949d99da22794ec",
+      "kind": "text",
+      "metadata": {
+        "content_type": "original_synthetic_demonstration",
+        "date": "2026-10-07",
+        "evidence_files": [
+          {
+            "path": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+            "sha256": "6db9db59e5f3213eb3ee348c6bbce84dc500c907c24658863603724b20183550"
+          }
+        ],
+        "historical_corpus": false,
+        "language": "fr",
+        "preparation": "Import local Mille Feuilles 0.3.0 : octets source conservés, UTF-8 NFC vérifié.",
+        "role": "advertisement",
+        "source_document_id": "original-ambre-advertisement-deux",
+        "source_group_id": "group-ambre",
+        "unit_separator": "\\n\\n",
+        "units": 1
+      },
+      "path": "assets/texts/imported/072ef397bc7d58cd46e7.txt",
+      "rights": {
+        "attribution": "Mille Feuilles original acceptance fixtures",
+        "evidence_uri": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+        "license": "CC0-1.0",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "072ef397bc7d58cd46e7e8e8553e2a7eee686f97d1d81e2c91bf23d6795698ee",
+      "source_uri": "urn:mille-feuilles:acceptance:original-ambre-advertisement-deux"
+    },
+    {
+      "id": "text_06cfc118afc868c398fe",
+      "kind": "text",
+      "metadata": {
+        "content_type": "original_synthetic_demonstration",
+        "date": "2026-10-07",
+        "evidence_files": [
+          {
+            "path": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+            "sha256": "6db9db59e5f3213eb3ee348c6bbce84dc500c907c24658863603724b20183550"
+          }
+        ],
+        "historical_corpus": false,
+        "language": "fr",
+        "preparation": "Import local Mille Feuilles 0.3.0 : octets source conservés, UTF-8 NFC vérifié.",
+        "role": "advertisement",
+        "source_document_id": "original-ambre-advertisement-un",
+        "source_group_id": "group-ambre",
+        "unit_separator": "\\n\\n",
+        "units": 1
+      },
+      "path": "assets/texts/imported/f1017456c0222e55a5c2.txt",
+      "rights": {
+        "attribution": "Mille Feuilles original acceptance fixtures",
+        "evidence_uri": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+        "license": "CC0-1.0",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "f1017456c0222e55a5c2fc259fbd6d4a5fa076c54c897e635a81b40b58dc96b6",
+      "source_uri": "urn:mille-feuilles:acceptance:original-ambre-advertisement-un"
+    },
+    {
+      "id": "text_4844f092d4c6054171c2",
+      "kind": "text",
+      "metadata": {
+        "content_type": "original_synthetic_demonstration",
+        "date": "2026-10-07",
+        "evidence_files": [
+          {
+            "path": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+            "sha256": "6db9db59e5f3213eb3ee348c6bbce84dc500c907c24658863603724b20183550"
+          }
+        ],
+        "historical_corpus": false,
+        "language": "fr",
+        "preparation": "Import local Mille Feuilles 0.3.0 : octets source conservés, UTF-8 NFC vérifié.",
+        "role": "body",
+        "source_document_id": "original-ambre-body-deux",
+        "source_group_id": "group-ambre",
+        "unit_separator": "\\n\\n",
+        "units": 1
+      },
+      "path": "assets/texts/imported/7d23c936f863b4b98d3f.txt",
+      "rights": {
+        "attribution": "Mille Feuilles original acceptance fixtures",
+        "evidence_uri": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+        "license": "CC0-1.0",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "7d23c936f863b4b98d3f47dac2fc6c4dd379f61609ba67b23852ecaeae95c2d2",
+      "source_uri": "urn:mille-feuilles:acceptance:original-ambre-body-deux"
+    },
+    {
+      "id": "text_381d5e11f0a74b844f66",
+      "kind": "text",
+      "metadata": {
+        "content_type": "original_synthetic_demonstration",
+        "date": "2026-10-07",
+        "evidence_files": [
+          {
+            "path": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+            "sha256": "6db9db59e5f3213eb3ee348c6bbce84dc500c907c24658863603724b20183550"
+          }
+        ],
+        "historical_corpus": false,
+        "language": "fr",
+        "preparation": "Import local Mille Feuilles 0.3.0 : octets source conservés, UTF-8 NFC vérifié.",
+        "role": "body",
+        "source_document_id": "original-ambre-body-un",
+        "source_group_id": "group-ambre",
+        "unit_separator": "\\n\\n",
+        "units": 1
+      },
+      "path": "assets/texts/imported/5435bf3f8c86f3b06ae7.txt",
+      "rights": {
+        "attribution": "Mille Feuilles original acceptance fixtures",
+        "evidence_uri": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+        "license": "CC0-1.0",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "5435bf3f8c86f3b06ae7f27145b7edb378049429960480e1e4cd7fb94cc80cac",
+      "source_uri": "urn:mille-feuilles:acceptance:original-ambre-body-un"
+    },
+    {
+      "id": "text_a7307bd189109df3dd23",
+      "kind": "text",
+      "metadata": {
+        "content_type": "original_synthetic_demonstration",
+        "date": "2026-10-07",
+        "evidence_files": [
+          {
+            "path": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+            "sha256": "6db9db59e5f3213eb3ee348c6bbce84dc500c907c24658863603724b20183550"
+          }
+        ],
+        "historical_corpus": false,
+        "language": "fr",
+        "preparation": "Import local Mille Feuilles 0.3.0 : octets source conservés, UTF-8 NFC vérifié.",
+        "role": "title",
+        "source_document_id": "original-ambre-title-deux",
+        "source_group_id": "group-ambre",
+        "unit_separator": "\\n",
+        "units": 1
+      },
+      "path": "assets/texts/imported/00b8a4f3d24d0202af47.txt",
+      "rights": {
+        "attribution": "Mille Feuilles original acceptance fixtures",
+        "evidence_uri": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+        "license": "CC0-1.0",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "00b8a4f3d24d0202af47bba6a5a40c888641d5c9d9612580f073c74fd9313b80",
+      "source_uri": "urn:mille-feuilles:acceptance:original-ambre-title-deux"
+    },
+    {
+      "id": "text_4cfafda421b7999ebb1b",
+      "kind": "text",
+      "metadata": {
+        "content_type": "original_synthetic_demonstration",
+        "date": "2026-10-07",
+        "evidence_files": [
+          {
+            "path": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+            "sha256": "6db9db59e5f3213eb3ee348c6bbce84dc500c907c24658863603724b20183550"
+          }
+        ],
+        "historical_corpus": false,
+        "language": "fr",
+        "preparation": "Import local Mille Feuilles 0.3.0 : octets source conservés, UTF-8 NFC vérifié.",
+        "role": "title",
+        "source_document_id": "original-ambre-title-un",
+        "source_group_id": "group-ambre",
+        "unit_separator": "\\n",
+        "units": 1
+      },
+      "path": "assets/texts/imported/c6237c1c4b7ff98d2a02.txt",
+      "rights": {
+        "attribution": "Mille Feuilles original acceptance fixtures",
+        "evidence_uri": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+        "license": "CC0-1.0",
+        "redistribution_allowed": true,
+        "status": "verified"
+      },
+      "sha256": "c6237c1c4b7ff98d2a02613d44da78406909b1114498b596a72b30b3e5580e9b",
+      "source_uri": "urn:mille-feuilles:acceptance:original-ambre-title-un"
+    }
+  ],
+  "schema_version": "0.3.0"
+}

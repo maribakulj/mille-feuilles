@@ -1,0 +1,21 @@
+{
+  "pages": 1,
+  "partition": {
+    "name": "test",
+    "path": "provenance/partition.json",
+    "sha256": "87d58c8e289e808312e09a13bb170e5005dbc0684eab04face8155ef07c1d7b9",
+    "source_catalog_path": "provenance/source-catalog.json",
+    "source_catalog_sha256": "0af9f08f1c197400510a47f690c77d76d92d3038cf8bb5e301a1ebb3f217083a",
+    "version": "1"
+  },
+  "render": {
+    "columns": 4,
+    "degradation": "clean",
+    "dpi": 150,
+    "height": 1100,
+    "partition": "test",
+    "seed": 20261009,
+    "width": 800
+  },
+  "schema_version": "0.3.0"
+}

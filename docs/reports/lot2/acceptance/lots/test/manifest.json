@@ -1,0 +1,247 @@
+{
+  "artifacts": [
+    {
+      "path": "assets/catalog.json",
+      "role": "assets",
+      "sha256": "dc49791e723bb08775f10d4efdf9a01c304ddff96ecff5e6393213831870bc39"
+    },
+    {
+      "path": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+      "role": "assets",
+      "sha256": "6db9db59e5f3213eb3ee348c6bbce84dc500c907c24658863603724b20183550"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/DESCRIPTION.en_us.html",
+      "role": "assets",
+      "sha256": "9aa61fa5d8872f9cab53be3ff1e040abbd0af0931207bd6ea9d297ef89506223"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/GFSDidot-Regular.ttf",
+      "role": "assets",
+      "sha256": "4fc784ab824e8866eeef8ad55976b93e7e170fb1b8237fd4f8781b5b4dd297f9"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/METADATA.pb",
+      "role": "assets",
+      "sha256": "aa07c9c90cea6cc13577262558cd366c2fdee90b57e6f75d752f010ff0f6b751"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/OFL.txt",
+      "role": "assets",
+      "sha256": "9e19c0d2e7e7adcbe9dfd0749e34dda41e7e356e0f2cc082d61d2fc9b6e0cef7"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+      "role": "assets",
+      "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/METADATA.pb",
+      "role": "assets",
+      "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OFL.txt",
+      "role": "assets",
+      "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Bold.ttf",
+      "role": "assets",
+      "sha256": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Italic.ttf",
+      "role": "assets",
+      "sha256": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Regular.ttf",
+      "role": "assets",
+      "sha256": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac"
+    },
+    {
+      "path": "assets/template-NOTICE.txt",
+      "role": "assets",
+      "sha256": "62b0f4bc3bc1a43f19db3653d026273378fd839c98635868081e964491f0a831"
+    },
+    {
+      "path": "assets/template.json",
+      "role": "assets",
+      "sha256": "17836669eea499cb7f29a2e9fde614f5a0090fa8e22c2365d8d2e234d7f1853b"
+    },
+    {
+      "path": "assets/texts/imported/00b8a4f3d24d0202af47.txt",
+      "role": "assets",
+      "sha256": "00b8a4f3d24d0202af47bba6a5a40c888641d5c9d9612580f073c74fd9313b80"
+    },
+    {
+      "path": "assets/texts/imported/072ef397bc7d58cd46e7.txt",
+      "role": "assets",
+      "sha256": "072ef397bc7d58cd46e7e8e8553e2a7eee686f97d1d81e2c91bf23d6795698ee"
+    },
+    {
+      "path": "assets/texts/imported/5435bf3f8c86f3b06ae7.txt",
+      "role": "assets",
+      "sha256": "5435bf3f8c86f3b06ae7f27145b7edb378049429960480e1e4cd7fb94cc80cac"
+    },
+    {
+      "path": "assets/texts/imported/7d23c936f863b4b98d3f.txt",
+      "role": "assets",
+      "sha256": "7d23c936f863b4b98d3f47dac2fc6c4dd379f61609ba67b23852ecaeae95c2d2"
+    },
+    {
+      "path": "assets/texts/imported/c6237c1c4b7ff98d2a02.txt",
+      "role": "assets",
+      "sha256": "c6237c1c4b7ff98d2a02613d44da78406909b1114498b596a72b30b3e5580e9b"
+    },
+    {
+      "path": "assets/texts/imported/f1017456c0222e55a5c2.txt",
+      "role": "assets",
+      "sha256": "f1017456c0222e55a5c2fc259fbd6d4a5fa076c54c897e635a81b40b58dc96b6"
+    },
+    {
+      "path": "assets.json",
+      "role": "assets.json",
+      "sha256": "9ee5ed10d1ecb01166491341a23a1862ee08d02d33d7b0a1411e78f290a9de89"
+    },
+    {
+      "path": "calibration/CADRAGE.md",
+      "role": "calibration",
+      "sha256": "7e9960f8709c3a8415ac142c6b604a7340746e8168e23dfb5f598e95bf1f01c7"
+    },
+    {
+      "path": "calibration/fichiers_lus.tsv",
+      "role": "calibration",
+      "sha256": "73d4e7abef71200bc078c8a45bc84657bd12b3aba26f70e2e7b89f5bab28073a"
+    },
+    {
+      "path": "config.json",
+      "role": "config.json",
+      "sha256": "4d53b7d45fc773c49d003e51cd69fb84b4eea66c21ae66fae4338147bac12e06"
+    },
+    {
+      "path": "environment.json",
+      "role": "environment.json",
+      "sha256": "02c554013ee6e256e11926b15fd7c6d68ee3d408c1da1e3538eed7c3b5012ba2"
+    },
+    {
+      "path": "exports/alto/mf_0000.xml",
+      "role": "exports",
+      "sha256": "a86202a1ca0f3bc9be3732af122342336c2151d399822dc416dc247ffb28cdb1"
+    },
+    {
+      "path": "exports/coco/instances.json",
+      "role": "exports",
+      "sha256": "a0189cb728be097ccef05d7063f04eb4a39ccdb6fbfaafa0a159b5c2b74b2f1b"
+    },
+    {
+      "path": "exports/page/mf_0000.xml",
+      "role": "exports",
+      "sha256": "272607ebd27f44e7006a42dd3c814eb2f73f6457b61950c54778d5ff33528cf6"
+    },
+    {
+      "path": "exports/reports/mf_0000.json",
+      "role": "exports",
+      "sha256": "cbb602f3b64c9807a499d380d9ed8d990b3a1b0eb73a73686865055d4b8badad"
+    },
+    {
+      "path": "images/mf_0000.png",
+      "role": "images",
+      "sha256": "0fd02421d2b74a97313caa096cd43c4051152d4a439ab4f3b3403224d44f4305"
+    },
+    {
+      "path": "pages/mf_0000.json",
+      "role": "pages",
+      "sha256": "ccb41c6586365190546e8d4993dbe9fabeaa8a2026f014ff146a8db36e9be484"
+    },
+    {
+      "path": "provenance/import-report.json",
+      "role": "provenance",
+      "sha256": "9fb974af4e151032825e39480eddf069e885797adf830d55117297a3f0362f5f"
+    },
+    {
+      "path": "provenance/partition.json",
+      "role": "provenance",
+      "sha256": "87d58c8e289e808312e09a13bb170e5005dbc0684eab04face8155ef07c1d7b9"
+    },
+    {
+      "path": "provenance/source-catalog.json",
+      "role": "provenance",
+      "sha256": "0af9f08f1c197400510a47f690c77d76d92d3038cf8bb5e301a1ebb3f217083a"
+    },
+    {
+      "path": "qa/contact_00.jpg",
+      "role": "qa",
+      "sha256": "282fdeeaae67b27124ae126c6c963f2f346302fd5eb140b62c479846091150bc"
+    },
+    {
+      "path": "qa/mf_0000.png",
+      "role": "qa",
+      "sha256": "2d6bd4174b7a91f0ed0b818aceefc01e54982d9e3a026885b8341dee5114f748"
+    },
+    {
+      "path": "qa/statistics.json",
+      "role": "qa",
+      "sha256": "27ee17a8bbf1a4e5bb7a4c159538fd3a54ff58f7ece05fb8331f98d28fb7a77c"
+    }
+  ],
+  "assets": {
+    "path": "assets.json",
+    "sha256": "9ee5ed10d1ecb01166491341a23a1862ee08d02d33d7b0a1411e78f290a9de89"
+  },
+  "calibration": {
+    "files_read": {
+      "path": "calibration/fichiers_lus.tsv",
+      "sha256": "73d4e7abef71200bc078c8a45bc84657bd12b3aba26f70e2e7b89f5bab28073a"
+    },
+    "protocol_path": "calibration/CADRAGE.md",
+    "protocol_sha256": "7e9960f8709c3a8415ac142c6b604a7340746e8168e23dfb5f598e95bf1f01c7",
+    "source_partitions": [
+      "train",
+      "dev"
+    ]
+  },
+  "config": {
+    "path": "config.json",
+    "sha256": "4d53b7d45fc773c49d003e51cd69fb84b4eea66c21ae66fae4338147bac12e06"
+  },
+  "dataset_id": "mf_demo_20261009_1_test_87d58c8e289e",
+  "extensions": {
+    "mf:import_report": {
+      "path": "provenance/import-report.json",
+      "sha256": "9fb974af4e151032825e39480eddf069e885797adf830d55117297a3f0362f5f"
+    },
+    "mf:partition": {
+      "name": "test",
+      "path": "provenance/partition.json",
+      "sha256": "87d58c8e289e808312e09a13bb170e5005dbc0684eab04face8155ef07c1d7b9",
+      "source_catalog_path": "provenance/source-catalog.json",
+      "source_catalog_sha256": "0af9f08f1c197400510a47f690c77d76d92d3038cf8bb5e301a1ebb3f217083a",
+      "version": "1"
+    }
+  },
+  "generator": {
+    "commit": "4153d99b5f1d59eccab8a1cb1afd6aa8a99a9d1a",
+    "dirty": false,
+    "environment_path": "environment.json",
+    "environment_sha256": "02c554013ee6e256e11926b15fd7c6d68ee3d408c1da1e3538eed7c3b5012ba2"
+  },
+  "pages": [
+    {
+      "id": "mf_0000",
+      "path": "pages/mf_0000.json",
+      "sha256": "ccb41c6586365190546e8d4993dbe9fabeaa8a2026f014ff146a8db36e9be484",
+      "source_group_ids": [
+        "group-ambre"
+      ]
+    }
+  ],
+  "profile": "fr_press_19c_columns_4_6",
+  "rng": {
+    "algorithm": "SHA256 per-page; Python MT19937; numpy PCG64",
+    "seed": 20261009,
+    "version": "1"
+  },
+  "schema_version": "0.3.0"
+}

@@ -16,8 +16,8 @@ Codex / Claude ; ses exports
 sont validés et les 100 images/annotations ont été reproduites à l'identique.
 Les [preuves et limites](docs/VALIDATION.md) distinguent cette validation
 technique d'une évaluation sur des documents historiques réels.
-La suite intégrée 0.3 passe **483 tests** ; l'acceptation par le CLI est consignée
-séparément dans ces preuves.
+La suite intégrée 0.3 passe **483 tests**. Son acceptation CLI importe 18 documents,
+en exclut deux, produit trois partitions et reproduit le lot train à l'identique.
 
 ## Démarrer
 

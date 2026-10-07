@@ -1,0 +1,247 @@
+{
+  "artifacts": [
+    {
+      "path": "assets/catalog.json",
+      "role": "assets",
+      "sha256": "c55a10319d91412166219764363f058fe6a03e38e9ce788c15c244a149ba41fc"
+    },
+    {
+      "path": "assets/evidence/6db9db59e5f3213eb3ee.txt",
+      "role": "assets",
+      "sha256": "6db9db59e5f3213eb3ee348c6bbce84dc500c907c24658863603724b20183550"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/DESCRIPTION.en_us.html",
+      "role": "assets",
+      "sha256": "9aa61fa5d8872f9cab53be3ff1e040abbd0af0931207bd6ea9d297ef89506223"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/GFSDidot-Regular.ttf",
+      "role": "assets",
+      "sha256": "4fc784ab824e8866eeef8ad55976b93e7e170fb1b8237fd4f8781b5b4dd297f9"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/METADATA.pb",
+      "role": "assets",
+      "sha256": "aa07c9c90cea6cc13577262558cd366c2fdee90b57e6f75d752f010ff0f6b751"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/OFL.txt",
+      "role": "assets",
+      "sha256": "9e19c0d2e7e7adcbe9dfd0749e34dda41e7e356e0f2cc082d61d2fc9b6e0cef7"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+      "role": "assets",
+      "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/METADATA.pb",
+      "role": "assets",
+      "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OFL.txt",
+      "role": "assets",
+      "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Bold.ttf",
+      "role": "assets",
+      "sha256": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Italic.ttf",
+      "role": "assets",
+      "sha256": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Regular.ttf",
+      "role": "assets",
+      "sha256": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac"
+    },
+    {
+      "path": "assets/template-NOTICE.txt",
+      "role": "assets",
+      "sha256": "62b0f4bc3bc1a43f19db3653d026273378fd839c98635868081e964491f0a831"
+    },
+    {
+      "path": "assets/template.json",
+      "role": "assets",
+      "sha256": "17836669eea499cb7f29a2e9fde614f5a0090fa8e22c2365d8d2e234d7f1853b"
+    },
+    {
+      "path": "assets/texts/imported/042a5a07b1fce0bad7b1.txt",
+      "role": "assets",
+      "sha256": "042a5a07b1fce0bad7b1032fc37141f14ead6f8e9336d354e5dfbbedf9408b82"
+    },
+    {
+      "path": "assets/texts/imported/5202fcc1679261f9c977.txt",
+      "role": "assets",
+      "sha256": "5202fcc1679261f9c9777afb4fc7c1818f8a5072796133d8ce8de6102e3d3cb3"
+    },
+    {
+      "path": "assets/texts/imported/59c8949affc6cc61be92.txt",
+      "role": "assets",
+      "sha256": "59c8949affc6cc61be9226704d8b995d104fded8ab0df1f150ac5bc0ce9b8ba4"
+    },
+    {
+      "path": "assets/texts/imported/940a3fa7c94c12548106.txt",
+      "role": "assets",
+      "sha256": "940a3fa7c94c12548106ca5bcd96980f8785ecd402ad4086f2d206518fedac89"
+    },
+    {
+      "path": "assets/texts/imported/c75a8aa1ff928de08b87.txt",
+      "role": "assets",
+      "sha256": "c75a8aa1ff928de08b876064481d191f51386d8d8396bed2232899ed1b515704"
+    },
+    {
+      "path": "assets/texts/imported/ff0ed6a59b60894b03d5.txt",
+      "role": "assets",
+      "sha256": "ff0ed6a59b60894b03d508dd0327714d4415b86149b08816530749b49c32ba24"
+    },
+    {
+      "path": "assets.json",
+      "role": "assets.json",
+      "sha256": "3fa57f4d3e4c9395020afa45c4fb95b5192ecefcc9cf3df55d62c8ef0304f6ce"
+    },
+    {
+      "path": "calibration/CADRAGE.md",
+      "role": "calibration",
+      "sha256": "7e9960f8709c3a8415ac142c6b604a7340746e8168e23dfb5f598e95bf1f01c7"
+    },
+    {
+      "path": "calibration/fichiers_lus.tsv",
+      "role": "calibration",
+      "sha256": "73d4e7abef71200bc078c8a45bc84657bd12b3aba26f70e2e7b89f5bab28073a"
+    },
+    {
+      "path": "config.json",
+      "role": "config.json",
+      "sha256": "7eb3ae19d978ff4d69a2a44c7b66580c84c0c17fa0df59be7d49fe6c88a1c642"
+    },
+    {
+      "path": "environment.json",
+      "role": "environment.json",
+      "sha256": "02c554013ee6e256e11926b15fd7c6d68ee3d408c1da1e3538eed7c3b5012ba2"
+    },
+    {
+      "path": "exports/alto/mf_0000.xml",
+      "role": "exports",
+      "sha256": "34f938f6423d372837a5e53180cf5cb8283387204fcd8320854ae633c7029e3c"
+    },
+    {
+      "path": "exports/coco/instances.json",
+      "role": "exports",
+      "sha256": "d81a5a7bace0771621edffd5cc2152b803016733fea9d7ac925d2a5573c5f055"
+    },
+    {
+      "path": "exports/page/mf_0000.xml",
+      "role": "exports",
+      "sha256": "3a0eb8e6212c53964b10f7a60e48c5c5c49f4a1ef6dcd3ebe79fe6959c784b12"
+    },
+    {
+      "path": "exports/reports/mf_0000.json",
+      "role": "exports",
+      "sha256": "cbb602f3b64c9807a499d380d9ed8d990b3a1b0eb73a73686865055d4b8badad"
+    },
+    {
+      "path": "images/mf_0000.png",
+      "role": "images",
+      "sha256": "edb52c768670841a741944f83be13bb48c8ec84222c4995f6145f6a1f27af8a1"
+    },
+    {
+      "path": "pages/mf_0000.json",
+      "role": "pages",
+      "sha256": "a25d1829e56726981f9f8a60e71951f50b157d2b9005f10e8c501d6d51c9030f"
+    },
+    {
+      "path": "provenance/import-report.json",
+      "role": "provenance",
+      "sha256": "9fb974af4e151032825e39480eddf069e885797adf830d55117297a3f0362f5f"
+    },
+    {
+      "path": "provenance/partition.json",
+      "role": "provenance",
+      "sha256": "87d58c8e289e808312e09a13bb170e5005dbc0684eab04face8155ef07c1d7b9"
+    },
+    {
+      "path": "provenance/source-catalog.json",
+      "role": "provenance",
+      "sha256": "0af9f08f1c197400510a47f690c77d76d92d3038cf8bb5e301a1ebb3f217083a"
+    },
+    {
+      "path": "qa/contact_00.jpg",
+      "role": "qa",
+      "sha256": "be04f9aa2ed5cd974c8f7120b71ac2606710e30395f17daaea3f65bb7325dc21"
+    },
+    {
+      "path": "qa/mf_0000.png",
+      "role": "qa",
+      "sha256": "14551cfc88e74603c3ea6234910176efb736f9502a29ef757c0d1388e1537754"
+    },
+    {
+      "path": "qa/statistics.json",
+      "role": "qa",
+      "sha256": "27ee17a8bbf1a4e5bb7a4c159538fd3a54ff58f7ece05fb8331f98d28fb7a77c"
+    }
+  ],
+  "assets": {
+    "path": "assets.json",
+    "sha256": "3fa57f4d3e4c9395020afa45c4fb95b5192ecefcc9cf3df55d62c8ef0304f6ce"
+  },
+  "calibration": {
+    "files_read": {
+      "path": "calibration/fichiers_lus.tsv",
+      "sha256": "73d4e7abef71200bc078c8a45bc84657bd12b3aba26f70e2e7b89f5bab28073a"
+    },
+    "protocol_path": "calibration/CADRAGE.md",
+    "protocol_sha256": "7e9960f8709c3a8415ac142c6b604a7340746e8168e23dfb5f598e95bf1f01c7",
+    "source_partitions": [
+      "train",
+      "dev"
+    ]
+  },
+  "config": {
+    "path": "config.json",
+    "sha256": "7eb3ae19d978ff4d69a2a44c7b66580c84c0c17fa0df59be7d49fe6c88a1c642"
+  },
+  "dataset_id": "mf_demo_20261009_1_train_87d58c8e289e",
+  "extensions": {
+    "mf:import_report": {
+      "path": "provenance/import-report.json",
+      "sha256": "9fb974af4e151032825e39480eddf069e885797adf830d55117297a3f0362f5f"
+    },
+    "mf:partition": {
+      "name": "train",
+      "path": "provenance/partition.json",
+      "sha256": "87d58c8e289e808312e09a13bb170e5005dbc0684eab04face8155ef07c1d7b9",
+      "source_catalog_path": "provenance/source-catalog.json",
+      "source_catalog_sha256": "0af9f08f1c197400510a47f690c77d76d92d3038cf8bb5e301a1ebb3f217083a",
+      "version": "1"
+    }
+  },
+  "generator": {
+    "commit": "4153d99b5f1d59eccab8a1cb1afd6aa8a99a9d1a",
+    "dirty": false,
+    "environment_path": "environment.json",
+    "environment_sha256": "02c554013ee6e256e11926b15fd7c6d68ee3d408c1da1e3538eed7c3b5012ba2"
+  },
+  "pages": [
+    {
+      "id": "mf_0000",
+      "path": "pages/mf_0000.json",
+      "sha256": "a25d1829e56726981f9f8a60e71951f50b157d2b9005f10e8c501d6d51c9030f",
+      "source_group_ids": [
+        "group-cedre"
+      ]
+    }
+  ],
+  "profile": "fr_press_19c_columns_4_6",
+  "rng": {
+    "algorithm": "SHA256 per-page; Python MT19937; numpy PCG64",
+    "seed": 20261009,
+    "version": "1"
+  },
+  "schema_version": "0.3.0"
+}

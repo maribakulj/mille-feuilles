@@ -1,0 +1,529 @@
+{
+  "bytes_before_summary": 20143288,
+  "checks": [
+    "Code was committed and clean before acceptance",
+    "import: exit code 0, expected 0",
+    "import: JSON report passed",
+    "Import accepted 18 documents and rejected 2",
+    "Both deliberately excluded original documents were rejected",
+    "Both supplied synthetic exclusion lists were evaluated",
+    "partition: exit code 0, expected 0",
+    "partition: JSON report passed",
+    "Three partitions cover 18 text assets without overlap",
+    "Imported text bytes equal the original source documents",
+    "Excluded original document bytes are absent from the imported bundle",
+    "train: two available documents per role",
+    "dev: two available documents per role",
+    "test: two available documents per role",
+    "Three source groups remain separate across partitions",
+    "Recorded partition characters equal actual Unicode lengths",
+    "refuse-missing-partition: exit code 2, expected 2",
+    "Missing partition refused with code 2 before destination creation",
+    "generate-train: exit code 0, expected 0",
+    "generate-train: JSON report passed",
+    "generate-dev: exit code 0, expected 0",
+    "generate-dev: JSON report passed",
+    "generate-test: exit code 0, expected 0",
+    "generate-test: JSON report passed",
+    "replay-train: exit code 0, expected 0",
+    "replay-train: JSON report passed",
+    "compare-train-replay: exit code 0, expected 0",
+    "compare-train-replay: JSON report passed",
+    "Train and filtered-source replay are identical across the complete inventory",
+    "All train and replay files are byte-identical, including the QA report",
+    "reproduce-train: exit code 0, expected 0",
+    "reproduce-train: JSON report passed",
+    "Independent sequential reproduction matches the train image and page JSON",
+    "train: recorded environment equals the frozen preflight environment",
+    "train: only selected text assets registered",
+    "train: filtered catalog contains exactly selected text assets",
+    "train: import report preserved and inventoried",
+    "train: selected bytes identical for text_ac0a7893da41a1f748c7",
+    "train: selected bytes identical for text_229995e574036f4ef216",
+    "train: selected bytes identical for text_9ebbdec4f8a6b068ed5f",
+    "train: selected bytes identical for text_9fd495788e7fff7eb8ac",
+    "train: selected bytes identical for text_57520b83872a96f9b0ab",
+    "train: selected bytes identical for text_c0d4d9a88a1984124b92",
+    "train: no document bytes from other partitions copied",
+    "train: used source documents and groups match the selected assets",
+    "dev: recorded environment equals the frozen preflight environment",
+    "dev: only selected text assets registered",
+    "dev: filtered catalog contains exactly selected text assets",
+    "dev: import report preserved and inventoried",
+    "dev: selected bytes identical for text_fe701dd8847b6daf84b7",
+    "dev: selected bytes identical for text_1a91fe98843f71c9ebe3",
+    "dev: selected bytes identical for text_734c63c359bd7e23b7ab",
+    "dev: selected bytes identical for text_8067a90e3312a0117474",
+    "dev: selected bytes identical for text_10fb3e250a878720dcff",
+    "dev: selected bytes identical for text_4211937d2c1a1cab20b0",
+    "dev: no document bytes from other partitions copied",
+    "dev: used source documents and groups match the selected assets",
+    "test: recorded environment equals the frozen preflight environment",
+    "test: only selected text assets registered",
+    "test: filtered catalog contains exactly selected text assets",
+    "test: import report preserved and inventoried",
+    "test: selected bytes identical for text_ae65b949d99da22794ec",
+    "test: selected bytes identical for text_06cfc118afc868c398fe",
+    "test: selected bytes identical for text_4844f092d4c6054171c2",
+    "test: selected bytes identical for text_381d5e11f0a74b844f66",
+    "test: selected bytes identical for text_a7307bd189109df3dd23",
+    "test: selected bytes identical for text_4cfafda421b7999ebb1b",
+    "test: no document bytes from other partitions copied",
+    "test: used source documents and groups match the selected assets",
+    "train-replay: recorded environment equals the frozen preflight environment",
+    "train-replay: only selected text assets registered",
+    "train-replay: filtered catalog contains exactly selected text assets",
+    "train-replay: import report preserved and inventoried",
+    "train-replay: selected bytes identical for text_ac0a7893da41a1f748c7",
+    "train-replay: selected bytes identical for text_229995e574036f4ef216",
+    "train-replay: selected bytes identical for text_9ebbdec4f8a6b068ed5f",
+    "train-replay: selected bytes identical for text_9fd495788e7fff7eb8ac",
+    "train-replay: selected bytes identical for text_57520b83872a96f9b0ab",
+    "train-replay: selected bytes identical for text_c0d4d9a88a1984124b92",
+    "train-replay: no document bytes from other partitions copied",
+    "train-replay: used source documents and groups match the selected assets",
+    "Actual page source groups are disjoint across train, dev and test",
+    "Every text role is represented by observed source spans",
+    "Original source SHA-256 values unchanged",
+    "Partitioned source bundle unchanged",
+    "Train lot unchanged by both reproductions",
+    "Commit, clean Git state and both acceptance/reproduction script hashes unchanged",
+    "Environment unchanged at the end of the acceptance campaign",
+    "Complete acceptance footprint is below 50 MB"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "import-texts",
+        "--manifest",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/sources/import.jsonl",
+        "--into",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/bundle",
+        "--exclude-documents",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/sources/excluded-documents.txt",
+        "--exclude-ngrams",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/sources/excluded-ngrams.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "import",
+      "report": "reports/import.json",
+      "stderr": "logs/import.stderr.log",
+      "stdout": "logs/import.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "partition",
+        "--bundle",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/bundle",
+        "--ratios",
+        "1",
+        "1",
+        "1",
+        "--seed",
+        "20261009"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "partition",
+      "report": "reports/partition.json",
+      "stderr": "logs/partition.stderr.log",
+      "stdout": "logs/partition.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/forbidden-without-partition",
+        "--assets-root",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/bundle",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--degradation",
+        "clean",
+        "--jobs",
+        "1",
+        "--seed",
+        "20261009"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "name": "refuse-missing-partition",
+      "stderr": "logs/refuse-missing-partition.stderr.log",
+      "stdout": "logs/refuse-missing-partition.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/lots/train",
+        "--assets-root",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/bundle",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--degradation",
+        "clean",
+        "--jobs",
+        "1",
+        "--seed",
+        "20261009",
+        "--partition",
+        "train"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "generate-train",
+      "report": "reports/generate-train.json",
+      "stderr": "logs/generate-train.stderr.log",
+      "stdout": "logs/generate-train.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/lots/dev",
+        "--assets-root",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/bundle",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--degradation",
+        "clean",
+        "--jobs",
+        "1",
+        "--seed",
+        "20261009",
+        "--partition",
+        "dev"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "generate-dev",
+      "report": "reports/generate-dev.json",
+      "stderr": "logs/generate-dev.stderr.log",
+      "stdout": "logs/generate-dev.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/lots/test",
+        "--assets-root",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/bundle",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--degradation",
+        "clean",
+        "--jobs",
+        "1",
+        "--seed",
+        "20261009",
+        "--partition",
+        "test"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "generate-test",
+      "report": "reports/generate-test.json",
+      "stderr": "logs/generate-test.stderr.log",
+      "stdout": "logs/generate-test.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "generate",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/lots/train-replay",
+        "--assets-root",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/lots/train",
+        "--pages",
+        "1",
+        "--width",
+        "800",
+        "--height",
+        "1100",
+        "--columns",
+        "4",
+        "--degradation",
+        "clean",
+        "--jobs",
+        "2",
+        "--seed",
+        "20261009",
+        "--partition",
+        "train"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "replay-train",
+      "report": "reports/replay-train.json",
+      "stderr": "logs/replay-train.stderr.log",
+      "stdout": "logs/replay-train.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "-m",
+        "mille_feuilles.cli",
+        "compare",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/lots/train",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/lots/train-replay"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "compare-train-replay",
+      "report": "reports/compare-train-replay.json",
+      "stderr": "logs/compare-train-replay.stderr.log",
+      "stdout": "logs/compare-train-replay.stdout.log"
+    },
+    {
+      "argv": [
+        "/Users/marcel/heritage-synth/.venv/bin/python3",
+        "/Users/marcel/heritage-synth/tools/reproduce_pilot.py",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/lots/train",
+        "--output",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/reproduced-train",
+        "--report",
+        "/Users/marcel/heritage-synth/runs/accept-partitioned-v03/reports/reproduction-proof.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "reproduce-train",
+      "report": "reports/reproduce-train.json",
+      "stderr": "logs/reproduce-train.stderr.log",
+      "stdout": "logs/reproduce-train.stdout.log"
+    }
+  ],
+  "counts": {
+    "accepted_documents": 18,
+    "partition_pages": 3,
+    "rejected_documents": 2,
+    "replay_pages": 1,
+    "reproduced_pages": 1
+  },
+  "errors": [],
+  "format": "mille-feuilles-partitioned-acceptance",
+  "initial_free_bytes": 1891864576,
+  "observed_documents_per_role": {
+    "advertisement": [
+      "original-ambre-advertisement-deux",
+      "original-ambre-advertisement-un",
+      "original-azur-advertisement-deux",
+      "original-azur-advertisement-un",
+      "original-cedre-advertisement-deux",
+      "original-cedre-advertisement-un"
+    ],
+    "body": [
+      "original-ambre-body-deux",
+      "original-ambre-body-un",
+      "original-azur-body-deux",
+      "original-azur-body-un",
+      "original-cedre-body-deux",
+      "original-cedre-body-un"
+    ],
+    "title": [
+      "original-ambre-title-deux",
+      "original-ambre-title-un",
+      "original-azur-title-deux",
+      "original-azur-title-un",
+      "original-cedre-title-deux",
+      "original-cedre-title-un"
+    ]
+  },
+  "observed_source_characters": {
+    "dev": 648,
+    "test": 660,
+    "train": 666
+  },
+  "requested_ratios": {
+    "dev": 1.0,
+    "test": 1.0,
+    "train": 1.0
+  },
+  "role_usage": {
+    "dev": {
+      "roles": {
+        "advertisement": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-azur-advertisement-deux",
+            "original-azur-advertisement-un"
+          ],
+          "used_documents": 2
+        },
+        "body": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-azur-body-deux",
+            "original-azur-body-un"
+          ],
+          "used_documents": 2
+        },
+        "title": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-azur-title-deux",
+            "original-azur-title-un"
+          ],
+          "used_documents": 2
+        }
+      },
+      "used_groups": [
+        "group-azur"
+      ]
+    },
+    "test": {
+      "roles": {
+        "advertisement": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-ambre-advertisement-deux",
+            "original-ambre-advertisement-un"
+          ],
+          "used_documents": 2
+        },
+        "body": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-ambre-body-deux",
+            "original-ambre-body-un"
+          ],
+          "used_documents": 2
+        },
+        "title": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-ambre-title-deux",
+            "original-ambre-title-un"
+          ],
+          "used_documents": 2
+        }
+      },
+      "used_groups": [
+        "group-ambre"
+      ]
+    },
+    "train": {
+      "roles": {
+        "advertisement": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-cedre-advertisement-deux",
+            "original-cedre-advertisement-un"
+          ],
+          "used_documents": 2
+        },
+        "body": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-cedre-body-deux",
+            "original-cedre-body-un"
+          ],
+          "used_documents": 2
+        },
+        "title": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-cedre-title-deux",
+            "original-cedre-title-un"
+          ],
+          "used_documents": 2
+        }
+      },
+      "used_groups": [
+        "group-cedre"
+      ]
+    },
+    "train-replay": {
+      "roles": {
+        "advertisement": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-cedre-advertisement-deux",
+            "original-cedre-advertisement-un"
+          ],
+          "used_documents": 2
+        },
+        "body": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-cedre-body-deux",
+            "original-cedre-body-un"
+          ],
+          "used_documents": 2
+        },
+        "title": {
+          "available_documents": 2,
+          "multiple_documents_observed": true,
+          "used_document_ids": [
+            "original-cedre-title-deux",
+            "original-cedre-title-un"
+          ],
+          "used_documents": 2
+        }
+      },
+      "used_groups": [
+        "group-cedre"
+      ]
+    }
+  },
+  "role_usage_note": "Observed documents are counted, never inferred from random selection.",
+  "scope": "Original synthetic fixtures; supplied exclusions only; no external corpus",
+  "seed": 20261009,
+  "status": "pass",
+  "version": "1"
+}
