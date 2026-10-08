@@ -22,7 +22,7 @@ import sys
 from typing import Callable
 
 from mille_feuilles.io import sha256, write_json
-from mille_feuilles.pipeline import environment, prepare_assets
+from mille_feuilles.pipeline import environment, preflight_content_profile, prepare_assets
 from mille_feuilles.render import Config, SCHEMA_VERSION, render_page
 from mille_feuilles.validation import load_json, safe_path, validate_partition_receipt
 
@@ -60,7 +60,7 @@ def strict_config(value: dict) -> tuple[Config, int]:
         raise ValueError("Nombre de pages invalide dans la configuration")
     parameters = value["render"]
     expected = {field.name for field in fields(Config)}
-    optional = {"degradation_profile", "layout_profile"}
+    optional = {"degradation_profile", "layout_profile", "content_profile"}
     if not isinstance(parameters, dict) or not expected - optional <= set(parameters) <= expected:
         raise ValueError("Paramètres de rendu incomplets ou inconnus")
     for name in ("width", "height", "dpi", "seed"):
@@ -183,6 +183,14 @@ def reproduce(
         if len(catalog_refs) != 1:
             raise ValueError("Le manifeste doit identifier une copie unique du catalogue source")
         checked_file(source, catalog_refs[0]["path"], catalog_refs[0]["sha256"])
+        content_receipt = manifest.get("extensions", {}).get("mf:content_profile")
+        if config.content_profile is not None:
+            # The copied source catalog already represents its validated partition.
+            expected_content_receipt = preflight_content_profile(source, config.content_profile)
+            if content_receipt != expected_content_receipt:
+                raise ValueError("Reçu du profil de contenu absent ou incohérent")
+        elif content_receipt is not None:
+            raise ValueError("Reçu du profil de contenu présent sans configuration correspondante")
         pages = manifest["pages"]
         if not isinstance(pages, list) or len(pages) != count:
             raise ValueError("Le nombre de pages diffère de la configuration")

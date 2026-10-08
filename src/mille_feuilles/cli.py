@@ -27,6 +27,10 @@ def main(argv: list[str] | None = None) -> int:
         "--layout-profile", choices=[PROFILE_LAYOUT],
         help="Mise en page par zones ; exige --degradation-profile (identity accepté)",
     )
+    generate.add_argument(
+        "--content-profile", choices=["consecutive-v1"],
+        help="Corps d'articles par unités sources consécutives ; exige la mise en page v2",
+    )
     degradation_options = generate.add_mutually_exclusive_group()
     degradation_options.add_argument(
         "--degradation", choices=["clean", "aged", "faint", "mixed"], default="mixed"
@@ -93,6 +97,7 @@ def main(argv: list[str] | None = None) -> int:
                 partition=args.partition,
                 degradation_profile=profile,
                 layout_profile=args.layout_profile,
+                content_profile=args.content_profile,
             )
             config.validate()
             result = build_dataset(

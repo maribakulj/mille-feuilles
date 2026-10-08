@@ -23,6 +23,7 @@ from shapely.affinity import affine_transform
 SCHEMA_VERSION = "0.2.0"
 MEASURED_PROFILE = "fr_press_19c_columns_4_6_measured"
 LAYOUT_PROFILE = "fr_press_19c_layout_v2"
+CONTENT_PROFILE = "consecutive-v1"
 MEASURED_PROFILES = {MEASURED_PROFILE, LAYOUT_PROFILE}
 TOLERANCE = 0.5
 _NON_TEXT = {"illustration", "separateur"}
@@ -300,6 +301,8 @@ def validate_page(page: dict) -> list[str]:
                 errors.append("transforms: geometry must be a non-singular affine matrix")
     if page["profile"] == LAYOUT_PROFILE and not errors:
         errors.extend(_layout_page_errors(page))
+    if not errors:
+        errors.extend(_content_page_errors(page))
     return errors
 
 
@@ -416,6 +419,144 @@ def validate_text_provenance(page: dict, text_assets: dict[str, str]) -> list[st
         ):
             errors.append(f"{label}: source segment not found in composed article text")
     return errors
+
+
+def _content_page_errors(page: dict) -> list[str]:
+    """Bind each declared consecutive sequence to the complete body of its article."""
+    if "content_profile" not in page["provenance"]["parameters"]:
+        return []  # The schema already rejects orphan sequence extensions.
+    errors = []
+    blocks = {block["id"]: block for block in page["blocks"]}
+    templates = page["provenance"].get("extensions", {}).get("mf:template_article_ids", [])
+    spans = page["provenance"]["text_spans"]
+    bodies = 0
+    for article in page["articles"]:
+        aid = article["id"]
+        sequence = article.get("extensions", {}).get("mf:source_sequence")
+        body_ids = [bid for bid in article["block_ids"] if blocks[bid]["category"] == "texte"]
+        if aid in templates or not body_ids or any(
+            blocks[bid]["category"] == "annonce" for bid in article["block_ids"]
+        ):
+            if sequence is not None:
+                errors.append(f"content {aid}: source_sequence forbidden on template/non-body article")
+            continue
+        bodies += 1
+        if sequence is None:
+            errors.append(f"content {aid}: body article requires source_sequence")
+            continue
+        first, stop = sequence["unit_range"]
+        if stop - first not in (2, 3) or sequence["start"] >= sequence["end"]:
+            errors.append(f"content {aid}: source_sequence requires two or three complete units")
+        matching = [span for span in spans if span["article_id"] == aid
+                    and span["block_ids"] == body_ids]
+        if len(matching) != 1:
+            errors.append(f"content {aid}: exactly one span must cover all body blocks in order")
+        elif any(matching[0][key] != sequence[key] for key in ("asset_id", "start", "end")):
+            errors.append(f"content {aid}: source_sequence differs from its body span")
+    if not bodies:
+        errors.append("content: page requires at least one consecutive body article")
+    return errors
+
+
+def _content_source_errors(page: dict, assets: dict, text_assets: dict[str, str]) -> list[str]:
+    """Check source unit boundaries independently of sampling, after validate_page."""
+    if page["provenance"]["parameters"].get("content_profile") != CONTENT_PROFILE:
+        return []
+    from .catalog import text_units
+
+    errors = []
+    blocks = {block["id"]: block for block in page["blocks"]}
+    templates = page["provenance"].get("extensions", {}).get("mf:template_article_ids", [])
+    by_article = defaultdict(list)
+    for span in page["provenance"]["text_spans"]:
+        by_article[span["article_id"]].append(span)
+    units_by_asset = {}
+    for article in page["articles"]:
+        aid = article["id"]
+        sequence = article.get("extensions", {}).get("mf:source_sequence")
+        body_spans = [span for span in by_article[aid]
+                      if assets.get(span["asset_id"], {}).get("metadata", {}).get("role") == "body"]
+        if sequence is None:
+            if body_spans:
+                errors.append(f"content {aid}: body source requires source_sequence")
+            continue
+        if aid in templates or len(body_spans) != 1:
+            errors.append(f"content {aid}: source_sequence requires exactly one body-role span")
+            continue
+        span = body_spans[0]
+        source = assets.get(sequence["asset_id"], {})
+        raw = text_assets.get(sequence["asset_id"])
+        if (source.get("kind") != "text" or source.get("metadata", {}).get("role") != "body"
+                or raw is None):
+            errors.append(f"content {aid}: sequence asset must be an available body text")
+            continue
+        if (any(span[key] != sequence[key] for key in ("asset_id", "start", "end"))
+                or span["source_document_id"] != source["metadata"].get("source_document_id")):
+            errors.append(f"content {aid}: body span differs from sequence asset/document/bounds")
+        body_ids = [bid for bid in article["block_ids"] if blocks[bid]["category"] == "texte"]
+        if span["block_ids"] != body_ids:
+            errors.append(f"content {aid}: body-role span must cover exactly all body blocks")
+        for other in by_article[aid]:
+            if other is span:
+                continue
+            asset = assets.get(other["asset_id"], {})
+            if (asset.get("kind") != "text" or asset.get("metadata", {}).get("role") != "title"
+                    or any(blocks[bid]["category"] != "titre" for bid in other["block_ids"])):
+                errors.append(f"content {aid}: non-body span must be a separate title-role span")
+        if sequence["asset_id"] not in units_by_asset:
+            units_by_asset[sequence["asset_id"]] = text_units(raw, "body")
+        units = units_by_asset[sequence["asset_id"]]
+        first, stop = sequence["unit_range"]
+        if not (0 <= first < stop <= len(units) and stop - first in (2, 3)):
+            errors.append(f"content {aid}: unit_range outside source or not two/three consecutive units")
+        elif (sequence["start"], sequence["end"]) != (units[first][1], units[stop - 1][2]):
+            errors.append(f"content {aid}: sequence bounds differ from exact consecutive unit boundaries")
+    return errors
+
+
+def _load_content_profile(root: Path, manifest: dict, assets: dict, text_assets: dict[str, str]):
+    """Recompute the receipt using copied body texts only; never sample or read another partition."""
+    from .catalog import text_units
+
+    errors = []
+    receipt = manifest.get("extensions", {}).get("mf:content_profile")
+    try:
+        config = load_json(safe_path(root, manifest["config"]["path"]))
+        render = config.get("render", {})
+        profile = render.get("content_profile")
+    except (OSError, ValueError, TypeError, AttributeError) as exc:
+        return None, [f"content: invalid config context: {exc}"]
+    if profile is None and receipt is None:
+        return None, []
+    if profile != CONTENT_PROFILE or receipt is None:
+        errors.append("content: explicit config profile and manifest receipt must agree")
+    if (manifest["profile"] != LAYOUT_PROFILE or render.get("layout_profile") != LAYOUT_PROFILE
+            or render.get("degradation_profile") is None):
+        errors.append("content: consecutive profile requires layout_v2 and explicit degradation")
+    documents = []
+    for asset in sorted(assets.values(), key=lambda item: item["id"]):
+        if asset["kind"] != "text" or asset["metadata"].get("role") != "body":
+            continue
+        raw = text_assets.get(asset["id"])
+        if raw is None:
+            errors.append(f"content: body source unavailable: {asset['id']}")
+            continue
+        if unicodedata.normalize("NFC", raw) != raw:
+            errors.append(f"content: body source is not NFC: {asset['id']}")
+        count = len(text_units(raw, "body"))
+        documents.append({"asset_id": asset["id"],
+                          "source_document_id": asset["metadata"].get("source_document_id"),
+                          "sha256": asset["sha256"], "unit_count": count, "eligible": count >= 2,
+                          "reason": None if count >= 2 else "fewer_than_two_body_units"})
+    expected = {"version": "1", "profile": CONTENT_PROFILE, "calibrated": False, "documents": documents}
+    for document_id, count in Counter(document["source_document_id"] for document in documents).items():
+        if count != 1:
+            errors.append(f"content: duplicate body source_document_id: {document_id}")
+    if receipt != expected:
+        errors.append("content: manifest receipt differs from exact copied body documents/unit counts")
+    if not any(document["eligible"] for document in documents):
+        errors.append("content: no copied body document has two complete units")
+    return profile, errors
 
 
 def _validate_template_text(page: dict, template: dict) -> list[str]:
@@ -1136,6 +1277,9 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
     layout_context, layout_issues = _load_layout_context(root, manifest, assets)
     if layout_issues or manifest["profile"] == LAYOUT_PROFILE:
         check("layout_profile", layout_issues)
+    content_profile, content_issues = _load_content_profile(root, manifest, assets, text_assets)
+    if content_issues or content_profile is not None:
+        check("content_profile", content_issues)
     pages = []
     for index, record in enumerate(manifest["pages"]):
         try:
@@ -1154,6 +1298,8 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
             if page["schema_version"] != manifest["schema_version"]:
                 page_issues.append("page schema_version differs from manifest")
             provenance = page["provenance"]
+            if provenance["parameters"].get("content_profile") != content_profile:
+                page_issues.append("content: page profile differs from config/manifest receipt")
             if page["profile"] in MEASURED_PROFILES:
                 if degradation_profile is None or degradation_issues:
                     page_issues.append("measured page requires a valid embedded degradation profile")
@@ -1205,6 +1351,7 @@ def validate_dataset(root: Path, verify_exports: bool = True) -> dict:
                 if span["end"] > len(text_assets.get(span["asset_id"], "")):
                     page_issues.append("text span exceeds Unicode source length")
             page_issues += validate_text_provenance(page, text_assets)
+            page_issues += _content_source_errors(page, assets, text_assets)
             if page["schema_version"] == "0.3.0":
                 if source_groups != set(record["source_group_ids"]):
                     page_issues.append("source_group_ids differ from exact used source groups")

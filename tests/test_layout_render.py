@@ -158,6 +158,7 @@ def test_column_filter_measures_tokens_without_wrapping_units():
 
 def test_terminal_failures_are_separate_from_retries_before_success():
     obj = composer()
+    obj.config = Config()
     zone = {"id": "main", "bbox": [0, 0, 100, 100], "columns": [[0, 100]],
             "headline_span": None, "headline_reserved": None, "headline_body_band": None}
     obj.layout_plan = {"zones": [zone]}

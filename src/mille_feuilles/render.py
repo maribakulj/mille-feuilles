@@ -44,6 +44,7 @@ class Config:
     partition: str | None = None
     degradation_profile: dict | None = None
     layout_profile: str | None = None
+    content_profile: str | None = None
 
     def validate(self) -> None:
         if not (800 <= self.width <= 6000 and 1100 <= self.height <= 8500):
@@ -71,6 +72,10 @@ class Config:
             raise ValueError("Profil de mise en page inconnu")
         if self.layout_profile is not None and self.degradation_profile is None:
             raise ValueError("Le profil de mise en page exige un degradation_profile explicite")
+        if self.content_profile not in (None, "consecutive-v1"):
+            raise ValueError("Profil de contenu inconnu")
+        if self.content_profile is not None and self.layout_profile != PROFILE_LAYOUT:
+            raise ValueError("Le profil de contenu exige le profil de mise en page v2")
 
     def as_dict(self) -> dict:
         value = asdict(self)
@@ -78,6 +83,8 @@ class Config:
             del value["degradation_profile"]
         if self.layout_profile is None:
             del value["layout_profile"]
+        if self.content_profile is None:
+            del value["content_profile"]
         return value
 
 
@@ -126,6 +133,7 @@ class Composer:
                 raise ValueError(f"Fonte requise absente du catalogue : {name}")
         self.text_roles = text_assets_by_role({"schema_version": SCHEMA_VERSION, "assets": assets})
         self.role_units = {}
+        body_documents = []
         for role, documents in self.text_roles.items():
             units = []
             for source in documents:
@@ -133,9 +141,15 @@ class Composer:
                 if unicodedata.normalize("NFC", raw) != raw:
                     raise ValueError(f"Texte source non NFC : {source['id']}")
                 units.extend((source, text, start, end) for text, start, end in text_units(raw, role))
+                if config.content_profile is not None and role == "body":
+                    body_documents.append((source, raw))
             if not units:
                 raise ValueError(f"Au moins une unité de texte requise pour le rôle {role}")
             self.role_units[role] = units
+        if config.content_profile is not None:
+            from .content import index_body_documents
+
+            self.content_index = index_body_documents(body_documents)
         if config.layout_profile is not None:
             self._init_layout_v2()
         else:
@@ -206,10 +220,19 @@ class Composer:
         # Measure each distinct non-hyphenatable token, not every paragraph for
         # every column option. Oversized splittable units are rejected later as
         # individual composition candidates, without removing all column choices.
+        width_units = self.role_units
+        if self.config.content_profile is not None:
+            # Ineligible documents are never sampled by this profile and must
+            # not eliminate a column width for the eligible bodies.
+            width_units = {**width_units, "body": [
+                (document["asset"], text, start, end)
+                for document in self.content_index["documents"]
+                for text, start, end in document["units"]
+            ]}
         self._layout_unbreakable = {
             role: sorted({word for _, text, _, _ in units for word in text.split()
                           if role == "title" or not word.isalpha() or len(word) < 8})
-            for role, units in self.role_units.items()
+            for role, units in width_units.items()
         }
         self.font_size, self.hyphen_number = 10, 0
         self.layout_draws = layout.draw_layout(
@@ -424,10 +447,25 @@ class Composer:
             "article_id": article["id"], "block_ids": block_ids,
         })
 
+    def _v2_body(self, role: str) -> tuple[tuple, dict | None]:
+        if self.config.content_profile is None or role != "body":
+            # Keep exactly the historical draw when the option is absent.
+            return self.rng.choice(self.role_units[role]), None
+        from .content import choose_body_sequence
+
+        sequence = choose_body_sequence(self.content_index, self.rng)
+        unit = (sequence["source"], sequence["text"], sequence["start"], sequence["end"])
+        receipt = {"version": "1", "asset_id": sequence["source"]["id"],
+                   "start": sequence["start"], "end": sequence["end"],
+                   "unit_range": list(sequence["unit_range"])}
+        return unit, receipt
+
     def _v2_commit(self, candidate: dict) -> dict:
         article = self.article()
         meta = candidate["metadata"]
         article["extensions"] = {"mf:layout": meta}
+        if candidate.get("source_sequence") is not None:
+            article["extensions"]["mf:source_sequence"] = deepcopy(candidate["source_sequence"])
         block, previous = None, None
         blocks_by_kind = {"heading": [], "body": []}
         for row in candidate["rows"]:
@@ -479,7 +517,7 @@ class Composer:
         headline_font = self._v2_font("OldStandard-Bold.ttf", max(12, round(font.size * 2)))
         area = layout.headline_rect(self.layout_plan, zone["id"])
         for attempt in range(1, 33):
-            body = self.rng.choice(self.role_units["body"])
+            body, source_sequence = self._v2_body("body")
             title = self.rng.choice(self.role_units["title"])
             try:
                 headings, _ = self._v2_rows(title[1], headline_font, area[2] - area[0],
@@ -520,6 +558,7 @@ class Composer:
                                 "attempts": attempt}
             self._v2_commit({"metadata": meta, "rows": placed + fit["rows"], "body": body,
                              "title": title, "ad": False, "padding": None,
+                             "source_sequence": source_sequence,
                              "next_hyphen": next_hyphen})
             return (0, accepted_zone["headline_body_band"][3])
         raise layout.LayoutError("Aucun article complet ne tient sous le titre large après 32 essais")
@@ -541,7 +580,7 @@ class Composer:
             meta, font, spacing = self._v2_type(zone["id"], role)
             boxed = ad and self.rng.random() < self.layout_options["boxed_ad_probability"]
             padding = self.rng.randint(*self.layout_options["box_padding_px"]) if boxed else None
-            body = self.rng.choice(self.role_units[role])
+            body, source_sequence = self._v2_body(role)
             title = self.rng.choice(self.role_units["title"])
             wants_title = self.rng.random() < (0.25 if ad else 0.55)
             width = rects[0][2] - rects[0][0] - (2 * (padding + 2) if boxed else 0)
@@ -562,6 +601,7 @@ class Composer:
                 self.layout_rejected_candidates[kind] += count
             self._v2_commit({"metadata": meta, "rows": fit["rows"], "body": body,
                              "title": title, "ad": ad, "padding": padding,
+                             "source_sequence": source_sequence,
                              "next_hyphen": next_hyphen})
             cursor = fit["cursor"]
             rejected = 0
@@ -605,6 +645,10 @@ class Composer:
         # Rules are never inserted in the ordered stream.
         for zone in self.layout_plan["zones"]:
             self._v2_zone(zone)
+        if self.config.content_profile is not None and not any(
+            "mf:source_sequence" in article.get("extensions", {}) for article in self.articles
+        ):
+            raise ValueError("Aucun corps multi-unités complet n'a été composé")
         for rect in self.layout_plan["zone_rules"]:
             self.separator(*rect)
         for zone in self.layout_plan["zones"]:
@@ -1053,6 +1097,8 @@ class Composer:
                 "layout_rejected_candidates": self.layout_rejected_candidates,
                 "layout_termination_rejections": self.layout_termination_rejections,
             })
+        if self.config.content_profile is not None:
+            page["provenance"]["parameters"]["content_profile"] = self.config.content_profile
         return page
 
     def _finish_measured(self, out_root: Path) -> dict:

@@ -154,6 +154,9 @@
               "type": "integer",
               "minimum": 4,
               "maximum": 6
+            },
+            "content_profile": {
+              "const": "consecutive-v1"
             }
           },
           "required": [
@@ -389,6 +392,43 @@
                   "headline",
                   "box",
                   "small_body_requested"
+                ],
+                "additionalProperties": false
+              },
+              "mf:source_sequence": {
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "const": "1"
+                  },
+                  "asset_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+                  },
+                  "start": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "end": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "unit_range": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  }
+                },
+                "required": [
+                  "version",
+                  "asset_id",
+                  "start",
+                  "end",
+                  "unit_range"
                 ],
                 "additionalProperties": false
               }
@@ -1243,6 +1283,48 @@
                   "not": {
                     "required": [
                       "mf:layout"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "parameters": {
+                "required": [
+                  "content_profile"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "profile": {
+            "const": "fr_press_19c_layout_v2"
+          },
+          "schema_version": {
+            "const": "0.3.0"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "articles": {
+            "items": {
+              "properties": {
+                "extensions": {
+                  "not": {
+                    "required": [
+                      "mf:source_sequence"
                     ]
                   }
                 }

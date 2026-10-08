@@ -298,6 +298,70 @@
             }
           },
           "additionalProperties": false
+        },
+        "mf:content_profile": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "const": "1"
+            },
+            "profile": {
+              "const": "consecutive-v1"
+            },
+            "calibrated": {
+              "const": false
+            },
+            "documents": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "asset_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*(?![\\s\\S])"
+                  },
+                  "source_document_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+                  },
+                  "unit_count": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "eligible": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "enum": [
+                      null,
+                      "fewer_than_two_body_units"
+                    ]
+                  }
+                },
+                "required": [
+                  "asset_id",
+                  "source_document_id",
+                  "sha256",
+                  "unit_count",
+                  "eligible",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "version",
+            "profile",
+            "calibrated",
+            "documents"
+          ],
+          "additionalProperties": false
         }
       }
     }
@@ -350,6 +414,30 @@
                 "mf:degradation_profile"
               ]
             }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "extensions"
+        ],
+        "properties": {
+          "extensions": {
+            "required": [
+              "mf:content_profile"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "profile": {
+            "const": "fr_press_19c_layout_v2"
+          },
+          "schema_version": {
+            "const": "0.3.0"
           }
         }
       }

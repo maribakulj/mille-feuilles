@@ -228,6 +228,46 @@ def _select_partition(source: Path, name: str | None):
     return selected, safe_path(source, "assets/partition.json"), safe_path(source, "assets/catalog.json")
 
 
+def preflight_content_profile(source: Path, profile: str, selected: set[str] | None = None) -> dict:
+    """Check body eligibility only within the already selected text assets."""
+    from .catalog import load_catalog
+    from .content import preflight_content
+
+    assets = [asset for asset in load_catalog(source)["assets"]
+              if asset["kind"] == "text" and (selected is None or asset["id"] in selected)]
+    return preflight_content(source, assets, profile=profile)
+
+
+def content_statistics(pages: list[dict]) -> dict:
+    """Count committed body sequences, cross-checked against their source spans."""
+    from .content import PROFILE as CONTENT_PROFILE
+
+    unit_counts, documents = Counter(), Counter()
+    for page in pages:
+        blocks = {block["id"]: block for block in page["blocks"]}
+        for article in page["articles"]:
+            sequence = article.get("extensions", {}).get("mf:source_sequence")
+            if sequence is None:
+                continue
+            spans = [span for span in page["provenance"]["text_spans"]
+                     if span["article_id"] == article["id"]
+                     and all(span[key] == sequence[key] for key in ("asset_id", "start", "end"))]
+            body_blocks = [identity for identity in article["block_ids"]
+                           if blocks[identity]["category"] == "texte"]
+            if (len(spans) != 1 or not body_blocks or spans[0]["block_ids"] != body_blocks
+                    or not isinstance(spans[0].get("source_document_id"), str)
+                    or not spans[0]["source_document_id"]):
+                raise ValueError(f"Séquence de corps sans span exact : {article['id']}")
+            first, last = sequence["unit_range"]
+            if type(first) is not int or type(last) is not int or first < 0 or last - first not in (2, 3):
+                raise ValueError(f"Nombre d'unités de corps invalide : {article['id']}")
+            unit_counts[str(last - first)] += 1
+            documents[spans[0]["source_document_id"]] += 1
+    return {"profile": CONTENT_PROFILE, "calibrated": False,
+            "articles": sum(unit_counts.values()), "units_per_article": dict(sorted(unit_counts.items())),
+            "body_documents": dict(sorted(documents.items()))}
+
+
 def overlay(page: dict, root: Path) -> None:
     with Image.open(root / page["image"]["path"]) as src:
         canvas = src.convert("RGB")
@@ -375,6 +415,10 @@ def build_dataset(
         raise ValueError("Nombre de pages attendu : 1–1000 ; jobs : 1–4")
     source = Path(asset_source or ROOT).resolve()
     selected, plan_path, source_catalog_path = _select_partition(source, config.partition)
+    content_receipt = (
+        preflight_content_profile(source, config.content_profile, selected)
+        if config.content_profile is not None else None
+    )
     root = Path(output).absolute()
     if root.exists() and (not root.is_dir() or any(root.iterdir())):
         raise ValueError(f"Destination non vide, aucune écriture : {root}")
@@ -507,6 +551,8 @@ def build_dataset(
         statistics["layout"] = layout_statistics(
             pages, load_json(root / "assets/template.json")["layout_options"]
         )
+    if content_receipt is not None:
+        statistics["content"] = content_statistics(pages)
     write_json(root / "qa/statistics.json", statistics)
     artifacts = [
         {
@@ -573,6 +619,8 @@ def build_dataset(
         manifest.setdefault("extensions", {})["mf:import_report"] = import_ref
     if degradation_ref:
         manifest.setdefault("extensions", {})["mf:degradation_profile"] = degradation_ref
+    if content_receipt is not None:
+        manifest.setdefault("extensions", {})["mf:content_profile"] = content_receipt
     write_json(root / "manifest.json", manifest)
     if progress:
         progress("Vérification du lot et des exports…")
