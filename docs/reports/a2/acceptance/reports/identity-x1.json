@@ -1,0 +1,213 @@
+{
+  "checks": [
+    {
+      "detail": "verified",
+      "name": "manifest",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "file_hashes",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "strict_json_files",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "unique_manifest_entries",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "manifest_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "asset_registry",
+      "status": "pass"
+    },
+    {
+      "detail": "unpartitioned dataset; no partition isolation claim",
+      "name": "partition_receipt",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "assets",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "degradation_profile",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "layout_profile",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "content_profile",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0000",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page:mf_0001",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "page_files:mf_0001",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "export_inventory",
+      "status": "pass"
+    },
+    {
+      "detail": "verified",
+      "name": "exports",
+      "status": "pass"
+    }
+  ],
+  "errors": [],
+  "statistics": {
+    "blocks": 87,
+    "categories": {
+      "annonce": 14,
+      "separateur": 19,
+      "texte": 35,
+      "titre": 19
+    },
+    "columns": {
+      "4": 2
+    },
+    "content": {
+      "articles": 26,
+      "body_documents": {
+        "mille_feuilles_demo_articles_20261007": 26
+      },
+      "calibrated": false,
+      "profile": "consecutive-v1",
+      "units_per_article": {
+        "2": 9,
+        "3": 17
+      }
+    },
+    "cross_block_articles": 24,
+    "degradations": {
+      "measured": 2
+    },
+    "hyphenation_groups": 84,
+    "layout": {
+      "body_sizes": {
+        "11": 9,
+        "13": 28
+      },
+      "boxed_ads": 2,
+      "calibrated": false,
+      "line_height_bin_px": 1,
+      "line_heights_px": {
+        "main": {
+          "12": 94,
+          "13": 4,
+          "14": 530,
+          "15": 2,
+          "16": 7,
+          "17": 11,
+          "20": 4,
+          "27": 1
+        },
+        "rez_de_chaussee": {
+          "12": 21,
+          "13": 1,
+          "14": 47,
+          "16": 1,
+          "17": 2,
+          "18": 1
+        }
+      },
+      "profile": "fr_press_19c_layout_v2",
+      "small_body_articles": 9,
+      "small_body_clamped": 0,
+      "small_body_inactive": 0,
+      "small_body_requests": 9,
+      "wide_headlines": 1,
+      "zone_columns": {
+        "main:4": 2,
+        "rez_de_chaussee:3": 1
+      },
+      "zones": {
+        "main": 2,
+        "rez_de_chaussee": 1
+      }
+    },
+    "lines": 730,
+    "measured_degradations": {
+      "calibrated": false,
+      "legibility": {
+        "illegible": 11,
+        "readable": 5322,
+        "uncertain": 0
+      },
+      "legibility_method": "heuristic-v1",
+      "pages": [
+        {
+          "contrast": 170.0,
+          "edge_contrast_proxy": 0.371747,
+          "ink_loss_fraction": 0.0,
+          "ink_median": 85.0,
+          "ink_pixels": 158960,
+          "legibility": {
+            "illegible": 4,
+            "readable": 2724,
+            "uncertain": 0
+          },
+          "noise_mad_sigma": 0.0,
+          "otsu_threshold": 181,
+          "page_id": "mf_0000",
+          "paper_median": 255.0,
+          "spurious_ink_fraction": 0.001582
+        },
+        {
+          "contrast": 175.0,
+          "edge_contrast_proxy": 0.363137,
+          "ink_loss_fraction": 0.0,
+          "ink_median": 80.0,
+          "ink_pixels": 160559,
+          "legibility": {
+            "illegible": 7,
+            "readable": 2598,
+            "uncertain": 0
+          },
+          "noise_mad_sigma": 0.0,
+          "otsu_threshold": 178,
+          "page_id": "mf_0001",
+          "paper_median": 255.0,
+          "spurious_ink_fraction": 0.00121
+        }
+      ],
+      "profile": "identity"
+    },
+    "pages": 2,
+    "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+    "words": 5333
+  },
+  "status": "pass"
+}

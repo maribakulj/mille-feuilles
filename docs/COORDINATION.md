@@ -260,3 +260,12 @@ organiser après sa limite de session. Les preuves sont archivées dans
 `reports/a1/`. Le travail continue sur le cadrage des articles à plusieurs
 unités consécutives, avec préservation des profils existants et sans nouveau
 corpus ni calibration automatique sur les pages d'acceptation.
+
+Le 8 octobre, Marcel transfère la poursuite autonome de Mille Feuilles à
+Claude, Codex n'ayant plus de crédits. La passation versionnée
+(`PASSATION_A2_CODEX.md`) sert de point de départ ; Claude coordonne seul et
+ne compte pas sur une réponse de Codex. A2 est commité en `e5f121a` et accepté
+(845 contrôles). Restent ouverts : la preuve de non-régression contre
+`178a79b`, la diversité des documents de corps, et les évaluations
+OCR/utilité et corpus autorisés, en attente de décisions de Marcel. Axel et
+ses données restent hors de ce périmètre.

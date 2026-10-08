@@ -160,6 +160,17 @@ Les probabilités de tirage ne sont pas une calibration historique ; les petits
 corps dégradés montrent aussi que `heuristic-v1` ne convient pas comme seul
 filtre de supervision OCR.
 
+## Corps à unités consécutives — A2
+
+Avec le layout v2, `--content-profile consecutive-v1` compose chaque corps
+d'article à partir de deux ou trois unités consécutives d'un même document,
+le titre restant tiré séparément. L'option est non calibrée ; sans elle, les
+lots restent identiques aux versions antérieures. Voir
+[composition](docs/COMPOSITION.md) et la
+[campagne A2](docs/VALIDATION.md#corps-à-unités-consécutives-a2)
+(845 contrôles). Des unités consécutives ne font pas un article cohérent, et
+le catalogue embarqué n'a qu'un document de corps.
+
 ## Lire et vérifier le résultat
 
 - `images/` et `pages/` : PNG et JSON canonique de chaque page.

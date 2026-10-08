@@ -1,0 +1,175 @@
+{
+  "status": "pass",
+  "errors": [],
+  "checks": [
+    {
+      "name": "manifest",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "file_hashes",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "strict_json_files",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "unique_manifest_entries",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "manifest_coverage",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "asset_registry",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "partition_receipt",
+      "status": "pass",
+      "detail": "unpartitioned dataset; no partition isolation claim"
+    },
+    {
+      "name": "assets",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "degradation_profile",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "layout_profile",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "content_profile",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "page:mf_0000",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "page_files:mf_0000",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "export_inventory",
+      "status": "pass",
+      "detail": "verified"
+    },
+    {
+      "name": "exports",
+      "status": "pass",
+      "detail": "verified"
+    }
+  ],
+  "statistics": {
+    "pages": 1,
+    "words": 2728,
+    "lines": 386,
+    "blocks": 35,
+    "columns": {
+      "4": 1
+    },
+    "degradations": {
+      "measured": 1
+    },
+    "categories": {
+      "annonce": 5,
+      "separateur": 4,
+      "texte": 17,
+      "titre": 9
+    },
+    "hyphenation_groups": 48,
+    "cross_block_articles": 11,
+    "scope": "synthetic measured degradations; heuristic labels, no calibrated realism or OCR gain",
+    "measured_degradations": {
+      "profile": "controlled-v1",
+      "calibrated": false,
+      "legibility_method": "heuristic-v1",
+      "legibility": {
+        "readable": 31,
+        "uncertain": 195,
+        "illegible": 2502
+      },
+      "pages": [
+        {
+          "page_id": "mf_0000",
+          "contrast": 45.0,
+          "edge_contrast_proxy": 0.261515,
+          "ink_loss_fraction": 0.003611,
+          "ink_median": 204.0,
+          "ink_pixels": 158960,
+          "legibility": {
+            "illegible": 2502,
+            "readable": 31,
+            "uncertain": 195
+          },
+          "noise_mad_sigma": 2.9652,
+          "otsu_threshold": 228,
+          "paper_median": 249.0,
+          "spurious_ink_fraction": 0.001288
+        }
+      ]
+    },
+    "layout": {
+      "profile": "fr_press_19c_layout_v2",
+      "calibrated": false,
+      "zones": {
+        "main": 1
+      },
+      "zone_columns": {
+        "main:4": 1
+      },
+      "wide_headlines": 0,
+      "boxed_ads": 0,
+      "small_body_articles": 4,
+      "small_body_requests": 4,
+      "small_body_clamped": 0,
+      "small_body_inactive": 0,
+      "line_heights_px": {
+        "main": {
+          "12": 63,
+          "13": 1,
+          "14": 308,
+          "15": 1,
+          "16": 2,
+          "17": 6,
+          "20": 3
+        }
+      },
+      "line_height_bin_px": 1,
+      "body_sizes": {
+        "11": 4,
+        "13": 14
+      }
+    },
+    "content": {
+      "profile": "consecutive-v1",
+      "calibrated": false,
+      "articles": 14,
+      "units_per_article": {
+        "2": 6,
+        "3": 8
+      },
+      "body_documents": {
+        "mille_feuilles_demo_articles_20261007": 14
+      }
+    }
+  }
+}

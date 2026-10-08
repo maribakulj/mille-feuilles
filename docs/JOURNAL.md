@@ -313,3 +313,22 @@ anciennes pages reste ND. Ces quatre pages prouvent le fonctionnement de
 la commande et non une distribution représentative ni une utilité de modèle.
 Le cadrage suivant examine des articles composés d'unités consécutives d'un
 même document ; aucun réglage n'est appris de cette petite campagne.
+
+## A2 — corps à unités consécutives
+
+Codex développe `consecutive-v1` : chaque article de corps reprend deux ou
+trois unités consécutives d'un même document, titre tiré séparément, reçu
+recalculable dans le manifeste. Sans l'option, sérialisation et tirages sont
+inchangés. Marcel arrête Codex faute de crédits ; la
+[passation](PASSATION_A2_CODEX.md) transmet un arbre non commité et deux
+changements de reproduction non testés.
+
+Claude reprend seul la coordination le 8 octobre. Le refus d'un reçu orphelin
+à la reproduction est correct ; un cas du test avait une attente fausse
+(rejeu sans profil rendu avec `None`), corrigée. Le script d'acceptation est
+versionné dans `tools/` avec les trois corrections de revue demandées par
+Codex. Suite complète : 1 423 tests passants. Commit source `e5f121a`.
+
+L'acceptation passe 845 contrôles (voir [validation](VALIDATION.md)). La revue
+visuelle ne montre pas de défaut de rendu, mais confirme une limite : des
+unités consécutives du document de démonstration traitent de sujets distincts.

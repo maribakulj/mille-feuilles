@@ -602,3 +602,40 @@ Les deux pages anciennes n'identifient pas leur bandeau : leur cohorte
 `sans_gabarit` est ND, sans comparaison. Les deux pages v2 permettent les
 deux variantes. La taille et la sélection de ces échantillons ne justifient
 aucun réglage statistique du générateur.
+
+## Corps à unités consécutives A2
+
+`consecutive-v1` est une option explicite ([composition](COMPOSITION.md)).
+L'acceptation compacte se reproduit sur un commit propre :
+
+```sh
+uv run --locked --offline python tools/accept_content.py --output runs/accept-content-v1
+```
+
+Elle rend huit pages en tout, y compris le rejeu et la reproduction : deux pages
+`identity` ×1, leur rejeu à deux workers, une page ×2, une page `controlled-v1`
+et la reproduction des deux premières. Pour chaque corps, elle recalcule le reçu
+du manifeste sur les textes copiés et vérifie 2 ou 3 unités entières et
+consécutives, leurs bornes Unicode exactes et un span unique couvrant tout le
+corps. Les fragments affichés doivent reconstituer toute la tranche source. Les
+statistiques de contenu du générateur sont recomptées indépendamment. Entre ×1
+et ×2, la composition sans géométrie est identique ; seul le rectangle de cadre
+d'annonce, qui suit les enveloppes d'encre, en est exclu, et les longueurs sont
+vérifiées avant appariement des points. Le budget de 200 Mo est contrôlé entre
+les commandes, pas comme un quota atomique.
+
+La campagne passe **845 contrôles** au commit propre **`e5f121a`** : rejeu
+octet pour octet, reproduction identique des PNG, canoniques, masques et
+diagnostics, photométrie sans effet sur la composition ni sur le masque. Les
+lots ×1 comptent 26 corps (9 à deux unités, 17 à trois) ; les lots ×2 et
+contrôlé 14 (6 et 8). Les lignes de base natives diffèrent au plus de
+8,5 × 10⁻⁷ px entre ×1 et ×2 ; les polygones de mots, dérivés de l'encre, de
+2,5 px au plus. Elle écrit 55,9 Mo. Les preuves légères et une
+[revue visuelle](reports/a2/acceptance/visual/NOTE-VISUELLE.md) sont
+[archivées](reports/a2/acceptance/index.json) ; les lots complets restent locaux.
+
+Ce succès technique ne démontre ni cohérence thématique des articles, ni
+diversité de sources (un seul document de corps embarqué), ni gain OCR, OLR ou
+d'apprentissage. La preuve de non-régression des modes sans option contre
+`178a79b` reste à faire séparément ; la suite complète (1 423 tests) couvre
+les tirages historiques inchangés sans option.

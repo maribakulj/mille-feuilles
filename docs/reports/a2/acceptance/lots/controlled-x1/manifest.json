@@ -1,0 +1,249 @@
+{
+  "artifacts": [
+    {
+      "path": "assets/catalog.json",
+      "role": "assets",
+      "sha256": "15d6b6cb0528af01a74755c332481e8544c36d87ca53a93beb8c34f068851b20"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/DESCRIPTION.en_us.html",
+      "role": "assets",
+      "sha256": "9aa61fa5d8872f9cab53be3ff1e040abbd0af0931207bd6ea9d297ef89506223"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/GFSDidot-Regular.ttf",
+      "role": "assets",
+      "sha256": "4fc784ab824e8866eeef8ad55976b93e7e170fb1b8237fd4f8781b5b4dd297f9"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/METADATA.pb",
+      "role": "assets",
+      "sha256": "aa07c9c90cea6cc13577262558cd366c2fdee90b57e6f75d752f010ff0f6b751"
+    },
+    {
+      "path": "assets/fonts/gfsdidot/OFL.txt",
+      "role": "assets",
+      "sha256": "9e19c0d2e7e7adcbe9dfd0749e34dda41e7e356e0f2cc082d61d2fc9b6e0cef7"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/DESCRIPTION.en_us.html",
+      "role": "assets",
+      "sha256": "8f890b4a6c93591c47c6a8c39b55ff7a7509a520dee29176243634258a86cb57"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/METADATA.pb",
+      "role": "assets",
+      "sha256": "c2893bc801b26ce6017f8983b8c5c7fb3198d0b6b4f2bde2c185201921eba91d"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OFL.txt",
+      "role": "assets",
+      "sha256": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Bold.ttf",
+      "role": "assets",
+      "sha256": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Italic.ttf",
+      "role": "assets",
+      "sha256": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564"
+    },
+    {
+      "path": "assets/fonts/oldstandardtt/OldStandard-Regular.ttf",
+      "role": "assets",
+      "sha256": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac"
+    },
+    {
+      "path": "assets/template-NOTICE.txt",
+      "role": "assets",
+      "sha256": "62b0f4bc3bc1a43f19db3653d026273378fd839c98635868081e964491f0a831"
+    },
+    {
+      "path": "assets/template.json",
+      "role": "assets",
+      "sha256": "75dd119ec4d0012669a61b79a68a2fa504a65449206a3e975d022231ad600a40"
+    },
+    {
+      "path": "assets/texts/CC0-1.0.txt",
+      "role": "assets",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "assets/texts/NOTICE.md",
+      "role": "assets",
+      "sha256": "b2ce6e45a24ee9c034039d18450ec8c6d2611319bfb7a7b8801f8139926dd014"
+    },
+    {
+      "path": "assets/texts/annonces-fr.txt",
+      "role": "assets",
+      "sha256": "7881bb7fca96af44c294f8a6603f924eee958ab5b6394bc7c8b47cf2734af4fc"
+    },
+    {
+      "path": "assets/texts/demo-fr.txt",
+      "role": "assets",
+      "sha256": "1025138a6e80735785d415c157a91cb856a34a86659ca7a5215193197e992895"
+    },
+    {
+      "path": "assets/texts/titres-fr.txt",
+      "role": "assets",
+      "sha256": "30f846cdeec76617013e7891dd4c5695c11358b652cceefba20755255d6e0c72"
+    },
+    {
+      "path": "assets.json",
+      "role": "assets.json",
+      "sha256": "290b15590cfa915ae6566de57214654969a7b56ba4bd97b5057eeef3c566ce7a"
+    },
+    {
+      "path": "calibration/CADRAGE.md",
+      "role": "calibration",
+      "sha256": "7e9960f8709c3a8415ac142c6b604a7340746e8168e23dfb5f598e95bf1f01c7"
+    },
+    {
+      "path": "calibration/fichiers_lus.tsv",
+      "role": "calibration",
+      "sha256": "73d4e7abef71200bc078c8a45bc84657bd12b3aba26f70e2e7b89f5bab28073a"
+    },
+    {
+      "path": "config.json",
+      "role": "config.json",
+      "sha256": "0ebd7ea32acfd4ed40dc6de8f838ee9bc6537e736fc7c8a4dd8ff346515baaab"
+    },
+    {
+      "path": "environment.json",
+      "role": "environment.json",
+      "sha256": "48711a6d62a50ad4bdf7267447022b87c17479920e842d1ddbec002bae92c2a7"
+    },
+    {
+      "path": "exports/alto/mf_0000.xml",
+      "role": "exports",
+      "sha256": "7bc885116a4be6041038ac08c02ee8d0524c497fd763f108c00baf24c4e27d74"
+    },
+    {
+      "path": "exports/coco/instances.json",
+      "role": "exports",
+      "sha256": "27f979304d23ae1b8112a9dcf96a47f0ef50bb4e197469c76bf72e3ec6aff33d"
+    },
+    {
+      "path": "exports/page/mf_0000.xml",
+      "role": "exports",
+      "sha256": "f868360de18b9969f9d03e1703ec784c27068bf4147741f4ef070cc2c365a4a8"
+    },
+    {
+      "path": "exports/reports/mf_0000.json",
+      "role": "exports",
+      "sha256": "6e08f928f2342aa67b4ea227e92980266bbd729f1e8c116b5d5ea7802846dd16"
+    },
+    {
+      "path": "images/mf_0000.png",
+      "role": "images",
+      "sha256": "5bf281960b9275052f4b5a00959f6a1834b40b6a2588ab41257cc43980497962"
+    },
+    {
+      "path": "pages/mf_0000.json",
+      "role": "pages",
+      "sha256": "cf9e68ec47c441ad2b1d2ddd199d41cd9488c39739c200bb8c160f3bed03ebbc"
+    },
+    {
+      "path": "provenance/degradation-profile.json",
+      "role": "provenance",
+      "sha256": "6e8ad3a0efd95042e51ce8b67ac58a94244cf83d28350189f74987d60ef47867"
+    },
+    {
+      "path": "qa/contact_00.jpg",
+      "role": "qa",
+      "sha256": "fdabac2d99321a9f9c5bc325a30c3c6594c3118c238e57bdf172ef0b3cb0bee6"
+    },
+    {
+      "path": "qa/diagnostics/mf_0000.json",
+      "role": "qa",
+      "sha256": "e36c2c5805bcdf005a663e62d7c7e12b359b0e4b980cee91def993f8820f6c26"
+    },
+    {
+      "path": "qa/masks/mf_0000.png",
+      "role": "qa",
+      "sha256": "2846d949246c8121e160d2e405e7e685ef8e9807d60e9a7dd6cbf9ee54dd8ee4"
+    },
+    {
+      "path": "qa/mf_0000.png",
+      "role": "qa",
+      "sha256": "71a6901f7c970e98b90f4832c872d26e11d7720c5872ee8427c3f0528973f92f"
+    },
+    {
+      "path": "qa/severity_00.jpg",
+      "role": "qa",
+      "sha256": "fdabac2d99321a9f9c5bc325a30c3c6594c3118c238e57bdf172ef0b3cb0bee6"
+    },
+    {
+      "path": "qa/statistics.json",
+      "role": "qa",
+      "sha256": "afed9f943403d9a9d9e9d7c36886932156bc40f445d7df8a6e159619a4009e7a"
+    }
+  ],
+  "assets": {
+    "path": "assets.json",
+    "sha256": "290b15590cfa915ae6566de57214654969a7b56ba4bd97b5057eeef3c566ce7a"
+  },
+  "calibration": {
+    "files_read": {
+      "path": "calibration/fichiers_lus.tsv",
+      "sha256": "73d4e7abef71200bc078c8a45bc84657bd12b3aba26f70e2e7b89f5bab28073a"
+    },
+    "protocol_path": "calibration/CADRAGE.md",
+    "protocol_sha256": "7e9960f8709c3a8415ac142c6b604a7340746e8168e23dfb5f598e95bf1f01c7",
+    "source_partitions": [
+      "train",
+      "dev"
+    ]
+  },
+  "config": {
+    "path": "config.json",
+    "sha256": "0ebd7ea32acfd4ed40dc6de8f838ee9bc6537e736fc7c8a4dd8ff346515baaab"
+  },
+  "dataset_id": "mf_demo_20261007_1_measured_1be0e17af162_layout_v2",
+  "extensions": {
+    "mf:content_profile": {
+      "calibrated": false,
+      "documents": [
+        {
+          "asset_id": "text_demo_fr",
+          "eligible": true,
+          "reason": null,
+          "sha256": "1025138a6e80735785d415c157a91cb856a34a86659ca7a5215193197e992895",
+          "source_document_id": "mille_feuilles_demo_articles_20261007",
+          "unit_count": 30
+        }
+      ],
+      "profile": "consecutive-v1",
+      "version": "1"
+    },
+    "mf:degradation_profile": {
+      "path": "provenance/degradation-profile.json",
+      "sha256": "6e8ad3a0efd95042e51ce8b67ac58a94244cf83d28350189f74987d60ef47867"
+    }
+  },
+  "generator": {
+    "commit": "e5f121adf5458dd911b4f32121dc16517d306d0f",
+    "dirty": false,
+    "environment_path": "environment.json",
+    "environment_sha256": "48711a6d62a50ad4bdf7267447022b87c17479920e842d1ddbec002bae92c2a7"
+  },
+  "pages": [
+    {
+      "id": "mf_0000",
+      "path": "pages/mf_0000.json",
+      "sha256": "cf9e68ec47c441ad2b1d2ddd199d41cd9488c39739c200bb8c160f3bed03ebbc",
+      "source_group_ids": [
+        "mille_feuilles_original_demo_20261007"
+      ]
+    }
+  ],
+  "profile": "fr_press_19c_layout_v2",
+  "rng": {
+    "algorithm": "SHA256 per-page; Python MT19937; numpy PCG64",
+    "seed": 20261007,
+    "version": "1"
+  },
+  "schema_version": "0.3.0"
+}

@@ -1,0 +1,24 @@
+{
+  "pages": 1,
+  "render": {
+    "columns": 4,
+    "content_profile": "consecutive-v1",
+    "degradation": "mixed",
+    "degradation_profile": {
+      "calibrated": false,
+      "description": "Aucune altération : papier 255, encre 0 ; sert de référence pour les diagnostics.",
+      "families": {},
+      "format": "mille-feuilles-degradation-profile",
+      "name": "identity",
+      "oversampling": 2,
+      "version": "1"
+    },
+    "dpi": 67,
+    "height": 1656,
+    "layout_profile": "fr_press_19c_layout_v2",
+    "partition": null,
+    "seed": 20261007,
+    "width": 1200
+  },
+  "schema_version": "0.3.0"
+}
