@@ -636,6 +636,11 @@ contrôlé 14 (6 et 8). Les lignes de base natives diffèrent au plus de
 
 Ce succès technique ne démontre ni cohérence thématique des articles, ni
 diversité de sources (un seul document de corps embarqué), ni gain OCR, OLR ou
-d'apprentissage. La preuve de non-régression des modes sans option contre
-`178a79b` reste à faire séparément ; la suite complète (1 423 tests) couvre
-les tirages historiques inchangés sans option.
+d'apprentissage. Sans l'option, les modes antérieurs sont inchangés : la même commande (deux pages,
+graine 20261007), exécutée avec `178a79b` depuis un clone propre puis avec
+`23875ab`, produit des PNG, canoniques, masques, diagnostics et exports
+identiques octet pour octet, en layout v2 `identity` (44 fichiers) comme en
+rendu historique par défaut (38 fichiers). Seuls `environment.json` et
+`manifest.json` diffèrent, par le commit et les empreintes du code source.
+La [preuve](reports/a2/non-regression/non-regression.json) est archivée avec
+son script.

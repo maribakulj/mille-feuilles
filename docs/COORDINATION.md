@@ -265,7 +265,7 @@ Le 8 octobre, Marcel transfère la poursuite autonome de Mille Feuilles à
 Claude, Codex n'ayant plus de crédits. La passation versionnée
 (`PASSATION_A2_CODEX.md`) sert de point de départ ; Claude coordonne seul et
 ne compte pas sur une réponse de Codex. A2 est commité en `e5f121a` et accepté
-(845 contrôles). Restent ouverts : la preuve de non-régression contre
-`178a79b`, la diversité des documents de corps, et les évaluations
+(845 contrôles). La non-régression sans option contre `178a79b` est prouvée le
+14 octobre (sorties identiques octet pour octet). Restent ouverts : la diversité des documents de corps, et les évaluations
 OCR/utilité et corpus autorisés, en attente de décisions de Marcel. Axel et
 ses données restent hors de ce périmètre.
