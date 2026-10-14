@@ -332,3 +332,21 @@ Codex. Suite complète : 1 423 tests passants. Commit source `e5f121a`.
 L'acceptation passe 845 contrôles (voir [validation](VALIDATION.md)). La revue
 visuelle ne montre pas de défaut de rendu, mais confirme une limite : des
 unités consécutives du document de démonstration traitent de sujets distincts.
+
+## A3 — exemple d'import multi-documents
+
+Le 14 octobre, la non-régression sans option est prouvée contre `178a79b`.
+Claude rédige ensuite vingt documents originaux (CC0) pour un exemple
+d'import versionné : cinq villes fictives, deux chroniques à sujet unique par
+ville, titres et annonces. Le catalogue embarqué reste intact, faute de quoi
+les lots par défaut changeraient. Import sans rejet, partition 3/1/1 par ville,
+génération `consecutive-v1` sur train : 40 corps tirés des six chroniques
+d'entraînement, paragraphes consécutifs cohérents à la lecture.
+
+L'essai mesure une limite déjà présente en A2 : chaque corps étant tiré
+indépendamment, la moitié des unités placées sur une page sont des répétitions
+(28–39 % avec le texte embarqué). Une page de 1200 × 1656 px place environ
+50 unités ; les six chroniques d'entraînement n'en contiennent que 30. Interdire
+les répétitions exige donc d'abord un volume de texte bien supérieur, ce qui
+renvoie à la décision sur les corpus autorisés plutôt qu'à des textes rédigés
+en plus grand nombre. Suite complète : 1 426 tests.

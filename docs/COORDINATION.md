@@ -269,3 +269,10 @@ ne compte pas sur une réponse de Codex. A2 est commité en `e5f121a` et accept�
 14 octobre (sorties identiques octet pour octet). Restent ouverts : la diversité des documents de corps, et les évaluations
 OCR/utilité et corpus autorisés, en attente de décisions de Marcel. Axel et
 ses données restent hors de ce périmètre.
+
+A3 (14 octobre) ajoute un exemple d'import multi-documents versionné, sans
+changer le catalogue embarqué ni le code. Il montre que des chroniques à sujet
+unique donnent des articles cohérents, mais aussi que les répétitions d'unités
+sur une page (environ 50 %) viennent du faible volume de texte. Décision
+attendue de Marcel : source et volume de textes autorisés (corpus du domaine
+public ou textes fournis) avant tout profil sans répétition.

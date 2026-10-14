@@ -194,3 +194,40 @@ reformulations. Des rubriques de titres communes (« Faits divers ») peuvent
 réunir beaucoup de groupes et rendre une partition impossible ; c'est voulu, car
 le système refuse plutôt que de laisser fuir. Les tests n'utilisent que des
 textes originaux écrits pour eux ; aucun corpus réel n'a été importé dans ce lot.
+
+## Exemple versionné : presse multi-documents (A3)
+
+`assets/import-demo/presse-multi/` contient un manifeste d'import prêt à
+l'emploi et vingt documents originaux (Claude, 14 octobre 2026, CC0) :
+cinq journaux de villes fictives, chacun avec deux chroniques de corps de cinq
+paragraphes sur **un seul sujet**, une liste de huit titres et quatre annonces.
+Chaque ville forme un groupe source, ce qui permet une partition train/dev/test
+réelle. `build_sources.py` reproduit exactement les fichiers versionnés ; un test
+le vérifie. Le catalogue embarqué n'est pas modifié : les lots par défaut restent
+identiques.
+
+```sh
+uv run --locked mille-feuilles import-texts \
+  --manifest assets/import-demo/presse-multi/import.jsonl --into runs/presse-multi
+uv run --locked mille-feuilles partition --bundle runs/presse-multi \
+  --ratios 0.6 0.2 0.2 --seed 20261014
+uv run --locked mille-feuilles generate --assets-root runs/presse-multi \
+  --partition train --output runs/presse-multi-train --pages 2 \
+  --width 1200 --height 1656 --columns 4 --seed 20261014 \
+  --layout-profile fr_press_19c_layout_v2 --degradation-profile identity \
+  --content-profile consecutive-v1
+```
+
+Avec cette graine, la partition place Velmont, Castelbrune et Lisserand en
+train, Corvelle en dev et Hautbrume en test. Un essai de deux pages compose
+40 corps tirés des six chroniques d'entraînement seulement ; les paragraphes
+consécutifs d'un même article restent sur leur sujet.
+
+**Limites mesurées sur cet essai.** Le volume est petit (environ 2,5 ko par
+chronique). `consecutive-v1` tire chaque corps indépendamment : la même unité
+peut revenir plusieurs fois sur une page. Sur l'essai, la moitié des unités
+placées sur chaque page sont des répétitions (50 % et 52 %, jusqu'à cinq fois la
+même) ; sur la campagne A2 avec le texte embarqué, 28 % et 39 %. Les titres
+restent tirés séparément et ne correspondent pas au sujet du corps. Ces deux
+points relèvent d'un profil de contenu ultérieur, non d'une modification
+silencieuse de `consecutive-v1`.
